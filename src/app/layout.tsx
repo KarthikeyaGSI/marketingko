@@ -14,7 +14,6 @@ import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { CinematicWrapper } from "@/components/ui/CinematicWrapper";
-import { Preloader } from "@/components/ui/Preloader";
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
@@ -152,7 +151,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <CustomCursor />
-            <Preloader />
             <CinematicWrapper>
               <div className="noise-overlay" />
               <div className="relative flex min-h-screen flex-col">

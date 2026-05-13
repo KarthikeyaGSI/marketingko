@@ -163,9 +163,7 @@
   }
 
   .text-mask-premium {
-    background: linear-gradient(135deg, var(--foreground) 0%, rgba(150, 150, 150, 0.4) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @apply text-foreground;
   }
 
   .glass-system {
