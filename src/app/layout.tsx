@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CommandMenu } from "@/components/ui/CommandMenu";
 import { FloatingCTA } from "@/components/ui/FloatingCTA";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { Preloader } from "@/components/ui/Preloader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,11 +21,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Marketing Ko | AI Growth Infrastructure",
-  description: "We engineer revenue systems that compound monthly. Acquisition infrastructure powered by AI.",
+  title: "Marketing Ko | AI Revenue Infrastructure",
+  description: "We engineer autonomous acquisition systems that compound monthly. Elite AI growth infrastructure.",
   openGraph: {
-    title: "Marketing Ko | AI Growth Infrastructure",
-    description: "We engineer revenue systems that compound monthly.",
+    title: "Marketing Ko | AI Revenue Infrastructure",
+    description: "We engineer autonomous acquisition systems that compound monthly.",
     images: ["/og-image.jpg"],
   },
 };
@@ -36,8 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-white selection:text-black cursor-none`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-primary selection:text-white cursor-none bg-black`}>
         <div className="noise-overlay" />
+        <Preloader />
         <CustomCursor />
         <SmoothScroll>
           <div className="relative flex min-h-screen flex-col">
