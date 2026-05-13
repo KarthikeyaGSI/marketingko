@@ -58,56 +58,47 @@ export function Hero() {
                     hidden: { opacity: 0 },
                     visible: {
                       opacity: 1,
-                      transition: { staggerChildren: 0.08, delayChildren: 0.5 }
+                      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
                     }
                   }}
-                  className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tightest text-foreground leading-[0.9] text-mask-premium uppercase relative z-10"
+                  className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tightest text-foreground leading-[0.95] uppercase relative z-10"
                 >
                   <div className="flex flex-wrap items-baseline">
                     {["GROWTH", "SYSTEMS"].map((word, i) => (
-                      <motion.span key={i} className="inline-block mr-8 last:mr-0">
-                        {word.split("").map((char, j) => (
-                          <motion.span
-                            key={j}
-                            variants={{
-                              hidden: { opacity: 0, y: 100, rotateX: -90, filter: "blur(40px)" },
-                              visible: { opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }
-                            }}
-                            transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-                            className="inline-block origin-bottom"
-                          >
-                            {char}
-                          </motion.span>
-                        ))}
+                      <motion.span
+                        key={i}
+                        variants={{
+                          hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
+                          visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                        }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="inline-block mr-4 md:mr-8 last:mr-0"
+                      >
+                        {word}
                       </motion.span>
                     ))}
                   </div>
-                  <div className="flex items-center mt-4">
+                  <div className="flex items-center mt-2 md:mt-4">
                     <motion.span
                       variants={{
-                        hidden: { opacity: 0, scale: 0.6, filter: "blur(50px)", x: -100 },
+                        hidden: { opacity: 0, scale: 0.8, filter: "blur(20px)", x: -50 },
                         visible: { opacity: 1, scale: 1, filter: "blur(0px)", x: 0 }
                       }}
-                      transition={{ duration: 2.5, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-primary italic font-medium inline-block pr-12 text-5xl md:text-8xl"
+                      transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      className="text-primary italic font-medium inline-block pr-6 md:pr-12 text-4xl md:text-7xl"
                     >
                       LEAKING
                     </motion.span>
-                    <div className="flex">
-                      {"REVENUE.".split("").map((char, i) => (
-                        <motion.span
-                          key={i}
-                          variants={{
-                            hidden: { opacity: 0, y: 150, rotateX: 90, filter: "blur(20px)" },
-                            visible: { opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }
-                          }}
-                          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                          className="inline-block origin-top"
-                        >
-                          {char}
-                        </motion.span>
-                      ))}
-                    </div>
+                    <motion.span
+                      variants={{
+                        hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
+                        visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                      }}
+                      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                      className="inline-block"
+                    >
+                      REVENUE.
+                    </motion.span>
                   </div>
                 </motion.h1>
                 
