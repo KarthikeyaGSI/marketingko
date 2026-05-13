@@ -41,13 +41,13 @@ export function WhyMarketingKo() {
             >
               Strategic Differentiation
             </motion.div>
-            <h2 className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
+            <h2 className="text-7xl md:text-[9.5rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
               OPERATIONAL <br />
-              <span className="text-muted-foreground/10 italic">EDGE.</span>
+              <span className="text-muted-foreground/10 italic font-medium">EDGE.</span>
             </h2>
           </div>
           <div className="pb-12">
-             <p className="text-2xl text-muted-foreground font-medium tracking-tighter max-w-sm">
+             <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight max-w-sm">
                We don't sell tools. We deploy infrastructure. Every system is built to survive the scale of your next 10x.
              </p>
           </div>

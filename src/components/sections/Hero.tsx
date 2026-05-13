@@ -42,10 +42,10 @@ export function Hero() {
                 initial={{ opacity: 0, y: 80 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium"
+                className="text-7xl md:text-[9.5rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium"
               >
                 Your business is <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500 italic">leaking</span> revenue.
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500 italic font-medium">leaking</span> revenue.
                 <br /> We seal it.
               </motion.h1>
               
@@ -53,7 +53,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
-                className="text-2xl md:text-4xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight"
+                className="text-xl md:text-3xl text-muted-foreground max-w-2xl font-medium tracking-tight leading-tight"
               >
                 AI automations, voice agents, and web solutions — engineered around your outcomes, not our deliverables.
               </motion.p>
@@ -67,8 +67,8 @@ export function Hero() {
             >
               <Link href="/contact">
                 <MagneticButton>
-                  <Button size="lg" className="rounded-full px-20 h-28 text-3xl bg-primary text-white hover:bg-primary/90 font-black shadow-primary/20 shadow-2xl transition-all duration-700 hover:scale-105 group">
-                    Book Free Audit <ArrowRight className="ml-6 h-10 w-10 group-hover:translate-x-3 transition-transform" />
+                  <Button size="lg" className="rounded-full px-16 h-24 text-2xl bg-primary text-white hover:bg-primary/90 font-bold shadow-primary/20 shadow-2xl transition-all duration-700 hover:scale-105 group">
+                    Book Free Audit <ArrowRight className="ml-4 h-8 w-8 group-hover:translate-x-3 transition-transform" />
                   </Button>
                 </MagneticButton>
               </Link>

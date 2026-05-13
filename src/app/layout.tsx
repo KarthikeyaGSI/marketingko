@@ -7,7 +7,6 @@ import { Footer } from "@/components/layout/Footer";
 import { CommandMenu } from "@/components/ui/CommandMenu";
 import { FloatingCTA } from "@/components/ui/FloatingCTA";
 import { CustomCursor } from "@/components/ui/CustomCursor";
-import { Preloader } from "@/components/ui/Preloader";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Inter_Tight } from "next/font/google";
@@ -93,7 +92,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <div className="noise-overlay" />
-            <Preloader />
             <CustomCursor />
             <div className="relative flex min-h-screen flex-col">
               <Navbar />

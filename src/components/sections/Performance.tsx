@@ -25,11 +25,11 @@ export function Performance() {
           >
             Operational Telemetry
           </motion.div>
-          <h2 className="text-7xl md:text-[11rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium">
+          <h2 className="text-7xl md:text-[9.5rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium">
             MEASURABLE <br />
-            <span className="text-muted-foreground/10 italic">OUTCOMES.</span>
+            <span className="text-muted-foreground/10 italic font-medium">OUTCOMES.</span>
           </h2>
-          <p className="text-2xl text-muted-foreground font-medium tracking-tighter leading-tight max-w-3xl">
+          <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-tight max-w-3xl">
             We don't sell hours. We sell infrastructure that hits specific KPIs. Every system we deploy is monitored by the same telemetry that built it.
           </p>
         </div>

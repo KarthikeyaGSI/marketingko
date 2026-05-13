@@ -77,11 +77,11 @@ export function RevenueSystems() {
             >
               Infrastructure Protocols
             </motion.div>
-            <h2 className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
+            <h2 className="text-7xl md:text-[9.5rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
               THREE SYSTEMS. <br />
-              <span className="text-muted-foreground/10 italic">ONE FIX.</span>
+              <span className="text-muted-foreground/10 italic font-medium">ONE FIX.</span>
             </h2>
-            <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl font-medium tracking-tight leading-tight">
               We've engineered three foundational growth engines. Fixed scope. Fixed price. Optimized for the modern AI economy.
             </p>
           </div>
