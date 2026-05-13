@@ -20,7 +20,7 @@ export function RevenueLeak() {
           position: absolute;
           inset: 0;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, rgba(0, 102, 255, 0.05) 35%, transparent 70%);
+          background: radial-gradient(circle, oklch(var(--primary) / 0.15) 0%, oklch(var(--primary) / 0.05) 35%, transparent 70%);
           filter: blur(40px);
         }
 
@@ -28,7 +28,7 @@ export function RevenueLeak() {
           position: absolute;
           inset: 0;
           border-radius: 50%;
-          border: 1px dashed rgba(0, 102, 255, 0.15);
+          border: 1px dashed oklch(var(--primary) / 0.15);
           animation: spin 60s linear infinite;
         }
 
@@ -36,7 +36,7 @@ export function RevenueLeak() {
           position: absolute;
           inset: -10%;
           border-radius: 50%;
-          border: 1px solid rgba(0, 102, 255, 0.03);
+          border: 1px solid oklch(var(--primary) / 0.03);
         }
 
         @keyframes spin {
@@ -49,19 +49,19 @@ export function RevenueLeak() {
           width: 180px;
           height: 180px;
           border-radius: 50%;
-          background: #000;
-          border: 4px solid #0066ff;
+          background: var(--background);
+          border: 4px solid var(--primary);
           display: flex;
           align-items: center;
           justify-content: center;
           text-align: center;
-          color: white;
+          color: var(--foreground);
           font-size: 24px;
           font-weight: 900;
           line-height: 1;
           letter-spacing: 1px;
           z-index: 10;
-          box-shadow: 0 0 30px rgba(0, 102, 255, 0.4), inset 0 0 20px rgba(0, 102, 255, 0.1);
+          box-shadow: 0 0 30px oklch(var(--primary) / 0.4), inset 0 0 20px oklch(var(--primary) / 0.1);
           animation: pulse 4s ease-in-out infinite;
         }
 
@@ -75,24 +75,24 @@ export function RevenueLeak() {
           width: 90px;
           height: 90px;
           border-radius: 50%;
-          background: #050505;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: var(--card);
+          border: 1px solid oklch(var(--foreground) / 0.1);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #fff;
+          color: var(--foreground);
           font-size: 11px;
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 1px;
           z-index: 9;
-          box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
           transition: all 0.5s ease;
         }
 
         .node:hover {
-          border-color: #0066ff;
-          box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+          border-color: var(--primary);
+          box-shadow: 0 0 20px oklch(var(--primary) / 0.3);
         }
 
         .leads { top: 10%; left: 10%; }
@@ -111,7 +111,7 @@ export function RevenueLeak() {
 
         .outer-path {
           fill: none;
-          stroke: #0066ff;
+          stroke: var(--primary);
           stroke-width: 2;
           stroke-dasharray: 10 15;
           animation: dashMove 10s linear infinite;
@@ -125,7 +125,7 @@ export function RevenueLeak() {
 
         .connector {
           fill: none;
-          stroke: rgba(0, 102, 255, 0.1);
+          stroke: oklch(var(--primary) / 0.1);
           stroke-width: 1;
         }
 
@@ -152,7 +152,7 @@ export function RevenueLeak() {
           width: 4px;
           height: 4px;
           border-radius: 50%;
-          background: #0066ff;
+          background: var(--primary);
           opacity: 0.4;
         }
 

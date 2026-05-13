@@ -18,10 +18,10 @@ export function Hero() {
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <section className="relative min-h-[120vh] flex flex-col items-center justify-center overflow-hidden bg-black pt-40 pb-20">
+    <section className="relative min-h-[120vh] flex flex-col items-center justify-center overflow-hidden bg-background pt-40 pb-20">
       {/* Background Gradients */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(0,102,255,0.08)_0%,transparent_70%)]" />
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:100px_100px]" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,oklch(var(--primary)/0.08)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 z-0 grid-infrastructure opacity-50" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -32,7 +32,7 @@ export function Hero() {
               className="inline-flex items-center space-x-4 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-3xl"
             >
               <ShieldCheck className="h-4 w-4 text-primary" />
-              <span className="text-[10px] font-black tracking-[0.8em] text-white uppercase">
+              <span className="text-[10px] font-black tracking-[0.8em] text-foreground uppercase">
                 Top AI Automation & Voice Agent Agency
               </span>
             </motion.div>
@@ -42,7 +42,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 80 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-7xl md:text-[11rem] font-bold tracking-tighter text-white leading-[0.8] text-mask-premium"
+                className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium"
               >
                 SYSTEMS THAT <br />
                 <span className="text-muted-foreground/10 italic">OUTPERFORM.</span>
@@ -54,7 +54,7 @@ export function Hero() {
                 transition={{ duration: 1, delay: 0.4 }}
                 className="text-2xl md:text-4xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight"
               >
-                Your business is leaking revenue. <span className="text-white">We seal it.</span> <br />
+                Your business is leaking revenue. <span className="text-foreground">We seal it.</span> <br />
                 AI automations, voice agents, and web solutions — engineered around your outcomes, not our deliverables.
               </motion.p>
             </div>
@@ -87,14 +87,14 @@ export function Hero() {
       {/* Industry Marquee */}
       <div className="mt-auto w-full pt-40 pb-20 overflow-hidden relative">
         <div className="flex flex-col items-center mb-10">
-          <span className="text-[10px] font-black tracking-[0.8em] text-white/20 uppercase">Systems Built For</span>
+          <span className="text-[10px] font-black tracking-[0.8em] text-foreground/20 uppercase">Systems Built For</span>
         </div>
         <div className="flex whitespace-nowrap overflow-hidden group">
           <div className="flex animate-marquee group-hover:pause-marquee py-6">
             {[...industries, ...industries, ...industries].map((industry, i) => (
               <div
                 key={i}
-                className="mx-8 px-10 py-5 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-xl text-lg font-bold text-white/40 hover:text-primary hover:border-primary/20 transition-all duration-500 cursor-default"
+                className="mx-8 px-10 py-5 rounded-full border border-foreground/5 bg-foreground/[0.02] backdrop-blur-xl text-lg font-bold text-foreground/40 hover:text-primary hover:border-primary/20 transition-all duration-500 cursor-default"
               >
                 {industry}
               </div>
