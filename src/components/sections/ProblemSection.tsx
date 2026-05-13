@@ -52,11 +52,20 @@ export function ProblemSection() {
               viewport={{ once: true }}
               className="p-16 md:p-24 bg-background hover:bg-foreground/[0.02] transition-all duration-1000 group relative overflow-hidden"
             >
+              <div className="flex justify-between items-start relative z-10">
+                 <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic">
+                   [NODE-{pain.id}: CRITICAL]
+                 </span>
+                 <span className="text-sm font-black text-foreground/5 tracking-tighter italic select-none">
+                    MK-SYS-CORE-v4.2
+                 </span>
+              </div>
+
               <span className="text-[10rem] font-black text-foreground/[0.02] tracking-tighter italic absolute top-10 right-10 leading-none select-none group-hover:text-primary/5 transition-colors duration-1000">
                 {pain.id}
               </span>
               
-              <div className="relative z-10 space-y-10 pt-20">
+              <div className="relative z-10 space-y-10 pt-16">
                 <h3 className="text-5xl font-bold text-foreground tracking-tighter italic leading-none group-hover:text-primary transition-colors duration-700">
                   {pain.title}
                 </h3>

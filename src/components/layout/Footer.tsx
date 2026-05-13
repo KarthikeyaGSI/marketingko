@@ -7,11 +7,10 @@ export function Footer() {
     <footer className="bg-background border-t border-border pt-40 pb-20 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-24 mb-40">
-          {/* Brand Column */}
           <div className="md:col-span-4 space-y-12">
             <Link href="/" className="group inline-block">
-              <span className="text-4xl font-black tracking-tighter text-foreground uppercase italic leading-none group-hover:text-primary transition-colors">
-                Marketing Ko
+              <span className="text-4xl font-black tracking-tighter text-foreground uppercase italic leading-none transition-colors group-hover:text-primary">
+                Marketing <span className="text-primary italic">Ko.</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-lg leading-relaxed max-w-sm font-medium tracking-tight">

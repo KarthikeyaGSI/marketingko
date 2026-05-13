@@ -64,6 +64,7 @@ const systems = [
 export function RevenueSystems() {
   return (
     <section id="revenue-systems" className="py-80 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,oklch(var(--foreground)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,oklch(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,oklch(var(--primary)/0.05)_0%,transparent_70%)]" />
       
       <div className="container mx-auto px-6 relative">
