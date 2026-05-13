@@ -28,7 +28,7 @@ export function Hero() {
       {/* KINETIC TYPOGRAPHY LAYER (Background Tension) */}
       <motion.div 
         style={{ y: springY2, opacity: 0.03 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[35rem] font-black italic select-none pointer-events-none z-0"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[35rem] font-black italic select-none pointer-events-none z-[-1]"
       >
         GROWTH ARCHITECTURE • SYSTEMS OVERGROWTH • 
       </motion.div>

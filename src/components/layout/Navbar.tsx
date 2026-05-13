@@ -55,12 +55,12 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-16">
+          <div className="hidden lg:flex items-center space-x-12">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-[10px] font-black tracking-[0.8em] text-foreground/40 hover:text-foreground uppercase transition-all duration-700 group"
+                className="relative text-[10px] font-black tracking-[0.5em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group"
               >
                 {link.name}
                 <span className="absolute -bottom-3 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)]" />

@@ -5,7 +5,7 @@ import { Shield, Target, Cpu, Zap } from "lucide-react";
 
 export function About() {
   return (
-    <section className="py-80 bg-black relative border-t border-white/5">
+    <section className="py-80 bg-background relative border-t border-border/10">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
           <div className="space-y-16">
@@ -16,11 +16,11 @@ export function About() {
             >
               Operational Philosophy
             </motion.div>
-            <h2 className="text-6xl md:text-9xl font-bold text-white tracking-tighter leading-[0.85] text-mask-premium">
+            <h2 className="text-6xl md:text-9xl font-bold text-foreground tracking-tighter leading-[0.85] text-mask-premium uppercase">
               SYSTEMS OVER <br />
-              <span className="text-muted-foreground/20">SERVICES.</span>
+              <span className="text-muted-foreground/20 italic">SERVICES.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-2xl">
+            <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-2xl italic">
               Marketing Ko is an AI infrastructure studio. We don't focus on creative vanity or generic campaigns. 
               We engineer the underlying operational architectures that allow companies to automate acquisition at enterprise scale.
             </p>
@@ -31,7 +31,7 @@ export function About() {
                   <Cpu className="text-primary h-8 w-8 group-hover/item:text-white transition-colors duration-700" />
                 </div>
                 <div className="space-y-4">
-                  <h4 className="text-3xl font-bold text-foreground tracking-tighter italic">Infrastructure First</h4>
+                  <h4 className="text-3xl font-bold text-foreground tracking-tighter italic uppercase">Infrastructure First</h4>
                   <p className="text-lg text-muted-foreground leading-relaxed font-medium tracking-tight">Everything we build is designed as a scalable node within your business stack.</p>
                 </div>
               </div>
@@ -40,7 +40,7 @@ export function About() {
                   <Zap className="text-primary h-8 w-8 group-hover/item:text-white transition-colors duration-700" />
                 </div>
                 <div className="space-y-4">
-                  <h4 className="text-3xl font-bold text-foreground tracking-tighter italic">Velocity Driven</h4>
+                  <h4 className="text-3xl font-bold text-foreground tracking-tighter italic uppercase">Velocity Driven</h4>
                   <p className="text-lg text-muted-foreground leading-relaxed font-medium tracking-tight">We measure success in decision speed and revenue throughput, not just leads.</p>
                 </div>
               </div>

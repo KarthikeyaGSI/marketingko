@@ -75,7 +75,7 @@ export function CustomCursor() {
       {/* Outer Follower */}
       <div 
         ref={followerRef} 
-        className="fixed top-0 left-0 w-8 h-8 border border-white/20 rounded-full -ml-4 -mt-4 flex items-center justify-center transition-transform duration-75"
+        className="fixed top-0 left-0 w-8 h-8 border border-foreground/30 rounded-full -ml-4 -mt-4 flex items-center justify-center transition-transform duration-75"
       >
         <div className="w-1 h-1 bg-primary/40 rounded-full blur-[2px]" />
       </div>

@@ -55,29 +55,29 @@ function ContactForm() {
       <div className="space-y-10 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Full_Name *</label>
+            <label className="text-[10px] font-black text-foreground/60 uppercase tracking-[0.3em] ml-4 italic">Full_Name *</label>
             <Input placeholder="Karthikeya" className="h-20 px-8 rounded-2xl bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight shadow-inner" />
           </div>
           <div className="space-y-4">
-            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Business_Name *</label>
+            <label className="text-[10px] font-black text-foreground/60 uppercase tracking-[0.3em] ml-4 italic">Business_Name *</label>
             <Input placeholder="Marketing Ko" className="h-20 px-8 rounded-2xl bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight shadow-inner" />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Secure_Email *</label>
+            <label className="text-[10px] font-black text-foreground/60 uppercase tracking-[0.3em] ml-4 italic">Secure_Email *</label>
             <Input placeholder="you@company.com" className="h-20 px-8 rounded-2xl bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight shadow-inner" />
           </div>
           <div className="space-y-4">
-            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Phone_WhatsApp *</label>
+            <label className="text-[10px] font-black text-foreground/60 uppercase tracking-[0.3em] ml-4 italic">Phone_WhatsApp *</label>
             <Input placeholder="+91 98765 43210" className="h-20 px-8 rounded-2xl bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight shadow-inner" />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Business_Type *</label>
+            <label className="text-[10px] font-black text-foreground/60 uppercase tracking-[0.3em] ml-4 italic">Business_Type *</label>
             <select 
               value={type}
               onChange={(e) => setType(e.target.value)}
@@ -88,7 +88,7 @@ function ContactForm() {
             </select>
           </div>
           <div className="space-y-4">
-            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Business_Size *</label>
+            <label className="text-[10px] font-black text-foreground/60 uppercase tracking-[0.3em] ml-4 italic">Business_Size *</label>
             <select 
               value={size}
               onChange={(e) => setSize(e.target.value)}
@@ -101,7 +101,7 @@ function ContactForm() {
         </div>
 
         <div className="space-y-4">
-          <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Biggest_Challenge *</label>
+          <label className="text-[10px] font-black text-foreground/60 uppercase tracking-[0.3em] ml-4 italic">Biggest_Challenge *</label>
           <Textarea 
             placeholder="What is the biggest operational or growth challenge your business faces right now?" 
             className="min-h-[180px] p-8 rounded-[2rem] bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight resize-none shadow-inner leading-relaxed" 
