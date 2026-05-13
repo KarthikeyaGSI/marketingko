@@ -82,7 +82,7 @@ export function IndividualSolutions() {
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.4em]">{solution.category}</span>
                   <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary transition-all duration-700">
-                    <div className="group-hover:text-white transition-colors">
+                    <div className="group-hover:text-primary-foreground transition-colors">
                       {solution.icon}
                     </div>
                   </div>
@@ -120,7 +120,7 @@ export function IndividualSolutions() {
              </div>
              
              <Link href="/solutions" className="relative z-10 pt-10">
-                <Button className="w-full h-20 rounded-2xl bg-foreground text-background hover:bg-primary hover:text-white transition-all duration-700 font-black uppercase tracking-[0.2em]">
+                <Button className="w-full h-20 rounded-2xl bg-foreground text-background hover:bg-primary hover:text-primary-foreground transition-all duration-700 font-black uppercase tracking-[0.2em]">
                   View All Modules
                 </Button>
              </Link>

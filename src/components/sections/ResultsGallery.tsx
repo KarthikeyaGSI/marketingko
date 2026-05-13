@@ -10,21 +10,21 @@ const systemBenchmarks = [
     desc: "A self-healing acquisition architecture that identifies and qualifies signals with sub-millisecond precision.",
     icon: Network,
     benchmark: "Protocol: MK-QUAL-v4",
-    color: "from-blue-600 to-cyan-500"
+    color: "from-primary to-foreground/40"
   },
   {
     title: "Operational Logic",
     desc: "Real-time decision engine orchestrating high-density workflows across decoupled CRM layers.",
     icon: Terminal,
     benchmark: "ID: LOGIC-LAYER-08",
-    color: "from-cyan-500 to-primary"
+    color: "from-foreground/20 to-primary"
   },
   {
     title: "Response Latency",
     desc: "Infrastructure protocols engineered to reduce lead-to-outreach jitter across global edge nodes.",
     icon: Zap,
     benchmark: "Jitter: <10ms",
-    color: "from-primary to-purple-600"
+    color: "from-primary to-foreground"
   }
 ];
 
@@ -62,7 +62,7 @@ export function ResultsGallery() {
                 <div className="space-y-16 relative z-10">
                   <div className="flex justify-between items-start">
                     <div className="relative w-20 h-20 rounded-3xl border border-border bg-foreground/[0.02] flex items-center justify-center group-hover:bg-primary transition-all duration-1000">
-                      <item.icon className="w-10 h-10 text-foreground group-hover:text-white group-hover:rotate-12 transition-all duration-700" />
+                      <item.icon className="w-10 h-10 text-foreground group-hover:text-primary-foreground group-hover:rotate-12 transition-all duration-700" />
                     </div>
                     <div className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10">
                        <span className="text-[8px] font-black text-primary uppercase tracking-widest italic">{item.benchmark}</span>

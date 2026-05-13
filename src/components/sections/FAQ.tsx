@@ -64,7 +64,7 @@ export function FAQ() {
                 <span className="text-2xl md:text-4xl font-bold text-foreground tracking-tighter italic transition-colors group-hover:text-primary duration-700">
                   {faq.question}
                 </span>
-                <div className={`w-14 h-14 rounded-full border flex items-center justify-center transition-all duration-700 ${openIndex === i ? 'bg-primary border-primary text-white rotate-180' : 'bg-foreground/[0.05] border-border text-foreground/40'}`}>
+                <div className={`w-14 h-14 rounded-full border flex items-center justify-center transition-all duration-700 ${openIndex === i ? 'bg-primary border-primary text-primary-foreground rotate-180' : 'bg-foreground/[0.05] border-border text-foreground/40'}`}>
                   {openIndex === i ? <Minus size={24} /> : <Plus size={24} />}
                 </div>
               </button>

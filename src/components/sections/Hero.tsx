@@ -39,24 +39,82 @@ export function Hero() {
             </motion.div>
 
             <div className="space-y-8">
-              <motion.h1
-                initial={{ opacity: 0, y: 80 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-7xl md:text-[9.5rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium"
-              >
-                 Your business is <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-foreground italic font-medium">leaking</span> revenue.
-                <br /> We seal it.
-              </motion.h1>
+              <div className="overflow-hidden">
+                <motion.h1
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        staggerChildren: 0.02,
+                        delayChildren: 0.2
+                      }
+                    }
+                  }}
+                  className="text-7xl md:text-[9.5rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium"
+                >
+                  {["Your", "business", "is"].map((word, i) => (
+                    <motion.span key={i} className="inline-block mr-4">
+                      {word.split("").map((char, j) => (
+                        <motion.span
+                          key={j}
+                          variants={{
+                            hidden: { opacity: 0, y: 100, rotateX: -90 },
+                            visible: { opacity: 1, y: 0, rotateX: 0 }
+                          }}
+                          transition={{ type: "spring", damping: 20, stiffness: 100 }}
+                          className="inline-block origin-bottom"
+                        >
+                          {char}
+                        </motion.span>
+                      ))}
+                    </motion.span>
+                  ))}
+                  <br />
+                  <motion.span
+                    variants={{
+                      hidden: { opacity: 0, scale: 0.8, filter: "blur(10px)" },
+                      visible: { opacity: 1, scale: 1, filter: "blur(0px)" }
+                    }}
+                    transition={{ duration: 1.5, delay: 1 }}
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-foreground italic font-medium inline-block"
+                  >
+                    leaking
+                  </motion.span>
+                  {" revenue.".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      variants={{
+                        hidden: { opacity: 0, y: 100, rotateX: -90 },
+                        visible: { opacity: 1, y: 0, rotateX: 0 }
+                      }}
+                      transition={{ type: "spring", damping: 20, stiffness: 100 }}
+                      className="inline-block origin-bottom"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                  <br />
+                  <motion.span
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1, delay: 1.5 }}
+                    className="inline-block"
+                  >
+                    We seal it.
+                  </motion.span>
+                </motion.h1>
+              </div>
               
               <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.4 }}
-                className="text-xl md:text-3xl text-muted-foreground max-w-2xl font-medium tracking-tight leading-tight"
+                initial={{ opacity: 0, filter: "blur(10px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                transition={{ duration: 1.5, delay: 1.8 }}
+                className="text-xl md:text-3xl text-muted-foreground max-w-2xl font-medium tracking-tight leading-tight italic"
               >
-                AI automations, voice agents, and web solutions — engineered around your outcomes, not our deliverables.
+                AI automations, voice agents, and web solutions — <span className="text-primary not-italic">engineered</span> around your outcomes, not our deliverables.
               </motion.p>
             </div>
 
