@@ -37,7 +37,7 @@ export function CTA() {
             className="flex flex-col md:flex-row items-center justify-center gap-8 w-full"
           >
             <Link href="/contact" className="w-full md:w-auto">
-              <Button size="lg" className="w-full md:w-auto rounded-full px-16 h-20 text-xl bg-primary text-white hover:bg-primary/90 font-black shadow-primary/20 shadow-2xl transition-all duration-700 flex items-center justify-center group">
+              <Button size="lg" className="w-full md:w-auto rounded-full px-16 h-20 text-xl bg-primary text-primary-foreground hover:bg-primary/90 font-black shadow-primary/20 shadow-2xl transition-all duration-700 flex items-center justify-center group">
                 Book Free Audit <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-2 transition-transform" />
               </Button>
             </Link>

@@ -20,9 +20,8 @@ export function About() {
               SYSTEMS OVER <br />
               <span className="text-muted-foreground/20">SERVICES.</span>
             </h2>
-            <p className="text-2xl text-muted-foreground font-medium tracking-tighter leading-tight max-w-xl">
+            <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-2xl">
               Marketing Ko is an AI infrastructure studio. We don't focus on creative vanity or generic campaigns. 
-            <p className="text-xl md:text-3xl text-muted-foreground font-medium tracking-tight leading-relaxed">
               We engineer the underlying operational architectures that allow companies to automate acquisition at enterprise scale.
             </p>
             

@@ -8,20 +8,28 @@ const systemNodes = [
   { label: "Lead Response Time", value: "0 sec", desc: "System triggers within milliseconds of lead submission." },
   { label: "Manual Work Eliminated", value: "40 hrs", desc: "Repetitive tasks removed from your weekly schedule." },
   { label: "Average Conversion Lift", value: "3x", desc: "Significant multiplier on existing traffic performance." },
-  { label: "Tech Headache for You", value: "Zero", desc: "We handle the infrastructure. You run the business." },
+import { ArrowRight, Activity } from "lucide-react";
+
+const metrics = [
+  { label: "Lead Response Time", value: "0s" },
+  { label: "Manual Work Eliminated", value: "40h" },
+  { label: "Average Conversion Lift", value: "3x" },
+  { label: "Tech Headache", value: "0" },
 ];
 
 export function Performance() {
   return (
     <section className="py-80 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
-      
+      <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(var(--primary)/0.03)_0%,transparent_60%)]" />
+      <div className="scanning-line opacity-20" />
+
       <div className="container mx-auto px-6 relative">
-        <div className="flex flex-col items-center text-center mb-48 space-y-12">
+        <div className="max-w-5xl mb-60 space-y-16">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="text-[10px] font-black tracking-[1.5em] text-primary uppercase"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="text-[10px] font-black tracking-[1em] text-primary uppercase"
           >
             Operational Telemetry
           </motion.div>
@@ -29,20 +37,11 @@ export function Performance() {
             MEASURABLE <br />
             <span className="text-muted-foreground/10 italic font-medium">OUTCOMES.</span>
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-tight max-w-3xl">
+          <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-tight max-w-4xl">
             We don't sell hours. We sell infrastructure that hits specific KPIs. Every system we deploy is monitored by the same telemetry that built it.
           </p>
         </div>
 
-        {/* The Outpero-style Stats Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="w-full rounded-[4rem] border border-border bg-foreground/[0.01] backdrop-blur-3xl overflow-hidden p-16 md:p-24 relative group"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
-            {systemNodes.map((m, i) => (
-              <div key={i} className="space-y-8 group/stat relative">
                 <div className="flex flex-col">
                    <div className="flex items-baseline space-x-2">
                       <span className="text-[10rem] font-black text-foreground tracking-tighter leading-none group-hover/stat:text-primary transition-colors duration-700 italic">

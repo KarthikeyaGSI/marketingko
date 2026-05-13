@@ -20,23 +20,23 @@ export function RevenueLeak() {
           position: absolute;
           inset: 0;
           border-radius: 50%;
-          background: radial-gradient(circle, oklch(var(--primary) / 0.15) 0%, oklch(var(--primary) / 0.05) 35%, transparent 70%);
-          filter: blur(40px);
+          background: radial-gradient(circle, oklch(var(--primary) / 0.1) 0%, oklch(var(--primary) / 0.02) 40%, transparent 80%);
+          filter: blur(60px);
         }
 
         .orbit {
           position: absolute;
           inset: 0;
           border-radius: 50%;
-          border: 1px dashed oklch(var(--primary) / 0.15);
-          animation: spin 60s linear infinite;
+          border: 1px dashed oklch(var(--primary) / 0.1);
+          animation: spin 80s linear infinite;
         }
 
         .orbit2 {
           position: absolute;
-          inset: -10%;
+          inset: -15%;
           border-radius: 50%;
-          border: 1px solid oklch(var(--primary) / 0.03);
+          border: 1px solid oklch(var(--foreground) / 0.02);
         }
 
         @keyframes spin {
@@ -46,60 +46,72 @@ export function RevenueLeak() {
 
         .center-node {
           position: absolute;
-          width: 180px;
-          height: 180px;
+          width: 200px;
+          height: 200px;
           border-radius: 50%;
-          background: var(--background);
-          border: 4px solid var(--primary);
+          background: oklch(var(--background));
+          border: 1px solid oklch(var(--primary) / 0.4);
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
           text-align: center;
-          color: var(--foreground);
-          font-size: 24px;
+          color: oklch(var(--foreground));
+          font-size: 10px;
           font-weight: 900;
-          line-height: 1;
-          letter-spacing: 1px;
+          text-transform: uppercase;
+          letter-spacing: 4px;
           z-index: 10;
-          box-shadow: 0 0 30px oklch(var(--primary) / 0.4), inset 0 0 20px oklch(var(--primary) / 0.1);
-          animation: pulse 4s ease-in-out infinite;
+          box-shadow: 0 0 40px oklch(var(--primary) / 0.1), inset 0 0 20px oklch(var(--primary) / 0.05);
+          backdrop-blur: 20px;
         }
 
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
+        .center-node strong {
+          font-size: 24px;
+          letter-spacing: -1px;
+          margin-top: 4px;
+          color: oklch(var(--primary));
         }
 
         .node {
           position: absolute;
-          width: 90px;
-          height: 90px;
-          border-radius: 50%;
-          background: var(--card);
-          border: 1px solid oklch(var(--foreground) / 0.1);
+          width: 100px;
+          height: 100px;
+          border-radius: 2.5rem;
+          background: oklch(var(--foreground) / 0.01);
+          border: 1px solid oklch(var(--border));
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
-          color: var(--foreground);
-          font-size: 11px;
-          font-weight: 800;
+          color: oklch(var(--foreground));
+          font-size: 9px;
+          font-weight: 900;
           text-transform: uppercase;
-          letter-spacing: 1px;
+          letter-spacing: 2px;
           z-index: 9;
-          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-          transition: all 0.5s ease;
+          backdrop-blur: 10px;
+          transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .node:hover {
-          border-color: var(--primary);
-          box-shadow: 0 0 20px oklch(var(--primary) / 0.3);
+          border-color: oklch(var(--primary) / 0.5);
+          background: oklch(var(--primary) / 0.05);
+          transform: scale(1.1) rotate(5deg);
         }
 
-        .leads { top: 10%; left: 10%; }
-        .follow-up { top: 10%; right: 10%; }
-        .bookings { right: 0; top: 50%; transform: translateY(-50%); }
-        .whatsapp { bottom: 10%; left: 50%; transform: translateX(-50%); }
-        .calls { left: 0; top: 50%; transform: translateY(-50%); }
+        .node i {
+          font-style: normal;
+          font-size: 12px;
+          margin-top: 4px;
+          opacity: 0.4;
+        }
+
+        .leads { top: 5%; left: 5%; }
+        .follow-up { top: 5%; right: 5%; }
+        .bookings { right: -5%; top: 50%; transform: translateY(-50%); }
+        .whatsapp { bottom: 5%; left: 50%; transform: translateX(-50%); }
+        .calls { left: -5%; top: 50%; transform: translateY(-50%); }
 
         svg {
           position: absolute;
@@ -111,52 +123,57 @@ export function RevenueLeak() {
 
         .outer-path {
           fill: none;
-          stroke: var(--primary);
-          stroke-width: 2;
-          stroke-dasharray: 10 15;
-          animation: dashMove 10s linear infinite;
-          opacity: 0.6;
+          stroke: oklch(var(--primary) / 0.1);
+          stroke-width: 1;
+          stroke-dasharray: 10 20;
+          animation: dashMove 20s linear infinite;
         }
 
         @keyframes dashMove {
           from { stroke-dashoffset: 0; }
-          to { stroke-dashoffset: -100; }
+          to { stroke-dashoffset: -200; }
         }
 
         .connector {
           fill: none;
-          stroke: oklch(var(--primary) / 0.1);
+          stroke: oklch(var(--primary) / 0.05);
           stroke-width: 1;
         }
 
-        .leak-text {
+        .status-badge {
           position: absolute;
-          bottom: 20%;
+          bottom: 15%;
           left: 50%;
           transform: translateX(-50%);
-          color: #ff3344;
-          font-size: 14px;
-          font-weight: 900;
-          letter-spacing: 5px;
-          text-transform: uppercase;
-          animation: flicker 3s infinite;
+          padding: 8px 16px;
+          border-radius: 99px;
+          background: oklch(var(--primary) / 0.05);
+          border: 1px solid oklch(var(--primary) / 0.2);
+          display: flex;
+          align-items: center;
+          gap: 8px;
         }
 
-        @keyframes flicker {
-          0%, 100% { opacity: 0.4; }
-          50% { opacity: 1; }
-        }
-
-        .dot {
-          position: absolute;
-          width: 4px;
-          height: 4px;
+        .status-dot {
+          width: 6px;
+          height: 6px;
           border-radius: 50%;
-          background: var(--primary);
-          opacity: 0.4;
+          background: oklch(var(--primary));
+          animation: pulse 2s infinite;
         }
 
-        .dot-red { background: #ff3344; }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(1.5); }
+        }
+
+        .status-text {
+          font-size: 9px;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          color: oklch(var(--primary));
+        }
       `}</style>
 
       <div className="network">
@@ -164,30 +181,30 @@ export function RevenueLeak() {
         <div className="orbit2" />
 
         <svg viewBox="0 0 900 900">
-          <path className="outer-path" d="M150 150 L750 150 L850 450 L450 850 L50 450 Z" />
-          <line className="connector" x1="450" y1="450" x2="150" y2="150" />
-          <line className="connector" x1="450" y1="450" x2="750" y2="150" />
-          <line className="connector" x1="450" y1="450" x2="850" y2="450" />
-          <line className="connector" x1="450" y1="450" x2="450" y2="850" />
-          <line className="connector" x1="450" y1="450" x2="50" y2="450" />
+          <path className="outer-path" d="M100 100 L800 100 L900 450 L450 900 L0 450 Z" />
+          <line className="connector" x1="450" y1="450" x2="100" y2="100" />
+          <line className="connector" x1="450" y1="450" x2="800" y2="100" />
+          <line className="connector" x1="450" y1="450" x2="900" y2="450" />
+          <line className="connector" x1="450" y1="450" x2="450" y2="900" />
+          <line className="connector" x1="450" y1="450" x2="0" y2="450" />
         </svg>
 
         <div className="center-node">
-          YOUR<br />BUSINESS
+          <span>Enterprise</span>
+          <strong>ASSET</strong>
+          <i className="text-[8px] opacity-20 mt-2 not-italic">v4.0.2</i>
         </div>
 
-        <div className="node leads">Leads</div>
-        <div className="node follow-up">Follow-up</div>
-        <div className="node bookings">Bookings</div>
-        <div className="node whatsapp">WhatsApp</div>
-        <div className="node calls">24/7 Calls</div>
+        <div className="node leads">Leads <i>[QUAL]</i></div>
+        <div className="node follow-up">Nurture <i>[AUTO]</i></div>
+        <div className="node bookings">Sales <i>[CORE]</i></div>
+        <div className="node whatsapp">Chat <i>[EDGE]</i></div>
+        <div className="node calls">Voice <i>[AI]</i></div>
 
-        <div className="leak-text">Leaking Revenue</div>
-
-        <div className="dot" style={{ top: '20%', left: '30%' }} />
-        <div className="dot dot-red" style={{ top: '60%', left: '48%' }} />
-        <div className="dot dot-red" style={{ top: '55%', left: '52%' }} />
-        <div className="dot" style={{ top: '40%', left: '70%' }} />
+        <div className="status-badge">
+           <div className="status-dot" />
+           <span className="status-text">Leak Detection Active</span>
+        </div>
       </div>
     </div>
   );

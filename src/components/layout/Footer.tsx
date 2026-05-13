@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Twitter, Linkedin, Instagram, Shield, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function Footer() {
   return (
@@ -39,15 +40,21 @@ export function Footer() {
           {/* Action Column */}
           <div className="md:col-span-4 space-y-12">
             <p className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em]">Get Started</p>
-            <div className="space-y-8">
-              <p className="text-muted-foreground font-medium tracking-tight leading-relaxed">
-                Start with a free 30-minute business audit. We'll show you exactly where you're losing money.
-              </p>
-              <Link href="/contact" className="block">
-                <Button className="w-full md:w-auto px-12 h-16 rounded-2xl bg-primary text-white hover:bg-primary/90 transition-all duration-700 font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary/20">
-                  Book Free Audit
-                </Button>
-              </Link>
+            <div className="space-y-12">
+              <h4 className="text-4xl font-bold text-foreground tracking-tighter italic">Ready to engineer <br /><span className="text-primary not-italic">your growth?</span></h4>
+              <div className="flex flex-col space-y-8">
+                <Link href="/contact">
+                  <MagneticButton>
+                    <Button className="w-full h-20 rounded-2xl bg-primary text-primary-foreground hover:bg-primary/90 font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary/20 transition-all duration-700 hover:scale-105 group">
+                      <span>Initialize Build</span> <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-3 transition-transform" />
+                    </Button>
+                  </MagneticButton>
+                </Link>
+                <div className="flex items-center space-x-6 px-8 py-4 rounded-2xl border border-border bg-foreground/[0.02]">
+                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                   <span className="text-[10px] font-black text-foreground/30 uppercase tracking-widest italic">All Nodes Active: 14/14</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

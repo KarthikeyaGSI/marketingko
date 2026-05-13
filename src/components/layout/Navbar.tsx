@@ -43,7 +43,7 @@ export function Navbar() {
         <nav
           className={`relative flex items-center justify-between px-10 py-5 rounded-[2rem] border transition-all duration-1000 ${
             isScrolled
-              ? "bg-background/60 backdrop-blur-3xl border-white/5 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)]"
+              ? "bg-background/60 backdrop-blur-3xl border-border shadow-2xl shadow-primary/5"
               : "bg-transparent border-transparent"
           }`}
         >
@@ -55,15 +55,15 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-16">
+          <div className="hidden lg:flex items-center space-x-12">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-[10px] font-black tracking-[0.5em] text-foreground/40 hover:text-foreground uppercase transition-colors group"
+                className="relative text-[9px] font-black tracking-[0.6em] text-foreground/40 hover:text-foreground uppercase transition-all duration-500 group"
               >
                 {link.name}
-                <span className="absolute -bottom-2 left-1/2 w-0 h-[1px] bg-primary group-hover:w-full group-hover:left-0 transition-all duration-500" />
+                <span className="absolute -bottom-2 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-700 ease-out" />
               </Link>
             ))}
           </div>
@@ -71,7 +71,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center space-x-8">
              <ThemeToggle />
              <Link href="/contact">
-                <Button className="rounded-full px-12 h-14 bg-primary text-white hover:bg-primary/90 font-black text-xs uppercase tracking-[0.2em] transition-all duration-700 hover:scale-105 shadow-2xl shadow-primary/20">
+                <Button className="rounded-full px-10 h-12 bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-[10px] uppercase tracking-[0.2em] transition-all duration-700 hover:scale-105 shadow-2xl shadow-primary/20">
                   Book Free Audit
                 </Button>
              </Link>
@@ -81,7 +81,7 @@ export function Navbar() {
           <div className="lg:hidden flex items-center space-x-4">
             <ThemeToggle />
             <button
-              className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center text-foreground border border-foreground/10"
+              className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center text-foreground border border-border"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -124,7 +124,7 @@ export function Navbar() {
                 transition={{ delay: 0.5 }}
               >
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full h-24 text-3xl bg-primary text-white rounded-[2rem] font-black mt-20 shadow-primary/20 shadow-2xl">
+                  <Button className="w-full h-24 text-3xl bg-primary text-primary-foreground rounded-[2rem] font-black mt-20 shadow-primary/20 shadow-2xl">
                     Initiate System
                   </Button>
                 </Link>
