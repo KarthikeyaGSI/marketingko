@@ -1,133 +1,124 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Zap, Cpu, MousePointer2, Activity } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, CheckCircle2, Zap, Cpu, MousePointer2, Activity, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const systems = [
   {
     id: "01",
     title: "Revenue Capture",
-    description: "Contact, qualify, and book leads in seconds. Every minute matters. This system calls and texts every new inbound lead within 60 seconds, 24/7.",
+    description: "Contact, qualify, and book leads in seconds. This system calls and texts every new inbound lead within 60 seconds, 24/7.",
     price: "₹60,000",
-    mgmt: "₹15,000/mo management (optional)",
-    features: [
-      "AI Voice Agent (24/7)",
-      "WhatsApp & SMS Bot",
-      "Instant CRM Sync",
-      "Automated Follow-ups",
-      "Live Analytics Dashboard"
-    ],
-    bestFor: "Real Estate, Clinics, Service Businesses",
-    icon: <Zap className="w-8 h-8 text-primary" />,
-    color: "from-blue-500/20 to-cyan-500/20"
+    mgmt: "₹15,000/mo management",
+    features: ["AI Voice Agent (24/7)", "WhatsApp & SMS Bot", "Instant CRM Sync", "Automated Follow-ups"],
+    icon: <Zap className="w-10 h-10" />,
+    alignment: "start"
   },
   {
     id: "02",
     tag: "Flagship",
     title: "Ops Efficiency",
-    description: "Eliminate 20–40 hours of manual tasks weekly. We audit your workflows and automate repetitive tasks like onboarding, data entry, and CRM updates.",
+    description: "Eliminate 20–40 hours of manual tasks weekly. We audit your workflows and automate repetitive tasks like onboarding and CRM updates.",
     price: "₹1,00,000",
     mgmt: "Custom scoped after discovery",
-    features: [
-      "Workflow Process Mapping",
-      "3–5 Core Automations",
-      "Custom n8n/Make Logic",
-      "Team Onboarding & Training",
-      "30-Day Check-in"
-    ],
-    bestFor: "Agencies, Legal, B2B Services",
-    icon: <Cpu className="w-8 h-8 text-primary" />,
-    color: "from-purple-500/20 to-blue-500/20",
-    featured: true
+    features: ["Workflow Process Mapping", "3–5 Core Automations", "Custom n8n/Make Logic", "Team Training"],
+    icon: <Cpu className="w-10 h-10" />,
+    featured: true,
+    alignment: "center"
   },
   {
     id: "03",
     title: "Web Capture",
-    description: "Turn passive website visitors into qualified leads. We replace outdated websites with landing systems built to capture intent and drive immediate bookings.",
+    description: "Turn passive website visitors into qualified leads. We replace outdated websites with landing systems built to capture intent.",
     price: "₹50,000",
-    mgmt: "₹8,000/mo management (optional)",
-    features: [
-      "High-Converting Landing Pages",
-      "Frictionless Lead Capture",
-      "Automated WhatsApp Triggers",
-      "Instant Auto Follow-ups",
-      "Full CRM Integration"
-    ],
-    bestFor: "Outdated sites, Low-conversion pages",
-    icon: <MousePointer2 className="w-8 h-8 text-primary" />,
-    color: "from-cyan-500/20 to-blue-500/20"
+    mgmt: "₹8,000/mo management",
+    features: ["High-Converting Pages", "Frictionless Capture", "WhatsApp Triggers", "Auto Follow-ups"],
+    icon: <MousePointer2 className="w-10 h-10" />,
+    alignment: "end"
   }
 ];
 
 export function RevenueSystems() {
   return (
     <section id="revenue-systems" className="py-60 md:py-96 bg-background relative overflow-hidden mesh-animate">
-      <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
-      <div className="ambient-glow opacity-30" />
+      <div className="absolute inset-0 grid-infrastructure opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,oklch(var(--primary)/0.08)_0%,transparent_60%)]" />
       
       <div className="container mx-auto px-6 relative">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-60 gap-16">
-          <div className="space-y-16 max-w-6xl">
+        {/* SCENE HEADER (Asymmetrical Composition) */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-80 gap-16">
+          <div className="space-y-16 max-w-7xl">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="text-[10px] md:text-xs font-black tracking-[1em] text-primary uppercase"
+              className="text-[12px] font-black tracking-[1.5em] text-primary uppercase italic"
             >
               Infrastructure Protocols
             </motion.div>
-            <h2 className="text-7xl md:text-[14rem] font-bold tracking-tightest text-foreground leading-[1.1] text-mask-premium uppercase">
+            <h2 className="text-8xl md:text-[18rem] font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase">
               CORE <br />
               <span className="text-muted-foreground/10 italic font-medium">SYSTEMS.</span>
             </h2>
-            <p className="text-2xl md:text-5xl text-muted-foreground max-w-5xl font-medium tracking-tightest leading-tight italic">
-              "Three foundational growth engines. Fixed scope. Fixed price. Optimized for the modern AI economy."
+            <p className="text-3xl md:text-6xl text-muted-foreground max-w-5xl font-medium tracking-tightest leading-tight italic border-l-4 border-primary/20 pl-16">
+              "Three foundational growth engines. Fixed scope. Fixed price. <span className="text-foreground not-italic font-black">Engineered</span> for the modern AI economy."
             </p>
+          </div>
+          
+          <div className="hidden lg:block relative w-96 h-96">
+             <motion.div 
+               animate={{ rotate: 360 }}
+               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+               className="absolute inset-0 border border-primary/20 rounded-full border-dashed"
+             />
+             <div className="absolute inset-0 flex items-center justify-center">
+                <Terminal className="w-20 h-20 text-primary/40 animate-pulse" />
+             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+        {/* BROKEN GRID (Layered Stacking) */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-24 relative">
           {systems.map((system, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
-              className="h-full group"
+              className={`w-full lg:w-1/3 group relative ${
+                i === 1 ? 'lg:-mt-20 z-20' : i === 2 ? 'lg:mt-40 z-10' : 'z-10'
+              }`}
             >
-              <PerspectiveCard className={`h-full rounded-[4rem] md:rounded-[6rem] ${system.featured ? 'shadow-[0_64px_128px_-32px_oklch(var(--primary)/0.2)]' : ''}`}>
-                <div className={`p-16 md:p-24 h-full flex flex-col justify-between space-y-20 relative overflow-hidden ${system.featured ? 'bg-primary/5' : ''}`}>
+              <PerspectiveCard className={`rounded-[4rem] md:rounded-[6rem] ${system.featured ? 'shadow-[0_100px_200px_-40px_oklch(var(--primary)/0.25)]' : ''}`}>
+                <div className={`p-16 md:p-20 h-full flex flex-col justify-between space-y-20 relative overflow-hidden transition-all duration-1000 ${system.featured ? 'bg-primary/5 border-primary/30' : 'bg-foreground/[0.01]'}`}>
                   
-                  {/* Technical Signal Overlay */}
-                  <div className="absolute top-10 right-10 opacity-20 group-hover:opacity-100 group-hover:text-primary transition-all duration-1000">
-                    <Activity className="w-10 h-10 animate-pulse" />
-                  </div>
+                  {/* Interaction Detail: Glow Reaction */}
+                  <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
-                  <div className="space-y-16 relative z-10 flex-1">
+                  <div className="space-y-16 relative z-10">
                     <div className="flex items-center justify-between">
                       <div className="space-y-4">
-                        <span className="text-[12px] font-black text-primary uppercase tracking-[0.5em]">Protocol {system.id}</span>
+                        <span className="text-[12px] font-black text-primary uppercase tracking-[0.5em] italic">Protocol {system.id}</span>
                         {system.tag && (
-                          <div className="px-6 py-2 rounded-full bg-primary border border-primary text-primary-foreground text-[10px] font-black uppercase tracking-[0.3em] w-fit shadow-[0_10px_20px_-5px_oklch(var(--primary)/0.4)]">
+                          <div className="px-8 py-3 rounded-full bg-primary text-primary-foreground text-[11px] font-black uppercase tracking-[0.3em] w-fit shadow-2xl">
                             {system.tag}
                           </div>
                         )}
                       </div>
-                      <div className="w-20 h-20 rounded-[2.5rem] bg-foreground/[0.03] border border-border flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-1000 shadow-xl">
-                        <div className="group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-700">
-                          {system.icon}
-                        </div>
+                      <div className="w-24 h-24 rounded-[3rem] bg-foreground/[0.03] border border-border flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-1000 shadow-2xl">
+                         {system.icon}
                       </div>
                     </div>
 
-                    <div className="space-y-8">
-                      <h3 className="text-5xl md:text-6xl font-bold text-foreground tracking-tightest leading-[1.1] italic group-hover:text-primary transition-colors duration-1000 uppercase">
+                    <div className="space-y-10">
+                      <h3 className="text-7xl md:text-8xl font-black text-foreground tracking-tightest leading-[0.9] italic group-hover:text-primary transition-colors duration-1000 uppercase">
                         {system.title}
                       </h3>
-                      <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium tracking-tight">
+                      <p className="text-2xl text-muted-foreground leading-relaxed font-medium tracking-tight">
                         {system.description}
                       </p>
                     </div>
@@ -136,64 +127,40 @@ export function RevenueSystems() {
                       <p className="text-[12px] font-black text-foreground/20 uppercase tracking-[0.6em] italic">System Architecture</p>
                       <ul className="space-y-6">
                         {system.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center space-x-6 text-base md:text-lg font-bold tracking-tight text-foreground/60 group-hover:text-foreground transition-colors">
-                            <CheckCircle2 className="w-5 h-5 text-primary opacity-60" />
+                          <li key={idx} className="flex items-center space-x-6 text-xl font-bold tracking-tight text-foreground/60 group-hover:text-foreground transition-colors">
+                            <CheckCircle2 className="w-6 h-6 text-primary opacity-60" />
                             <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="pt-10 mt-auto">
-                       <div className="mb-12">
-                         <div className="flex items-baseline space-x-4">
-                           <p className="text-7xl md:text-8xl font-black text-foreground tracking-tightest italic leading-none">{system.price}</p>
-                           <span className="text-sm font-black text-foreground/20 uppercase">Baseline</span>
+                    <div className="pt-10">
+                       <div className="mb-16">
+                         <div className="flex items-baseline space-x-6">
+                           <p className="text-8xl md:text-9xl font-black text-foreground tracking-tightest italic leading-none">{system.price}</p>
+                           <span className="text-sm font-black text-foreground/20 uppercase italic">Base_Build</span>
                          </div>
-                         <p className="text-[12px] font-black text-muted-foreground mt-6 uppercase tracking-[0.4em] italic opacity-60">{system.mgmt}</p>
+                         <p className="text-[13px] font-black text-primary mt-8 uppercase tracking-[0.4em] italic opacity-80">{system.mgmt}</p>
                        </div>
                        
                        <Link href={`/contact?protocol=${system.id}`} className="block">
-                        <Button className={`w-full h-24 md:h-32 rounded-3xl transition-all duration-1000 font-black uppercase tracking-[0.3em] text-xl flex items-center justify-center space-x-6 border-none ${
-                          system.featured 
-                            ? 'bg-primary text-primary-foreground hover:bg-foreground hover:text-background shadow-[0_30px_60px_-15px_oklch(var(--primary)/0.4)]' 
-                            : 'bg-foreground text-background hover:bg-primary hover:text-primary-foreground shadow-2xl'
-                        }`}>
-                          <span>Initialize Protocol</span> <ArrowRight className="w-8 h-8 group-hover:translate-x-4 transition-transform duration-700" />
-                        </Button>
+                        <MagneticButton>
+                          <Button className={`w-full h-32 md:h-36 rounded-[3rem] transition-all duration-1000 font-black uppercase tracking-[0.3em] text-2xl flex items-center justify-center space-x-8 border-none ${
+                            system.featured 
+                              ? 'bg-primary text-primary-foreground hover:bg-foreground hover:text-background shadow-2xl' 
+                              : 'bg-foreground text-background hover:bg-primary hover:text-primary-foreground shadow-2xl'
+                          }`}>
+                            <span>Initialize Protocol</span> <ArrowRight className="w-10 h-10 group-hover:translate-x-6 transition-transform duration-700" />
+                          </Button>
+                        </MagneticButton>
                        </Link>
                     </div>
                   </div>
-                  
-                  {/* Background Detail */}
-                  <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 </div>
               </PerspectiveCard>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-40 p-16 md:p-32 rounded-[5rem] md:rounded-[8rem] glass-system relative overflow-hidden group shadow-2xl">
-           <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-20 items-center">
-              <div className="md:col-span-8 space-y-12">
-                <div className="flex items-center space-x-6">
-                  <div className="w-3 h-3 rounded-full bg-primary animate-pulse shadow-[0_0_15px_oklch(var(--primary))]" />
-                  <span className="text-[12px] font-black text-primary uppercase tracking-[1em]">Operational Status: Deployment Ready</span>
-                </div>
-                <p className="text-3xl md:text-6xl text-muted-foreground font-medium tracking-tightest leading-tight italic">
-                  "Timeline: 14 days post-audit. All infrastructure engineered for 100% transparency. Your systems. Your ownership. Our expertise."
-                </p>
-              </div>
-              <div className="md:col-span-4 flex justify-end">
-                <Link href="/contact" className="w-full">
-                  <Button className="w-full rounded-3xl px-16 h-24 md:h-32 text-2xl bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-black uppercase tracking-widest transition-all duration-1000 shadow-2xl border-none">
-                    Start Discovery
-                  </Button>
-                </Link>
-              </div>
-           </div>
-           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_0%,oklch(var(--primary)/0.08)_0%,transparent_70%)]" />
-           <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
         </div>
       </div>
     </section>
