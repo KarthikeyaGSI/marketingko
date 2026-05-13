@@ -7,9 +7,9 @@ import { Menu, X, ArrowRight, Cpu, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { name: "Revenue Systems", href: "/revenue-systems" },
-  { name: "Solutions", href: "/solutions" },
-  { name: "About", href: "/about" },
+  { name: "Revenue Systems", href: "/#revenue-systems" },
+  { name: "Solutions", href: "/#solutions" },
+  { name: "About", href: "/#why" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -35,56 +35,56 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[5000] transition-all duration-700 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
+      className={`fixed top-0 left-0 right-0 z-[5000] transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      } ${isScrolled ? "py-4" : "py-10"}`}
+      } ${isScrolled ? "py-6" : "py-12"}`}
     >
       <div className="container mx-auto px-6">
         <nav
-          className={`relative flex items-center justify-between px-10 py-5 rounded-[2rem] border transition-all duration-1000 ${
+          className={`relative flex items-center justify-between px-12 py-6 rounded-[3rem] border transition-all duration-1000 ${
             isScrolled
-              ? "bg-background/60 backdrop-blur-3xl border-border shadow-2xl shadow-primary/5"
+              ? "bg-background/80 backdrop-blur-3xl border-border/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
               : "bg-transparent border-transparent"
           }`}
         >
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <span className="text-2xl font-black tracking-tighter text-foreground uppercase italic leading-none transition-colors">
-              Marketing <span className="text-primary tracking-tighter italic">Ko.</span>
+            <span className="text-3xl font-black tracking-tightest text-foreground uppercase italic leading-none transition-all duration-700 group-hover:text-primary">
+              MARKETING <span className="text-primary italic">KO.</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-12">
+          <div className="hidden lg:flex items-center space-x-16">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-[9px] font-black tracking-[0.6em] text-foreground/40 hover:text-foreground uppercase transition-all duration-500 group"
+                className="relative text-[10px] font-black tracking-[0.8em] text-foreground/40 hover:text-foreground uppercase transition-all duration-700 group"
               >
                 {link.name}
-                <span className="absolute -bottom-2 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-700 ease-out" />
+                <span className="absolute -bottom-3 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)]" />
               </Link>
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-10">
              <ThemeToggle />
              <Link href="/contact">
-                <Button className="rounded-full px-10 h-12 bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-[10px] uppercase tracking-[0.2em] transition-all duration-700 hover:scale-105 shadow-2xl shadow-primary/20">
+                <Button className="rounded-2xl px-12 h-16 bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black text-[11px] uppercase tracking-[0.4em] transition-all duration-1000 shadow-[0_20px_40px_-10px_oklch(var(--primary)/0.3)] border-none">
                   Book Free Audit
                 </Button>
              </Link>
           </div>
 
           {/* Mobile Toggle */}
-          <div className="lg:hidden flex items-center space-x-4">
+          <div className="lg:hidden flex items-center space-x-6">
             <ThemeToggle />
             <button
-              className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center text-foreground border border-border"
+              className="w-16 h-16 rounded-2xl bg-foreground/[0.03] flex items-center justify-center text-foreground border border-border/50 transition-all duration-700 hover:bg-primary hover:text-primary-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </nav>
@@ -94,23 +94,27 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[4999] bg-background/95 backdrop-blur-2xl pt-40 px-10 lg:hidden flex flex-col"
+            initial={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[4999] bg-background/98 backdrop-blur-3xl pt-60 px-12 lg:hidden flex flex-col"
           >
-            <div className="flex flex-col space-y-12">
+             {/* Background Atmosphere for Mobile Menu */}
+            <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
+            <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-50" />
+
+            <div className="flex flex-col space-y-16 relative z-10">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.1, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Link
                     href={link.href}
-                    className="text-6xl font-bold text-foreground tracking-tighter"
+                    className="text-8xl md:text-9xl font-black text-foreground tracking-tightest italic uppercase"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -119,20 +123,21 @@ export function Navbar() {
               ))}
               
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.6, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                className="pt-20"
               >
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full h-24 text-3xl bg-primary text-primary-foreground rounded-[2rem] font-black mt-20 shadow-primary/20 shadow-2xl">
-                    Initiate System
+                  <Button className="w-full h-32 text-4xl bg-primary text-primary-foreground rounded-[3rem] font-black uppercase tracking-widest shadow-[0_40px_80px_-20px_oklch(var(--primary)/0.4)] border-none">
+                    Start Project
                   </Button>
                 </Link>
               </motion.div>
             </div>
             
-            <div className="mt-auto pb-20">
-              <p className="text-[10px] font-black tracking-[1em] text-foreground/20 uppercase text-center">Marketing Ko OS v4.2</p>
+            <div className="mt-auto pb-32 relative z-10">
+              <p className="text-[12px] font-black tracking-[1.5em] text-foreground/20 uppercase text-center">SYSTEM OVERGROWTH v1.0</p>
             </div>
           </motion.div>
         )}

@@ -41,15 +41,21 @@
   50% { transform: translateY(-20px); }
 }
 
-// Updated colour palette with electric‑blue primary accent
 :root {
   --background: oklch(0.07 0 0); /* deep dark background */
-  --foreground: oklch(0.95 0 0); /* near‑white text */
+  --foreground: oklch(0.95 0 0); /* near-white text */
   --card: oklch(0.12 0 0);
   --card-foreground: var(--foreground);
   --popover: oklch(0.12 0 0);
   --popover-foreground: var(--foreground);
-  --primary: oklch(0.65 0.18 250); /* electric‑blue */
+  
+  /* Unique Color Palette */
+  --primary: oklch(0.51 0.21 259); /* #2563EB - Blue */
+  --primary-purple: oklch(0.55 0.25 284); /* #7C3AED */
+  --primary-pink: oklch(0.6 0.2 340); /* #EC4899 */
+  --primary-orange: oklch(0.68 0.2 45); /* #F97316 */
+  --primary-yellow: oklch(0.85 0.2 90); /* #FACC15 */
+  
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.2 0 0);
   --secondary-foreground: var(--foreground);
@@ -62,7 +68,7 @@
   --border: oklch(0.2 0 0);
   --input: oklch(0.2 0 0);
   --ring: oklch(0.3 0 0);
-  --radius: 0.625rem;
+  --radius: 1rem;
 }
 
 /* Premium utility classes */

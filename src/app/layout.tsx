@@ -12,6 +12,8 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Inter_Tight } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { CinematicWrapper } from "@/components/ui/CinematicWrapper";
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
@@ -29,14 +31,30 @@ const jsonLd = {
   "name": "Marketing Ko",
   "url": "https://marketingko.vercel.app",
   "logo": "https://marketingko.vercel.app/logo.png",
-  "description": "Growth systems engineered for modern brands. We build AI-powered operational infrastructure.",
+  "description": "Growth systems engineered for modern brands. We build AI-powered operational infrastructure, voice agents, and high-converting digital architectures.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "India",
+    "addressRegion": "Telangana"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Sales",
+    "areaServed": "Global",
+    "availableLanguage": "English"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Karthikeya Thallapally",
+    "jobTitle": "Growth Architect & Founder",
+    "description": "Obsessed with sustainable technology, automation, and creating real impact through digital systems."
+  },
   "sameAs": [
     "https://twitter.com/marketingko",
-    "https://linkedin.com/company/marketingko"
+    "https://linkedin.com/company/marketingko",
+    "https://linkedin.com/in/karthikeya-thallapally"
   ]
 };
-
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 export default function RootLayout({
   children,
@@ -49,17 +67,17 @@ export default function RootLayout({
     
     elements.forEach((el) => {
       gsap.fromTo(el, 
-        { opacity: 0, y: 80, scale: 0.95, filter: "blur(10px)" },
+        { opacity: 0, y: 100, scale: 0.9, filter: "blur(20px)" },
         { 
           opacity: 1, 
           y: 0, 
           scale: 1,
           filter: "blur(0px)",
-          duration: 1.5,
+          duration: 2,
           ease: "expo.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 85%",
+            start: "top 90%",
             toggleActions: "play none none none"
           }
         }
@@ -68,43 +86,75 @@ export default function RootLayout({
   }, []);
 
   return (
-    <ReactLenis root options={{ lerp: 0.08, duration: 1.5, smoothWheel: true }}>
+    <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothWheel: true }}>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <title>Top AI Automation & Voice Agent Agency in India | Marketing Ko</title>
-          <meta name="description" content="We engineer high-converting digital architectures and AI-powered growth infrastructure for elite brands. The era of manual acquisition is over." />
+          <title>Marketing Ko | AI Growth Infrastructure & Voice Agent Agency India</title>
+          <meta name="description" content="Marketing Ko engineers high-converting digital architectures, AI voice agents, and autonomous growth systems for elite global brands. Based in India, serving the world." />
+          <meta name="keywords" content="AI Automation, Voice Agents, Web Design, Digital Marketing India, SEO, GEO, AEO, Growth Systems, Marketing Ko, Karthikeya Thallapally" />
           <meta property="og:title" content="Marketing Ko | AI Growth Infrastructure" />
           <meta property="og:description" content="Growth systems engineered for modern brands. Eliminate operational drag with autonomous acquisition." />
           <meta property="og:type" content="website" />
+          <meta property="og:image" content="https://marketingko.vercel.app/og-image.png" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="Marketing Ko | AI Growth Infrastructure" />
+          
+          {/* Google Tag Manager */}
+          <Script id="gtm" strategy="afterInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WGWLHLJT');`}
+          </Script>
+          
+          {/* Microsoft Clarity */}
+          <Script id="clarity" strategy="afterInteractive">
+            {` (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "wqfooypbhb");`}
+          </Script>
+
           <Script
             id="json-ld"
             type="application/ld+json"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
         </head>
-        <body className={`${interTight.variable} font-sans antialiased selection:bg-primary selection:text-white cursor-none bg-background text-foreground overflow-x-hidden`}>
+        <body className={`${interTight.variable} font-sans antialiased selection:bg-primary selection:text-primary-foreground cursor-none bg-background text-foreground overflow-x-hidden`}>
+          {/* Google Tag Manager (noscript) */}
+          <noscript>
+            <iframe 
+              src="https://www.googletagmanager.com/ns.html?id=GTM-WGWLHLJT"
+              height="0" 
+              width="0" 
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+          
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
-            <div className="noise-overlay" />
             <CustomCursor />
-            <div className="relative flex min-h-screen flex-col">
-              <Navbar />
-              <CommandMenu />
-              <main className="flex-1">{children}</main>
-              <FloatingCTA />
-              <Footer />
-            </div>
+            <CinematicWrapper>
+              <div className="noise-overlay" />
+              <div className="relative flex min-h-screen flex-col">
+                <Navbar />
+                <CommandMenu />
+                <main className="flex-1">{children}</main>
+                <FloatingCTA />
+                <Footer />
+              </div>
+            </CinematicWrapper>
           </ThemeProvider>
         </body>
       </html>
     </ReactLenis>
   );
 }
-
-
