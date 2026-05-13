@@ -65,6 +65,50 @@ const jsonLd = {
   ]
 };
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Marketing Ko | AI Growth Infrastructure & Autonomous Systems",
+  description: "Marketing Ko engineers high-converting digital architectures, AI voice agents, and autonomous growth systems for elite global brands. Based in India, serving the world.",
+  keywords: ["AI Automation Agency India", "AI Voice Agents", "WhatsApp Business Automation", "Marketing Ko", "Karthikeya Thallapally", "Growth Systems", "n8n Automation", "Lead Generation Systems India", "B2B AI Automation"],
+  openGraph: {
+    title: "Marketing Ko | AI Growth Infrastructure",
+    description: "Growth systems engineered for modern brands. Eliminate operational drag with autonomous acquisition.",
+    url: "https://marketingko.vercel.app",
+    siteName: "Marketing Ko",
+    images: [
+      {
+        url: "https://marketingko.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Marketing Ko - Growth OS",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Marketing Ko | AI Growth Infrastructure",
+    description: "Growth systems engineered for modern brands. Eliminate operational drag with autonomous acquisition.",
+    images: ["https://marketingko.vercel.app/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://marketingko.vercel.app",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -98,15 +142,6 @@ export default function RootLayout({
     <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothWheel: true }}>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <title>Marketing Ko | AI Growth Infrastructure & Autonomous Systems</title>
-          <meta name="description" content="Marketing Ko engineers high-converting digital architectures, AI voice agents, and autonomous growth systems for elite global brands. Based in India, serving the world." />
-          <meta name="keywords" content="AI Automation Agency India, AI Voice Agents, WhatsApp Business Automation, Marketing Ko, Karthikeya Thallapally, Growth Systems, n8n Automation, Lead Generation Systems India" />
-          <meta property="og:title" content="Marketing Ko | AI Growth Infrastructure" />
-          <meta property="og:description" content="Growth systems engineered for modern brands. Eliminate operational drag with autonomous acquisition." />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content="https://marketingko.vercel.app/og-image.png" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Marketing Ko | AI Growth Infrastructure" />
           
           {/* Google Tag Manager */}
           <Script id="gtm" strategy="afterInteractive">

@@ -1,32 +1,19 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://marketingko.vercel.app';
-  
   return [
     {
-      url: baseUrl,
+      url: 'https://marketingko.vercel.app',
       lastModified: new Date(),
-      changeFrequency: 'daily',
+      changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: 'https://marketingko.vercel.app/contact',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/solutions`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
       priority: 0.9,
     },
-  ];
+    // Add other routes here if you add separate pages for /about, /solutions, etc.
+  ]
 }
