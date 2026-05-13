@@ -4,78 +4,63 @@ import { Button } from "@/components/ui/button";
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border pt-40 pb-20">
+    <footer className="bg-background border-t border-border pt-40 pb-20 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-24 mb-40">
-          <div className="lg:col-span-2 space-y-12">
-            <Link href="/" className="flex items-center space-x-6 group">
-              <div className="w-16 h-16 rounded-[2rem] bg-primary flex items-center justify-center group-hover:rotate-[360deg] transition-transform duration-1000 shadow-primary/30 shadow-2xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Shield className="h-8 w-8 text-white relative z-10" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-3xl font-black tracking-tighter text-foreground uppercase italic leading-none">
-                  Marketing Ko
-                </span>
-                <span className="text-[10px] font-black tracking-[0.4em] text-primary uppercase mt-2">Operational OS</span>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-24 mb-40">
+          {/* Brand Column */}
+          <div className="md:col-span-4 space-y-12">
+            <Link href="/" className="group inline-block">
+              <span className="text-4xl font-black tracking-tighter text-foreground uppercase italic leading-none group-hover:text-primary transition-colors">
+                Marketing Ko
+              </span>
             </Link>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-sm font-medium tracking-tight italic">
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-sm font-medium tracking-tight">
               AI automations, voice agents, and web systems — engineered around your outcomes, not our deliverables.
             </p>
-            <div className="flex flex-col space-y-4">
-               <p className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em]">Direct Access</p>
-               <a href="mailto:business.marketingko@gmail.com" className="text-xl font-bold text-foreground hover:text-primary transition-colors tracking-tighter italic underline underline-offset-8 decoration-primary/20 hover:decoration-primary">
-                 business.marketingko@gmail.com
-               </a>
+            <div className="text-xs font-bold text-foreground/40 space-y-2 uppercase tracking-widest">
+              <p>marketingko.com</p>
+              <p>@marketingko</p>
             </div>
           </div>
 
-          <div>
-            <p className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em] mb-10">Navigation</p>
-            <ul className="space-y-6">
-              <li><Link href="/" className="text-foreground/40 hover:text-foreground transition-colors font-bold tracking-tighter italic">Home</Link></li>
-              <li><Link href="/revenue-systems" className="text-foreground/40 hover:text-foreground transition-colors font-bold tracking-tighter italic">Revenue Systems</Link></li>
-              <li><Link href="/solutions" className="text-foreground/40 hover:text-foreground transition-colors font-bold tracking-tighter italic">Solutions</Link></li>
-              <li><Link href="/about" className="text-foreground/40 hover:text-foreground transition-colors font-bold tracking-tighter italic">About</Link></li>
-              <li><Link href="/contact" className="text-foreground/40 hover:text-foreground transition-colors font-bold tracking-tighter italic">Contact</Link></li>
-            </ul>
+          {/* Navigation Column */}
+          <div className="md:col-span-4 md:flex md:justify-center">
+            <div className="space-y-12">
+              <p className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em]">Navigation</p>
+              <ul className="space-y-6">
+                <li><Link href="/" className="text-foreground/60 hover:text-foreground transition-colors font-bold tracking-tighter italic">Home</Link></li>
+                <li><Link href="/revenue-systems" className="text-foreground/60 hover:text-foreground transition-colors font-bold tracking-tighter italic">Revenue Systems</Link></li>
+                <li><Link href="/solutions" className="text-foreground/60 hover:text-foreground transition-colors font-bold tracking-tighter italic">Solutions</Link></li>
+                <li><Link href="/about" className="text-foreground/60 hover:text-foreground transition-colors font-bold tracking-tighter italic">About</Link></li>
+                <li><Link href="/contact" className="text-foreground/60 hover:text-foreground transition-colors font-bold tracking-tighter italic">Contact</Link></li>
+              </ul>
+            </div>
           </div>
 
-          <div className="space-y-12">
-            <div>
-              <p className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em] mb-10">Connect</p>
-              <div className="flex items-center space-x-6">
-                <Link href="#" className="w-12 h-12 rounded-2xl bg-foreground/[0.03] border border-border flex items-center justify-center text-foreground/40 hover:text-primary hover:border-primary/20 transition-all">
-                  <Linkedin size={20} />
-                </Link>
-                <Link href="#" className="w-12 h-12 rounded-2xl bg-foreground/[0.03] border border-border flex items-center justify-center text-foreground/40 hover:text-primary hover:border-primary/20 transition-all">
-                  <Twitter size={20} />
-                </Link>
-                <Link href="#" className="w-12 h-12 rounded-2xl bg-foreground/[0.03] border border-border flex items-center justify-center text-foreground/40 hover:text-primary hover:border-primary/20 transition-all">
-                  <Instagram size={20} />
-                </Link>
-              </div>
+          {/* Action Column */}
+          <div className="md:col-span-4 space-y-12">
+            <p className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em]">Get Started</p>
+            <div className="space-y-8">
+              <p className="text-muted-foreground font-medium tracking-tight leading-relaxed">
+                Start with a free 30-minute business audit. We'll show you exactly where you're losing money.
+              </p>
+              <Link href="/contact" className="block">
+                <Button className="w-full md:w-auto px-12 h-16 rounded-2xl bg-primary text-white hover:bg-primary/90 transition-all duration-700 font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary/20">
+                  Book Free Audit
+                </Button>
+              </Link>
             </div>
-            
-            <Link href="/contact" className="block">
-              <Button className="w-full h-16 rounded-2xl bg-foreground text-background hover:bg-primary hover:text-white transition-all duration-500 font-bold uppercase tracking-widest group">
-                Get Started <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-2 transition-transform" />
-              </Button>
-            </Link>
           </div>
         </div>
 
         <div className="pt-12 border-t border-border flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex items-center space-x-8 opacity-30">
-            <p className="text-[10px] font-bold text-foreground uppercase tracking-widest">© 2026 Marketing Ko</p>
-            <div className="w-[1px] h-4 bg-foreground/20" />
-            <p className="text-[10px] font-bold text-foreground uppercase tracking-widest italic">AI Solutions & Web Development</p>
-          </div>
-          
-          <div className="flex items-center space-x-12">
-            <Link href="#" className="text-[10px] font-bold text-foreground/20 hover:text-foreground uppercase tracking-widest transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-[10px] font-bold text-foreground/20 hover:text-foreground uppercase tracking-widest transition-colors">Terms of Service</Link>
+          <p className="text-[10px] font-bold text-foreground/20 uppercase tracking-widest italic">
+            © 2026 MARKETING KO. All rights reserved.
+          </p>
+          <div className="flex items-center space-x-4 opacity-20">
+             <span className="text-[10px] font-bold text-foreground uppercase tracking-widest italic">AI Solutions & Web Development</span>
+             <div className="w-1 h-1 rounded-full bg-foreground" />
+             <span className="text-[10px] font-bold text-foreground uppercase tracking-widest italic">2026</span>
           </div>
         </div>
       </div>

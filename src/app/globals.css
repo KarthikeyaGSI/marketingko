@@ -133,6 +133,11 @@
     background-size: 40px 40px;
   }
 
+  .dot-grid {
+    background-image: radial-gradient(oklch(var(--foreground) / 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
   .mesh-gradient {
     background: radial-gradient(at 0% 0%, oklch(var(--primary) / 0.15) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, oklch(var(--primary) / 0.1) 0px, transparent 50%),

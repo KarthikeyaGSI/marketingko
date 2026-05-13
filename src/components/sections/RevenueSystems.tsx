@@ -63,88 +63,116 @@ const systems = [
 
 export function RevenueSystems() {
   return (
-    <section id="revenue-systems" className="py-40 bg-black relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-10">
-          <div className="space-y-6 max-w-3xl">
-            <span className="text-[10px] font-black tracking-[0.8em] text-primary uppercase">Revenue Systems</span>
-            <h2 className="text-7xl md:text-9xl font-bold tracking-tighter text-white leading-[0.8]">
-              THREE SYSTEMS.<br />
-              <span className="text-muted-foreground/20 italic">ONE FIX.</span>
+    <section id="revenue-systems" className="py-80 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,oklch(var(--primary)/0.05)_0%,transparent_70%)]" />
+      
+      <div className="container mx-auto px-6 relative">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-48 gap-12">
+          <div className="space-y-12 max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="text-[10px] font-black tracking-[1em] text-primary uppercase"
+            >
+              Infrastructure Protocols
+            </motion.div>
+            <h2 className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
+              THREE SYSTEMS. <br />
+              <span className="text-muted-foreground/10 italic">ONE FIX.</span>
             </h2>
-            <p className="text-2xl text-muted-foreground max-w-xl">
-              Three of the most expensive problems in any growing business — each one fixed completely.
+            <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight">
+              We've engineered three foundational growth engines. Fixed scope. Fixed price. Optimized for the modern AI economy.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {systems.map((system, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={`relative group p-12 rounded-[3rem] border border-white/5 bg-white/[0.02] backdrop-blur-3xl overflow-hidden flex flex-col h-full ${
-                system.featured ? 'ring-2 ring-primary/20' : ''
+              className={`relative group p-12 lg:p-16 rounded-[4rem] border transition-all duration-1000 flex flex-col h-full overflow-hidden ${
+                system.featured 
+                  ? 'bg-foreground/[0.03] border-primary/20 shadow-2xl shadow-primary/5' 
+                  : 'bg-background border-border hover:border-primary/20'
               }`}
             >
-              {/* Background Glow */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${system.color} opacity-0 group-hover:opacity-100 transition-opacity duration-1000`} />
-              
-              <div className="relative z-10 space-y-10 flex-1">
+              {/* Technical Detail Corner */}
+              <div className="absolute top-0 right-0 w-32 h-32 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-1000">
+                <svg viewBox="0 0 100 100" className="w-full h-full">
+                  <circle cx="100" cy="0" r="80" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+                </svg>
+              </div>
+
+              <div className="relative z-10 space-y-12 flex-1">
                 <div className="flex items-center justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-black text-primary uppercase tracking-widest mb-1">System {system.id}</span>
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">Protocol {system.id}</span>
                     {system.tag && (
-                      <span className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-[8px] font-black uppercase tracking-widest w-fit">
+                      <div className="px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[8px] font-black uppercase tracking-widest w-fit">
                         {system.tag}
-                      </span>
+                      </div>
                     )}
                   </div>
-                  {system.icon}
+                  <div className="w-16 h-16 rounded-2xl bg-foreground/[0.02] border border-border flex items-center justify-center group-hover:bg-primary transition-all duration-700">
+                    <div className="group-hover:text-white transition-colors duration-700">
+                      {system.icon}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-4">
-                  <h3 className="text-5xl font-bold text-white tracking-tighter leading-none italic">{system.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{system.description}</p>
+                <div className="space-y-6">
+                  <h3 className="text-5xl font-bold text-foreground tracking-tighter leading-none italic group-hover:translate-x-4 transition-transform duration-700">{system.title}</h3>
+                  <p className="text-xl text-muted-foreground leading-relaxed font-medium tracking-tight">{system.description}</p>
                 </div>
 
-                <div className="space-y-4">
-                  <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">Key Features</p>
-                  <ul className="space-y-4">
+                <div className="space-y-8 py-10 border-y border-border/50">
+                  <p className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em]">System Architecture</p>
+                  <ul className="space-y-5">
                     {system.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center space-x-3 text-sm text-white/80 group-hover:text-white transition-colors">
-                        <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                      <li key={idx} className="flex items-center space-x-4 text-sm font-semibold tracking-tight text-foreground/70 group-hover:text-foreground transition-colors">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                         <span>{feature}</span>
                       </li>
                     ))}
-                    <li className="text-xs font-bold text-primary italic pt-2">+ 2 more systems...</li>
                   </ul>
                 </div>
 
-                <div className="pt-10 border-t border-white/5 mt-auto">
-                   <div className="mb-8">
-                     <p className="text-4xl font-bold text-white tracking-tighter italic">From {system.price}</p>
-                     <p className="text-[10px] font-bold text-muted-foreground mt-2 uppercase tracking-widest">{system.mgmt}</p>
+                <div className="pt-10 mt-auto">
+                   <div className="mb-10">
+                     <p className="text-5xl font-bold text-foreground tracking-tighter italic leading-none">{system.price}</p>
+                     <p className="text-[10px] font-bold text-muted-foreground mt-4 uppercase tracking-[0.4em] italic">{system.mgmt}</p>
                    </div>
                    
                    <Link href="/contact" className="block">
-                    <Button variant="outline" className="w-full h-16 rounded-2xl border-white/10 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 group/btn">
-                      Explore <ArrowRight className="ml-3 w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
+                    <Button className={`w-full h-20 rounded-2xl transition-all duration-700 font-black uppercase tracking-[0.2em] flex items-center justify-center space-x-4 ${
+                      system.featured 
+                        ? 'bg-primary text-white hover:bg-primary/90' 
+                        : 'bg-foreground text-background hover:bg-primary hover:text-white'
+                    }`}>
+                      <span>Initialize Build</span> <ArrowRight className="w-5 h-5" />
                     </Button>
                    </Link>
                 </div>
               </div>
+
+              {/* Background Accent */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${system.color} opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none`} />
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-20 p-8 rounded-3xl bg-white/[0.01] border border-white/5 text-center">
-          <p className="text-xs text-muted-foreground/60 uppercase tracking-[0.2em]">
-            All fees cover build and management. Platforms (Meta API, hosting, voice infra) billed separately at cost. Full estimate provided before any project starts.
+        <div className="mt-32 p-12 rounded-[3rem] bg-foreground/[0.01] border border-border flex flex-col md:flex-row items-center justify-between gap-12">
+          <p className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.3em] max-w-2xl text-center md:text-left leading-relaxed italic">
+            Deployment timeline: 14 days post-audit. All fees cover infrastructure engineering and operational management. Platform overheads (API usage, high-volume voice compute) handled separately via direct transparency.
           </p>
+          <div className="flex items-center space-x-4 px-8 py-4 rounded-2xl border border-primary/20 bg-primary/5">
+             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+             <span className="text-[10px] font-black text-primary uppercase tracking-widest italic leading-none">All Systems GO.</span>
+          </div>
         </div>
       </div>
     </section>

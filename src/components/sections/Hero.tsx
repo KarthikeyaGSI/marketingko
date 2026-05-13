@@ -21,7 +21,7 @@ export function Hero() {
     <section className="relative min-h-[120vh] flex flex-col items-center justify-center overflow-hidden bg-background pt-40 pb-20">
       {/* Background Gradients */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,oklch(var(--primary)/0.08)_0%,transparent_70%)]" />
-      <div className="absolute inset-0 z-0 grid-infrastructure opacity-50" />
+      <div className="absolute inset-0 z-0 dot-grid opacity-30" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -33,7 +33,7 @@ export function Hero() {
             >
               <ShieldCheck className="h-4 w-4 text-primary" />
               <span className="text-[10px] font-black tracking-[0.8em] text-foreground uppercase">
-                Top AI Automation & Voice Agent Agency
+                Systems That Outperform
               </span>
             </motion.div>
 
@@ -44,8 +44,9 @@ export function Hero() {
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium"
               >
-                SYSTEMS THAT <br />
-                <span className="text-muted-foreground/10 italic">OUTPERFORM.</span>
+                Your business is <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500 italic">leaking</span> revenue.
+                <br /> We seal it.
               </motion.h1>
               
               <motion.p
@@ -54,7 +55,6 @@ export function Hero() {
                 transition={{ duration: 1, delay: 0.4 }}
                 className="text-2xl md:text-4xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight"
               >
-                Your business is leaking revenue. <span className="text-foreground">We seal it.</span> <br />
                 AI automations, voice agents, and web solutions — engineered around your outcomes, not our deliverables.
               </motion.p>
             </div>

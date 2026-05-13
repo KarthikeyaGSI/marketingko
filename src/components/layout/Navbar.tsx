@@ -48,21 +48,14 @@ export function Navbar() {
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-4 group">
-            <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center group-hover:rotate-[360deg] transition-transform duration-1000 shadow-primary/30 shadow-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <Shield className="h-6 w-6 text-white relative z-10" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tighter text-foreground uppercase italic leading-none">
-                Marketing Ko
-              </span>
-              <span className="text-[8px] font-black tracking-[0.4em] text-primary uppercase mt-1">Operational OS</span>
-            </div>
+          <Link href="/" className="flex items-center space-x-2 group">
+            <span className="text-2xl font-black tracking-tighter text-foreground uppercase italic leading-none transition-colors">
+              Marketing <span className="text-primary tracking-tighter italic">Ko.</span>
+            </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-12">
+          <div className="hidden lg:flex items-center space-x-16">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -70,7 +63,7 @@ export function Navbar() {
                 className="relative text-[10px] font-black tracking-[0.5em] text-foreground/40 hover:text-foreground uppercase transition-colors group"
               >
                 {link.name}
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-500" />
+                <span className="absolute -bottom-2 left-1/2 w-0 h-[1px] bg-primary group-hover:w-full group-hover:left-0 transition-all duration-500" />
               </Link>
             ))}
           </div>
@@ -78,10 +71,8 @@ export function Navbar() {
           <div className="hidden lg:flex items-center space-x-8">
              <ThemeToggle />
              <Link href="/contact">
-                <Button className="rounded-full px-10 h-14 bg-foreground text-background hover:bg-primary hover:text-white font-black text-xs uppercase tracking-[0.2em] transition-all duration-700 hover:scale-105 group relative overflow-hidden">
-                  <span className="relative z-10 flex items-center">
-                    Initiate Deployment <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-2 transition-transform" />
-                  </span>
+                <Button className="rounded-full px-12 h-14 bg-primary text-white hover:bg-primary/90 font-black text-xs uppercase tracking-[0.2em] transition-all duration-700 hover:scale-105 shadow-2xl shadow-primary/20">
+                  Book Free Audit
                 </Button>
              </Link>
           </div>

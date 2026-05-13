@@ -22,38 +22,55 @@ const pains = [
 
 export function ProblemSection() {
   return (
-    <section id="problem" className="py-40 bg-black relative">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-10">
-          <div className="space-y-6 max-w-4xl">
-            <span className="text-[10px] font-black tracking-[0.8em] text-primary uppercase">Current State</span>
-            <h2 className="text-7xl md:text-9xl font-bold tracking-tighter text-white leading-[0.8]">
-              YOU'RE DOING EVERYTHING RIGHT.<br />
-              <span className="text-muted-foreground/20 italic">BUT STILL LOSING.</span>
+    <section id="problem" className="py-80 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
+      
+      <div className="container mx-auto px-6 relative">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-48 gap-12">
+          <div className="space-y-12 max-w-5xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="text-[10px] font-black tracking-[1em] text-primary uppercase"
+            >
+              Current State Analysis
+            </motion.div>
+            <h2 className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
+              DOING EVERYTHING. <br />
+              <span className="text-muted-foreground/10 italic">BUT STILL LOSING.</span>
             </h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/50 border border-border overflow-hidden rounded-[4rem]">
           {pains.map((pain, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="p-12 rounded-[3.5rem] border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-700 space-y-12 group"
+              className="p-16 md:p-24 bg-background hover:bg-foreground/[0.02] transition-all duration-1000 group relative overflow-hidden"
             >
-              <span className="text-6xl font-black text-white/5 tracking-tighter italic group-hover:text-primary/10 transition-colors">
+              <span className="text-[10rem] font-black text-foreground/[0.02] tracking-tighter italic absolute top-10 right-10 leading-none select-none group-hover:text-primary/5 transition-colors duration-1000">
                 {pain.id}
               </span>
-              <div className="space-y-6">
-                <h3 className="text-4xl font-bold text-white tracking-tighter italic leading-tight group-hover:text-primary transition-colors">
+              
+              <div className="relative z-10 space-y-10 pt-20">
+                <h3 className="text-5xl font-bold text-foreground tracking-tighter italic leading-none group-hover:text-primary transition-colors duration-700">
                   {pain.title}
                 </h3>
-                <p className="text-xl text-muted-foreground leading-relaxed font-medium tracking-tight">
+                <p className="text-2xl text-muted-foreground leading-relaxed font-medium tracking-tight max-w-lg">
                   {pain.description}
                 </p>
+              </div>
+
+              {/* Technical Indicator */}
+              <div className="absolute bottom-10 left-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                 <div className="flex items-center space-x-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span className="text-[10px] font-black text-primary uppercase tracking-widest italic">Problem Node Identified</span>
+                 </div>
               </div>
             </motion.div>
           ))}

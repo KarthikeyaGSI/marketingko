@@ -8,53 +8,55 @@ import Link from "next/link";
 
 export function CTA() {
   return (
-    <section className="py-60 bg-black relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(0,102,255,0.15)_0%,transparent_70%)]" />
+    <section className="py-80 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto p-20 md:p-40 rounded-[5rem] border border-white/10 bg-white/[0.02] backdrop-blur-3xl text-center space-y-16 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+        <div className="flex flex-col items-center text-center space-y-16 max-w-5xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-7xl md:text-[9rem] font-bold text-foreground tracking-tighter leading-none italic"
+          >
+            Let's find it.
+          </motion.h2>
           
-          <div className="space-y-8 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center space-x-4 px-6 py-2 rounded-full border border-primary/20 bg-primary/5"
-            >
-              <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-[10px] font-black tracking-[0.8em] text-white uppercase">Initiate Deployment</span>
-            </motion.div>
-
-            <h2 className="text-7xl md:text-[10rem] font-bold text-white tracking-tighter leading-[0.8] text-mask-premium">
-              YOUR REVENUE LEAK<br />
-              <span className="text-muted-foreground/10 italic">HAS A FIX.</span>
-            </h2>
-            
-            <p className="text-2xl md:text-4xl text-muted-foreground font-medium tracking-tighter max-w-4xl mx-auto leading-tight italic">
-              "Book a free 30-minute strategy call. We'll show you exactly where you can automate tasks and capture more revenue. No obligation. No pitch. Just clarity."
-            </p>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-2xl md:text-3xl text-muted-foreground font-medium tracking-tight max-w-3xl leading-relaxed"
+          >
+            Book a free 30-minute strategy call. We'll show you exactly where you can automate tasks and capture more revenue.
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center space-y-10 relative z-10"
+            transition={{ delay: 0.2 }}
+            className="flex flex-col md:flex-row items-center justify-center gap-8 w-full"
           >
-            <Link href="/contact">
-              <MagneticButton>
-                <Button size="lg" className="rounded-full px-20 h-28 text-3xl bg-primary text-white hover:bg-primary/90 font-black shadow-primary/20 shadow-2xl transition-all duration-700 hover:scale-105 group">
-                  Book Free Audit <ArrowRight className="ml-6 h-10 w-10 group-hover:translate-x-3 transition-transform" />
-                </Button>
-              </MagneticButton>
+            <Link href="/contact" className="w-full md:w-auto">
+              <Button size="lg" className="w-full md:w-auto rounded-full px-16 h-20 text-xl bg-primary text-white hover:bg-primary/90 font-black shadow-primary/20 shadow-2xl transition-all duration-700 flex items-center justify-center group">
+                Book Free Audit <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-2 transition-transform" />
+              </Button>
             </Link>
             
-            <div className="flex items-center space-x-8 opacity-40">
-               <span className="text-[10px] font-black text-white uppercase tracking-[0.5em]">Global Capacity</span>
-               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-               <span className="text-xs font-bold text-white tracking-tighter italic">Currently Accepting 2 New Systems</span>
-            </div>
+            <Link href="/solutions" className="w-full md:w-auto">
+              <Button size="lg" variant="outline" className="w-full md:w-auto rounded-full px-16 h-20 text-xl border-border bg-transparent text-foreground hover:bg-foreground/[0.03] font-black transition-all duration-700 flex items-center justify-center group">
+                Explore the Solutions <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-2 transition-transform" />
+              </Button>
+            </Link>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.4em] italic"
+          >
+            No obligation. No pitch. Just clarity.
+          </motion.p>
         </div>
       </div>
     </section>
