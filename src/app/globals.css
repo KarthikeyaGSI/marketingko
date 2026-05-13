@@ -35,6 +35,7 @@
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 10s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-orbit: orbit 20s linear infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
 }
 
 @keyframes float {
@@ -43,8 +44,13 @@
 }
 
 @keyframes orbit {
-  from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-  to { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+  from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
 }
 
 :root {
@@ -71,30 +77,30 @@
 }
 
 .dark {
-  --background: oklch(0.02 0 0);
+  --background: oklch(0.01 0 0);
   --foreground: oklch(1 0 0);
-  --card: oklch(0.04 0 0);
+  --card: oklch(0.02 0 0);
   --card-foreground: oklch(1 0 0);
-  --popover: oklch(0.04 0 0);
+  --popover: oklch(0.02 0 0);
   --popover-foreground: oklch(1 0 0);
-  --primary: oklch(0.6 0.2 250); /* Electric Blue Accent */
+  --primary: oklch(0.6 0.2 250); 
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.08 0 0);
+  --secondary: oklch(0.04 0 0);
   --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.08 0 0);
-  --muted-foreground: oklch(0.5 0 0);
+  --muted: oklch(0.04 0 0);
+  --muted-foreground: oklch(0.4 0 0);
   --accent: oklch(0.6 0.2 250);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.4 0.15 25);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.1 0 0);
-  --input: oklch(0.1 0 0);
+  --border: oklch(0.06 0 0);
+  --input: oklch(0.06 0 0);
   --ring: oklch(0.6 0.2 250);
 }
 
 @layer base {
   * {
-    @apply border-border selection:bg-primary selection:text-black;
+    @apply border-border selection:bg-primary selection:text-white;
   }
   body {
     @apply bg-background text-foreground overflow-x-hidden;
@@ -102,7 +108,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-[-0.05em] font-bold leading-[0.9];
+    @apply tracking-[-0.06em] font-bold leading-[0.85];
   }
 }
 
@@ -114,56 +120,48 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    opacity: 0.05;
+    opacity: 0.06;
     z-index: 9999;
     background-image: url("https://grainy-gradients.vercel.app/noise.svg");
   }
 
-  .glow-blue {
-    box-shadow: 0 0 50px -10px oklch(0.6 0.2 250 / 0.3);
+  .glow-primary {
+    box-shadow: 0 0 100px -20px oklch(0.6 0.2 250 / 0.5);
   }
 
-  .text-glow {
-    text-shadow: 0 0 20px oklch(0.6 0.2 250 / 0.4);
+  .text-mask-premium {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/10;
   }
 
-  .text-mask-hero {
-    @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/20;
+  .glass-system {
+    @apply bg-white/[0.01] backdrop-blur-3xl border border-white/5 hover:border-primary/40 transition-all duration-1000;
   }
 
-  .glass-premium {
-    @apply bg-white/[0.02] backdrop-blur-3xl border border-white/10 hover:border-primary/30 transition-all duration-700;
+  .shimmer-text {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
   }
 
-  .reveal-up {
-    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
-    transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  .perspective-elite {
+    perspective: 2000px;
   }
 
-  .reveal-up.active {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .blur-load {
-    filter: blur(20px);
-    opacity: 0;
-    transition: filter 1s ease-out, opacity 1s ease-out;
-  }
-
-  .blur-load.active {
-    filter: blur(0);
-    opacity: 1;
+  .system-node {
+    @apply relative flex items-center justify-center rounded-2xl border border-white/10 bg-black/50 backdrop-blur-2xl hover:border-primary/50 transition-all duration-500;
   }
 }
 
-/* Scroll Animation Hooks */
-[data-scroll] {
+/* Elite Scroll Motion */
+[data-choreograph] {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(60px) scale(0.98);
+  filter: blur(10px);
+  transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-scroll].active {
+[data-choreograph].active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }

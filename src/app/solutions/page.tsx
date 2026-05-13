@@ -45,20 +45,20 @@ export default function SolutionsPage() {
       <div className="absolute inset-0 mesh-gradient opacity-10 -z-10" />
       
       <div className="container mx-auto px-6">
-        <div className="text-center mb-48">
+        <div className="text-center mb-60">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="reveal-text"
           >
-            <h1 className="text-7xl md:text-[10rem] font-bold text-white tracking-tighter mb-12 leading-[0.8] text-mask">
-              DOMINATE THE <br />
-              <span className="text-muted-foreground/30">MARKET.</span>
+            <h1 className="text-8xl md:text-[14rem] font-bold text-white tracking-tighter mb-16 leading-[0.8] text-mask-premium">
+              SOVEREIGN <br />
+              <span className="text-muted-foreground/10 italic">SYSTEMS.</span>
             </h1>
           </motion.div>
-          <p className="text-2xl text-muted-foreground max-w-3xl mx-auto font-medium tracking-tight">
-            We don't sell tools. We deploy intelligence. High-fidelity infrastructure 
-            designed to maximize capture and minimize waste.
+          <p className="text-2xl md:text-4xl text-muted-foreground max-w-5xl mx-auto font-medium tracking-tighter leading-tight italic">
+            "We engineer autonomous acquisition systems that eliminate operational drag 
+            and deploy infrastructure that compounds monthly."
           </p>
         </div>
 

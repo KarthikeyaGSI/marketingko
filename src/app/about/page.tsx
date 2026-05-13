@@ -17,9 +17,9 @@ export default function AboutPage() {
             animate={{ opacity: 1, scale: 1 }}
             className="reveal-text"
           >
-            <h1 className="text-7xl md:text-[12rem] font-bold text-white tracking-tighter mb-16 leading-[0.8] text-mask">
-              ENGINEERS OF <br />
-              <span className="text-muted-foreground/30">CAPITAL.</span>
+            <h1 className="text-8xl md:text-[15rem] font-bold text-white tracking-tighter mb-16 leading-[0.8] text-mask-premium">
+              INFRASTRUCTURE <br />
+              <span className="text-muted-foreground/10">OF GROWTH.</span>
             </h1>
           </motion.div>
           
@@ -27,9 +27,9 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-2xl md:text-4xl text-muted-foreground leading-tight tracking-tighter font-medium max-w-4xl mx-auto italic"
+            className="text-2xl md:text-5xl text-muted-foreground leading-tight tracking-tighter font-medium max-w-5xl mx-auto italic"
           >
-            "We don't provide services. We deploy intelligence that converts human effort into scalable revenue systems."
+            "We focus on margin expansion through autonomous efficiency. We don't just build; we engineer market dominance."
           </motion.p>
         </div>
 

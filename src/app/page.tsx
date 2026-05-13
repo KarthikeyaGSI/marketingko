@@ -5,7 +5,8 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustBar, ValueProp } from "@/components/sections/ValueProp";
 import { ServicesGrid, Process } from "@/components/sections/Services";
 import { WOWSection } from "@/components/sections/WOWSection";
-import { Enterprise } from "@/components/sections/Enterprise";
+import { SystemVisualization } from "@/components/sections/SystemVisualization";
+import { Performance } from "@/components/sections/Performance";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -17,7 +18,9 @@ export default function Home() {
       
       <TrustBar />
       
-      <Enterprise />
+      <Performance />
+      
+      <SystemVisualization />
       
       <WOWSection />
 
