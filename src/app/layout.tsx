@@ -70,7 +70,7 @@ export default function RootLayout({
     <ReactLenis root options={{ lerp: 0.08, duration: 1.5, smoothWheel: true }}>
       <html lang="en" className="dark">
         <head>
-          <title>Marketing Ko | Growth Systems Engineered for Modern Brands</title>
+          <title>Top AI Automation & Voice Agent Agency in India | Marketing Ko</title>
           <meta name="description" content="We engineer high-converting digital architectures and AI-powered growth infrastructure for elite brands. The era of manual acquisition is over." />
           <meta property="og:title" content="Marketing Ko | AI Growth Infrastructure" />
           <meta property="og:description" content="Growth systems engineered for modern brands. Eliminate operational drag with autonomous acquisition." />

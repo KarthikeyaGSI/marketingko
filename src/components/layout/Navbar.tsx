@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button";
 const navLinks = [
   { name: "Revenue Systems", href: "/revenue-systems" },
   { name: "Solutions", href: "/solutions" },
-  { name: "Process", href: "/#process" },
-  { name: "About", href: "/#about" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
