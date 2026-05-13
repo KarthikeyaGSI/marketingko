@@ -1,74 +1,85 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function Hero() {
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Effects */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse delay-1000" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-      </div>
+      {/* Dynamic Mesh Background */}
+      <div className="absolute inset-0 z-0 mesh-gradient opacity-40" />
+      
+      {/* Parallax Grid */}
+      <motion.div 
+        style={{ y: y1, opacity }}
+        className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px]"
+      />
 
       <div className="container mx-auto px-6 relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-block px-4 py-1.5 mb-8 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "circOut" }}
+          className="inline-block px-4 py-1.5 mb-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
         >
-          <span className="text-xs font-medium tracking-wider text-white/60 uppercase">
-            Next-Gen AI Systems
+          <span className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">
+            ESTABLISHING DOMINANCE THROUGH AI
           </span>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-5xl md:text-8xl font-bold tracking-tighter text-white mb-8 leading-[0.9]"
-        >
-          AI SYSTEMS THAT <br />
-          <span className="text-muted-foreground">PRINT REVENUE.</span>
-        </motion.h1>
+        <div className="reveal-text">
+          <motion.h1
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-6xl md:text-[11rem] font-bold tracking-tight text-white mb-12 leading-[0.8] text-mask"
+          >
+            ENGINEERED <br />
+            <span className="text-muted-foreground/30">REVENUE.</span>
+          </motion.h1>
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-16 leading-tight tracking-tight font-medium"
         >
-          Automations built to outperform. We design and deploy elite AI infrastructures 
-          that capture leads, close deals, and scale workflows while you sleep.
+          We build acquisition infrastructure that compounds monthly. 
+          Elite AI systems designed to out-compete, out-scale, and out-perform.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-col sm:row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8"
         >
-          <Button size="lg" className="rounded-full px-10 h-14 text-base bg-white text-black hover:bg-white/90">
-            Book Strategy Call <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-          <Button size="lg" variant="ghost" className="rounded-full px-10 h-14 text-base text-white hover:bg-white/5">
-            View Solutions
-          </Button>
+          <MagneticButton>
+            <Button size="lg" className="rounded-full px-12 h-16 text-lg bg-white text-black hover:bg-white/90 font-bold transition-all duration-500 hover:scale-105">
+              Secure Infrastructure <ArrowRight className="ml-3 h-5 w-5" />
+            </Button>
+          </MagneticButton>
+          
+          <button className="text-sm font-bold tracking-widest text-white/40 hover:text-white transition-colors uppercase py-4 px-8 border border-white/5 rounded-full hover:bg-white/5">
+            Explore Capabilities
+          </button>
         </motion.div>
       </div>
 
-      {/* Floating Elements */}
-      <motion.div 
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white/20"
-      >
-        <div className="w-[1px] h-20 bg-gradient-to-b from-white/20 to-transparent" />
-      </motion.div>
+      {/* Signature Visual Element */}
+      <div className="absolute bottom-10 left-10 hidden lg:block">
+        <div className="flex items-center space-x-4 opacity-20">
+          <div className="w-12 h-[1px] bg-white" />
+          <span className="text-[10px] font-bold tracking-widest uppercase">System Status: Optimal</span>
+        </div>
+      </div>
     </section>
   );
 }

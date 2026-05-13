@@ -2,45 +2,52 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Zap, Mic2, MessageSquare, Globe, Workflow, Search, BarChart3 } from "lucide-react";
+import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
 
 const services = [
-  { title: "AI Automations", icon: Zap, desc: "End-to-end workflow optimization." },
-  { title: "AI Voice Agents", icon: BarChart3, desc: "24/7 human-like voice interaction." },
-  { title: "Lead Capture", icon: Search, desc: "Automated high-intent lead systems." },
-  { title: "CRM Automation", icon: Workflow, desc: "Sync and scale your customer data." },
-  { title: "AI Chatbots", icon: MessageSquare, desc: "Intelligent conversational sales." },
-  { title: "Web Systems", icon: Globe, desc: "High-performance agency sites." },
-  { title: "Workflow Scaling", icon: CheckCircle2, desc: "Operational efficiency at scale." },
-  { title: "Sales Pipelines", icon: BarChart3, desc: "Automated revenue generation." },
+  { title: "Acquisition Infra", icon: Zap, desc: "AI-powered lead engines that compound daily." },
+  { title: "Voice Operations", icon: Mic2, desc: "24/7 autonomous sales and support agents." },
+  { title: "Revenue Systems", icon: BarChart3, desc: "End-to-end conversion infrastructures." },
+  { title: "CRM Intelligence", icon: Workflow, desc: "Data synchronization with zero human lag." },
 ];
 
 export function ServicesGrid() {
   return (
-    <section className="py-32 bg-black">
+    <section className="py-40 bg-black">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tighter mb-8">
-            ELITE SOLUTIONS.
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Engineered for high-output enterprises looking to dominate their market through AI.
-          </p>
+        <div className="flex flex-col md:flex-row items-end justify-between mb-32 gap-12">
+          <div className="max-w-3xl">
+            <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter mb-8 leading-none">
+              CORE <br />
+              <span className="text-muted-foreground/30">CAPABILITIES.</span>
+            </h2>
+            <p className="text-xl text-muted-foreground font-medium tracking-tight">
+              We engineer growth infrastructure for companies that demand scale without the overhead.
+            </p>
+          </div>
+          
+          <div className="pb-4">
+            <span className="text-[10px] font-bold tracking-[0.5em] text-white/20 uppercase">Market Dominance Layer</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="p-8 rounded-xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.06] transition-all group"
-            >
-              <service.icon className="h-8 w-8 text-white mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
-            </motion.div>
+            <PerspectiveCard key={index}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-10 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group h-full"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                  <service.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{service.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed font-medium">{service.desc}</p>
+              </motion.div>
+            </PerspectiveCard>
           ))}
         </div>
       </div>
@@ -50,33 +57,31 @@ export function ServicesGrid() {
 
 export function Process() {
   const steps = [
-    { title: "AUDIT", desc: "Deep dive into your current workflows and leakage points." },
-    { title: "STRATEGY", desc: "Custom AI blueprint designed for maximum ROI." },
-    { title: "BUILD", desc: "Precision engineering and deployment of your systems." },
-    { title: "SCALE", desc: "Continuous optimization and expansion of AI power." },
+    { title: "AUDIT", desc: "Identifying infrastructure leakage and growth bottlenecks." },
+    { title: "BLUEPRINT", desc: "Engineering the custom AI architecture for your scale." },
+    { title: "DEPLOY", desc: "Precision integration with zero operational downtime." },
+    { title: "OPTIMIZE", desc: "Continuous improvement of revenue compounding loops." },
   ];
 
   return (
-    <section className="py-32 border-t border-white/5">
+    <section className="py-40 bg-black relative">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="relative"
+              className="relative p-12 group hover:bg-white/[0.02] transition-colors rounded-3xl"
             >
-              <span className="text-6xl font-black text-white/5 absolute -top-8 -left-4">
-                0{index + 1}
-              </span>
-              <h3 className="text-2xl font-bold text-white mb-6 relative z-10">{step.title}</h3>
-              <div className="w-full h-[1px] bg-white/10 mb-6" />
-              <p className="text-muted-foreground leading-relaxed">
+              <span className="text-[10px] font-black text-white/10 tracking-[0.5em] mb-12 block">PHASE 0{index + 1}</span>
+              <h3 className="text-2xl font-bold text-white mb-6 tracking-tighter group-hover:translate-x-2 transition-transform">{step.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed font-medium">
                 {step.desc}
               </p>
+              <div className="absolute bottom-0 left-12 right-12 h-[1px] bg-white/5 group-hover:bg-white/20 transition-colors" />
             </motion.div>
           ))}
         </div>
