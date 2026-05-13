@@ -77,7 +77,7 @@ export function Founder() {
               className="space-y-16 text-3xl md:text-5xl text-muted-foreground font-medium tracking-tightest leading-tight italic border-l-4 border-primary/20 pl-16"
             >
               <p>
-                "You’re someone who’s deeply focused on <span className="text-foreground not-italic font-black">building things that last</span>. You care about sustainability, technology, automation, and creating real impact."
+                "I am deeply focused on <span className="text-foreground not-italic font-black">building things that last</span>. I care about sustainability, technology, automation, and creating real impact through digital systems."
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12">
