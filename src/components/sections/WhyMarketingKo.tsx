@@ -41,7 +41,7 @@ export function WhyMarketingKo() {
             >
               Strategic Differentiation
             </motion.div>
-            <h2 className="text-7xl md:text-[9.5rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
+            <h2 className="text-7xl md:text-[11.5rem] font-bold tracking-tightest text-foreground leading-[1.1] text-mask-premium uppercase">
               OPERATIONAL <br />
               <span className="text-muted-foreground/10 italic font-medium">EDGE.</span>
             </h2>

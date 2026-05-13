@@ -7,11 +7,6 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { BusinessNetworkAnimation } from "@/components/ui/BusinessNetworkAnimation";
 import Link from "next/link";
 
-const industries = [
-  "Real Estate", "Clinics & Healthcare", "Coaches & Consultants", 
-  "D2C Brands", "Legal Firms", "E-commerce", "SaaS Startups"
-];
-
 export function Hero() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 150]);
@@ -57,10 +52,10 @@ export function Hero() {
                       }
                     }
                   }}
-                  className="text-6xl sm:text-8xl md:text-[10rem] lg:text-[13rem] font-bold tracking-tightest text-foreground leading-[0.95] text-mask-premium uppercase"
+                  className="text-7xl sm:text-9xl md:text-[13rem] font-black tracking-tightest text-foreground leading-[1] text-mask-premium uppercase"
                 >
                   <div className="mb-4 md:mb-12">
-                    {["YOUR", "SYSTEM", "IS"].map((word, i) => (
+                    {["GROWTH", "SYSTEMS."].map((word, i) => (
                       <motion.span key={i} className="inline-block mr-6 last:mr-0">
                         {word.split("").map((char, j) => (
                           <motion.span
@@ -141,7 +136,6 @@ export function Hero() {
             style={{ y: y1, opacity }}
             className="hidden lg:block relative"
           >
-            {/* Technical Dashboards / Floating UI Overlay */}
             <div className="absolute -top-20 -left-20 z-20 glass-system p-10 rounded-[3rem] w-96 space-y-8 animate-float shadow-2xl">
                <div className="flex items-center justify-between">
                   <div className="w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_oklch(var(--primary))]" />

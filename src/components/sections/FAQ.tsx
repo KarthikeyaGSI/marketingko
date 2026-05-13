@@ -62,7 +62,7 @@ export function FAQ() {
             >
               System Documentation
             </motion.div>
-            <h2 className="text-8xl md:text-[14rem] font-bold tracking-tightest text-foreground leading-[0.75] text-mask-premium">
+            <h2 className="text-8xl md:text-[14rem] font-bold tracking-tightest text-foreground leading-[1.1] text-mask-premium">
               CLEAR ANSWERS. <br />
               <span className="text-muted-foreground/10 italic font-medium">NO JARGON.</span>
             </h2>

@@ -3,15 +3,34 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, Suspense } from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, Mail, Zap, ArrowRight } from "lucide-react";
+import { ShieldCheck, Mail, Zap, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
+const businessTypes = [
+  "E-commerce / D2C",
+  "SaaS / Tech",
+  "Professional Services",
+  "Education / Coaching",
+  "Real Estate / Local",
+  "Other"
+];
+
+const businessSizes = [
+  "Solopreneur",
+  "2-10 Employees",
+  "11-50 Employees",
+  "51-200 Employees",
+  "200+ Employees"
+];
+
 function ContactForm() {
   const searchParams = useSearchParams();
   const [subject, setSubject] = useState("");
+  const [type, setType] = useState("");
+  const [size, setSize] = useState("");
 
   useEffect(() => {
     const solutionId = searchParams.get("solution");
@@ -29,51 +48,74 @@ function ContactForm() {
       initial={{ opacity: 0, scale: 0.95, filter: "blur(20px)" }}
       whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-      className="p-16 md:p-24 rounded-[4rem] md:rounded-[6rem] border border-border bg-foreground/[0.02] backdrop-blur-3xl space-y-12 shadow-2xl relative overflow-hidden group"
+      className="p-12 md:p-20 rounded-[4rem] border border-border bg-foreground/[0.02] backdrop-blur-3xl space-y-12 shadow-2xl relative overflow-hidden group"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
       
-      <div className="space-y-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="space-y-6">
-            <label className="text-[12px] font-black text-foreground/40 uppercase tracking-[0.4em] ml-6 italic">Personnel_Name</label>
-            <Input placeholder="John Doe" className="h-24 md:h-28 px-10 rounded-3xl bg-background border-border focus:border-primary focus:ring-primary text-xl font-bold tracking-tight shadow-inner" />
+      <div className="space-y-10 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-4">
+            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Full_Name *</label>
+            <Input placeholder="Karthikeya" className="h-20 px-8 rounded-2xl bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight shadow-inner" />
           </div>
-          <div className="space-y-6">
-            <label className="text-[12px] font-black text-foreground/40 uppercase tracking-[0.4em] ml-6 italic">Secure_Email</label>
-            <Input placeholder="john@company.com" className="h-24 md:h-28 px-10 rounded-3xl bg-background border-border focus:border-primary focus:ring-primary text-xl font-bold tracking-tight shadow-inner" />
-          </div>
-        </div>
-
-        <div className="space-y-6">
-          <label className="text-[12px] font-black text-foreground/40 uppercase tracking-[0.4em] ml-6 italic">Deployment_Scope</label>
-          <div className="grid grid-cols-3 gap-6">
-             {['<₹5L', '₹5L - ₹20L', '₹20L+'].map((opt) => (
-               <button key={opt} className="h-20 md:h-24 rounded-2xl border border-border bg-foreground/[0.03] text-[10px] md:text-xs font-black text-foreground/60 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-700 uppercase tracking-widest shadow-lg">
-                 {opt}
-               </button>
-             ))}
+          <div className="space-y-4">
+            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Business_Name *</label>
+            <Input placeholder="Marketing Ko" className="h-20 px-8 rounded-2xl bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight shadow-inner" />
           </div>
         </div>
 
-        <div className="space-y-6">
-          <label className="text-[12px] font-black text-foreground/40 uppercase tracking-[0.4em] ml-6 italic">System_Requirements</label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-4">
+            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Secure_Email *</label>
+            <Input placeholder="you@company.com" className="h-20 px-8 rounded-2xl bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight shadow-inner" />
+          </div>
+          <div className="space-y-4">
+            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Phone_WhatsApp *</label>
+            <Input placeholder="+91 98765 43210" className="h-20 px-8 rounded-2xl bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight shadow-inner" />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-4">
+            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Business_Type *</label>
+            <select 
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              className="w-full h-20 px-8 rounded-2xl bg-background border border-border focus:border-primary focus:outline-none text-lg font-bold tracking-tight shadow-inner appearance-none cursor-pointer"
+            >
+              <option value="" disabled>Select type</option>
+              {businessTypes.map(t => <option key={t} value={t}>{t}</option>)}
+            </select>
+          </div>
+          <div className="space-y-4">
+            <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Business_Size *</label>
+            <select 
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+              className="w-full h-20 px-8 rounded-2xl bg-background border border-border focus:border-primary focus:outline-none text-lg font-bold tracking-tight shadow-inner appearance-none cursor-pointer"
+            >
+              <option value="" disabled>Select size</option>
+              {businessSizes.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <label className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.3em] ml-4 italic">Biggest_Challenge *</label>
           <Textarea 
-            value={subject ? `${subject}\n\n` : ""}
-            onChange={(e) => setSubject(e.target.value)}
-            placeholder="What is your biggest operational bottleneck?" 
-            className="min-h-[250px] p-10 rounded-[3rem] bg-background border-border focus:border-primary focus:ring-primary text-xl font-bold tracking-tight resize-none shadow-inner leading-relaxed" 
+            placeholder="What is the biggest operational or growth challenge your business faces right now?" 
+            className="min-h-[180px] p-8 rounded-[2rem] bg-background border-border focus:border-primary focus:ring-primary text-lg font-bold tracking-tight resize-none shadow-inner leading-relaxed" 
           />
         </div>
 
         <MagneticButton>
-          <Button className="w-full h-28 md:h-32 rounded-[3rem] bg-primary text-primary-foreground text-2xl font-black shadow-[0_40px_80px_-20px_oklch(var(--primary)/0.4)] hover:bg-foreground hover:text-background transition-all duration-1000 group border-none uppercase tracking-widest">
-             Initialize System Audit <ArrowRight className="ml-6 h-10 w-10 group-hover:translate-x-4 transition-transform duration-700" />
+          <Button className="w-full h-24 rounded-3xl bg-primary text-primary-foreground text-xl font-black shadow-[0_30px_60px_-15px_oklch(var(--primary)/0.4)] hover:bg-foreground hover:text-background transition-all duration-1000 group border-none uppercase tracking-widest">
+             Initialize Audit <ArrowRight className="ml-4 h-8 w-8 group-hover:translate-x-3 transition-transform duration-700" />
           </Button>
         </MagneticButton>
 
-        <p className="text-[10px] text-center text-muted-foreground/30 uppercase tracking-[0.3em] italic leading-loose">
-          Deployment protocols active. By clicking initiate, you agree to our privacy architecture and data sovereignty standards.
+        <p className="text-[9px] text-center text-muted-foreground/30 uppercase tracking-[0.3em] italic">
+          Response efficiency guaranteed within 24 hours.
         </p>
       </div>
     </motion.div>
@@ -82,59 +124,73 @@ function ContactForm() {
 
 export default function ContactPage() {
   return (
-    <main className="pt-60 md:pt-80 pb-40 bg-background min-h-screen relative overflow-hidden mesh-animate">
+    <main className="pt-40 md:pt-60 pb-40 bg-background min-h-screen relative overflow-hidden mesh-animate">
       <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
       <div className="ambient-glow opacity-20" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-40">
-          <div className="space-y-20">
-            <div className="space-y-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
+          
+          {/* Content Side */}
+          <div className="lg:col-span-5 space-y-20 pt-10">
+            <div className="space-y-10">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center space-x-6 px-10 py-4 rounded-full border border-primary/20 bg-primary/5 shadow-xl"
+                className="inline-flex items-center space-x-6 px-8 py-3 rounded-full border border-primary/20 bg-primary/5"
               >
-                <ShieldCheck className="h-6 w-6 text-primary" />
-                <span className="text-[12px] font-black tracking-[1em] text-foreground uppercase italic">Contact Infrastructure</span>
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-[10px] font-black tracking-[0.8em] text-foreground uppercase italic">Access Terminal Open</span>
               </motion.div>
 
-              <h1 className="text-8xl md:text-[14rem] font-bold text-foreground tracking-tightest leading-[0.75] text-mask-premium uppercase">
-                INITIATE<br />
-                <span className="text-muted-foreground/10 italic font-medium">DEPLOYMENT.</span>
+              <h1 className="text-6xl md:text-[8rem] font-bold text-foreground tracking-tightest leading-[0.85] text-mask-premium uppercase">
+                BOOK YOUR FREE<br />
+                <span className="text-muted-foreground/10 italic font-medium">BUSINESS AUDIT.</span>
               </h1>
               
-              <p className="text-3xl md:text-5xl text-muted-foreground max-w-2xl font-medium tracking-tightest leading-tight italic">
-                "Ready to seal your revenue leaks? Our engineers are standing by to audit your current stack and propose a sovereign growth architecture."
+              <p className="text-xl md:text-3xl text-muted-foreground max-w-xl font-medium tracking-tightest leading-tight italic">
+                "Start with a free 30-minute audit. We'll show you exactly where you're losing money and what to build first. No obligation. No pitch. Just clarity."
               </p>
             </div>
 
-            <div className="space-y-16">
-               <div className="flex items-start space-x-10 group">
-                  <div className="p-8 rounded-[2rem] bg-foreground/[0.03] border border-border group-hover:border-primary/40 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-1000 shadow-xl">
-                    <Mail className="w-10 h-10" />
-                  </div>
-                  <div className="space-y-4">
-                    <p className="text-[12px] font-black text-foreground/20 uppercase tracking-[0.6em] italic">Access_Terminal</p>
-                    <p className="text-3xl md:text-5xl font-bold text-foreground tracking-tightest italic leading-none transition-colors duration-700 group-hover:text-primary lowercase">business.marketingko@gmail.com</p>
-                  </div>
-               </div>
-
-               <div className="flex items-start space-x-10 group">
-                  <div className="p-8 rounded-[2rem] bg-foreground/[0.03] border border-border group-hover:border-primary/40 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-1000 shadow-xl">
-                    <Zap className="w-10 h-10" />
-                  </div>
-                  <div className="space-y-4">
-                    <p className="text-[12px] font-black text-foreground/20 uppercase tracking-[0.6em] italic">Response_Efficiency</p>
-                    <p className="text-3xl md:text-5xl font-bold text-foreground tracking-tightest italic leading-none transition-colors duration-700 group-hover:text-primary uppercase">&lt; 12HR Guaranteed</p>
-                  </div>
-               </div>
+            <div className="space-y-12">
+               <p className="text-[12px] font-black text-primary uppercase tracking-[0.5em] italic border-l-2 border-primary pl-6">What to expect:</p>
+               <ul className="space-y-8">
+                  {[
+                    "We review your current workflows or website",
+                    "Identify 2–3 immediate quick wins",
+                    "Map out the highest-ROI system for your business",
+                    "Give you a estimate of the solution",
+                    "We respond within 24 hours"
+                  ].map((item, i) => (
+                    <motion.li 
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-center space-x-6 group"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-foreground/[0.03] border border-border flex items-center justify-center group-hover:border-primary/50 transition-all duration-700">
+                        <CheckCircle2 className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="text-lg md:text-xl font-bold text-foreground/60 italic tracking-tight group-hover:text-foreground transition-colors">{item}</span>
+                    </motion.li>
+                  ))}
+               </ul>
+            </div>
+            
+            <div className="pt-10 border-t border-border/50">
+               <p className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.6em] italic mb-4">Direct_Line</p>
+               <p className="text-2xl md:text-4xl font-bold text-foreground tracking-tightest italic lowercase hover:text-primary transition-colors cursor-pointer">business.marketingko@gmail.com</p>
             </div>
           </div>
 
-          <Suspense fallback={<div className="h-[800px] w-full rounded-[4rem] bg-foreground/[0.02] animate-pulse" />}>
-            <ContactForm />
-          </Suspense>
+          {/* Form Side */}
+          <div className="lg:col-span-7">
+            <Suspense fallback={<div className="h-[800px] w-full rounded-[4rem] bg-foreground/[0.02] animate-pulse" />}>
+              <ContactForm />
+            </Suspense>
+          </div>
         </div>
       </div>
       

@@ -22,7 +22,7 @@ export function Philosophy() {
             >
               Operator Mindset
             </motion.div>
-            <h2 className="text-6xl md:text-[10rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium">
+            <h2 className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tightest leading-[1.1] text-mask-premium uppercase">
               THE <br />
               <span className="text-muted-foreground/20 italic">PHILOSOPHY.</span>
             </h2>

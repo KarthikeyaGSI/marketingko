@@ -52,10 +52,10 @@ export function Founder() {
               >
                 Human Intelligence
               </motion.div>
-              <h2 className="text-7xl md:text-[9rem] font-bold tracking-tightest text-foreground leading-[0.8] text-mask-premium uppercase">
-                THE BUILDER<br />
-                <span className="text-muted-foreground/10 italic font-medium">MINDSET.</span>
-              </h2>
+              <h2 className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tightest leading-[1.1] text-mask-premium uppercase">
+              THE <br />
+              <span className="text-muted-foreground/10 italic font-medium">BUILDER.</span>
+            </h2>
             </div>
 
             <div className="space-y-12 text-2xl md:text-3xl text-muted-foreground font-medium tracking-tight leading-relaxed italic">
