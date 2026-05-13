@@ -38,7 +38,6 @@ const solutions = [
     category: "AI & Automation",
     title: "WhatsApp Business Automation",
     description: "End-to-end automated WhatsApp interactions. Customer support, lead capture, and notifications handled 24/7.",
-    price: "₹14,999",
     icon: MessageSquare
   },
   {
@@ -46,7 +45,6 @@ const solutions = [
     category: "AI & Automation",
     title: "AI Lead Qualification",
     description: "Automatic scoring and filtering for every lead. Focus your sales team only on high-intent prospects.",
-    price: "₹19,999",
     icon: UserCheck
   },
   {
@@ -54,7 +52,6 @@ const solutions = [
     category: "AI & Automation",
     title: "Appointment Booking Automation",
     description: "Zero-touch scheduling and reminders. Syncs with your calendar to eliminate manual back-and-forth.",
-    price: "₹14,999",
     icon: Calendar
   },
   {
@@ -62,7 +59,6 @@ const solutions = [
     category: "AI & Automation",
     title: "Follow-up Sequence Automation",
     description: "Multi-channel automated engagement sequences. Never let a lead go cold again.",
-    price: "₹24,999",
     icon: Workflow
   },
   {
@@ -70,7 +66,6 @@ const solutions = [
     category: "AI & Automation",
     title: "Cart Abandonment Recovery",
     description: "Automated recovery sequences for lost sales. Capture revenue that would otherwise be gone.",
-    price: "₹19,999",
     icon: RefreshCcw
   },
   {
@@ -78,7 +73,6 @@ const solutions = [
     category: "AI & Automation",
     title: "Invoice & Payment Reminder",
     description: "Hands-free payment collection systems. Automated follow-ups until the bill is cleared.",
-    price: "₹14,999",
     icon: CreditCard
   },
   {
@@ -86,7 +80,6 @@ const solutions = [
     category: "AI & Automation",
     title: "Internal Workflow Automation",
     description: "Seamless data bridging across your daily tools. No more manual data entry between platforms.",
-    price: "₹29,999",
     icon: Layers
   },
   {
@@ -94,7 +87,6 @@ const solutions = [
     category: "AI & Automation",
     title: "Custom AI & Automation",
     description: "Bespoke systems engineered perfectly for your specific operational bottleneck.",
-    price: "Custom",
     icon: Database
   },
   {
@@ -102,7 +94,6 @@ const solutions = [
     category: "AI Voice",
     title: "Inbound AI Voice Agent",
     description: "24/7 intelligent answering and lead routing. Never miss a potential customer call again.",
-    price: "₹49,999",
     icon: PhoneCall
   },
   {
@@ -110,7 +101,6 @@ const solutions = [
     category: "AI Voice",
     title: "Outbound AI Voice Agent",
     description: "Scalable proactive calling and engagement. Qualify leads and set appointments at scale.",
-    price: "₹59,999",
     icon: PhoneForwarded
   },
   {
@@ -118,7 +108,6 @@ const solutions = [
     category: "AI Voice",
     title: "Custom Voice Agent",
     description: "Complex voice logic and deep system integrations for specialized business needs.",
-    price: "Custom",
     icon: Mic
   },
   {
@@ -126,7 +115,6 @@ const solutions = [
     category: "Web",
     title: "Business Website",
     description: "Professional, conversion-focused online presence built for modern startups.",
-    price: "₹29,999",
     icon: Globe
   },
   {
@@ -134,7 +122,6 @@ const solutions = [
     category: "Web",
     title: "Landing Page",
     description: "High-velocity standalone pages for specific marketing campaigns and lead gen.",
-    price: "₹14,999",
     icon: Layout
   },
   {
@@ -142,7 +129,6 @@ const solutions = [
     category: "Web",
     title: "Website Redesign",
     description: "Total overhaul of speed, structure, and conversion flow for existing platforms.",
-    price: "₹39,999",
     icon: MonitorSmartphone
   },
   {
@@ -150,7 +136,6 @@ const solutions = [
     category: "Web",
     title: "Website + Lead Pipeline",
     description: "High-converting site fully wired into automated CRM follow-up systems.",
-    price: "₹59,999",
     icon: Zap
   },
   {
@@ -158,7 +143,6 @@ const solutions = [
     category: "Web",
     title: "E-commerce Store",
     description: "Optimized storefront with integrated recovery systems and inventory sync.",
-    price: "₹79,999",
     icon: ShoppingCart
   },
   {
@@ -166,7 +150,6 @@ const solutions = [
     category: "Web",
     title: "Custom Web Solution",
     description: "Tailored portals, dashboards, and complex booking platforms engineered from scratch.",
-    price: "Custom",
     icon: Code2
   },
   {
@@ -174,7 +157,6 @@ const solutions = [
     category: "Audit & Strategy",
     title: "Business Automation Audit",
     description: "Comprehensive mapping of operational leaks and ROI-focused fix roadmap.",
-    price: "₹14,999",
     icon: Search
   },
   {
@@ -182,7 +164,6 @@ const solutions = [
     category: "Audit & Strategy",
     title: "Conversion & Website Audit",
     description: "Deep structural analysis of digital friction points and conversion leaks.",
-    price: "₹14,999",
     icon: FileSearch
   }
 ];
@@ -194,31 +175,8 @@ export function SolutionsGrid() {
     ? solutions 
     : solutions.filter(s => s.category === activeCategory);
 
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "AI & Automation Growth Systems",
-    "provider": { "@id": "https://marketingko.vercel.app/#organization" },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Growth Protocols",
-      "itemListElement": solutions.map(s => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": s.title,
-          "description": s.description
-        }
-      }))
-    }
-  };
-
   return (
     <section id="solutions" className="py-32 md:py-80 bg-background relative overflow-hidden mesh-animate">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
       <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
       <div className="ambient-glow opacity-20" />
       
@@ -231,12 +189,12 @@ export function SolutionsGrid() {
           >
             System Infrastructure Catalogue
           </motion.div>
-          <h2 className="text-6xl md:text-[10rem] font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase">
+          <h2 className="text-6xl md:text-8xl font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase">
             DROP-IN <br />
             <span className="text-muted-foreground/10 italic font-medium">PROTOCOLS.</span>
           </h2>
           <p className="text-2xl md:text-4xl text-muted-foreground font-medium tracking-tightest leading-tight max-w-4xl italic">
-            19 standalone growth modules. Each one engineered to eliminate a specific operational bottleneck. Starting from ₹14,999.
+            19 standalone growth modules. Each one engineered to eliminate a specific operational bottleneck.
           </p>
         </div>
 
@@ -291,8 +249,8 @@ export function SolutionsGrid() {
 
                     <div className="pt-12 flex items-center justify-between border-t border-border/50">
                       <div className="flex flex-col">
-                        <span className="text-[10px] font-black text-foreground/20 uppercase tracking-widest mb-1">Baseline</span>
-                        <span className="text-3xl md:text-4xl font-black text-foreground tracking-tightest italic">{item.price}</span>
+                        <span className="text-[10px] font-black text-foreground/20 uppercase tracking-widest mb-1">Pricing</span>
+                        <span className="text-2xl md:text-3xl font-black text-foreground tracking-tightest italic">Custom Quote</span>
                       </div>
                       <Link href={`/contact?solution=${item.id}`} className="w-16 h-16 rounded-full border border-primary/20 flex items-center justify-center group/link hover:bg-primary transition-all duration-700">
                         <ArrowRight className="w-6 h-6 text-primary group-hover/link:text-primary-foreground transition-colors group-hover/link:translate-x-1" />
@@ -315,7 +273,7 @@ export function SolutionsGrid() {
               </div>
               <div className="flex justify-end">
                 <Link href="/contact">
-                  <Button className="rounded-3xl px-16 h-24 text-xl bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-black uppercase tracking-widest transition-all duration-1000 shadow-2xl">
+                  <Button className="rounded-3xl px-16 h-24 text-xl bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-black uppercase tracking-widest transition-all duration-1000 shadow-2xl border-none">
                     Request Full Catalogue
                   </Button>
                 </Link>

@@ -16,7 +16,7 @@ export function About() {
             >
               Operational Philosophy
             </motion.div>
-            <h2 className="text-6xl md:text-9xl font-bold text-foreground tracking-tighter leading-[0.85] text-mask-premium uppercase">
+            <h2 className="text-6xl md:text-8xl font-bold text-foreground tracking-tighter leading-[0.85] text-mask-premium uppercase">
               SYSTEMS OVER <br />
               <span className="text-muted-foreground/20 italic">SERVICES.</span>
             </h2>

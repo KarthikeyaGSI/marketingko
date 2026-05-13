@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 export function BusinessNetworkAnimation() {
   const nodes = [
-    { label: 'Leads', x: '12%', y: '12%' },
-    { label: 'Follow-up', x: '78%', y: '12%' },
-    { label: 'Bookings', x: '84%', y: '52%' },
-    { label: 'WhatsApp', x: '50%', y: '82%' },
-    { label: '24/7 Calls', x: '12%', y: '64%' },
+    { label: 'Lead Capture', x: '12%', y: '12%' },
+    { label: 'AI Qualification', x: '78%', y: '12%' },
+    { label: 'Auto Booking', x: '84%', y: '52%' },
+    { label: 'WhatsApp Ops', x: '50%', y: '82%' },
+    { label: 'Voice Agents', x: '12%', y: '64%' },
   ]
 
   const center = { x: '50%', y: '50%' }
@@ -51,8 +51,8 @@ export function BusinessNetworkAnimation() {
       <div className="absolute z-20 flex items-center justify-center w-40 h-40 md:w-52 md:h-52 rounded-full border-2 border-primary shadow-[0_0_80px_rgba(var(--primary),0.8)] bg-background">
         <div className="absolute inset-0 rounded-full border border-primary/30 animate-ping" />
         <div className="text-center text-foreground font-black tracking-tightest leading-[0.8] text-2xl md:text-4xl italic uppercase">
-          YOUR<br />
-          <span className="text-primary not-italic">BUSINESS.</span>
+          GROWTH<br />
+          <span className="text-primary not-italic">OS.</span>
         </div>
       </div>
 

@@ -11,45 +11,45 @@ const solutions = [
     title: "Instant Lead Follow-Up",
     description: "When a lead submits a form, they instantly receive personalized WhatsApp and Email engagements.",
     icon: <MessageSquare className="w-6 h-6 text-primary" />,
-    href: "/solutions/lead-followup"
+    href: "/solutions"
   },
   {
     category: "AI Voice",
     title: "Inbound AI Receptionist",
     description: "Human-like AI answers every inbound call immediately, routes requests, and schedules meetings 24/7.",
     icon: <Phone className="w-6 h-6 text-primary" />,
-    href: "/solutions/voice-receptionist"
+    href: "/solutions"
   },
   {
     category: "Web",
     title: "High-Converting Landing Pages",
     description: "A lightning-fast, single-page funnel precision-built to capture leads and book calls.",
     icon: <Globe className="w-6 h-6 text-primary" />,
-    href: "/solutions/landing-pages"
+    href: "/solutions"
   },
   {
     category: "AI & Automation",
     title: "Appointment Booking Bot",
     description: "Let prospects book themselves automatically across WhatsApp, SMS, or web — zero manual scheduling.",
     icon: <Calendar className="w-6 h-6 text-primary" />,
-    href: "/solutions/booking-bot"
+    href: "/solutions"
   },
   {
     category: "Audit & Strategy",
     title: "Business Process Teardown",
     description: "A complete technical audit of your workflows with an exact mapped roadmap for automation.",
     icon: <Search className="w-6 h-6 text-primary" />,
-    href: "/solutions/audit"
+    href: "/solutions"
   }
 ];
 
 export function IndividualSolutions() {
   return (
-    <section id="solutions" className="py-80 bg-background relative overflow-hidden">
+    <section id="solutions" className="py-60 md:py-80 bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,oklch(var(--primary)/0.05)_0%,transparent_70%)]" />
       
       <div className="container mx-auto px-6 relative">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-48 gap-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-40 gap-12">
           <div className="space-y-12 max-w-4xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -58,12 +58,12 @@ export function IndividualSolutions() {
             >
               Componentized Growth
             </motion.div>
-            <h2 className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
+            <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium uppercase">
               MODULAR <br />
-              <span className="text-muted-foreground/10 italic">SOLUTIONS.</span>
+              <span className="text-muted-foreground/10 italic font-medium">SOLUTIONS.</span>
             </h2>
-            <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight">
-              Start with what hurts most. We've modularized 19+ specific operational workflows into high-performance, fixed-price assets.
+            <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight italic">
+              Start with what hurts most. We've modularized 19+ specific operational workflows into high-performance assets.
             </p>
           </div>
         </div>
@@ -89,7 +89,7 @@ export function IndividualSolutions() {
                 </div>
                 
                 <div className="space-y-6">
-                  <h3 className="text-4xl font-bold text-foreground tracking-tighter italic leading-none group-hover:text-primary transition-colors duration-700">{solution.title}</h3>
+                  <h3 className="text-4xl font-bold text-foreground tracking-tighter italic leading-none group-hover:text-primary transition-colors duration-700 uppercase">{solution.title}</h3>
                   <p className="text-xl text-muted-foreground leading-relaxed font-medium tracking-tight line-clamp-2">{solution.description}</p>
                 </div>
 
@@ -115,7 +115,7 @@ export function IndividualSolutions() {
                 <div className="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center">
                    <ArrowRight className="text-primary w-8 h-8 group-hover:rotate-[-45deg] transition-transform duration-700" />
                 </div>
-                <h3 className="text-5xl font-bold text-foreground tracking-tighter italic leading-none">THE FULL <br /><span className="text-primary">CATALOGUE.</span></h3>
+                <h3 className="text-5xl font-bold text-foreground tracking-tighter italic leading-none uppercase">THE FULL <br /><span className="text-primary not-italic">CATALOGUE.</span></h3>
                 <p className="text-xl text-muted-foreground font-medium tracking-tight">Access 19+ pre-built operational modules for every bottleneck.</p>
              </div>
              
@@ -133,7 +133,7 @@ export function IndividualSolutions() {
            <div className="px-8 py-3 rounded-full border border-border bg-foreground/[0.02] flex items-center space-x-4">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <p className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.3em]">
-                System Baseline: ₹14,999+ | Custom Scoping Available
+                Enterprise-Grade Performance | Custom Scoping Available
               </p>
            </div>
         </div>

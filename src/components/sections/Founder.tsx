@@ -66,7 +66,7 @@ export function Founder() {
                 <span className="text-[10px] font-black tracking-[0.8em] text-foreground uppercase italic">Human Intelligence</span>
               </motion.div>
               
-              <h2 className="text-8xl md:text-[15rem] font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase italic">
+              <h2 className="text-6xl md:text-8xl font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase italic">
                 THE <br />
                 <span className="text-muted-foreground/10 not-italic font-medium">BUILDER.</span>
               </h2>

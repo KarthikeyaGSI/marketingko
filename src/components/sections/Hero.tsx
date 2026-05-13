@@ -19,7 +19,7 @@ export function Hero() {
   const springY2 = useSpring(y2, { stiffness: 100, damping: 30 });
 
   return (
-    <section className="relative min-h-[140vh] flex items-center justify-center overflow-hidden bg-background pt-40 pb-40">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-32 pb-20">
       {/* CINEMATIC BACKGROUND ENVIRONMENT */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_70%_30%,oklch(var(--primary)/0.12)_0%,transparent_50%)]" />
       <div className="absolute inset-0 z-0 grid-infrastructure opacity-20" />
@@ -27,8 +27,8 @@ export function Hero() {
       
       {/* KINETIC TYPOGRAPHY LAYER (Background Tension) */}
       <motion.div 
-        style={{ y: springY2, opacity: 0.03 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[35rem] font-black italic select-none pointer-events-none z-[-1]"
+        style={{ y: springY2, opacity: 0.01 }}
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[25rem] font-black italic select-none pointer-events-none z-[-1]"
       >
         GROWTH ARCHITECTURE • SYSTEMS OVERGROWTH • 
       </motion.div>
@@ -61,7 +61,7 @@ export function Hero() {
                       transition: { staggerChildren: 0.08, delayChildren: 0.5 }
                     }
                   }}
-                  className="text-7xl sm:text-[9rem] md:text-[13rem] font-black tracking-tightest text-foreground leading-[0.9] text-mask-premium uppercase relative z-10"
+                  className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tightest text-foreground leading-[0.9] text-mask-premium uppercase relative z-10"
                 >
                   <div className="flex flex-wrap items-baseline">
                     {["GROWTH", "SYSTEMS"].map((word, i) => (
@@ -89,7 +89,7 @@ export function Hero() {
                         visible: { opacity: 1, scale: 1, filter: "blur(0px)", x: 0 }
                       }}
                       transition={{ duration: 2.5, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-primary italic font-medium inline-block pr-12 text-6xl md:text-[9rem]"
+                      className="text-primary italic font-medium inline-block pr-12 text-5xl md:text-8xl"
                     >
                       LEAKING
                     </motion.span>

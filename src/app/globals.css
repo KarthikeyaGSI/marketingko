@@ -163,7 +163,7 @@
   }
 
   .text-mask-premium {
-    @apply bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/40;
+    @apply bg-clip-text text-transparent bg-foreground;
   }
 
   .glass-system {
