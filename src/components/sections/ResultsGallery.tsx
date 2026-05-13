@@ -2,28 +2,28 @@
 
 import { motion } from "framer-motion";
 import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
-import { BarChart3, PieChart, Activity, Zap, Layers, Network } from "lucide-react";
+import { BarChart3, Activity, Zap, Layers, Network, Terminal } from "lucide-react";
 
-const results = [
+const systemBenchmarks = [
   {
-    title: "Autonomous Acquisition Flow",
-    desc: "A self-healing acquisition architecture that identifies and qualifies targets with 99.8% precision.",
+    title: "Autonomous Pathfinding",
+    desc: "A self-healing acquisition architecture that identifies and qualifies signals with sub-millisecond precision.",
     icon: Network,
-    stats: "+420% Lead Velocity",
+    benchmark: "Protocol: MK-QUAL-v4",
     color: "from-blue-600 to-cyan-500"
   },
   {
-    title: "Operational Intelligence",
-    desc: "Real-time decision engine that orchestrates complex workflows across multiple CRM layers.",
-    icon: BarChart3,
-    stats: "-85% Manual Effort",
+    title: "Operational Logic",
+    desc: "Real-time decision engine orchestrating high-density workflows across decoupled CRM layers.",
+    icon: Terminal,
+    benchmark: "ID: LOGIC-LAYER-08",
     color: "from-cyan-500 to-primary"
   },
   {
-    title: "System Latency Reduction",
-    desc: "Optimized infrastructure protocols that reduce lead-to-outreach response times to <30 seconds.",
+    title: "Response Latency",
+    desc: "Infrastructure protocols engineered to reduce lead-to-outreach jitter across global edge nodes.",
     icon: Zap,
-    stats: "12ms Execution Jitter",
+    benchmark: "Jitter: <10ms",
     color: "from-primary to-purple-600"
   }
 ];
@@ -40,40 +40,40 @@ export function ResultsGallery() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-[10px] font-black tracking-[1em] text-primary uppercase"
           >
-            Operational Proof
+            Operational Benchmarks
           </motion.div>
           <h2 className="text-6xl md:text-[10rem] font-bold text-white tracking-tighter leading-[0.8] text-mask-premium">
             MEASURABLE <br />
             <span className="text-muted-foreground/10 italic">AUTHORITY.</span>
           </h2>
-          <p className="text-2xl text-muted-foreground font-medium tracking-tighter leading-tight">
-            We replace generic testimonials with technical artifacts. These are the actual 
-            operational improvements achieved through our AI infrastructure deployments.
+          <p className="text-2xl text-muted-foreground font-medium tracking-tighter leading-tight max-w-2xl">
+            We replace generic testimonials with technical artifacts and operational benchmarks. 
+            These represent the baseline performance of our deployed AI infrastructure.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {results.map((result, i) => (
+          {systemBenchmarks.map((item, i) => (
             <PerspectiveCard key={i}>
               <div className="group h-full p-16 rounded-[4rem] border border-white/5 bg-white/[0.01] backdrop-blur-3xl hover:border-primary/30 transition-all duration-1000 flex flex-col justify-between">
                 <div className="space-y-12">
-                  <div className={`w-20 h-20 rounded-[2rem] bg-gradient-to-br ${result.color} opacity-20 blur-2xl absolute`} />
+                  <div className={`w-20 h-20 rounded-[2rem] bg-gradient-to-br ${item.color} opacity-20 blur-2xl absolute`} />
                   <div className="relative w-20 h-20 rounded-[2rem] border border-white/10 bg-white/[0.02] flex items-center justify-center group-hover:border-primary/40 transition-all duration-700">
-                    <result.icon className="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-700" />
+                    <item.icon className="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-700" />
                   </div>
                   
                   <div className="space-y-6">
-                    <h3 className="text-4xl font-bold text-white tracking-tighter leading-none">{result.title}</h3>
+                    <h3 className="text-4xl font-bold text-white tracking-tighter leading-none">{item.title}</h3>
                     <p className="text-xl text-muted-foreground font-medium tracking-tighter leading-relaxed">
-                      {result.desc}
+                      {item.desc}
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-16 pt-12 border-t border-white/5">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">Audit Validated</span>
-                    <span className="text-2xl font-bold text-primary tracking-tighter italic">{result.stats}</span>
+                    <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">Audit Baseline</span>
+                    <span className="text-xl font-bold text-primary tracking-tighter italic">{item.benchmark}</span>
                   </div>
                 </div>
               </div>
@@ -91,22 +91,22 @@ export function ResultsGallery() {
           
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
             <div className="space-y-12">
-               <span className="text-[10px] font-black tracking-[0.5em] text-primary uppercase">Example Architecture Map</span>
-               <h3 className="text-5xl font-bold text-white tracking-tighter leading-none">MK-SYS-QUALIFIER.04</h3>
+               <span className="text-[10px] font-black tracking-[0.5em] text-primary uppercase">Architecture Pattern</span>
+               <h3 className="text-5xl font-bold text-white tracking-tighter leading-none">MK-SYS-CORE-QUAL.04</h3>
                <p className="text-xl text-muted-foreground leading-relaxed font-medium">
-                 A live visualization of a Tier-1 partner's qualification engine. 
-                 Processing 14k signals per second with sub-10ms latency for 
-                 autonomous decision routing.
+                 An automated qualification engine pattern. Orchestrating thousands of 
+                 behavioral signals into deterministic routing decisions with 
+                 zero human intervention.
                </p>
                
                <div className="flex items-center space-x-12 pt-8">
                  <div className="flex flex-col">
-                   <span className="text-4xl font-bold text-white tracking-tighter">14,240</span>
-                   <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">Signals/Sec</span>
+                   <span className="text-3xl font-bold text-white tracking-tighter uppercase italic">Redundant</span>
+                   <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">Node Topology</span>
                  </div>
                  <div className="flex flex-col">
-                   <span className="text-4xl font-bold text-primary tracking-tighter">0.08%</span>
-                   <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">Error Rate</span>
+                   <span className="text-3xl font-bold text-primary tracking-tighter uppercase italic">Optimized</span>
+                   <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">Decision Path</span>
                  </div>
                </div>
             </div>
@@ -126,11 +126,11 @@ export function ResultsGallery() {
                 </div>
                 <div className="space-y-4">
                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                      <motion.div initial={{ width: 0 }} whileInView={{ width: "72%" }} transition={{ duration: 2 }} className="h-full bg-primary" />
+                      <motion.div initial={{ width: 0 }} whileInView={{ width: "94%" }} transition={{ duration: 2 }} className="h-full bg-primary" />
                    </div>
                    <div className="flex justify-between text-[10px] font-bold text-white/20 uppercase tracking-widest">
-                     <span>Node Processing</span>
-                     <span>72% Load</span>
+                     <span>Deployment Logic</span>
+                     <span>94% Accuracy</span>
                    </div>
                 </div>
               </div>
@@ -141,3 +141,4 @@ export function ResultsGallery() {
     </section>
   );
 }
+

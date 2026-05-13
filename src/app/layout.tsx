@@ -10,10 +10,32 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { Preloader } from "@/components/ui/Preloader";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { Inter_Tight } from "next/font/google";
+import Script from "next/script";
+import "./globals.css";
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  variable: "--font-inter-tight",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Marketing Ko",
+  "url": "https://marketingko.vercel.app",
+  "logo": "https://marketingko.vercel.app/logo.png",
+  "description": "Growth systems engineered for modern brands. We build AI-powered operational infrastructure.",
+  "sameAs": [
+    "https://twitter.com/marketingko",
+    "https://linkedin.com/company/marketingko"
+  ]
+};
 
 export default function RootLayout({
   children,
@@ -26,10 +48,11 @@ export default function RootLayout({
     
     elements.forEach((el) => {
       gsap.fromTo(el, 
-        { opacity: 0, y: 100, filter: "blur(20px)" },
+        { opacity: 0, y: 80, scale: 0.95, filter: "blur(10px)" },
         { 
           opacity: 1, 
           y: 0, 
+          scale: 1,
           filter: "blur(0px)",
           duration: 1.5,
           ease: "expo.out",
@@ -44,9 +67,23 @@ export default function RootLayout({
   }, []);
 
   return (
-    <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
+    <ReactLenis root options={{ lerp: 0.08, duration: 1.5, smoothWheel: true }}>
       <html lang="en" className="dark">
-        <body className="antialiased selection:bg-primary selection:text-white cursor-none bg-black overflow-x-hidden font-sans">
+        <head>
+          <title>Marketing Ko | Growth Systems Engineered for Modern Brands</title>
+          <meta name="description" content="We engineer high-converting digital architectures and AI-powered growth infrastructure for elite brands. The era of manual acquisition is over." />
+          <meta property="og:title" content="Marketing Ko | AI Growth Infrastructure" />
+          <meta property="og:description" content="Growth systems engineered for modern brands. Eliminate operational drag with autonomous acquisition." />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Marketing Ko | AI Growth Infrastructure" />
+          <Script
+            id="json-ld"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+        </head>
+        <body className={`${interTight.variable} font-sans antialiased selection:bg-primary selection:text-white cursor-none bg-black overflow-x-hidden`}>
           <div className="noise-overlay" />
           <Preloader />
           <CustomCursor />
@@ -62,3 +99,5 @@ export default function RootLayout({
     </ReactLenis>
   );
 }
+
+
