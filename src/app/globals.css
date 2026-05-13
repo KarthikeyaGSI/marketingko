@@ -163,7 +163,10 @@
   }
 
   .text-mask-premium {
-    @apply bg-clip-text text-transparent bg-foreground;
+    background: linear-gradient(to bottom right, var(--foreground) 0%, color-mix(in oklab, var(--foreground), transparent 40%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   .glass-system {

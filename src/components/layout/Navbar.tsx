@@ -14,6 +14,8 @@ const navLinks = [
 ];
 
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { Magnetic } from "@/components/ui/Magnetic";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,14 +59,15 @@ export function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center space-x-12">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="relative text-[10px] font-black tracking-[0.5em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group"
-              >
-                {link.name}
-                <span className="absolute -bottom-3 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)]" />
-              </Link>
+              <Magnetic key={link.name} strength={0.2}>
+                <Link
+                  href={link.href}
+                  className="relative text-[10px] font-black tracking-[0.5em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-4 py-2"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-4 w-0 h-0.5 bg-primary group-hover:w-[calc(100%-32px)] transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)]" />
+                </Link>
+              </Magnetic>
             ))}
           </div>
 
