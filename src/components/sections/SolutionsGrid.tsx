@@ -194,8 +194,31 @@ export function SolutionsGrid() {
     ? solutions 
     : solutions.filter(s => s.category === activeCategory);
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "AI & Automation Growth Systems",
+    "provider": { "@id": "https://marketingko.vercel.app/#organization" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Growth Protocols",
+      "itemListElement": solutions.map(s => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": s.title,
+          "description": s.description
+        }
+      }))
+    }
+  };
+
   return (
     <section id="solutions" className="py-32 md:py-80 bg-background relative overflow-hidden mesh-animate">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
       <div className="ambient-glow opacity-20" />
       

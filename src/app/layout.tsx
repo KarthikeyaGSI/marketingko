@@ -27,32 +27,41 @@ if (typeof window !== "undefined") {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Marketing Ko",
-  "url": "https://marketingko.vercel.app",
-  "logo": "https://marketingko.vercel.app/logo.png",
-  "description": "Growth systems engineered for modern brands. We build AI-powered operational infrastructure, voice agents, and high-converting digital architectures.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "India",
-    "addressRegion": "Telangana"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "Sales",
-    "areaServed": "Global",
-    "availableLanguage": "English"
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Karthikeya Thallapally",
-    "jobTitle": "Growth Architect & Founder",
-    "description": "Obsessed with sustainable technology, automation, and creating real impact through digital systems."
-  },
-  "sameAs": [
-    "https://twitter.com/marketingko",
-    "https://linkedin.com/company/marketingko",
-    "https://linkedin.com/in/karthikeya-thallapally"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://marketingko.vercel.app/#organization",
+      "name": "Marketing Ko",
+      "url": "https://marketingko.vercel.app",
+      "logo": "https://marketingko.vercel.app/logo.png",
+      "description": "Growth systems engineered for modern brands. We build AI-powered operational infrastructure, voice agents, and high-converting digital architectures.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "India",
+        "addressRegion": "Telangana"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Sales",
+        "areaServed": "Global",
+        "availableLanguage": "English"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://marketingko.vercel.app/#founder",
+      "name": "Karthikeya Thallapally",
+      "jobTitle": "Growth Architect & Founder",
+      "image": "https://marketingko.vercel.app/Karthikeya Thallapally.webp",
+      "description": "Obsessed with sustainable technology, automation, and creating real impact through digital systems."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://marketingko.vercel.app/#website",
+      "url": "https://marketingko.vercel.app",
+      "name": "Marketing Ko | Growth OS",
+      "publisher": { "@id": "https://marketingko.vercel.app/#organization" }
+    }
   ]
 };
 
@@ -89,9 +98,9 @@ export default function RootLayout({
     <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothWheel: true }}>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <title>Marketing Ko | AI Growth Infrastructure & Voice Agent Agency India</title>
+          <title>Marketing Ko | AI Growth Infrastructure & Autonomous Systems</title>
           <meta name="description" content="Marketing Ko engineers high-converting digital architectures, AI voice agents, and autonomous growth systems for elite global brands. Based in India, serving the world." />
-          <meta name="keywords" content="AI Automation, Voice Agents, Web Design, Digital Marketing India, SEO, GEO, AEO, Growth Systems, Marketing Ko, Karthikeya Thallapally" />
+          <meta name="keywords" content="AI Automation Agency India, AI Voice Agents, WhatsApp Business Automation, Marketing Ko, Karthikeya Thallapally, Growth Systems, n8n Automation, Lead Generation Systems India" />
           <meta property="og:title" content="Marketing Ko | AI Growth Infrastructure" />
           <meta property="og:description" content="Growth systems engineered for modern brands. Eliminate operational drag with autonomous acquisition." />
           <meta property="og:type" content="website" />

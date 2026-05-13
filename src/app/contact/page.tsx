@@ -1,5 +1,13 @@
+"use client";
+
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, Suspense } from "react";
+import { motion } from "framer-motion";
+import { ShieldCheck, Mail, Zap, ArrowRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 function ContactForm() {
   const searchParams = useSearchParams();
@@ -19,12 +27,11 @@ function ContactForm() {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95, filter: "blur(20px)" }}
-      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
       className="p-16 md:p-24 rounded-[4rem] md:rounded-[6rem] border border-border bg-foreground/[0.02] backdrop-blur-3xl space-y-12 shadow-2xl relative overflow-hidden group"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-      <div className="scanning-line opacity-10" />
       
       <div className="space-y-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
