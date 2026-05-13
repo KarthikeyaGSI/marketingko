@@ -37,13 +37,13 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-[5000] transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      } ${isScrolled ? "py-6" : "py-12"}`}
+      } ${isScrolled ? "py-4 md:py-6" : "py-6 md:py-12"}`}
     >
       <div className="container mx-auto px-6">
         <nav
-          className={`relative flex items-center justify-between px-12 py-6 rounded-[3rem] border transition-all duration-1000 ${
+          className={`relative flex items-center justify-between px-6 md:px-12 py-6 rounded-[2.5rem] md:rounded-[3rem] border transition-all duration-1000 ${
             isScrolled
-              ? "bg-background/80 backdrop-blur-3xl border-border/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
+              ? "bg-background/40 md:bg-background/80 backdrop-blur-3xl border-border/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
               : "bg-transparent border-transparent"
           }`}
         >
