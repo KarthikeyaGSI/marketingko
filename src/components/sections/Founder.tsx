@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ShieldCheck, User, Zap, Activity, Fingerprint } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export function Founder() {
   const containerRef = useRef(null);
