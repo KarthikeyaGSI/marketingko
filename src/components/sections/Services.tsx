@@ -1,52 +1,111 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Zap, Mic2, MessageSquare, Globe, Workflow, Search, BarChart3 } from "lucide-react";
 import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
+import { 
+  Users, 
+  Mic2, 
+  Database, 
+  TrendingUp, 
+  MessageSquare, 
+  Cpu, 
+  UserPlus, 
+  Activity 
+} from "lucide-react";
 
-const services = [
-  { title: "Acquisition Infra", icon: Zap, desc: "AI-powered lead engines that compound daily." },
-  { title: "Voice Operations", icon: Mic2, desc: "24/7 autonomous sales and support agents." },
-  { title: "Revenue Systems", icon: BarChart3, desc: "End-to-end conversion infrastructures." },
-  { title: "CRM Intelligence", icon: Workflow, desc: "Data synchronization with zero human lag." },
+const systems = [
+  {
+    title: "Lead Qualification",
+    icon: Users,
+    desc: "Autonomous pattern matching and intent analysis to isolate high-value revenue targets with zero human friction.",
+    id: "SYS-01"
+  },
+  {
+    title: "Voice Infrastructure",
+    icon: Mic2,
+    desc: "24/7 autonomous sales and support nodes capable of processing thousands of concurrent voice streams.",
+    id: "SYS-02"
+  },
+  {
+    title: "CRM Architecture",
+    icon: Database,
+    desc: "End-to-end operational pipelines that automate data orchestration and eliminate manual bottlenecks.",
+    id: "SYS-03"
+  },
+  {
+    title: "Acquisition Systems",
+    icon: TrendingUp,
+    desc: "Autonomous growth engines that identify, qualify, and convert opportunities at enterprise scale.",
+    id: "SYS-04"
+  },
+  {
+    title: "Engagement Loops",
+    icon: MessageSquare,
+    desc: "Advanced LLM-driven response protocols that drive decision momentum and user conversion.",
+    id: "SYS-05"
+  },
+  {
+    title: "Workflow Intelligence",
+    icon: Cpu,
+    desc: "Custom-engineered operational protocols designed for maximum margin expansion and processing speed.",
+    id: "SYS-06"
+  },
+  {
+    title: "Sovereign Onboarding",
+    icon: UserPlus,
+    desc: "Self-healing deployment systems that automate client success and maximize lifecycle value.",
+    id: "SYS-07"
+  },
+  {
+    title: "Operational Audits",
+    icon: Activity,
+    desc: "Continuous infrastructure monitoring and node optimization for mission-critical business units.",
+    id: "SYS-08"
+  }
 ];
 
 export function ServicesGrid() {
   return (
-    <section className="py-40 bg-black">
+    <section className="py-60 bg-black relative">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-32 gap-12">
-          <div className="max-w-3xl">
-            <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter mb-8 leading-none">
-              CORE <br />
-              <span className="text-muted-foreground/30">CAPABILITIES.</span>
-            </h2>
-            <p className="text-xl text-muted-foreground font-medium tracking-tight">
-              We engineer growth infrastructure for companies that demand scale without the overhead.
-            </p>
-          </div>
-          
-          <div className="pb-4">
-            <span className="text-[10px] font-bold tracking-[0.5em] text-white/20 uppercase">Market Dominance Layer</span>
-          </div>
+        <div className="mb-48 space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-[10px] font-black tracking-[0.8em] text-primary uppercase"
+          >
+            System Categories
+          </motion.div>
+          <h2 className="text-6xl md:text-[11rem] font-bold text-white tracking-tighter leading-[0.85] text-mask-premium">
+            ENGINEERED <br />
+            <span className="text-muted-foreground/10 italic">INFRASTRUCTURE.</span>
+          </h2>
+          <p className="text-3xl text-muted-foreground font-medium tracking-tighter leading-tight max-w-5xl">
+            We deploy sovereign acquisition architectures and operational protocols 
+            that operate autonomously, compounding your competitive advantage.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <PerspectiveCard key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-10 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group h-full"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
-                  <service.icon className="h-6 w-6" />
+          {systems.map((sys, i) => (
+            <PerspectiveCard key={i}>
+              <div className="p-12 rounded-[3rem] border border-white/5 bg-white/[0.01] backdrop-blur-3xl h-full flex flex-col justify-between group hover:border-primary/30 transition-all duration-700">
+                <div className="space-y-10">
+                  <div className="flex items-center justify-between">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-700">
+                      <sys.icon className="h-8 w-8" />
+                    </div>
+                    <span className="text-[10px] font-black text-white/10 group-hover:text-primary transition-colors tracking-widest">{sys.id}</span>
+                  </div>
+                  <h3 className="text-3xl font-bold text-white tracking-tighter leading-none">{sys.title}</h3>
+                  <p className="text-lg text-muted-foreground font-medium leading-relaxed tracking-tight">{sys.desc}</p>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{service.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed font-medium">{service.desc}</p>
-              </motion.div>
+                
+                <div className="mt-12 flex items-center space-x-6 pt-10 border-t border-white/5">
+                  <div className="h-[1px] flex-1 bg-white/10 group-hover:bg-primary/30 transition-all" />
+                  <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">Node Active</span>
+                </div>
+              </div>
             </PerspectiveCard>
           ))}
         </div>
@@ -56,36 +115,55 @@ export function ServicesGrid() {
 }
 
 export function Process() {
-  const steps = [
-    { title: "AUDIT", desc: "Identifying infrastructure leakage and growth bottlenecks." },
-    { title: "BLUEPRINT", desc: "Engineering the custom AI architecture for your scale." },
-    { title: "DEPLOY", desc: "Precision integration with zero operational downtime." },
-    { title: "OPTIMIZE", desc: "Continuous improvement of revenue compounding loops." },
-  ];
-
   return (
-    <section className="py-40 bg-black relative">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="relative p-12 group hover:bg-white/[0.02] transition-colors rounded-3xl"
-            >
-              <span className="text-[10px] font-black text-white/10 tracking-[0.5em] mb-12 block">PHASE 0{index + 1}</span>
-              <h3 className="text-2xl font-bold text-white mb-6 tracking-tighter group-hover:translate-x-2 transition-transform">{step.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed font-medium">
-                {step.desc}
-              </p>
-              <div className="absolute bottom-0 left-12 right-12 h-[1px] bg-white/5 group-hover:bg-white/20 transition-colors" />
-            </motion.div>
-          ))}
-        </div>
-      </div>
+    <section className="py-80 bg-black relative border-t border-white/5">
+       <div className="container mx-auto px-6">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-center">
+            <div className="space-y-16">
+               <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="text-[10px] font-black tracking-[0.8em] text-primary uppercase"
+              >
+                Implementation Protocol
+              </motion.div>
+              <h2 className="text-6xl md:text-9xl font-bold text-white tracking-tighter leading-[0.9]">
+                HOW SYSTEMS <br />
+                <span className="text-muted-foreground/20 italic">DEPLOY.</span>
+              </h2>
+              <div className="space-y-16">
+                {[
+                  { step: "01", title: "Infrastructure Audit", desc: "We map operational drag and isolate high-velocity revenue opportunities within your current stack." },
+                  { step: "02", title: "Architecture Design", desc: "Custom engineering of AI protocols and system integrations specific to your proprietary unit economics." },
+                  { step: "03", title: "Autonomous Deployment", desc: "Direct integration of sovereign agents and automated workflows into your primary infrastructure." },
+                  { step: "04", title: "Continuous Optimization", desc: "Real-time monitoring and node tuning to ensure maximum margin expansion and system resilience." }
+                ].map((p, i) => (
+                  <div key={i} className="flex space-x-12 group">
+                    <span className="text-5xl font-bold text-white/5 group-hover:text-primary transition-colors">{p.step}</span>
+                    <div className="space-y-6">
+                      <h4 className="text-3xl font-bold text-white tracking-tighter">{p.title}</h4>
+                      <p className="text-xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-xl">{p.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="relative aspect-square">
+               <div className="absolute inset-0 bg-primary/5 blur-[200px] rounded-full animate-pulse-slow" />
+               <div className="relative h-full w-full border border-white/5 bg-white/[0.01] backdrop-blur-3xl rounded-[5rem] p-24 overflow-hidden flex items-center justify-center">
+                  <Cpu className="h-80 w-80 text-white/5 animate-orbit" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center space-y-6">
+                      <span className="text-[10px] font-black tracking-[0.5em] text-primary uppercase">Core Engine</span>
+                      <p className="text-8xl font-bold text-white tracking-tighter">MK-02</p>
+                    </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+       </div>
     </section>
   );
 }
+

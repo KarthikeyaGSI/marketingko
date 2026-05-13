@@ -41,28 +41,70 @@
   50% { transform: translateY(-20px); }
 }
 
+// Updated colour palette with electric‑blue primary accent
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --background: oklch(0.07 0 0); /* deep dark background */
+  --foreground: oklch(0.95 0 0); /* near‑white text */
+  --card: oklch(0.12 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: var(--foreground);
+  --primary: oklch(0.65 0.18 250); /* electric‑blue */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.2 0 0);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.6 0 0);
+  --accent: oklch(0.15 0 0);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(0.58 0.25 27); /* subtle red */
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.2 0 0);
+  --input: oklch(0.2 0 0);
+  --ring: oklch(0.3 0 0);
   --radius: 0.625rem;
 }
+
+/* Premium utility classes */
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+}
+
+.kinetic {
+  --duration: 1.4s;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration) ease, transform var(--duration) cubic-bezier(0.16,1,0.3,1);
+}
+.kinetic[data-visible] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.magnetic:hover {
+  transform: translate3d(0,-2px,0) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary) 50%, transparent);
+  margin: 4rem 0;
+}
+
+.bg-lowpoly {
+  background-image: url('/images/lowpoly.svg');
+  background-size: cover;
+  filter: blur(8px);
+  transition: filter 0.8s ease-out;
+}
+.bg-lowpoly[data-loaded] { filter: none; }
+
+/* Preserve existing definitions */
+
 
 .dark {
   --background: oklch(0 0 0);

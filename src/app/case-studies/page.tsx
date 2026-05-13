@@ -1,86 +1,157 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
+import { 
+  TrendingUp, 
+  Activity, 
+  Cpu, 
+  Shield, 
+  Clock, 
+  BarChart3, 
+  Zap,
+  Layers,
+  Database,
+  ArrowRight
+} from "lucide-react";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, TrendingUp, Clock, Target } from "lucide-react";
+import Link from "next/link";
 
-const cases = [
-  {
-    client: "Global Logistics Corp",
-    title: "Saving 15,000 Hours with AI Voice Dispatch",
-    results: "85% reduction in manual dispatching",
-    metric: "12x ROI",
-    icon: Clock,
-  },
-  {
-    client: "TechFlow Systems",
-    title: "Scaling Lead Gen by 400% with AI Sales Pipelines",
-    results: "Zero manual data entry in 6 months",
-    metric: "$2.4M Growth",
-    icon: TrendingUp,
-  },
-  {
-    client: "Luxe Realty Group",
-    title: "AI Property Matchmaker: Closing Deals 3x Faster",
-    results: "98% accuracy in lead qualification",
-    metric: "300% Conversion",
-    icon: Target,
-  },
+const typicalImprovements = [
+  { label: "Response Time", value: "-94%", desc: "Lead response reduced from hours to < 1 min via AI qualification." },
+  { label: "Handling Capacity", value: "+1,200%", desc: "Simultaneous lead processing without increasing headcount." },
+  { label: "Manual Elimination", value: "85%", desc: "Reduction in repetitive CRM entry and administrative tasks." },
+  { label: "Pipeline Velocity", value: "4.2x", desc: "Acceleration of leads from first-touch to qualified opportunity." },
 ];
 
-export default function CaseStudiesPage() {
+const techStack = [
+  "OpenAI", "Claude", "HubSpot", "Slack", "Twilio", "Zapier", "Make", "Airtable", "Notion", "Salesforce"
+];
+
+export default function ResultsPage() {
   return (
-    <div className="pt-40 pb-20">
-      <div className="container mx-auto px-6">
-        <div className="mb-32">
-          <motion.h1 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-6xl md:text-9xl font-bold text-white tracking-tighter mb-8"
+    <div className="pt-40 pb-20 relative overflow-hidden bg-black">
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:80px_80px]" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Hero Section */}
+        <div className="text-center mb-60">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-[10px] font-black tracking-[0.8em] text-primary mb-12 uppercase"
           >
-            PROVEN <br />
-            <span className="text-muted-foreground">OUTCOMES.</span>
-          </motion.h1>
-          <p className="text-xl text-muted-foreground max-w-xl">
-            Real data. Real growth. Explore how we've helped forward-thinking enterprises 
-            dominate their industries through AI infrastructure.
+            Operational Transparency
+          </motion.div>
+          <h1 className="text-7xl md:text-[14rem] font-bold text-white tracking-tighter mb-16 leading-[0.8] text-mask-premium">
+            TYPICAL <br />
+            <span className="text-muted-foreground/10 italic">RESULTS.</span>
+          </h1>
+          <p className="text-2xl md:text-4xl text-muted-foreground max-w-5xl mx-auto font-medium tracking-tighter leading-tight italic">
+            "We focus on operational leverage and scalable systems. No vanity metrics. 
+            Just infrastructure that works."
           </p>
         </div>
 
-        <div className="space-y-12 mb-32">
-          {cases.map((c, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative p-12 rounded-3xl border border-white/10 bg-white/5 hover:bg-white/[0.08] transition-all overflow-hidden"
-            >
-              <div className="flex flex-col md:row items-start justify-between gap-12">
-                <div className="flex-1 space-y-6">
-                  <div className="flex items-center space-x-3 text-muted-foreground">
-                    <span className="text-xs font-bold uppercase tracking-widest">{c.client}</span>
+        {/* Typical Operational Improvements Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-60">
+          {typicalImprovements.map((item, index) => (
+            <PerspectiveCard key={index}>
+              <div className="p-12 rounded-[3rem] border border-white/5 bg-white/[0.01] backdrop-blur-3xl space-y-8 h-full flex flex-col justify-between hover:border-primary/20 transition-all duration-700">
+                <div className="space-y-6">
+                  <span className="text-6xl font-bold text-white tracking-tighter italic">{item.value}</span>
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-black tracking-widest text-primary uppercase">{item.label}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed font-medium">{item.desc}</p>
                   </div>
-                  <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight group-hover:text-primary transition-colors">
-                    {c.title}
-                  </h2>
-                  <p className="text-xl text-muted-foreground leading-relaxed">
-                    {c.results}
-                  </p>
-                  <Button variant="ghost" className="text-white p-0 hover:bg-transparent group-hover:translate-x-2 transition-transform">
-                    View Case Study <ArrowUpRight className="ml-2 h-5 w-5" />
-                  </Button>
                 </div>
-                
-                <div className="w-full md:w-80 p-8 rounded-2xl bg-black border border-white/10 flex flex-col items-center justify-center text-center space-y-4">
-                  <c.icon className="h-10 w-10 text-white mb-2" />
-                  <span className="text-4xl font-bold text-white">{c.metric}</span>
-                  <span className="text-xs uppercase tracking-widest text-muted-foreground">Impact Measured</span>
+                <div className="pt-8 border-t border-white/5">
+                  <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">Protocol Standard</span>
                 </div>
               </div>
-            </motion.div>
+            </PerspectiveCard>
           ))}
+        </div>
+
+        {/* System Demonstrations - Visualizing the OS */}
+        <div className="space-y-32 mb-60">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div className="space-y-12">
+               <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">INFRASTRUCTURE <br /> <span className="text-muted-foreground/20 italic">MAPPING.</span></h2>
+               <p className="text-xl text-muted-foreground font-medium tracking-tight max-w-xl">
+                 Our systems don't just 'run'—they are engineered to self-heal and optimize. 
+                 Behold the blueprint of a standard AI acquisition node.
+               </p>
+               <div className="space-y-6">
+                 {[
+                   { t: "Node Ingestion", d: "Aggregating data from 12+ high-intent sources." },
+                   { t: "Logic Layer", d: "LLM-driven qualification with 98% accuracy." },
+                   { t: "CRM Synthesis", d: "Zero-latency synchronization with your sales stack." }
+                 ].map((item, i) => (
+                   <div key={i} className="flex items-start space-x-6">
+                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
+                     <div>
+                       <h4 className="text-white font-bold tracking-tight">{item.t}</h4>
+                       <p className="text-sm text-muted-foreground">{item.d}</p>
+                     </div>
+                   </div>
+                 ))}
+               </div>
+            </div>
+            <div className="relative aspect-video rounded-[3rem] border border-white/5 bg-white/[0.01] backdrop-blur-3xl p-12 flex items-center justify-center overflow-hidden">
+               <div className="absolute inset-0 bg-primary/5 blur-[100px]" />
+               <Layers className="h-40 w-40 text-white/10 animate-orbit" />
+               <div className="absolute bottom-12 left-12 right-12 p-8 glass-premium rounded-2xl border-primary/20">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-bold text-white uppercase tracking-widest">System Health: Optimal</span>
+                    <span className="text-[10px] font-bold text-primary uppercase tracking-widest">100% Automation</span>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Technology Stack */}
+        <div className="text-center mb-60">
+          <h2 className="text-xs font-black tracking-[1em] text-white/20 mb-16 uppercase">The Infrastructure Stack</h2>
+          <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+            {techStack.map((tech) => (
+              <div key={tech} className="px-10 py-5 rounded-2xl border border-white/5 bg-white/[0.02] text-xl font-bold text-white tracking-tighter hover:border-primary/40 transition-all duration-500">
+                {tech}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Build Philosophy */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-60">
+           <div className="p-20 rounded-[4rem] border border-white/5 bg-white/[0.01] backdrop-blur-3xl space-y-12">
+              <h3 className="text-4xl font-bold text-white tracking-tighter">OUR <br /> PHILOSOPHY.</h3>
+              <div className="space-y-6 text-xl text-muted-foreground font-medium tracking-tight">
+                <p>We eliminate vanity metrics. If it doesn't move the revenue needle or expand your operational margin, we don't build it.</p>
+                <p>Scaling a business shouldn't increase operational drag. Our goal is to make growth silent and autonomous.</p>
+              </div>
+           </div>
+           <div className="p-20 rounded-[4rem] border border-primary/20 bg-primary/5 space-y-12 flex flex-col justify-center text-center">
+              <h3 className="text-3xl font-black text-white tracking-widest uppercase">No Fake Promises. <br /> No Vanity Reviews.</h3>
+              <p className="text-muted-foreground font-medium italic">"We let the system logs speak for themselves."</p>
+           </div>
+        </div>
+
+        {/* Final CTA */}
+        <div className="text-center py-60">
+           <h2 className="text-6xl md:text-[10rem] font-bold text-white tracking-tighter leading-[0.8] mb-20 text-mask-premium">
+              DESIGN YOUR <br />
+              <span className="text-muted-foreground/30 italic">SYSTEM.</span>
+           </h2>
+           <MagneticButton>
+            <Link href="/contact">
+              <Button size="lg" className="rounded-full px-20 h-24 text-3xl bg-primary text-white hover:bg-primary/90 font-black shadow-primary/30 shadow-2xl transition-all duration-700 hover:scale-105">
+                Initiate Infrastructure Audit <ArrowRight className="ml-6 h-8 w-8" />
+              </Button>
+            </Link>
+          </MagneticButton>
         </div>
       </div>
     </div>

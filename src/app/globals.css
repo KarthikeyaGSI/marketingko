@@ -120,9 +120,15 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    opacity: 0.06;
+    opacity: 0.05;
     z-index: 9999;
     background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  }
+
+  .mesh-gradient {
+    background: radial-gradient(at 0% 0%, oklch(0.6 0.2 250 / 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, oklch(0.6 0.2 250 / 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, oklch(0.6 0.2 250 / 0.05) 0px, transparent 50%);
   }
 
   .glow-primary {
@@ -130,7 +136,7 @@
   }
 
   .text-mask-premium {
-    @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/10;
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/5;
   }
 
   .glass-system {
@@ -144,12 +150,21 @@
   }
 
   .perspective-elite {
-    perspective: 2000px;
+    perspective: 2500px;
   }
 
   .system-node {
-    @apply relative flex items-center justify-center rounded-2xl border border-white/10 bg-black/50 backdrop-blur-2xl hover:border-primary/50 transition-all duration-500;
+    @apply relative flex items-center justify-center rounded-2xl border border-white/10 bg-black/60 backdrop-blur-3xl hover:border-primary/50 transition-all duration-700;
   }
+
+  .kinetic-reveal {
+    animation: kinetic-reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@keyframes kinetic-reveal {
+  0% { opacity: 0; transform: translateY(100px) scale(0.95); filter: blur(20px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
 /* Elite Scroll Motion */
