@@ -35,7 +35,7 @@ export function Founder() {
                 src="/Karthikeya Thallapally.webp"
                 alt="Karthikeya Thallapally - Growth Architect"
                 fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                className="object-cover transition-all duration-1000"
                 priority
               />
               

@@ -61,7 +61,7 @@ export function Hero() {
                       transition: { staggerChildren: 0.08, delayChildren: 0.5 }
                     }
                   }}
-                  className="text-8xl sm:text-[10rem] md:text-[15rem] font-black tracking-tightest text-foreground leading-[0.9] text-mask-premium uppercase relative z-10"
+                  className="text-7xl sm:text-[9rem] md:text-[13rem] font-black tracking-tightest text-foreground leading-[0.9] text-mask-premium uppercase relative z-10"
                 >
                   <div className="flex flex-wrap items-baseline">
                     {["GROWTH", "SYSTEMS"].map((word, i) => (
@@ -89,7 +89,7 @@ export function Hero() {
                         visible: { opacity: 1, scale: 1, filter: "blur(0px)", x: 0 }
                       }}
                       transition={{ duration: 2.5, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-primary italic font-medium inline-block pr-12 text-7xl md:text-[10rem]"
+                      className="text-primary italic font-medium inline-block pr-12 text-6xl md:text-[9rem]"
                     >
                       LEAKING
                     </motion.span>
@@ -126,7 +126,7 @@ export function Hero() {
                 initial={{ opacity: 0, filter: "blur(20px)", y: 50 }}
                 animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                 transition={{ duration: 2, delay: 2.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-4xl md:text-7xl text-muted-foreground max-w-6xl font-medium tracking-tightest leading-[1.1] italic"
+                className="text-3xl md:text-5xl text-muted-foreground max-w-6xl font-medium tracking-tightest leading-[1.1] italic"
               >
                 AI automations, voice agents, and web systems — <span className="text-primary not-italic font-black uppercase underline decoration-primary/20 underline-offset-[20px]">engineered</span> around your outcomes, not our deliverables.
               </motion.p>

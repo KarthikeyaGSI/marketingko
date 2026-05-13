@@ -18,10 +18,10 @@ export function FloatingCTA() {
     >
       <MagneticButton>
         <Link href="/contact">
-          <Button size="lg" className="h-16 px-8 rounded-2xl bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-black shadow-2xl border border-foreground/10 group">
-            <MessageSquare className="mr-3 h-5 w-5 text-primary" />
-            <span className="mr-2">Initiate Strategy Audit</span>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          <Button size="lg" className="h-14 px-6 rounded-2xl bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-black shadow-2xl border border-foreground/10 group backdrop-blur-md opacity-90 hover:opacity-100 transition-all duration-500">
+            <MessageSquare className="mr-2 h-4 w-4 text-primary" />
+            <span className="text-xs uppercase tracking-widest">Audit Terminal</span>
+            <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
           </Button>
         </Link>
       </MagneticButton>

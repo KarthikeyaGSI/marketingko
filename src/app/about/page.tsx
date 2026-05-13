@@ -3,7 +3,9 @@
 import { motion } from "framer-motion";
 import { Philosophy } from "@/components/sections/Philosophy";
 import { WhyMarketingKo } from "@/components/sections/WhyMarketingKo";
+import { Founder } from "@/components/sections/Founder";
 import { ShieldCheck, Cpu, Zap, Activity } from "lucide-react";
+import { CTA } from "@/components/sections/CTA";
 
 export default function AboutPage() {
   return (
@@ -26,7 +28,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium"
+              className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium uppercase"
             >
               WE BUILD<br />
               <span className="text-muted-foreground/10 italic">SOVEREIGNTY.</span>
@@ -43,45 +45,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Values / Pillar Section */}
-      <section className="py-40 bg-background border-y border-border">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
-            <div className="space-y-8">
-              <div className="p-6 rounded-[2rem] bg-primary/5 w-fit">
-                <Cpu className="text-primary w-10 h-10" />
-              </div>
-              <h3 className="text-4xl font-bold text-foreground tracking-tighter italic">Infrastructure First</h3>
-              <p className="text-xl text-muted-foreground font-medium tracking-tight leading-relaxed">
-                We don't launch ads until the pipes are fixed. Our first priority is building the internal systems that handle leads with 100% precision.
-              </p>
-            </div>
-            
-            <div className="space-y-8">
-              <div className="p-6 rounded-[2rem] bg-primary/5 w-fit">
-                <Activity className="text-primary w-10 h-10" />
-              </div>
-              <h3 className="text-4xl font-bold text-foreground tracking-tighter italic">Live Telemetry</h3>
-              <p className="text-xl text-muted-foreground font-medium tracking-tight leading-relaxed">
-                We replace generic reports with live dashboards. You see every node execution, every lead qualification, and every dollar returned in real-time.
-              </p>
-            </div>
-
-            <div className="space-y-8">
-              <div className="p-6 rounded-[2rem] bg-primary/5 w-fit">
-                <Zap className="text-primary w-10 h-10" />
-              </div>
-              <h3 className="text-4xl font-bold text-foreground tracking-tighter italic">Autonomous Growth</h3>
-              <p className="text-xl text-muted-foreground font-medium tracking-tight leading-relaxed">
-                The ultimate goal is a business that runs without you. We build autonomous acquisition loops that work while your team focuses on high-value work.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <Founder />
       <Philosophy />
       <WhyMarketingKo />
+      <CTA />
     </main>
   );
 }

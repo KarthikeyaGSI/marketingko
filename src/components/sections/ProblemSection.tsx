@@ -55,7 +55,7 @@ export function ProblemSection() {
               >
                 Current State Analysis
               </motion.div>
-              <h2 className="text-8xl sm:text-[12rem] md:text-[18rem] font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase relative">
+              <h2 className="text-7xl sm:text-[9rem] md:text-[14rem] font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase relative">
                 DOING EVERYTHING. <br />
                 <span className="text-muted-foreground/5 italic font-medium">BUT STILL LOSING.</span>
                 

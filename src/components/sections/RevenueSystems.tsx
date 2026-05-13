@@ -59,7 +59,7 @@ export function RevenueSystems() {
             >
               Infrastructure Protocols
             </motion.div>
-            <h2 className="text-8xl md:text-[18rem] font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase">
+            <h2 className="text-7xl md:text-[14rem] font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase">
               CORE <br />
               <span className="text-muted-foreground/10 italic font-medium">SYSTEMS.</span>
             </h2>

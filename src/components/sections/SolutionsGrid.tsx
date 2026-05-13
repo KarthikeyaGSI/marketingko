@@ -223,7 +223,7 @@ export function SolutionsGrid() {
       <div className="ambient-glow opacity-20" />
       
       <div className="container mx-auto px-6 relative">
-        <div className="max-w-6xl mb-40 space-y-12">
+        <div className="max-w-6xl mb-48 space-y-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -231,11 +231,11 @@ export function SolutionsGrid() {
           >
             System Infrastructure Catalogue
           </motion.div>
-          <h2 className="text-6xl md:text-[12rem] font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase">
+          <h2 className="text-6xl md:text-[10rem] font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase">
             DROP-IN <br />
             <span className="text-muted-foreground/10 italic font-medium">PROTOCOLS.</span>
           </h2>
-          <p className="text-2xl md:text-5xl text-muted-foreground font-medium tracking-tightest leading-tight max-w-4xl italic">
+          <p className="text-2xl md:text-4xl text-muted-foreground font-medium tracking-tightest leading-tight max-w-4xl italic">
             19 standalone growth modules. Each one engineered to eliminate a specific operational bottleneck. Starting from ₹14,999.
           </p>
         </div>
