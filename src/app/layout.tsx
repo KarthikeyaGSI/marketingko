@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import ReactLenis from "@studio-freight/react-lenis";
+import { ReactLenis } from "lenis/react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CommandMenu } from "@/components/ui/CommandMenu";
@@ -37,6 +37,8 @@ const jsonLd = {
   ]
 };
 
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,7 +70,7 @@ export default function RootLayout({
 
   return (
     <ReactLenis root options={{ lerp: 0.08, duration: 1.5, smoothWheel: true }}>
-      <html lang="en" className="dark">
+      <html lang="en" suppressHydrationWarning>
         <head>
           <title>Top AI Automation & Voice Agent Agency in India | Marketing Ko</title>
           <meta name="description" content="We engineer high-converting digital architectures and AI-powered growth infrastructure for elite brands. The era of manual acquisition is over." />
@@ -83,17 +85,24 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
         </head>
-        <body className={`${interTight.variable} font-sans antialiased selection:bg-primary selection:text-white cursor-none bg-black overflow-x-hidden`}>
-          <div className="noise-overlay" />
-          <Preloader />
-          <CustomCursor />
-          <div className="relative flex min-h-screen flex-col">
-            <Navbar />
-            <CommandMenu />
-            <main className="flex-1">{children}</main>
-            <FloatingCTA />
-            <Footer />
-          </div>
+        <body className={`${interTight.variable} font-sans antialiased selection:bg-primary selection:text-white cursor-none bg-background text-foreground overflow-x-hidden`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="noise-overlay" />
+            <Preloader />
+            <CustomCursor />
+            <div className="relative flex min-h-screen flex-col">
+              <Navbar />
+              <CommandMenu />
+              <main className="flex-1">{children}</main>
+              <FloatingCTA />
+              <Footer />
+            </div>
+          </ThemeProvider>
         </body>
       </html>
     </ReactLenis>

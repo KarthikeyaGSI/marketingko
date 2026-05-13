@@ -13,6 +13,8 @@ const navLinks = [
   { name: "Contact", href: "/contact" },
 ];
 
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -41,7 +43,7 @@ export function Navbar() {
         <nav
           className={`relative flex items-center justify-between px-10 py-5 rounded-[2rem] border transition-all duration-1000 ${
             isScrolled
-              ? "bg-black/60 backdrop-blur-3xl border-white/5 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)]"
+              ? "bg-background/60 backdrop-blur-3xl border-white/5 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)]"
               : "bg-transparent border-transparent"
           }`}
         >
@@ -52,7 +54,7 @@ export function Navbar() {
               <Shield className="h-6 w-6 text-white relative z-10" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tighter text-white uppercase italic leading-none">
+              <span className="text-xl font-black tracking-tighter text-foreground uppercase italic leading-none">
                 Marketing Ko
               </span>
               <span className="text-[8px] font-black tracking-[0.4em] text-primary uppercase mt-1">Operational OS</span>
@@ -65,7 +67,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-[10px] font-black tracking-[0.5em] text-white/40 hover:text-white uppercase transition-colors group"
+                className="relative text-[10px] font-black tracking-[0.5em] text-foreground/40 hover:text-foreground uppercase transition-colors group"
               >
                 {link.name}
                 <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-500" />
@@ -74,8 +76,9 @@ export function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center space-x-8">
+             <ThemeToggle />
              <Link href="/contact">
-                <Button className="rounded-full px-10 h-14 bg-white text-black hover:bg-primary hover:text-white font-black text-xs uppercase tracking-[0.2em] transition-all duration-700 hover:scale-105 group relative overflow-hidden">
+                <Button className="rounded-full px-10 h-14 bg-foreground text-background hover:bg-primary hover:text-white font-black text-xs uppercase tracking-[0.2em] transition-all duration-700 hover:scale-105 group relative overflow-hidden">
                   <span className="relative z-10 flex items-center">
                     Initiate Deployment <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-2 transition-transform" />
                   </span>
@@ -84,12 +87,15 @@ export function Navbar() {
           </div>
 
           {/* Mobile Toggle */}
-          <button
-            className="lg:hidden w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="lg:hidden flex items-center space-x-4">
+            <ThemeToggle />
+            <button
+              className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center text-foreground border border-foreground/10"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </nav>
       </div>
 
@@ -101,7 +107,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[4999] bg-black/95 backdrop-blur-2xl pt-40 px-10 lg:hidden flex flex-col"
+            className="fixed inset-0 z-[4999] bg-background/95 backdrop-blur-2xl pt-40 px-10 lg:hidden flex flex-col"
           >
             <div className="flex flex-col space-y-12">
               {navLinks.map((link, i) => (
@@ -113,7 +119,7 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="text-6xl font-bold text-white tracking-tighter"
+                    className="text-6xl font-bold text-foreground tracking-tighter"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -135,7 +141,7 @@ export function Navbar() {
             </div>
             
             <div className="mt-auto pb-20">
-              <p className="text-[10px] font-black tracking-[1em] text-white/20 uppercase text-center">Marketing Ko OS v4.2</p>
+              <p className="text-[10px] font-black tracking-[1em] text-foreground/20 uppercase text-center">Marketing Ko OS v4.2</p>
             </div>
           </motion.div>
         )}
