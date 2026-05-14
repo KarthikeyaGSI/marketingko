@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 
 export function CinematicWrapper({ children }: { children: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,14 +20,16 @@ export function CinematicWrapper({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-background mesh-animate overflow-hidden">
-      {/* Cinematic Overlays */}
+    <div ref={containerRef} className="relative min-h-screen bg-background overflow-hidden">
+      {/* Noise texture */}
       <div className="noise-overlay" />
-      <div className="ambient-glow" />
       
-      {/* Floating Light Blobs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full animate-pulse-slow" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full animate-pulse-slow" style={{ animationDelay: "2s" }} />
+      {/* Mouse-reactive glow */}
+      <div className="cinematic-glow fixed inset-0 pointer-events-none z-[1] opacity-30" />
+      
+      {/* Floating atmospheric orbs */}
+      <div className="glow-orb w-[600px] h-[600px] bg-primary/6 top-[-15%] left-[-10%] fixed z-[0]" style={{ animationDuration: "8s" }} />
+      <div className="glow-orb w-[500px] h-[500px] bg-primary/5 bottom-[-10%] right-[-10%] fixed z-[0]" style={{ animationDelay: "4s", animationDuration: "10s" }} />
       
       <div className="relative z-10">
         {children}

@@ -8,70 +8,73 @@ import Link from "next/link";
 
 export function CTA() {
   return (
-    <section className="py-60 md:py-96 bg-background relative overflow-hidden mesh-animate">
-      <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
-      <div className="ambient-glow opacity-30" />
+    <section className="py-24 md:py-40 bg-background relative overflow-hidden mesh-animate">
+      <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
+      <div className="ambient-glow opacity-25" />
+      <div className="glow-orb w-[500px] h-[500px] bg-primary/10 bottom-[-15%] left-[-10%]" />
+      <div className="glow-orb w-[300px] h-[300px] bg-primary/8 top-[10%] right-[-5%]" style={{ animationDelay: "3s" }} />
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center space-y-24 max-w-7xl mx-auto">
-          <div className="space-y-12">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="flex flex-col items-center text-center space-y-8 md:space-y-12 max-w-5xl mx-auto">
+          <div className="space-y-4 md:space-y-6">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-[12px] font-black tracking-[1.5em] text-primary uppercase"
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[10px] md:text-[11px] font-black tracking-[1em] md:tracking-[1.2em] text-primary uppercase"
             >
               Initialize Strategy
             </motion.div>
             <motion.h2
-              initial={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
+              initial={{ opacity: 0, scale: 0.95, filter: "blur(15px)" }}
               whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="text-8xl md:text-[14rem] font-bold text-foreground tracking-tightest leading-[0.8] italic uppercase"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-[-0.05em] leading-[0.85] italic uppercase"
             >
               Your revenue leak <br />
-              <span className="text-muted-foreground/10 not-italic">HAS A FIX.</span>
+              <span className="text-muted-foreground/15 not-italic">HAS A FIX.</span>
             </motion.h2>
           </div>
           
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-12 max-w-5xl"
+            transition={{ delay: 0.15, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-4 md:space-y-6 max-w-3xl"
           >
-            <p className="text-3xl md:text-6xl text-muted-foreground font-medium tracking-tightest leading-tight italic">
-              "Let's find it. Book a free 30-minute strategy call. We'll show you exactly where you can automate tasks and capture more revenue."
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-[1.4] italic">
+              &ldquo;Let&apos;s find it. Book a free 30-minute strategy call. We&apos;ll show you exactly where you can automate tasks and capture more revenue.&rdquo;
             </p>
-            <p className="text-[12px] font-black text-foreground/30 uppercase tracking-[1em] italic">
+            <p className="text-[10px] md:text-[11px] font-black text-foreground/25 uppercase tracking-[0.6em] italic">
               No obligation. No pitch. Just engineering clarity.
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col md:flex-row items-center justify-center gap-12 w-full"
+            transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full pt-4"
           >
-            <Link href="/contact" className="w-full md:w-auto">
+            <Link href="/contact" className="w-full sm:w-auto">
               <MagneticButton>
-                <Button className="w-full md:w-auto rounded-3xl px-20 h-24 md:h-32 text-2xl bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black uppercase tracking-widest shadow-[0_40px_100px_-20px_oklch(var(--primary)/0.4)] transition-all duration-1000 flex items-center justify-center group border-none">
-                  <span>Initialize Audit</span> <ArrowRight className="ml-6 h-8 w-8 group-hover:translate-x-4 transition-transform duration-700" />
+                <Button className="w-full sm:w-auto rounded-2xl px-8 md:px-12 h-14 md:h-16 text-sm md:text-base bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black uppercase tracking-[0.15em] shadow-[0_20px_60px_-10px_oklch(var(--primary)/0.4)] transition-all duration-700 flex items-center justify-center group border-none relative overflow-hidden">
+                  <span className="relative z-10">Book Free Audit</span>
+                  <ArrowRight className="ml-3 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-2 transition-transform duration-500 relative z-10" />
+                  <div className="absolute inset-0 bg-foreground/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </Button>
               </MagneticButton>
             </Link>
             
-            <Link href="/solutions" className="w-full md:w-auto">
-              <Button variant="outline" className="w-full md:w-auto rounded-3xl px-20 h-24 md:h-32 text-2xl border-border bg-transparent text-foreground hover:bg-foreground/[0.05] font-black uppercase tracking-widest transition-all duration-1000 flex items-center justify-center group">
-                <span>View Catalogue</span> <ArrowRight className="ml-6 h-8 w-8 group-hover:translate-x-4 transition-transform duration-700" />
+            <Link href="/solutions" className="w-full sm:w-auto">
+              <Button variant="outline" className="w-full sm:w-auto rounded-2xl px-8 md:px-12 h-14 md:h-16 text-sm md:text-base border-border bg-transparent text-foreground hover:bg-foreground/[0.05] font-black uppercase tracking-[0.15em] transition-all duration-700 flex items-center justify-center group">
+                <span>View Systems</span>
+                <ArrowRight className="ml-3 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-2 transition-transform duration-500" />
               </Button>
             </Link>
           </motion.div>
         </div>
       </div>
-      
-      {/* Background Detail */}
-      <div className="absolute -bottom-1/4 -left-1/4 w-full h-full bg-primary/5 rounded-full blur-[120px] opacity-30" />
     </section>
   );
 }

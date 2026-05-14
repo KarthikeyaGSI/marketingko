@@ -41,6 +41,8 @@
   --animate-spin-reverse: spin-reverse 25s linear infinite;
 }
 
+/* ═══ CINEMATIC KEYFRAMES ═══ */
+
 @keyframes mesh {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -65,6 +67,32 @@
   from { transform: rotate(360deg); }
   to { transform: rotate(0deg); }
 }
+
+@keyframes ambientDrift {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.08; }
+  33% { transform: translate(30px, -40px) scale(1.1); opacity: 0.12; }
+  66% { transform: translate(-20px, 20px) scale(0.95); opacity: 0.06; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0.08; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+@keyframes scanLine {
+  0% { top: -2px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes cinematicReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* ═══ COLOR SYSTEM ═══ */
 
 :root {
   --background: oklch(0.99 0 0);
@@ -112,23 +140,25 @@
   --ring: var(--primary);
 }
 
+/* ═══ BASE LAYER ═══ */
+
 @layer base {
   html {
     font-size: 50%;
   }
   @media (min-width: 640px) {
     html {
-      font-size: 65%;
+      font-size: 62%;
     }
   }
   @media (min-width: 768px) {
     html {
-      font-size: 80%;
+      font-size: 75%;
     }
   }
   @media (min-width: 1024px) {
     html {
-      font-size: 90%;
+      font-size: 87.5%;
     }
   }
   @media (min-width: 1280px) {
@@ -150,7 +180,11 @@
   }
 }
 
+/* ═══ UTILITIES LAYER ═══ */
+
 @layer utilities {
+
+  /* Noise texture overlay */
   .noise-overlay {
     @apply fixed inset-0 w-full h-full pointer-events-none z-[9999];
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -158,10 +192,12 @@
     mix-blend-mode: overlay;
   }
 
+  /* Mouse-reactive glow */
   .cinematic-glow {
     background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in oklab, var(--primary), transparent 85%) 0%, transparent 80%);
   }
 
+  /* Mesh gradient animation */
   .mesh-animate {
     background: linear-gradient(-45deg, 
       var(--background), 
@@ -173,6 +209,7 @@
     animation: mesh 15s ease infinite;
   }
 
+  /* Infrastructure grid */
   .grid-infrastructure {
     background-image: 
       linear-gradient(to right, color-mix(in oklab, var(--foreground), transparent 97%) 1px, transparent 1px),
@@ -180,58 +217,114 @@
     background-size: 80px 80px;
   }
 
+  /* Dot grid pattern */
   .dot-grid {
     background-image: radial-gradient(color-mix(in oklab, var(--foreground), transparent 90%) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
+  /* Ambient atmospheric glow */
   .ambient-glow {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(circle at 30% 30%, oklch(var(--primary)/0.15), transparent 40%),
-                radial-gradient(circle at 70% 70%, oklch(var(--secondary)/0.12), transparent 50%);
-    animation: ambientGlow 8s infinite alternate;
-  }
-  @keyframes ambientGlow {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 30%, color-mix(in oklab, var(--primary), transparent 88%), transparent),
+      radial-gradient(ellipse 50% 60% at 80% 70%, color-mix(in oklab, var(--primary), transparent 92%), transparent);
+    animation: ambientDrift 12s ease-in-out infinite;
   }
 
-  .moving-orb-orbit {
+  /* Scanning line effect */
+  .scanning-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    animation: scanLine 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* Cinematic glass cards */
+  .glass-system {
+    @apply backdrop-blur-3xl border transition-all duration-1000;
+    background: color-mix(in oklab, var(--foreground), transparent 99%);
+    border-color: color-mix(in oklab, var(--foreground), transparent 95%);
+    box-shadow: 
+      0 32px 64px -16px rgba(0,0,0,0.15),
+      inset 0 1px 0 0 color-mix(in oklab, var(--foreground), transparent 95%);
+  }
+  .glass-system:hover {
+    border-color: color-mix(in oklab, var(--primary), transparent 60%);
+    box-shadow: 
+      0 40px 80px -20px rgba(0,0,0,0.25),
+      0 0 60px -10px color-mix(in oklab, var(--primary), transparent 85%),
+      inset 0 1px 0 0 color-mix(in oklab, var(--primary), transparent 80%);
+  }
+
+  /* Cinematic card with glow edges */
+  .cinematic-card {
+    @apply backdrop-blur-3xl border transition-all duration-700 relative overflow-hidden;
+    background: color-mix(in oklab, var(--foreground), transparent 98%);
+    border-color: color-mix(in oklab, var(--foreground), transparent 93%);
+    box-shadow: 0 24px 48px -12px rgba(0,0,0,0.12);
+  }
+  .cinematic-card::before {
+    content: '';
     position: absolute;
     inset: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in oklab, var(--primary), transparent 90%), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.7s;
     pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: orbit 12s linear infinite;
   }
-  .moving-orb {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: oklch(var(--primary)/0.2);
-    box-shadow: 0 0 20px oklch(var(--primary)/0.5);
+  .cinematic-card:hover::before {
+    opacity: 1;
   }
-  @keyframes orbit {
-    from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+  .cinematic-card:hover {
+    border-color: color-mix(in oklab, var(--primary), transparent 50%);
+    box-shadow: 
+      0 40px 80px -20px rgba(0,0,0,0.2),
+      0 0 40px -5px color-mix(in oklab, var(--primary), transparent 80%);
+    transform: translateY(-4px);
   }
 
+  /* Asymmetric grid scene */
+  .asymmetric-scene {
+    @apply grid grid-cols-12 gap-6 md:gap-12 items-center;
+  }
+
+  /* Premium blur diffusion */
+  .blur-diffusion {
+    filter: blur(80px) saturate(1.5);
+  }
+
+  /* Text premium mask */
   .text-mask-premium {
     @apply text-foreground;
   }
 
-  .glass-system {
-    @apply bg-foreground/[0.01] backdrop-blur-3xl border border-foreground/[0.05] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] hover:border-primary/40 transition-all duration-1000;
+  /* Glow orb — floating ambient light */
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+    animation: glowPulse 6s ease-in-out infinite;
   }
 
-  .asymmetric-scene {
-    @apply grid grid-cols-12 gap-12 items-center;
+  /* Scene divider — blends sections */
+  .scene-divider {
+    position: relative;
   }
-
-  .blur-diffusion {
-    filter: blur(80px) saturate(1.5);
+  .scene-divider::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 10%;
+    right: 10%;
+    height: 120px;
+    background: radial-gradient(ellipse at center, color-mix(in oklab, var(--primary), transparent 90%), transparent 70%);
+    pointer-events: none;
   }
 }

@@ -44,66 +44,78 @@ export function FAQ() {
   };
 
   return (
-    <section className="py-60 md:py-96 bg-background relative overflow-hidden mesh-animate">
+    <section className="py-24 md:py-40 bg-background relative overflow-hidden scene-divider">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
-      <div className="ambient-glow opacity-25" />
+      <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
+      <div className="ambient-glow opacity-20" />
+      <div className="glow-orb w-[350px] h-[350px] bg-primary/8 bottom-[10%] right-[-5%]" />
       
-      <div className="container mx-auto px-6 relative">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-60 gap-16">
-          <div className="space-y-16 max-w-6xl">
+      <div className="container mx-auto px-4 md:px-6 relative">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 md:mb-24 gap-8">
+          <div className="space-y-6 md:space-y-10 max-w-5xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="text-[10px] md:text-xs font-black tracking-[1em] text-primary uppercase"
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[10px] md:text-[11px] font-black tracking-[0.8em] text-primary uppercase"
             >
-              System Documentation
+              How We Exactly Work
             </motion.div>
-            <h2 className="text-8xl md:text-[14rem] font-bold tracking-tightest text-foreground leading-[1.1] text-mask-premium">
+            <motion.h2
+              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.05em] text-foreground leading-[0.9]"
+            >
               CLEAR ANSWERS. <br />
-              <span className="text-muted-foreground/10 italic font-medium">NO JARGON.</span>
-            </h2>
-            <p className="text-2xl md:text-5xl text-muted-foreground font-medium tracking-tightest leading-tight max-w-5xl italic">
-              "We strip away the complexity. We focus on the engineering. Here is exactly how we work."
-            </p>
+              <span className="text-muted-foreground/15 italic font-medium">NO JARGON.</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-[1.3] max-w-3xl italic"
+            >
+              &ldquo;We strip away the complexity. We focus on the engineering. Here is exactly how we work.&rdquo;
+            </motion.p>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto space-y-8">
+        <div className="max-w-5xl mx-auto space-y-4 md:space-y-5">
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: i * 0.08, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
-              className={`rounded-[4rem] md:rounded-[6rem] border transition-all duration-1000 relative overflow-hidden group ${
+              className={`rounded-2xl md:rounded-3xl border transition-all duration-700 relative overflow-hidden group ${
                 openIndex === i 
-                ? 'border-primary/40 bg-primary/5 shadow-[0_40px_80px_-20px_oklch(var(--primary)/0.2)]' 
-                : 'border-border bg-foreground/[0.01] hover:border-primary/20'
+                ? 'border-primary/40 bg-primary/5 shadow-[0_20px_50px_-10px_oklch(var(--primary)/0.15)]' 
+                : 'border-border/50 bg-foreground/[0.01] hover:border-primary/20'
               }`}
             >
-              {/* Dynamic Scanning Line for Open State */}
-              {openIndex === i && <div className="scanning-line opacity-30 z-0" />}
+              {/* Scanning line */}
+              {openIndex === i && <div className="scanning-line opacity-20 z-0" />}
               
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full p-16 md:p-24 flex items-center justify-between text-left relative z-10"
+                className="w-full p-5 md:p-8 flex items-center justify-between text-left relative z-10"
               >
-                <span className={`text-4xl md:text-7xl font-bold tracking-tightest italic transition-all duration-1000 ${
+                <span className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-tight italic transition-all duration-700 pr-4 ${
                   openIndex === i ? 'text-primary' : 'text-foreground group-hover:text-primary/60'
                 }`}>
                   {faq.question}
                 </span>
-                <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full border flex items-center justify-center transition-all duration-1000 shrink-0 ml-8 ${
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full border flex items-center justify-center transition-all duration-700 shrink-0 ${
                   openIndex === i 
-                  ? 'bg-primary border-primary text-primary-foreground rotate-180 shadow-[0_0_30px_oklch(var(--primary)/0.5)]' 
-                  : 'bg-foreground/[0.05] border-border text-foreground/40'
+                  ? 'bg-primary border-primary text-primary-foreground rotate-180 shadow-[0_0_20px_oklch(var(--primary)/0.4)]' 
+                  : 'bg-foreground/[0.03] border-border text-foreground/40'
                 }`}>
-                  {openIndex === i ? <Minus size={32} strokeWidth={3} /> : <Plus size={32} strokeWidth={3} />}
+                  {openIndex === i ? <Minus size={18} strokeWidth={3} /> : <Plus size={18} strokeWidth={3} />}
                 </div>
               </button>
               
@@ -113,11 +125,11 @@ export function FAQ() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="relative z-10"
                   >
-                    <div className="px-16 md:px-24 pb-16 md:pb-24">
-                      <p className="text-2xl md:text-5xl text-muted-foreground font-medium tracking-tightest leading-[1.1] max-w-6xl italic border-l-2 border-primary/20 pl-12">
+                    <div className="px-5 md:px-8 pb-5 md:pb-8">
+                      <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-medium tracking-tight leading-[1.5] max-w-3xl italic border-l-2 border-primary/20 pl-5 md:pl-6">
                         {faq.answer}
                       </p>
                     </div>
