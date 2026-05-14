@@ -329,7 +329,7 @@ export function IndustryVerticals() {
   const activeIndustry = industries.find(i => i.id === activeTab) || industries[0];
 
   return (
-    <section className="py-40 bg-black relative overflow-hidden">
+    <section className="py-40 bg-background relative overflow-hidden">
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,oklch(0.6_0.2_250_/_0.03)_0%,transparent_50%)]" />
       
       <div className="container mx-auto px-6 relative z-10">
@@ -345,8 +345,8 @@ export function IndustryVerticals() {
               >
                 DEPLOYMENT VERTICALS
               </motion.div>
-              <h2 className="text-5xl font-bold text-white tracking-tighter">
-                INDUSTRY <br /> <span className="text-muted-foreground/20 italic">SOLUTIONS.</span>
+              <h2 className="text-5xl font-bold text-foreground tracking-tighter">
+                INDUSTRY <br /> <span className="text-muted-foreground/40 italic">SOLUTIONS.</span>
               </h2>
             </div>
             
@@ -357,12 +357,12 @@ export function IndustryVerticals() {
                   onClick={() => setActiveTab(industry.id)}
                   className={`flex items-center justify-between p-6 rounded-2xl transition-all duration-500 group border ${
                     activeTab === industry.id 
-                      ? "bg-primary border-primary text-white" 
-                      : "bg-white/[0.02] border-white/5 text-muted-foreground hover:bg-white/[0.05] hover:border-white/10"
+                      ? "bg-primary border-primary text-primary-foreground" 
+                      : "bg-foreground/[0.02] border-border/50 text-muted-foreground hover:bg-foreground/[0.05] hover:border-border"
                   }`}
                 >
                   <div className="flex items-center gap-4">
-                    <industry.icon className={`h-5 w-5 ${activeTab === industry.id ? "text-white" : "text-primary"}`} />
+                    <industry.icon className={`h-5 w-5 ${activeTab === industry.id ? "text-primary-foreground" : "text-primary"}`} />
                     <span className="font-bold tracking-tight text-lg">{industry.title}</span>
                   </div>
                   <ChevronRight className={`h-4 w-4 transition-transform duration-500 ${activeTab === industry.id ? "translate-x-1" : "opacity-0"}`} />
@@ -380,7 +380,7 @@ export function IndustryVerticals() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.98 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-white/[0.01] border border-white/5 rounded-[3rem] p-12 lg:p-16 relative overflow-hidden backdrop-blur-3xl"
+                className="bg-foreground/[0.01] border border-border/50 rounded-[3rem] p-12 lg:p-16 relative overflow-hidden backdrop-blur-3xl"
               >
                 <div className="absolute top-0 right-0 p-12 opacity-[0.03] text-primary">
                   <activeIndustry.icon size={200} />
@@ -392,25 +392,25 @@ export function IndustryVerticals() {
                       <activeIndustry.icon className="h-8 w-8 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-4xl font-bold text-white tracking-tighter">{activeIndustry.title}</h3>
+                      <h3 className="text-4xl font-bold text-foreground tracking-tighter">{activeIndustry.title}</h3>
                       <p className="text-primary font-bold text-sm tracking-widest uppercase">{activeIndustry.subtitle}</p>
                     </div>
                   </div>
 
-                  <p className="text-2xl text-muted-foreground font-medium tracking-tight leading-relaxed mb-16 italic">
+                  <p className="text-2xl text-muted-foreground dark:text-muted-foreground/90 font-medium tracking-tight leading-relaxed mb-16 italic">
                     "{activeIndustry.description}"
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     {/* Capabilities */}
                     <div className="space-y-8">
-                      <h4 className="text-xs font-black tracking-[0.4em] text-white/40 uppercase flex items-center gap-3">
+                      <h4 className="text-xs font-black tracking-[0.4em] text-foreground/50 uppercase flex items-center gap-3">
                         <Sparkles className="h-3 w-3 text-primary" />
                         Operational Capabilities
                       </h4>
                       <ul className="space-y-4">
                         {activeIndustry.capabilities.map((cap, i) => (
-                          <li key={i} className="flex items-start gap-4 text-white font-medium tracking-tight leading-tight">
+                          <li key={i} className="flex items-start gap-4 text-foreground font-medium tracking-tight leading-tight">
                             <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                             {cap}
                           </li>
@@ -421,16 +421,16 @@ export function IndustryVerticals() {
                     {/* Personality & Call Flow */}
                     <div className="space-y-12">
                       <div className="space-y-6">
-                        <h4 className="text-xs font-black tracking-[0.4em] text-white/40 uppercase">Voice Personality</h4>
-                        <p className="text-lg text-muted-foreground font-medium leading-relaxed italic">{activeIndustry.personality}</p>
+                        <h4 className="text-xs font-black tracking-[0.4em] text-foreground/50 uppercase">Voice Personality</h4>
+                        <p className="text-lg text-muted-foreground dark:text-muted-foreground/80 font-medium leading-relaxed italic">{activeIndustry.personality}</p>
                       </div>
 
                       <div className="space-y-6">
-                        <h4 className="text-xs font-black tracking-[0.4em] text-white/40 uppercase">Optimized Call Flow</h4>
+                        <h4 className="text-xs font-black tracking-[0.4em] text-foreground/50 uppercase">Optimized Call Flow</h4>
                         <div className="flex flex-wrap gap-2">
                           {activeIndustry.callFlow.map((step, i) => (
                             <div key={i} className="flex items-center gap-2">
-                              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-bold text-white/60 tracking-tight">
+                              <span className="px-3 py-1.5 rounded-lg bg-foreground/[0.05] border border-border/50 text-[10px] font-bold text-foreground/60 tracking-tight">
                                 {i + 1}. {step}
                               </span>
                               {i < activeIndustry.callFlow.length - 1 && <ChevronRight className="h-3 w-3 text-white/20" />}
@@ -443,7 +443,7 @@ export function IndustryVerticals() {
 
                   {/* Blueprints */}
                   <div className="mt-16 space-y-6">
-                    <h4 className="text-xs font-black tracking-[0.4em] text-white/40 uppercase">Available Blueprints</h4>
+                    <h4 className="text-xs font-black tracking-[0.4em] text-foreground/50 uppercase">Available Blueprints</h4>
                     <div className="flex flex-wrap gap-3">
                       {activeIndustry.blueprints.map((blueprint, i) => (
                         <span key={i} className="px-4 py-2 rounded-xl bg-primary/5 border border-primary/20 text-[10px] font-bold text-primary uppercase tracking-widest">
@@ -453,10 +453,10 @@ export function IndustryVerticals() {
                     </div>
                   </div>
 
-                  <div className="mt-20 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+                  <div className="mt-20 pt-12 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="flex gap-4">
                       {activeIndustry.goals.map((goal, i) => (
-                        <div key={i} className="px-4 py-2 rounded-full bg-white/[0.02] border border-white/5 text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                        <div key={i} className="px-4 py-2 rounded-full bg-foreground/[0.02] border border-border/50 text-[10px] font-bold text-foreground/50 uppercase tracking-widest">
                           {goal}
                         </div>
                       ))}

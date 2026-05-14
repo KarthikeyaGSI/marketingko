@@ -65,7 +65,7 @@ export function ProblemSection() {
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.05em] text-foreground leading-[0.9] uppercase relative"
               >
                 DOING EVERYTHING. <br />
-                <span className="text-muted-foreground/60 dark:text-muted-foreground/50 italic font-medium">BUT STILL LOSING.</span>
+                <span className="text-muted-foreground/80 dark:text-muted-foreground/70 italic font-medium">BUT STILL LOSING.</span>
                 
                 {/* Asymmetrical spinning detail */}
                 <motion.div 

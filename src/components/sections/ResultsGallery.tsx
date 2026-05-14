@@ -45,7 +45,7 @@ export function ResultsGallery() {
           </motion.div>
           <h2 className="text-7xl md:text-[9.5rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium">
             MEASURABLE <br />
-            <span className="text-muted-foreground/30 dark:text-muted-foreground/40 italic font-medium">AUTHORITY.</span>
+            <span className="text-muted-foreground/40 dark:text-muted-foreground/50 italic font-medium">AUTHORITY.</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-tight max-w-3xl">
             We replace generic testimonials with technical artifacts and operational benchmarks. 
@@ -146,7 +146,7 @@ export function ResultsGallery() {
                    </div>
                    <div className="flex justify-between items-end">
                       <div className="space-y-2">
-                        <span className="text-[10px] font-black text-foreground/30 uppercase tracking-widest">Deployment Logic</span>
+                        <span className="text-[10px] font-black text-foreground/50 uppercase tracking-widest">Deployment Logic</span>
                         <p className="text-5xl font-black text-foreground tracking-tighter italic">94% ACCURACY</p>
                       </div>
                       <div className="text-right">

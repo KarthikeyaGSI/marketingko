@@ -1,6 +1,7 @@
 "use client";
 
-import { SolutionsGrid } from "@/components/sections/SolutionsGrid";
+import { InfrastructureFlow } from "@/components/sections/InfrastructureFlow";
+import { Performance } from "@/components/sections/Performance";
 import { CTA } from "@/components/sections/CTA";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -10,6 +11,8 @@ export default function SolutionsPage() {
   return (
     <main className="pt-20">
       <SolutionsGrid />
+      <Performance />
+      <InfrastructureFlow />
       
       {/* Revenue Systems Promo */}
       <section className="py-40 bg-foreground text-background relative overflow-hidden">

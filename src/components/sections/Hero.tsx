@@ -316,7 +316,7 @@ export function Hero() {
                     <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`} alt="user" className="w-full h-full object-cover" />
                   </div>
                 ))}
-                <span className="pl-4 text-[9px] font-black tracking-widest text-muted-foreground uppercase">
+                <span className="pl-4 text-[9px] font-black tracking-widest text-muted-foreground dark:text-muted-foreground/80 uppercase">
                   Trusted by 50+ High-Growth Teams
                 </span>
               </div>
@@ -392,7 +392,7 @@ export function Hero() {
                 initial={{ opacity: 0, filter: "blur(15px)", y: 40 }}
                 animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                 transition={{ duration: 1.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-4xl font-medium tracking-tightest leading-tight italic"
+                className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-muted-foreground dark:text-muted-foreground/90 max-w-4xl font-medium tracking-tightest leading-tight italic"
               >
                 "We don't sell hours. We deploy <span className="text-primary not-italic font-black uppercase">Revenue Infrastructure</span> that identifies, qualifies, and converts targets autonomously."
               </motion.p>

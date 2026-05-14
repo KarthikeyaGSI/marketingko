@@ -63,7 +63,7 @@ const solutions = [
 
 export function RevenueEngine() {
   return (
-    <section className="py-40 md:py-80 bg-black relative overflow-hidden grain-bg">
+    <section className="py-40 md:py-80 bg-background relative overflow-hidden grain-bg">
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="absolute inset-0 grid-infrastructure" />
       </div>
@@ -77,11 +77,11 @@ export function RevenueEngine() {
           >
             Infrastructure Integrity
           </motion.div>
-          <h2 className="text-6xl md:text-9xl font-bold text-white tracking-tighter leading-[0.8] mb-16 text-mask-premium uppercase">
+          <h2 className="text-6xl md:text-9xl font-bold text-foreground tracking-tighter leading-[0.8] mb-16 text-mask-premium uppercase">
             SEALING THE <br />
-            <span className="text-muted-foreground/20 italic">LEAKAGE.</span>
+            <span className="text-muted-foreground/40 italic">LEAKAGE.</span>
           </h2>
-          <p className="text-2xl md:text-4xl text-muted-foreground font-medium tracking-tighter leading-tight italic">
+          <p className="text-2xl md:text-4xl text-muted-foreground dark:text-muted-foreground/80 font-medium tracking-tighter leading-tight italic">
             "Your business doesn't need more leads. It needs a sealed environment where no revenue can escape."
           </p>
         </div>
@@ -108,7 +108,7 @@ export function RevenueEngine() {
                     <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/20">
                       <leak.icon className="h-5 w-5 text-destructive" />
                     </div>
-                    <h4 className="text-xl font-bold text-white tracking-tight">{leak.title}</h4>
+                    <h4 className="text-xl font-bold text-foreground tracking-tight">{leak.title}</h4>
                   </div>
                   <div className="text-right">
                     <span className="block text-3xl font-black text-destructive tracking-tighter">-{leak.loss}</span>
@@ -147,9 +147,9 @@ export function RevenueEngine() {
                 <div className="flex justify-between items-start mb-6">
                   <div className="flex items-center gap-4">
                     <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary transition-colors duration-500">
-                      <sol.icon className="h-5 w-5 text-primary group-hover:text-black transition-colors" />
+                      <sol.icon className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
                     </div>
-                    <h4 className="text-xl font-bold text-white tracking-tight">{sol.title}</h4>
+                    <h4 className="text-xl font-bold text-foreground tracking-tight">{sol.title}</h4>
                   </div>
                   <div className="text-right">
                     <span className="block text-3xl font-black text-primary tracking-tighter">+{sol.gain}</span>
@@ -179,16 +179,16 @@ export function RevenueEngine() {
               <div className="absolute inset-0 bg-primary/5 blur-[120px] -z-10" />
               <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
               
-              <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-10">
+              <h3 className="text-4xl md:text-6xl font-bold text-foreground tracking-tighter mb-10">
                 TRANSFORM YOUR <br />
-                <span className="text-muted-foreground/20 italic">INFRASTRUCTURE.</span>
+                <span className="text-muted-foreground/40 italic">INFRASTRUCTURE.</span>
               </h3>
               
               <p className="text-xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-2xl mx-auto mb-16">
                 Stop chasing leads and start building systems. Our Growth OS maps your entire revenue journey and seals every point of friction.
               </p>
               
-              <button className="px-12 py-6 rounded-2xl bg-primary text-black font-black uppercase tracking-widest hover:scale-105 transition-all duration-500 shadow-[0_30px_60px_-15px_oklch(var(--primary)/0.5)] flex items-center mx-auto">
+              <button className="px-12 py-6 rounded-2xl bg-primary text-primary-foreground font-black uppercase tracking-widest hover:scale-105 transition-all duration-500 shadow-[0_30px_60px_-15px_oklch(var(--primary)/0.5)] flex items-center mx-auto">
                 Initiate Sealing Protocol <ArrowRight className="ml-4 h-5 w-5" />
               </button>
             </div>

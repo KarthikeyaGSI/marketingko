@@ -32,7 +32,7 @@ export function CTA() {
               className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-[-0.05em] leading-[0.85] italic uppercase"
             >
               Your revenue leak <br />
-              <span className="text-muted-foreground/15 not-italic">HAS A FIX.</span>
+              <span className="text-muted-foreground/30 not-italic">HAS A FIX.</span>
             </motion.h2>
           </div>
           
@@ -42,21 +42,21 @@ export function CTA() {
             transition={{ delay: 0.15, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-4 md:space-y-6 max-w-3xl"
           >
-            <p className="text-lg sm:text-xl md:text-3xl text-muted-foreground font-medium tracking-tight leading-[1.2] italic">
+            <p className="text-lg sm:text-xl md:text-3xl text-muted-foreground dark:text-muted-foreground/80 font-medium tracking-tight leading-[1.2] italic">
               &ldquo;We don&apos;t ask for trust. We earn it through execution. We&apos;ll identify your revenue leaks in 30 minutes, or we won&apos;t take the project.&rdquo;
             </p>
             <div className="flex items-center justify-center gap-8 pt-4">
                <div className="flex flex-col items-center">
                   <span className="text-4xl font-black text-primary tracking-tighter">14 DAYS</span>
-                  <span className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.4em]">To Initial ROI</span>
+                  <span className="text-[10px] font-black text-foreground/50 uppercase tracking-[0.4em]">To Initial ROI</span>
                </div>
                <div className="w-px h-12 bg-border/40" />
                <div className="flex flex-col items-center">
                   <span className="text-4xl font-black text-primary tracking-tighter">ZERO</span>
-                  <span className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.4em]">Setup Jitter</span>
+                  <span className="text-[10px] font-black text-foreground/50 uppercase tracking-[0.4em]">Setup Jitter</span>
                </div>
             </div>
-            <p className="text-[10px] md:text-[11px] font-black text-foreground/40 uppercase tracking-[0.6em] italic pt-8">
+            <p className="text-[10px] md:text-[11px] font-black text-foreground/60 uppercase tracking-[0.6em] italic pt-8">
               Guaranteed outcomes. No retained risk. Just engineering.
             </p>
           </motion.div>
