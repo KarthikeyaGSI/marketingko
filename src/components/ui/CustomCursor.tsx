@@ -6,11 +6,17 @@ import gsap from "gsap";
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  
+  // Velocity tracking
+  const pos = useRef({ x: 0, y: 0 });
+  const vel = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const cursor = cursorRef.current;
     const follower = followerRef.current;
+    const label = labelRef.current;
     if (!cursor || !follower) return;
 
     // Set initial state
@@ -20,95 +26,121 @@ export function CustomCursor() {
     const xTo = gsap.quickTo(cursor, "x", { duration: 0.1, ease: "power3" });
     const yTo = gsap.quickTo(cursor, "y", { duration: 0.1, ease: "power3" });
     
-    const followerXTo = gsap.quickTo(follower, "x", { duration: 0.4, ease: "power2.out" });
-    const followerYTo = gsap.quickTo(follower, "y", { duration: 0.4, ease: "power2.out" });
+    const followerXTo = gsap.quickTo(follower, "x", { duration: 0.5, ease: "expo.out" });
+    const followerYTo = gsap.quickTo(follower, "y", { duration: 0.5, ease: "expo.out" });
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!isVisible) setIsVisible(true);
+      
+      // Velocity calculation
+      const dx = e.clientX - pos.current.x;
+      const dy = e.clientY - pos.current.y;
+      vel.current = { x: dx, y: dy };
+      pos.current = { x: e.clientX, y: e.clientY };
+
+      const speed = Math.min(Math.sqrt(dx * dx + dy * dy), 100);
+      const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
       xTo(e.clientX);
       yTo(e.clientY);
       followerXTo(e.clientX);
       followerYTo(e.clientY);
       
-      // Update global glow variable
+      // Dynamic scaling based on velocity
+      gsap.to(follower, {
+        scaleX: 1 + speed * 0.005,
+        scaleY: 1 - speed * 0.002,
+        rotation: angle,
+        duration: 0.4,
+        ease: "power2.out"
+      });
+
       document.documentElement.style.setProperty('--cursor-x', `${e.clientX}px`);
       document.documentElement.style.setProperty('--cursor-y', `${e.clientY}px`);
     };
 
-    const handleMouseEnter = () => setIsVisible(true);
-    const handleMouseLeave = () => setIsVisible(false);
-
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest("button, a, .interactive, input, textarea")) {
-        gsap.to(cursor, { scale: 1.5, backgroundColor: "oklch(var(--primary))", duration: 0.3 });
+      const isInteractive = target.closest("button, a, .interactive, input, textarea, .magnetic");
+      
+      if (isInteractive) {
+        gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.3 });
         gsap.to(follower, { 
-          scale: 1.2,
-          rotate: 90,
-          borderColor: "oklch(var(--primary) / 0.5)",
-          duration: 0.4,
-          ease: "back.out(2)"
+          width: 80,
+          height: 80,
+          borderRadius: "1rem",
+          borderColor: "oklch(var(--primary))",
+          backgroundColor: "oklch(var(--primary) / 0.05)",
+          borderWidth: "1px",
+          opacity: 1,
+          duration: 0.5,
+          ease: "expo.out"
         });
-        const label = follower.querySelector(".cursor-label");
-        if (label) gsap.to(label, { opacity: 1, y: -10, duration: 0.3 });
+        if (label) gsap.to(label, { opacity: 1, y: -20, duration: 0.4, ease: "power2.out" });
       } else {
-        gsap.to(cursor, { scale: 1, backgroundColor: "currentColor", duration: 0.3 });
+        gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.3 });
         gsap.to(follower, { 
-          scale: 1,
-          rotate: 0,
-          borderColor: "currentColor",
+          width: 32,
+          height: 32,
+          borderRadius: "50%",
+          borderColor: "oklch(var(--foreground) / 0.2)",
+          backgroundColor: "transparent",
+          borderWidth: "1px",
           opacity: 0.3,
-          duration: 0.4 
+          duration: 0.5,
+          ease: "expo.out"
         });
-        const label = follower.querySelector(".cursor-label");
         if (label) gsap.to(label, { opacity: 0, y: 0, duration: 0.3 });
       }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseenter", handleMouseEnter);
-    window.addEventListener("mouseleave", handleMouseLeave);
     window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("mouseenter", () => setIsVisible(true));
+    window.addEventListener("mouseleave", () => setIsVisible(false));
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseenter", handleMouseEnter);
-      window.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("mouseover", handleMouseOver);
     };
   }, [isVisible]);
 
   return (
-    <div className={`fixed inset-0 pointer-events-none z-[9999] transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-      {/* Target Dot */}
+    <div className={`fixed inset-0 pointer-events-none z-[9999] hidden lg:block transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+      {/* Precision Core */}
       <div 
         ref={cursorRef} 
-        className="fixed top-0 left-0 w-1 h-1 bg-foreground rounded-full" 
+        className="fixed top-0 left-0 w-2 h-2 bg-primary rounded-full blur-[1px]" 
       />
       
-      {/* Infrastructure Brackets */}
+      {/* Infrastructure Frame */}
       <div 
         ref={followerRef} 
-        className="fixed top-0 left-0 w-10 h-10 border-foreground/30 flex items-center justify-center"
+        className="fixed top-0 left-0 w-8 h-8 border border-foreground/20 rounded-full flex items-center justify-center mix-blend-difference"
       >
-        {/* The Brackets (4 corners) */}
-        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-current" />
-        <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-current" />
-        <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-current" />
-        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-current" />
+        {/* Corner Brackets */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary/40" />
+          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-primary/40" />
+          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-primary/40" />
+          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary/40" />
+        </div>
         
-        {/* Micro Label */}
-        <span className="cursor-label absolute whitespace-nowrap text-[8px] font-black tracking-[0.2em] uppercase text-primary opacity-0 pointer-events-none">
-          SYSTEM_READY
+        {/* Scan Line */}
+        <div className="absolute inset-x-0 h-[1px] bg-primary/20 animate-scan-line pointer-events-none" />
+        
+        {/* Context Label */}
+        <span ref={labelRef} className="absolute whitespace-nowrap text-[8px] font-black tracking-[0.3em] uppercase text-primary opacity-0 pointer-events-none translate-y-10">
+          SYSTEM_ACCESS
         </span>
-
-        {/* Inner scan line */}
-        <div className="w-full h-[1px] bg-primary/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
       </div>
 
-      {/* Atmospheric Glow */}
+      {/* Trailing Atmospheric Light */}
       <div 
-        className="fixed inset-0 pointer-events-none bg-[radial-gradient(circle_at_var(--cursor-x,50%)_var(--cursor-y,50%),oklch(var(--primary)/0.04)_0%,transparent_40%)]" 
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle 400px at var(--cursor-x) var(--cursor-y), oklch(var(--primary) / 0.03), transparent 80%)`
+        }}
       />
     </div>
   );

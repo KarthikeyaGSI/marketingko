@@ -12,6 +12,7 @@ export default function RevenueSystemsPage() {
     <main className="pt-20 bg-background">
       <section className="py-40 relative overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
         <div className="container mx-auto px-6 text-center space-y-8">
            <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -24,10 +25,10 @@ export default function RevenueSystemsPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium uppercase"
+              className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase italic"
             >
               REVENUE<br />
-              <span className="text-muted-foreground/40 italic">SYSTEMS.</span>
+              <span className="text-muted-foreground/60 not-italic">SYSTEMS.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

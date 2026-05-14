@@ -40,6 +40,8 @@
   --animate-spin-slow: spin 30s linear infinite;
   --animate-spin-reverse: spin-reverse 25s linear infinite;
   --animate-draw: draw 2s ease-out forwards;
+  --animate-glitch: glitch 5s infinite;
+  --animate-reveal: cinematicReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ═══ CINEMATIC KEYFRAMES ═══ */
@@ -94,8 +96,21 @@
 }
 
 @keyframes cinematicReveal {
-  from { clip-path: inset(0 100% 0 0); }
-  to { clip-path: inset(0 0 0 0); }
+  from { clip-path: inset(0 100% 0 0); opacity: 0; transform: translateX(-20px); }
+  to { clip-path: inset(0 0 0 0); opacity: 1; transform: translateX(0); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  2% { transform: translate(-2px, 2px); }
+  4% { transform: translate(2px, -2px); }
+  6% { transform: translate(0); }
+  100% { transform: translate(0); }
+}
+
+@keyframes textShimmer {
+  0% { background-position: 100% 0%; }
+  100% { background-position: 0% 0%; }
 }
 
 /* ═══ COLOR SYSTEM ═══ */
@@ -187,9 +202,19 @@
   
   .text-cinematic {
     @apply font-black tracking-[-0.08em] leading-[0.8] uppercase italic;
-    background: linear-gradient(to bottom, var(--foreground) 30%, color-mix(in oklab, var(--foreground), transparent 60%));
+    background: linear-gradient(
+      to bottom, 
+      var(--foreground) 20%, 
+      color-mix(in oklab, var(--foreground), transparent 40%) 50%,
+      color-mix(in oklab, var(--foreground), transparent 80%) 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px color-mix(in oklab, var(--primary), transparent 95%);
+  }
+
+  .text-premium-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-foreground via-foreground to-primary/40;
   }
 }
 
@@ -278,15 +303,21 @@
   /* Cinematic card with glow edges */
   .cinematic-card {
     @apply backdrop-blur-3xl border transition-all duration-700 relative overflow-hidden;
-    background: color-mix(in oklab, var(--foreground), transparent 98%);
-    border-color: color-mix(in oklab, var(--foreground), transparent 93%);
-    box-shadow: 0 24px 48px -12px rgba(0,0,0,0.12);
+    background: color-mix(in oklab, var(--foreground), transparent 98.5%);
+    border-color: color-mix(in oklab, var(--foreground), transparent 94%);
+    box-shadow: 
+      0 24px 48px -12px rgba(0,0,0,0.1),
+      inset 0 0 0 1px color-mix(in oklab, var(--foreground), transparent 98%);
   }
   .cinematic-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in oklab, var(--primary), transparent 90%), transparent 60%);
+    background: radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+      color-mix(in oklab, var(--primary), transparent 92%), 
+      transparent 70%
+    );
     opacity: 0;
     transition: opacity 0.7s;
     pointer-events: none;
@@ -295,11 +326,39 @@
     opacity: 1;
   }
   .cinematic-card:hover {
-    border-color: color-mix(in oklab, var(--primary), transparent 50%);
+    border-color: color-mix(in oklab, var(--primary), transparent 60%);
     box-shadow: 
-      0 40px 80px -20px rgba(0,0,0,0.2),
-      0 0 40px -5px color-mix(in oklab, var(--primary), transparent 80%);
-    transform: translateY(-4px);
+      0 60px 100px -30px rgba(0,0,0,0.25),
+      0 0 40px -5px color-mix(in oklab, var(--primary), transparent 85%);
+    transform: translateY(-8px) scale(1.01);
+  }
+
+  .edge-light {
+    position: relative;
+  }
+  .edge-light::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg, 
+      color-mix(in oklab, var(--primary), transparent 50%), 
+      transparent 40%, 
+      transparent 60%, 
+      color-mix(in oklab, var(--primary), transparent 50%)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.3;
+    transition: opacity 0.7s;
+  }
+  .edge-light:hover::after {
+    opacity: 1;
   }
 
   /* Asymmetric grid scene */
@@ -371,5 +430,16 @@
     );
     mask-size: 300%;
     animation: shimmer 4s infinite linear;
+  }
+
+  @keyframes scan-line {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  .animate-scan-line {
+    animation: scan-line 3s linear infinite;
   }
 }

@@ -21,9 +21,9 @@ export function InfrastructureFlow() {
   });
 
   return (
-    <section ref={containerRef} className="py-80 bg-black relative overflow-hidden">
+    <section ref={containerRef} className="py-80 bg-background relative overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,102,255,0.05)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,oklch(var(--primary)/0.05)_0%,transparent_70%)]" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-48 space-y-8">
@@ -34,9 +34,9 @@ export function InfrastructureFlow() {
           >
             System Architecture
           </motion.div>
-          <h2 className="text-6xl md:text-[10rem] font-bold text-white tracking-tight leading-[0.85] text-mask-premium">
+          <h2 className="text-6xl md:text-[10rem] font-bold text-foreground tracking-tightest leading-[0.85] text-mask-premium uppercase italic">
             THE REVENUE <br />
-            <span className="text-muted-foreground/10 italic">OPERATING SYSTEM.</span>
+            <span className="text-muted-foreground/30 dark:text-muted-foreground/40 italic font-medium">OPERATING SYSTEM.</span>
           </h2>
         </div>
 

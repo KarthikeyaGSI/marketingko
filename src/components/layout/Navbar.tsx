@@ -52,12 +52,12 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-12">
+          <div className="hidden lg:flex items-center space-x-16">
             {navLinks.map((link) => (
               <Magnetic key={link.name} strength={0.2}>
                 <Link
                   href={link.href}
-                  className="relative text-[10px] font-black tracking-[0.5em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-4 py-2"
+                  className="relative text-[10px] font-black tracking-[0.7em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-6 py-2"
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-4 w-0 h-0.5 bg-primary group-hover:w-[calc(100%-32px)] transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)]" />

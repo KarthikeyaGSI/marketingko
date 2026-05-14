@@ -43,9 +43,9 @@ export function ResultsGallery() {
           >
             Operational Benchmarks
           </motion.div>
-          <h2 className="text-7xl md:text-[9.5rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium">
+          <h2 className="text-7xl md:text-[9.5rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium uppercase italic">
             MEASURABLE <br />
-            <span className="text-muted-foreground/40 dark:text-muted-foreground/50 italic font-medium">AUTHORITY.</span>
+            <span className="text-muted-foreground/60 not-italic">AUTHORITY.</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-tight max-w-3xl">
             We replace generic testimonials with technical artifacts and operational benchmarks. 

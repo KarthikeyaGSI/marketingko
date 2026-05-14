@@ -45,9 +45,9 @@ export function Process() {
             >
               Deployment Lifecycle
             </motion.div>
-            <h2 className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
+            <h2 className="text-7xl md:text-[11rem] font-bold tracking-tightest text-foreground leading-[0.8] text-mask-premium uppercase italic">
               THE 2-WEEK <br />
-              <span className="text-muted-foreground/40 italic">PROTOCOL.</span>
+              <span className="text-muted-foreground/60 not-italic">PROTOCOL.</span>
             </h2>
             <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight">
               We've engineered a precision-timed protocol to take your business from manual drag to automated scale in exactly 14 days.

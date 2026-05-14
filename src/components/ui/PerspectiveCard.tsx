@@ -59,8 +59,8 @@ export function PerspectiveCard({
       
       {/* Content Container */}
       <div 
-        style={{ transform: "translateZ(50px)" }}
-        className="relative z-10 h-full w-full glass-system rounded-[inherit] overflow-hidden"
+        style={{ transform: "translateZ(80px)" }}
+        className="relative z-10 h-full w-full glass-system rounded-[inherit] overflow-hidden edge-light"
       >
         {/* Dynamic Light Reflection */}
         <motion.div 

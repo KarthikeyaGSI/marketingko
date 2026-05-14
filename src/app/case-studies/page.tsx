@@ -41,15 +41,20 @@ export default function ResultsPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[10px] font-black tracking-[0.8em] text-primary mb-12 uppercase"
+            className="text-[10px] font-black tracking-[0.8em] text-primary mb-12 uppercase italic"
           >
             Operational Transparency
           </motion.div>
-          <h1 className="text-7xl md:text-[14rem] font-bold text-foreground tracking-tighter mb-16 leading-[0.8] text-mask-premium">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase italic"
+          >
             TYPICAL <br />
-            <span className="text-muted-foreground/40 italic">RESULTS.</span>
-          </h1>
-          <p className="text-2xl md:text-4xl text-muted-foreground max-w-5xl mx-auto font-medium tracking-tighter leading-tight italic">
+            <span className="text-muted-foreground/60 not-italic">RESULTS.</span>
+          </motion.h1>
+          <p className="mt-16 text-2xl md:text-4xl text-muted-foreground max-w-5xl mx-auto font-medium tracking-tightest leading-tight italic">
             "We focus on operational leverage and scalable systems. No vanity metrics. 
             Just infrastructure that works."
           </p>
@@ -79,8 +84,8 @@ export default function ResultsPage() {
         <div className="space-y-32 mb-60">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div className="space-y-12">
-               <h2 className="text-5xl md:text-7xl font-bold text-foreground tracking-tighter">INFRASTRUCTURE <br /> <span className="text-muted-foreground/40 italic">MAPPING.</span></h2>
-               <p className="text-xl text-muted-foreground font-medium tracking-tight max-w-xl">
+               <h2 className="text-5xl md:text-7xl font-bold text-foreground tracking-tighter uppercase italic">INFRASTRUCTURE <br /> <span className="text-muted-foreground/60 not-italic">MAPPING.</span></h2>
+               <p className="text-xl text-muted-foreground font-medium tracking-tight max-w-xl italic">
                  Our systems don't just 'run'—they are engineered to self-heal and optimize. 
                  Behold the blueprint of a standard AI acquisition node.
                </p>

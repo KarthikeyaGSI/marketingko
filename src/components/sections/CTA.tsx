@@ -9,10 +9,10 @@ import Link from "next/link";
 export function CTA() {
   return (
     <section className="py-24 md:py-40 bg-background relative overflow-hidden mesh-animate">
-      <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
-      <div className="ambient-glow opacity-25" />
-      <div className="glow-orb w-[500px] h-[500px] bg-primary/10 bottom-[-15%] left-[-10%]" />
-      <div className="glow-orb w-[300px] h-[300px] bg-primary/8 top-[10%] right-[-5%]" style={{ animationDelay: "3s" }} />
+      <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
+      <div className="ambient-glow opacity-30" />
+      <div className="glow-orb w-[800px] h-[800px] bg-primary/15 bottom-[-20%] left-[-15%] blur-[120px]" />
+      <div className="glow-orb w-[400px] h-[400px] bg-primary/10 top-[15%] right-[-10%] blur-[80px]" style={{ animationDelay: "3s" }} />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center text-center space-y-8 md:space-y-12 max-w-5xl mx-auto">
@@ -32,7 +32,7 @@ export function CTA() {
               className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-[-0.05em] leading-[0.85] italic uppercase"
             >
               Your revenue leak <br />
-              <span className="text-muted-foreground/30 not-italic">HAS A FIX.</span>
+              <span className="text-muted-foreground/60 not-italic">HAS A FIX.</span>
             </motion.h2>
           </div>
           
@@ -56,7 +56,7 @@ export function CTA() {
                   <span className="text-[10px] font-black text-foreground/50 uppercase tracking-[0.4em]">Setup Jitter</span>
                </div>
             </div>
-            <p className="text-[10px] md:text-[11px] font-black text-foreground/60 uppercase tracking-[0.6em] italic pt-8">
+            <p className="text-[10px] md:text-[11px] font-black text-foreground/80 uppercase tracking-[0.6em] italic pt-8">
               Guaranteed outcomes. No retained risk. Just engineering.
             </p>
           </motion.div>

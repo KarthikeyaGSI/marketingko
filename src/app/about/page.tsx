@@ -11,8 +11,10 @@ export default function AboutPage() {
   return (
     <main className="pt-40 bg-background min-h-screen">
       <section className="py-40 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(var(--primary)/0.05)_0%,transparent_70%)]" />
-        <div className="absolute inset-0 z-0 dot-grid opacity-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(var(--primary)/0.08)_0%,transparent_70%)]" />
+        <div className="absolute inset-0 z-0 dot-grid opacity-5" />
+        <div className="glow-orb w-[800px] h-[800px] bg-primary/10 top-[-20%] right-[-10%] blur-[120px]" />
+        <div className="glow-orb w-[600px] h-[600px] bg-primary/5 bottom-[-15%] left-[-10%] blur-[100px]" style={{ animationDelay: "3s" }} />
         
         <div className="container mx-auto px-6 relative z-10 text-center space-y-12">
             <motion.div
@@ -28,10 +30,10 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium uppercase"
+              className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase italic"
             >
               WE BUILD<br />
-              <span className="text-muted-foreground/40 italic">SOVEREIGNTY.</span>
+              <span className="text-muted-foreground/60 not-italic">SOVEREIGNTY.</span>
             </motion.h1>
             
             <motion.p

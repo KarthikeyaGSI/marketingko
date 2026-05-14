@@ -41,6 +41,59 @@ const connections = [
   [6,0],
 ];
 
+// Floating HUD Component for that "startup-elite" feel
+function FloatingHUD() {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden hidden xl:block">
+      {/* HUD Top Left */}
+      <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 2, delay: 1 }}
+        className="absolute top-10 left-10 p-6 glass-system rounded-2xl border-primary/20 space-y-3"
+      >
+        <div className="flex items-center space-x-3">
+          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-[9px] font-black tracking-widest text-primary uppercase">Acquisition_Node: Active</span>
+        </div>
+        <div className="space-y-1">
+          <div className="w-32 h-1 bg-foreground/5 rounded-full overflow-hidden">
+            <motion.div 
+              animate={{ width: ["0%", "80%", "30%", "100%", "0%"] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              className="h-full bg-primary/40"
+            />
+          </div>
+          <p className="text-[8px] font-mono text-foreground/40">LATENCY: 12ms</p>
+        </div>
+      </motion.div>
+
+      {/* HUD Bottom Right */}
+      <motion.div 
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 2, delay: 1.5 }}
+        className="absolute bottom-40 right-10 p-6 glass-system rounded-2xl border-primary/20 flex flex-col items-end space-y-2"
+      >
+        <div className="flex items-center space-x-3">
+          <span className="text-[9px] font-black tracking-widest text-primary uppercase">Logic_Stream: Synchronized</span>
+          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+        </div>
+        <div className="flex space-x-1 items-end h-8">
+          {[...Array(8)].map((_, i) => (
+            <motion.div 
+              key={i}
+              animate={{ height: [10, 30, 15, 25, 10] }}
+              transition={{ duration: 1 + Math.random(), repeat: Infinity, delay: i * 0.1 }}
+              className="w-1 bg-primary/20 rounded-full"
+            />
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 // Animated 3D Network Visualization — inline for hero
 function HeroNetwork() {
   const [leakIndex, setLeakIndex] = useState(6);
@@ -243,13 +296,15 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-background pt-24 md:pt-28 pb-0 scene-divider">
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-background pt-32 md:pt-40 pb-0">
       {/* ATMOSPHERIC LAYERS */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 grid-infrastructure opacity-15" />
-        <div className="absolute inset-0 dot-grid opacity-20" />
-        <div className="glow-orb w-[500px] h-[500px] bg-primary/10 top-[-10%] right-[-10%]" />
-        <div className="glow-orb w-[400px] h-[400px] bg-primary/8 bottom-[10%] left-[-5%]" style={{ animationDelay: "3s" }} />
+        <div className="absolute inset-0 grid-infrastructure opacity-5" />
+        <div className="absolute inset-0 dot-grid opacity-10" />
+        
+        {/* Premium Cinematic Lighting */}
+        <div className="glow-orb w-[1000px] h-[1000px] bg-primary/15 top-[-20%] right-[-10%] blur-[150px]" />
+        <div className="glow-orb w-[800px] h-[800px] bg-primary/10 bottom-[-20%] left-[-10%] blur-[120px]" style={{ animationDelay: "3s" }} />
         
         {/* LEAKAGE PARTICLES (Environmental) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -287,10 +342,12 @@ export function Hero() {
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
         style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.04] dark:text-foreground/[0.06] hidden md:block"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.03] dark:text-foreground/[0.05] hidden md:block uppercase tracking-tighter"
       >
-        GROWTH ARCHITECTURE • SYSTEMS • REVENUE •
+        REVENUE INFRASTRUCTURE • GROWTH OS • AUTONOMOUS SCALING •
       </motion.div>
+
+      <FloatingHUD />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 flex-grow flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
@@ -316,7 +373,7 @@ export function Hero() {
                     <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`} alt="user" className="w-full h-full object-cover" />
                   </div>
                 ))}
-                <span className="pl-4 text-[9px] font-black tracking-widest text-muted-foreground dark:text-muted-foreground/80 uppercase">
+                <span className="pl-4 text-[9px] font-black tracking-widest text-muted-foreground dark:text-muted-foreground/60 uppercase">
                   Trusted by 50+ High-Growth Teams
                 </span>
               </div>
@@ -427,7 +484,7 @@ export function Hero() {
                   <span className="text-[10px] font-black tracking-widest text-foreground uppercase">Live Signals Detected</span>
                 </div>
                 <span className="text-2xl md:text-3xl font-black italic tracking-tighter text-foreground leading-none">
-                  $1.2M+ <span className="text-muted-foreground/30 not-italic text-sm">Revenue Recaptured</span>
+                  $1.2M+ <span className="text-muted-foreground/60 not-italic text-sm">Revenue Recaptured</span>
                 </span>
               </motion.div>
             </div>

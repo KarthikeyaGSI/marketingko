@@ -56,9 +56,9 @@ export function RevenueSystems() {
             >
               Infrastructure Protocols
             </motion.div>
-            <h2 className="text-6xl md:text-8xl font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase">
+            <h2 className="text-6xl md:text-8xl font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase italic">
               CORE <br />
-              <span className="text-muted-foreground/40 italic font-medium">SYSTEMS.</span>
+              <span className="text-muted-foreground/60 not-italic">SYSTEMS.</span>
             </h2>
             <p className="text-2xl md:text-4xl text-muted-foreground max-w-5xl font-medium tracking-tightest leading-tight italic border-l-4 border-primary/20 pl-16">
               "Three foundational growth engines. Engineered for the modern AI economy."
@@ -138,7 +138,7 @@ export function RevenueSystems() {
                            <p className="text-6xl md:text-7xl font-black text-foreground tracking-tightest italic leading-none">Quote</p>
                            <span className="text-sm font-black text-foreground/40 uppercase italic">On_Request</span>
                          </div>
-                         <p className="text-[13px] font-black text-primary mt-8 uppercase tracking-[0.4em] italic opacity-80">{system.mgmt}</p>
+                         <p className="text-[13px] font-black text-primary mt-8 uppercase tracking-[0.4em] italic opacity-100">{system.mgmt}</p>
                        </div>
                        
                        <Link href={`/contact?protocol=${system.id}`} className="block">
