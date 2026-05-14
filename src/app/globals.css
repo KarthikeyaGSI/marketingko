@@ -185,6 +185,40 @@
     background-size: 40px 40px;
   }
 
+  .ambient-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 30% 30%, oklch(var(--primary)/0.15), transparent 40%),
+                radial-gradient(circle at 70% 70%, oklch(var(--secondary)/0.12), transparent 50%);
+    animation: ambientGlow 8s infinite alternate;
+  }
+  @keyframes ambientGlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+  }
+
+  .moving-orb-orbit {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: orbit 12s linear infinite;
+  }
+  .moving-orb {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: oklch(var(--primary)/0.2);
+    box-shadow: 0 0 20px oklch(var(--primary)/0.5);
+  }
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+  }
+
   .text-mask-premium {
     @apply text-foreground;
   }
