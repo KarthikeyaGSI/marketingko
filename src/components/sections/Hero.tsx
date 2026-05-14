@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, Activity } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { SystemsMarquee } from "./SystemsMarquee";
 
 // Cinematic stagger config
 const stagger = {
@@ -24,23 +25,37 @@ const wordReveal = {
   }
 };
 
+const nodes = [
+  { label: "LEADS", x: 50, y: 8, delay: 0 },
+  { label: "AI QUALIFY", x: 88, y: 30, delay: 0.3 },
+  { label: "NURTURE", x: 80, y: 70, delay: 0.6 },
+  { label: "CONVERT", x: 50, y: 90, delay: 0.9 },
+  { label: "REVENUE", x: 15, y: 65, delay: 1.2 },
+  { label: "ANALYZE", x: 12, y: 25, delay: 1.5 },
+  { label: "LIMITS", x: 75, y: 15, delay: 1.8, type: 'critical' },
+];
+
+const connections = [
+  [0,1],[1,2],[2,3],[3,4],[4,5],[5,0],
+  [0,2],[1,3],[2,4],[3,5],[4,0],[5,1],
+  [6,0],
+];
+
 // Animated 3D Network Visualization — inline for hero
 function HeroNetwork() {
-  const nodes = [
-    { label: "LEADS", x: 50, y: 8, delay: 0 },
-    { label: "AI QUALIFY", x: 88, y: 30, delay: 0.3 },
-    { label: "NURTURE", x: 80, y: 70, delay: 0.6 },
-    { label: "CONVERT", x: 50, y: 90, delay: 0.9 },
-    { label: "REVENUE", x: 15, y: 65, delay: 1.2 },
-    { label: "ANALYZE", x: 12, y: 25, delay: 1.5 },
-    { label: "LIMITS", x: 75, y: 15, delay: 1.8, type: 'critical' }, // New node
-  ];
+  const [leakIndex, setLeakIndex] = useState(6);
+  const [isFixing, setIsFixing] = useState(false);
 
-  const connections = [
-    [0,1],[1,2],[2,3],[3,4],[4,5],[5,0],
-    [0,2],[1,3],[2,4],[3,5],[4,0],[5,1],
-    [6,0], // Connect LIMITS to LEADS
-  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFixing(true);
+      setTimeout(() => {
+        setLeakIndex((prev) => (prev === 6 ? Math.floor(Math.random() * 6) : 6));
+        setIsFixing(false);
+      }, 1000);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative w-full h-full min-h-[350px]">
@@ -83,8 +98,8 @@ function HeroNetwork() {
             fill="oklch(var(--destructive))"
             initial={{ opacity: 0 }}
             animate={{
-              cx: [75, 62, 50], // From LIMITS towards center/leads
-              cy: [15, 25, 40],
+              cx: [nodes[leakIndex].x, nodes[leakIndex].x - 10, nodes[leakIndex].x],
+              cy: [nodes[leakIndex].y, nodes[leakIndex].y + 15, nodes[leakIndex].y + 30],
               opacity: [0, 1, 0],
               r: [0.5, 0.8, 0.2]
             }}
@@ -131,15 +146,31 @@ function HeroNetwork() {
         >
           {/* Glow ring */}
           <motion.div 
-            animate={{ scale: [1, 1.3, 1], opacity: node.type === 'critical' ? [0.4, 0, 0.4] : [0.3, 0, 0.3] }}
-            transition={{ duration: node.type === 'critical' ? 1.5 : 3, repeat: Infinity, delay: i * 0.4 }}
-            className={`absolute inset-0 rounded-full border ${node.type === 'critical' ? 'border-destructive/50' : 'border-primary/30'}`}
+            animate={{ scale: [1, 1.3, 1], opacity: (node.type === 'critical' || i === leakIndex) ? [0.4, 0, 0.4] : [0.3, 0, 0.3] }}
+            transition={{ duration: (node.type === 'critical' || i === leakIndex) ? 1.5 : 3, repeat: Infinity, delay: i * 0.4 }}
+            className={`absolute inset-0 rounded-full border ${(node.type === 'critical' || i === leakIndex) ? 'border-destructive/50' : 'border-primary/30'}`}
             style={{ margin: '-8px' }}
           />
           
-          <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full border ${node.type === 'critical' ? 'border-destructive/40' : 'border-primary/30'} bg-background/80 backdrop-blur-xl flex items-center justify-center shadow-[0_0_30px_oklch(var(--primary)/0.2)] group-hover:border-primary/60 group-hover:shadow-[0_0_50px_oklch(var(--primary)/0.4)] transition-all duration-700`}>
-            <span className={`text-[6px] md:text-[8px] font-black tracking-[0.15em] ${node.type === 'critical' ? 'text-destructive' : 'text-foreground'} group-hover:text-primary transition-colors duration-500 text-center leading-tight`}>{node.label}</span>
+          <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full border ${(node.type === 'critical' || i === leakIndex) ? 'border-destructive/40' : 'border-primary/30'} bg-background/80 backdrop-blur-xl flex items-center justify-center shadow-[0_0_30px_oklch(var(--primary)/0.2)] group-hover:border-primary/60 group-hover:shadow-[0_0_50px_oklch(var(--primary)/0.4)] transition-all duration-700`}>
+            <span className={`text-[6px] md:text-[8px] font-black tracking-[0.15em] ${(node.type === 'critical' || i === leakIndex) ? 'text-destructive' : 'text-foreground'} group-hover:text-primary transition-colors duration-500 text-center leading-tight uppercase`}>{node.label}</span>
           </div>
+
+          {/* Leakage Badge for this specific node */}
+          {i === leakIndex && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              className="absolute -top-12 left-1/2 -translate-x-1/2 z-20"
+            >
+              <div className={`flex items-center space-x-2 px-3 py-1.5 rounded-full border ${isFixing ? 'border-primary/40 bg-primary/10 text-primary' : 'border-destructive/40 bg-destructive/10 text-destructive'} backdrop-blur-md shadow-xl whitespace-nowrap`}>
+                {isFixing ? <ShieldCheck className="w-3 h-3 animate-bounce" /> : <Activity className="w-3 h-3 animate-pulse" />}
+                <span className="text-[8px] font-black uppercase tracking-widest">
+                  {isFixing ? 'Resolving Leak...' : 'Leakage Detected'}
+                </span>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
       ))}
 
@@ -162,22 +193,12 @@ function HeroNetwork() {
           </div>
         </div>
       </motion.div>
-
-      {/* Dynamic Link to LIMITS */}
-      <motion.div
-        className="absolute"
-        style={{ 
-          left: '62%', top: '32%', 
-          width: '2px', height: '60px', 
-          background: 'linear-gradient(to bottom, transparent, oklch(var(--destructive)), transparent)',
-          rotate: '-45deg'
-        }}
-        animate={{ opacity: [0.2, 0.8, 0.2] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      />
     </div>
   );
 }
+
+const dynamicWords = ["OS", "SYSTEMS", "INFRASTRUCTURE", "ENGINE"];
+const resourceWords = ["REVENUE.", "LEADS.", "MARGINS.", "OPPORTUNITY."];
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -188,8 +209,27 @@ export function Hero() {
   
   const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
 
+  const [wordIndex, setWordIndex] = useState(0);
+  const [particles, setParticles] = useState<any[]>([]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % dynamicWords.length);
+    }, 3000);
+    
+    // Generate particles only on client to avoid hydration mismatch
+    setParticles([...Array(12)].map(() => ({
+      x: Math.random() * 100,
+      duration: Math.random() * 5 + 5,
+      delay: Math.random() * 10,
+      drift: (Math.random() - 0.5) * 20
+    })));
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative min-h-[90vh] lg:h-screen flex items-center overflow-hidden bg-background pt-24 md:pt-28 pb-8 md:pb-12 scene-divider">
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-background pt-24 md:pt-28 pb-0 scene-divider">
       {/* ATMOSPHERIC LAYERS */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 grid-infrastructure opacity-15" />
@@ -199,24 +239,24 @@ export function Hero() {
         
         {/* LEAKAGE PARTICLES (Environmental) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(12)].map((_, i) => (
+          {particles.map((p, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-primary/40 rounded-full"
               initial={{ 
-                x: `${Math.random() * 100}%`, 
+                x: `${p.x}%`, 
                 y: -20, 
                 opacity: 0 
               }}
               animate={{ 
                 y: "110vh",
                 opacity: [0, 0.4, 0],
-                x: [`${Math.random() * 100}%`, `${(Math.random() - 0.5) * 20 + 50}%`]
+                x: [`${p.x}%`, `${p.x + p.drift}%`]
               }}
               transition={{ 
-                duration: Math.random() * 5 + 5, 
+                duration: p.duration, 
                 repeat: Infinity, 
-                delay: Math.random() * 10,
+                delay: p.delay,
                 ease: "linear"
               }}
             />
@@ -232,13 +272,13 @@ export function Hero() {
       
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
-        style={{ y: y2, opacity: 0.015 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1]"
+        style={{ y: y2, opacity: 0.025 }}
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/50 dark:text-foreground/30"
       >
         GROWTH ARCHITECTURE • SYSTEMS • REVENUE •
       </motion.div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 flex-grow flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           
           {/* CONTENT — Left weighted */}
@@ -266,11 +306,23 @@ export function Hero() {
                   className="text-[2.8rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.06em] text-foreground leading-[0.9] uppercase relative z-10"
                 >
                   <div className="flex flex-wrap items-baseline gap-x-3 md:gap-x-5">
-                    {["GROWTH", "SYSTEMS"].map((word, i) => (
-                      <motion.span key={i} variants={wordReveal} className="inline-block">
-                        {word}
-                      </motion.span>
-                    ))}
+                    <motion.span variants={wordReveal} className="inline-block">
+                      GROWTH
+                    </motion.span>
+                    <div className="relative h-[1em] w-[180px] sm:w-[300px] md:w-[400px] lg:w-[450px] overflow-hidden inline-block align-baseline">
+                      <AnimatePresence mode="wait">
+                        <motion.span
+                          key={dynamicWords[wordIndex]}
+                          initial={{ y: 50, opacity: 0, rotateX: -40 }}
+                          animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                          exit={{ y: -50, opacity: 0, rotateX: 40 }}
+                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          className="absolute left-0 text-primary"
+                        >
+                          {dynamicWords[wordIndex]}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
                   </div>
                   <div className="flex items-baseline flex-wrap mt-1 md:mt-2 gap-x-3 md:gap-x-5">
                     <motion.span
@@ -291,9 +343,20 @@ export function Hero() {
                         className="absolute bottom-0 left-1/2 w-1 h-4 bg-primary/40 blur-sm rounded-full"
                       />
                     </motion.span>
-                    <motion.span variants={wordReveal} className="inline-block">
-                      REVENUE.
-                    </motion.span>
+                    <div className="relative h-[1em] min-w-[150px] sm:min-w-[250px] md:min-w-[300px] lg:min-w-[400px] overflow-hidden inline-block align-baseline">
+                      <AnimatePresence mode="wait">
+                        <motion.span
+                          key={resourceWords[wordIndex]}
+                          initial={{ y: 50, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: -50, opacity: 0 }}
+                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          className="absolute left-0"
+                        >
+                          {resourceWords[wordIndex]}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
                   </div>
                 </motion.h1>
               </div>
@@ -339,56 +402,25 @@ export function Hero() {
             className="lg:col-span-5 relative h-[350px] md:h-[450px] lg:h-[550px]"
           >
             <HeroNetwork />
-            
-            {/* Funnel Leakage Visual (Overlay) */}
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-48 h-48 pointer-events-none">
-              <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
-                <defs>
-                  <linearGradient id="leakGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="oklch(var(--destructive))" stopOpacity="0.4" />
-                    <stop offset="100%" stopColor="oklch(var(--destructive))" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                {/* Funnel Outline */}
-                <path d="M40 20 L160 20 L110 120 L90 120 Z" fill="none" stroke="oklch(var(--foreground)/0.1)" strokeWidth="1" strokeDasharray="4 4" />
-                {/* Leaking Drips */}
-                {[...Array(3)].map((_, i) => (
-                  <motion.path
-                    key={i}
-                    d={`M${95 + i * 5} 120 L${95 + i * 5} 180`}
-                    stroke="url(#leakGrad)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ 
-                      pathLength: [0, 1], 
-                      opacity: [0, 1, 0],
-                      y: [0, 20]
-                    }}
-                    transition={{ 
-                      duration: 1.5, 
-                      repeat: Infinity, 
-                      delay: i * 0.5,
-                      ease: "easeIn" 
-                    }}
-                  />
-                ))}
-              </svg>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <span className="text-[7px] font-black text-destructive uppercase tracking-widest whitespace-nowrap bg-background px-2 py-1 border border-destructive/20 rounded-full">Leakage Detected</span>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
       
+      {/* SYSTEMS MARQUEE — Above the fold */}
+      <div className="w-full mt-auto relative z-20">
+        <div className="container mx-auto px-6 mb-2">
+          <span className="text-[8px] font-black tracking-[1em] text-primary uppercase opacity-40">Core Infrastructure Nodes</span>
+        </div>
+        <SystemsMarquee />
+      </div>
+
       {/* SCROLL INDICATOR */}
       <motion.div 
         style={{ opacity }}
-        className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2"
+        className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 pointer-events-none"
       >
         <span className="text-[8px] md:text-[9px] font-black tracking-[1em] text-foreground uppercase">Scroll</span>
-        <div className="w-px h-10 md:h-16 bg-gradient-to-b from-primary to-transparent" />
+        <div className="w-px h-8 md:h-12 bg-gradient-to-b from-primary to-transparent" />
       </motion.div>
     </section>
   );

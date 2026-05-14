@@ -30,7 +30,7 @@ const studies = [
 
 export function CaseStudies() {
   return (
-    <section className="py-80 bg-black relative">
+    <section className="py-80 bg-background relative overflow-hidden transition-colors duration-500">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-48 gap-12">
           <div className="space-y-12 max-w-4xl">
@@ -41,9 +41,9 @@ export function CaseStudies() {
             >
               Proven Protocols
             </motion.div>
-            <h2 className="text-6xl md:text-[10rem] font-bold text-white tracking-tighter leading-[0.8] text-mask-premium">
+            <h2 className="text-6xl md:text-[10rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium">
               DEPLOYMENT <br />
-              <span className="text-muted-foreground/10 italic">HISTORY.</span>
+              <span className="text-muted-foreground/30 dark:text-muted-foreground/40 italic font-medium">AUTHORITY.</span>
             </h2>
           </div>
           <div className="pb-12">
@@ -64,10 +64,10 @@ export function CaseStudies() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                 <div className="lg:col-span-7 space-y-12">
                    <div className="flex items-center space-x-6">
-                      <span className="text-[10px] font-black tracking-[0.5em] text-white/20 uppercase">{study.category}</span>
-                      <div className="h-[1px] w-20 bg-white/10" />
+                      <span className="text-[10px] font-black tracking-[0.5em] text-foreground/30 uppercase">{study.category}</span>
+                      <div className="h-[1px] w-20 bg-border" />
                    </div>
-                   <h3 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none group-hover:text-primary transition-colors duration-700">
+                   <h3 className="text-5xl md:text-8xl font-bold text-foreground tracking-tighter leading-none group-hover:text-primary transition-colors duration-700">
                      {study.title}
                    </h3>
                    <p className="text-2xl text-muted-foreground leading-relaxed font-medium tracking-tight max-w-2xl">
@@ -77,28 +77,28 @@ export function CaseStudies() {
                    <div className="grid grid-cols-3 gap-12 pt-12">
                       {Object.entries(study.metrics).map(([key, val], idx) => (
                         <div key={idx} className="space-y-2">
-                           <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">{key}</p>
-                           <p className="text-4xl font-bold text-white tracking-tighter italic">{val}</p>
+                           <p className="text-[10px] font-black text-foreground/30 uppercase tracking-widest">{key}</p>
+                           <p className="text-4xl font-bold text-foreground tracking-tighter italic">{val}</p>
                         </div>
                       ))}
                    </div>
                 </div>
 
-                <div className="lg:col-span-5 aspect-[4/3] rounded-[4rem] border border-white/5 bg-white/[0.02] backdrop-blur-3xl p-12 overflow-hidden relative group-hover:border-primary/40 transition-all duration-1000">
+                <div className="lg:col-span-5 aspect-[4/3] rounded-[4rem] border border-border bg-foreground/[0.02] backdrop-blur-3xl p-12 overflow-hidden relative group-hover:border-primary/40 transition-all duration-1000">
                    <div className={`absolute inset-0 bg-gradient-to-br ${study.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
                    
                    {/* Mock UI Artifact */}
                    <div className="relative h-full flex flex-col justify-between">
                       <div className="flex justify-between items-start">
                          <div className="flex space-x-2">
-                            <div className="w-3 h-3 rounded-full bg-white/10" />
-                            <div className="w-3 h-3 rounded-full bg-white/10" />
+                            <div className="w-3 h-3 rounded-full bg-foreground/10" />
+                            <div className="w-3 h-3 rounded-full bg-foreground/10" />
                          </div>
-                         <BarChart3 className="text-white/20" />
+                         <BarChart3 className="text-foreground/20" />
                       </div>
                       
                       <div className="space-y-8">
-                         <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                         <div className="h-2 w-full bg-foreground/5 rounded-full overflow-hidden">
                             <motion.div 
                               initial={{ width: 0 }}
                               whileInView={{ width: "80%" }}
@@ -108,8 +108,8 @@ export function CaseStudies() {
                          </div>
                          <div className="flex justify-between items-end">
                             <div className="space-y-2">
-                               <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">Growth Velocity</p>
-                               <p className="text-4xl font-bold text-white italic tracking-tighter">Accelerated</p>
+                               <p className="text-[10px] font-black text-foreground/30 uppercase tracking-widest">Growth Velocity</p>
+                               <p className="text-4xl font-bold text-foreground italic tracking-tighter">Accelerated</p>
                             </div>
                             <ArrowUpRight className="text-primary w-12 h-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
                          </div>

@@ -15,10 +15,18 @@ const systemSteps = [
 
 export function SystemVisualization() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef });
+  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
   
   return (
-    <section ref={containerRef} className="py-80 bg-black relative overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section ref={containerRef} className="py-80 bg-background relative overflow-hidden">
+      <motion.div 
+        style={{ y: y2 }}
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.06]"
+      >
+        GROWTH ARCHITECTURE • SYSTEMS • REVENUE •
+      </motion.div>
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-48">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -27,11 +35,11 @@ export function SystemVisualization() {
           >
             The Operating System
           </motion.div>
-          <h2 className="text-6xl md:text-9xl font-bold text-white tracking-tighter leading-[0.8] mb-12 text-mask-premium">
+          <h2 className="text-6xl md:text-9xl font-bold text-foreground tracking-tighter leading-[0.8] mb-12 text-mask-premium">
             HOW REVENUE <br />
-            <span className="text-muted-foreground/20">OPERATES.</span>
+            <span className="text-muted-foreground/60 italic">OPERATES.</span>
           </h2>
-          <p className="text-2xl text-muted-foreground font-medium tracking-tighter max-w-3xl mx-auto leading-tight">
+          <p className="text-2xl text-foreground/80 font-medium tracking-tighter max-w-3xl mx-auto leading-tight">
             We don't provide marketing. We deploy a proprietary AI Growth OS that converts 
             human effort into autonomous acquisition infrastructure.
           </p>
@@ -63,8 +71,8 @@ export function SystemVisualization() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.15 }}
               >
-                <div className="system-node w-20 h-20 md:w-32 md:h-32 mb-6">
-                  <node.icon className="h-6 w-6 md:h-10 md:w-10 text-white group-hover:text-primary group-hover:scale-125 transition-all duration-700" />
+                <div className="system-node w-20 h-20 md:w-32 md:h-32 mb-6 bg-foreground/[0.03] border border-border">
+                  <node.icon className="h-6 w-6 md:h-10 md:w-10 text-foreground group-hover:text-primary group-hover:scale-125 transition-all duration-700" />
                   
                   {/* Glow Ring */}
                   <div className="absolute inset-0 rounded-2xl border border-primary/0 group-hover:border-primary/40 group-hover:scale-110 transition-all duration-700" />
@@ -88,8 +96,8 @@ export function SystemVisualization() {
                 className="w-96 h-96 bg-primary rounded-full blur-[150px]"
               />
               <div className="relative z-10 space-y-4">
-                <span className="text-[10px] font-black tracking-[0.6em] text-white/40 uppercase">System Core</span>
-                <h3 className="text-4xl font-bold text-white tracking-tighter">MARKETING KO V2</h3>
+                <span className="text-[10px] font-black tracking-[0.6em] text-foreground/40 uppercase">System Core</span>
+                <h3 className="text-4xl font-bold text-foreground tracking-tighter">MARKETING KO V2</h3>
               </div>
             </div>
           </div>

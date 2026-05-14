@@ -65,7 +65,7 @@ export function ProblemSection() {
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.05em] text-foreground leading-[0.9] uppercase relative"
               >
                 DOING EVERYTHING. <br />
-                <span className="text-muted-foreground/10 italic font-medium">BUT STILL LOSING.</span>
+                <span className="text-muted-foreground/30 dark:text-muted-foreground/40 italic font-medium">BUT STILL LOSING.</span>
                 
                 {/* Asymmetrical spinning detail */}
                 <motion.div 
@@ -98,7 +98,7 @@ export function ProblemSection() {
                     className="p-6 md:p-10 rounded-2xl md:rounded-3xl cinematic-card group relative overflow-hidden"
                  >
                     <div className="absolute top-0 right-0 p-4 md:p-6">
-                       <span className="text-4xl md:text-6xl font-black text-foreground/[0.03] italic">{pain.id}</span>
+                       <span className="text-4xl md:text-6xl font-black text-foreground/[0.08] dark:text-foreground/[0.1] italic">{pain.id}</span>
                     </div>
                     
                     <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 relative z-10">
@@ -108,9 +108,9 @@ export function ProblemSection() {
                        <div className="space-y-2 flex-1">
                           <div className="flex flex-wrap items-center gap-3">
                             <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tight italic uppercase">{pain.title}</h3>
-                            <div className="px-3 py-1 rounded-lg bg-primary/10 text-primary text-[9px] md:text-[10px] font-black uppercase tracking-wider">{pain.stats}</div>
+                            <div className="px-3 py-1 rounded-lg bg-primary/20 text-primary text-[9px] md:text-[10px] font-black uppercase tracking-wider">{pain.stats}</div>
                           </div>
-                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl">
+                          <p className="text-sm md:text-base text-muted-foreground/80 dark:text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl">
                             {pain.description}
                           </p>
                        </div>

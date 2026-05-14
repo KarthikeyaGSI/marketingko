@@ -26,7 +26,7 @@ export function IndustriesMarquee() {
            className="text-[10px] md:text-[11px] font-black tracking-[1.2em] md:tracking-[1.5em] text-primary uppercase text-center flex items-center justify-center space-x-4"
          >
             <div className="h-px w-8 md:w-12 bg-primary/20" />
-            <span>Systems Built For</span>
+            <span>Deployment Verticals</span>
             <div className="h-px w-8 md:w-12 bg-primary/20" />
          </motion.div>
       </div>

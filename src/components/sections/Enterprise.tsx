@@ -21,7 +21,7 @@ export function Enterprise() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
   return (
-    <section ref={containerRef} className="py-60 bg-black relative overflow-hidden">
+    <section ref={containerRef} className="py-60 bg-background relative overflow-hidden transition-colors duration-500">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-start justify-between mb-40 gap-20">
           <div className="max-w-4xl">
@@ -32,9 +32,9 @@ export function Enterprise() {
             >
               Enterprise Validation
             </motion.div>
-            <h2 className="text-5xl md:text-9xl font-bold text-white tracking-tighter leading-[0.8] mb-12">
+            <h2 className="text-5xl md:text-9xl font-bold text-foreground tracking-tighter leading-[0.8] mb-12 uppercase">
               MONITORING <br />
-              <span className="text-muted-foreground/30">SCALE.</span>
+              <span className="text-muted-foreground/30 dark:text-muted-foreground/40 italic">SERVICES.</span>
             </h2>
             <p className="text-2xl text-muted-foreground font-medium tracking-tight max-w-2xl leading-tight">
               We deploy sovereign acquisition architectures that operate without human intervention. 
@@ -52,8 +52,8 @@ export function Enterprise() {
                 className="p-8 glass-premium rounded-3xl border-primary/10 flex flex-col items-center text-center space-y-4"
               >
                 <m.icon className="h-6 w-6 text-primary" />
-                <span className="text-4xl font-bold text-white tracking-tighter">{m.value}</span>
-                <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">{m.label}</span>
+                <span className="text-4xl font-bold text-foreground tracking-tighter">{m.value}</span>
+                <span className="text-[10px] font-black text-foreground/30 uppercase tracking-widest">{m.label}</span>
               </motion.div>
             ))}
           </div>
@@ -68,14 +68,14 @@ export function Enterprise() {
                   <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
                     <Shield className="text-primary h-6 w-6" />
                   </div>
-                  <h3 className="text-3xl font-bold text-white tracking-tighter">Autonomous Node {item}</h3>
+                  <h3 className="text-3xl font-bold text-foreground tracking-tighter uppercase italic">Autonomous Node {item}</h3>
                   <p className="text-muted-foreground font-medium leading-snug">
                     Deployed infrastructure managing $4.2M monthly acquisition spend with 0.02s decision latency.
                   </p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <div className="h-[1px] flex-1 bg-white/10 group-hover:bg-primary/20 transition-colors" />
-                  <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">Active Status</span>
+                  <div className="h-[1px] flex-1 bg-border/50 group-hover:bg-primary/20 transition-colors" />
+                  <span className="text-[10px] font-black text-foreground/30 uppercase tracking-widest">Active Status</span>
                 </div>
               </div>
             ))}
