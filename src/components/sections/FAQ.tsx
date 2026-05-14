@@ -76,10 +76,10 @@ export function FAQ() {
               initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.05em] text-foreground leading-[0.9]"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tightest text-foreground leading-[0.9] uppercase italic"
             >
               CLEAR ANSWERS. <br />
-              <span className="text-muted-foreground/15 italic font-medium">NO JARGON.</span>
+              <span className="text-muted-foreground/60 dark:text-muted-foreground/40 not-italic font-medium">NO JARGON.</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 15 }}
@@ -137,7 +137,7 @@ export function FAQ() {
                     className="relative z-10"
                   >
                     <div className="px-5 md:px-8 pb-5 md:pb-8">
-                      <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-medium tracking-tight leading-[1.5] max-w-3xl italic border-l-2 border-primary/20 pl-5 md:pl-6">
+                      <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-medium tracking-tightest leading-[1.5] max-w-3xl italic border-l-2 border-primary/20 pl-5 md:pl-6">
                         {faq.answer}
                       </p>
                     </div>

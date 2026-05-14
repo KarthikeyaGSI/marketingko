@@ -41,7 +41,7 @@ const systems = [
 
 export function RevenueSystems() {
   return (
-    <section id="revenue-systems" className="py-60 md:py-80 bg-background relative overflow-hidden mesh-animate">
+    <section id="revenue-systems" className="py-32 md:py-80 bg-background relative overflow-hidden mesh-animate">
       <div className="absolute inset-0 grid-infrastructure opacity-10 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,oklch(var(--primary)/0.08)_0%,transparent_60%)]" />
       
@@ -78,7 +78,7 @@ export function RevenueSystems() {
         </div>
 
         {/* BROKEN GRID (Layered Stacking) */}
-        <div className="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-24 relative">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-24 relative lg:px-0">
           {systems.map((system, i) => (
             <motion.div
               key={i}

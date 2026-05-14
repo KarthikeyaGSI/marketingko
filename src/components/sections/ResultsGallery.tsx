@@ -30,12 +30,12 @@ const systemBenchmarks = [
 
 export function ResultsGallery() {
   return (
-    <section className="py-80 bg-background relative overflow-hidden">
+    <section className="py-32 md:py-80 bg-background relative overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,oklch(var(--primary)/0.05)_0%,transparent_50%)]" />
       
       <div className="container mx-auto px-6 relative">
-        <div className="mb-48 space-y-12 max-w-5xl">
+        <div className="mb-24 md:mb-48 space-y-12 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -43,11 +43,11 @@ export function ResultsGallery() {
           >
             Operational Benchmarks
           </motion.div>
-          <h2 className="text-7xl md:text-[9.5rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium uppercase italic">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[9.5rem] font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase italic">
             MEASURABLE <br />
             <span className="text-muted-foreground/60 not-italic">AUTHORITY.</span>
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-tight max-w-3xl">
+          <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tightest leading-tight max-w-3xl italic">
             We replace generic testimonials with technical artifacts and operational benchmarks. 
             These represent the baseline performance of our deployed AI infrastructure.
           </p>
@@ -105,8 +105,8 @@ export function ResultsGallery() {
                  <span className="text-[10px] font-black tracking-[0.5em] text-primary uppercase">Architecture Pattern</span>
                  <div className="h-px flex-1 bg-border/50" />
                </div>
-               <h3 className="text-5xl md:text-7xl font-bold text-foreground tracking-tighter leading-none italic">MK-SYS-CORE-QUAL.04</h3>
-               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl">
+               <h3 className="text-4xl md:text-7xl font-bold text-foreground tracking-tightest leading-none italic uppercase">MK-SYS-CORE-QUAL.04</h3>
+               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium tracking-tightest max-w-xl italic">
                  An automated qualification engine pattern. Orchestrating thousands of 
                  behavioral signals into deterministic routing decisions with 
                  zero human intervention.

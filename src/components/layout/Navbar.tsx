@@ -96,7 +96,7 @@ export function Navbar() {
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[4999] bg-background/98 backdrop-blur-3xl pt-60 px-12 lg:hidden flex flex-col"
+            className="fixed inset-0 z-[4999] bg-background/98 backdrop-blur-3xl pt-60 px-12 lg:hidden flex flex-col overflow-y-auto"
           >
              {/* Background Atmosphere for Mobile Menu */}
             <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
@@ -112,7 +112,7 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="text-8xl md:text-9xl font-black text-foreground tracking-tightest italic uppercase"
+                    className="text-6xl sm:text-7xl md:text-9xl font-black text-foreground tracking-tightest italic uppercase leading-none"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -127,7 +127,7 @@ export function Navbar() {
                 className="pt-20"
               >
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full h-32 text-4xl bg-primary text-primary-foreground rounded-[3rem] font-black uppercase tracking-widest shadow-[0_40px_80px_-20px_oklch(var(--primary)/0.4)] border-none">
+                  <Button className="w-full h-24 sm:h-32 text-2xl sm:text-4xl bg-primary text-primary-foreground rounded-[2rem] sm:rounded-[3rem] font-black uppercase tracking-widest shadow-[0_40px_80px_-20px_oklch(var(--primary)/0.4)] border-none">
                     Start Project
                   </Button>
                 </Link>

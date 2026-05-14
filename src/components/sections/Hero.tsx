@@ -342,7 +342,7 @@ export function Hero() {
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
         style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.03] dark:text-foreground/[0.05] hidden md:block uppercase tracking-tighter"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.03] dark:text-foreground/[0.05] hidden md:block uppercase tracking-tightest"
       >
         REVENUE INFRASTRUCTURE • GROWTH OS • AUTONOMOUS SCALING •
       </motion.div>
@@ -392,7 +392,7 @@ export function Hero() {
                     <motion.span variants={wordReveal} className="inline-block">
                       GROWTH
                     </motion.span>
-                    <div className="relative h-[1.1em] w-[140px] sm:w-[300px] md:w-[450px] lg:w-[550px] overflow-hidden inline-block align-baseline">
+                    <div className="relative h-[1.1em] w-[160px] sm:w-[300px] md:w-[450px] lg:w-[550px] overflow-hidden inline-block align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={dynamicWords[wordIndex]}
@@ -400,7 +400,7 @@ export function Hero() {
                           animate={{ y: 0, opacity: 1, rotateX: 0 }}
                           exit={{ y: -80, opacity: 0, rotateX: 40 }}
                           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                          className="absolute left-0 text-primary italic font-medium"
+                          className="absolute left-0 text-primary italic font-medium leading-[0.8]"
                         >
                           {dynamicWords[wordIndex]}
                         </motion.span>
@@ -426,7 +426,7 @@ export function Hero() {
                         className="absolute bottom-0 left-1/2 w-1 h-4 bg-primary/40 blur-sm rounded-full"
                       />
                     </motion.span>
-                    <div className="relative h-[1.1em] min-w-[130px] sm:min-w-[250px] md:min-w-[350px] lg:min-w-[450px] overflow-hidden inline-block align-baseline">
+                    <div className="relative h-[1.1em] min-w-[140px] sm:min-w-[250px] md:min-w-[350px] lg:min-w-[450px] overflow-hidden inline-block align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={resourceWords[wordIndex]}
@@ -434,7 +434,7 @@ export function Hero() {
                           animate={{ y: 0, opacity: 1 }}
                           exit={{ y: -80, opacity: 0 }}
                           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                          className="absolute left-0"
+                          className="absolute left-0 leading-[0.8]"
                         >
                           {resourceWords[wordIndex]}
                         </motion.span>
