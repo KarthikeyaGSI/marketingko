@@ -386,21 +386,21 @@ export function Hero() {
                   initial="hidden"
                   animate="visible"
                   variants={stagger}
-                  className="text-[2.2rem] sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter text-foreground leading-[0.8] uppercase relative z-10"
+                  className="text-[2.2rem] sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tightest text-foreground leading-[1.1] sm:leading-[0.9] uppercase relative z-10"
                 >
                   <div className="flex flex-wrap items-baseline gap-x-3 md:gap-x-6">
                     <motion.span variants={wordReveal} className="inline-block">
                       GROWTH
                     </motion.span>
-                    <div className="relative h-[1.1em] w-[160px] sm:w-[300px] md:w-[450px] lg:w-[550px] overflow-hidden inline-block align-baseline">
+                    <div className="relative h-[1.1em] min-w-[2ch] overflow-hidden inline-flex align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={dynamicWords[wordIndex]}
-                          initial={{ y: 80, opacity: 0, rotateX: -40 }}
+                          initial={{ y: "100%", opacity: 0, rotateX: -40 }}
                           animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                          exit={{ y: -80, opacity: 0, rotateX: 40 }}
-                          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                          className="absolute left-0 text-primary italic font-medium leading-[0.8]"
+                          exit={{ y: "-100%", opacity: 0, rotateX: 40 }}
+                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          className="text-primary italic font-medium leading-none whitespace-nowrap block"
                         >
                           {dynamicWords[wordIndex]}
                         </motion.span>
@@ -426,15 +426,15 @@ export function Hero() {
                         className="absolute bottom-0 left-1/2 w-1 h-4 bg-primary/40 blur-sm rounded-full"
                       />
                     </motion.span>
-                    <div className="relative h-[1.1em] min-w-[140px] sm:min-w-[250px] md:min-w-[350px] lg:min-w-[450px] overflow-hidden inline-block align-baseline">
+                    <div className="relative h-[1.1em] min-w-[3ch] overflow-hidden inline-flex align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={resourceWords[wordIndex]}
-                          initial={{ y: 80, opacity: 0 }}
+                          initial={{ y: "100%", opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: -80, opacity: 0 }}
-                          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                          className="absolute left-0 leading-[0.8]"
+                          exit={{ y: "-100%", opacity: 0 }}
+                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          className="leading-none whitespace-nowrap block"
                         >
                           {resourceWords[wordIndex]}
                         </motion.span>
