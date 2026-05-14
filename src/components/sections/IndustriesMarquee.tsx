@@ -18,11 +18,17 @@ const industries = [
 
 export function IndustriesMarquee() {
   return (
-    <section className="py-10 md:py-14 bg-background relative overflow-hidden border-y border-border/30">
+    <section className="py-10 md:py-14 bg-background relative overflow-hidden border-y border-border/30 -mt-16 md:-mt-24 z-20">
       <div className="container mx-auto px-4 md:px-6 mb-6">
-         <div className="text-[9px] md:text-[10px] font-black tracking-[1em] md:tracking-[1.5em] text-foreground/20 uppercase text-center">
-            Systems Built For
-         </div>
+         <motion.div 
+           initial={{ opacity: 0, y: 10 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           className="text-[10px] md:text-[11px] font-black tracking-[1.2em] md:tracking-[1.5em] text-primary uppercase text-center flex items-center justify-center space-x-4"
+         >
+            <div className="h-px w-8 md:w-12 bg-primary/20" />
+            <span>Systems Built For</span>
+            <div className="h-px w-8 md:w-12 bg-primary/20" />
+         </motion.div>
       </div>
       
       <div className="relative flex overflow-hidden">

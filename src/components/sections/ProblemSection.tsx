@@ -39,7 +39,7 @@ export function ProblemSection() {
   const x2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
-    <section ref={containerRef} id="problem" className="py-24 md:py-40 bg-background relative overflow-hidden scene-divider">
+    <section ref={containerRef} id="problem" className="py-16 md:py-24 bg-background relative overflow-hidden scene-divider">
       {/* Atmospheric layers */}
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
       <div className="glow-orb w-[400px] h-[400px] bg-primary/8 top-[20%] left-[-10%]" />
