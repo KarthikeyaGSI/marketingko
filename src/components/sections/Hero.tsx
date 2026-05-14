@@ -106,7 +106,7 @@ function HeroNetwork() {
           />
           
           <div className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-primary/30 bg-background/80 backdrop-blur-xl flex items-center justify-center shadow-[0_0_30px_oklch(var(--primary)/0.2)] group-hover:border-primary/60 group-hover:shadow-[0_0_50px_oklch(var(--primary)/0.4)] transition-all duration-700">
-            <span className="text-[7px] md:text-[8px] font-black tracking-[0.15em] text-foreground/70 group-hover:text-primary transition-colors duration-500 text-center leading-tight">{node.label}</span>
+            <span className="text-[7px] md:text-[8px] font-black tracking-[0.15em] text-foreground group-hover:text-primary transition-colors duration-500 text-center leading-tight">{node.label}</span>
           </div>
         </motion.div>
       ))}
@@ -246,8 +246,8 @@ export function Hero() {
               </Link>
               
               <div className="flex flex-col space-y-1 border-l-2 border-foreground/10 pl-6">
-                <span className="text-[9px] font-black tracking-[0.5em] text-foreground/20 uppercase">ROI-DRIVEN</span>
-                <span className="text-base md:text-lg font-bold italic tracking-tight text-foreground/50 leading-none">Systems that pay for themselves.</span>
+                <span className="text-[9px] font-black tracking-[0.5em] text-foreground uppercase">ROI-DRIVEN</span>
+                <span className="text-base md:text-lg font-bold italic tracking-tight text-foreground leading-none">Systems that pay for themselves.</span>
               </div>
             </motion.div>
           </div>
@@ -267,7 +267,7 @@ export function Hero() {
         style={{ opacity }}
         className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-3"
       >
-        <span className="text-[8px] md:text-[9px] font-black tracking-[1em] text-foreground/10 uppercase">Scroll</span>
+        <span className="text-[8px] md:text-[9px] font-black tracking-[1em] text-foreground uppercase">Scroll</span>
         <div className="w-px h-12 md:h-20 bg-gradient-to-b from-primary to-transparent" />
       </motion.div>
     </section>
