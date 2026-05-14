@@ -2,6 +2,7 @@
 
 import { InfrastructureFlow } from "@/components/sections/InfrastructureFlow";
 import { Performance } from "@/components/sections/Performance";
+import { SolutionsGrid } from "@/components/sections/SolutionsGrid";
 import { CTA } from "@/components/sections/CTA";
 import { motion } from "framer-motion";
 import Link from "next/link";
