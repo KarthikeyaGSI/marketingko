@@ -7,23 +7,31 @@ import { Plus, Minus } from "lucide-react";
 const faqs = [
   {
     question: "What exactly do you build?",
-    answer: "We build custom AI operational infrastructure. This includes autonomous voice agents, WhatsApp automation systems, internal workflow engines (n8n/Make), and high-converting landing systems. We focus on sealing revenue leaks and eliminating manual work."
+    answer: "We engineer custom AI operational infrastructure. Unlike 'GPT-wrappers', we deploy autonomous logic layers that manage your revenue pipeline. This includes sub-second voice agents, deep-flow WhatsApp automations, and self-healing internal workflows (n8n/Make/Python). We focus on sealing revenue leaks, not just adding features."
   },
   {
     question: "Will I need to replace my existing software?",
-    answer: "Almost never. Our systems are designed to sit on top of your existing stack. We integrate with your CRM (GoHighLevel, HubSpot, Salesforce), your email providers, and your calendar systems seamlessly."
+    answer: "No. Our Growth OS is designed to be 'stack-agnostic'. We sit on top of your existing CRM (GoHighLevel, HubSpot, Salesforce) and legacy tools. We act as the neural fabric that connects your disparate systems into a unified, autonomous engine."
   },
   {
-    question: "How long does implementation take?",
-    answer: "We focus on speed. Most individual solutions are deployed in 7-10 days. Full revenue systems are typically live within 2-3 weeks from the moment we finalize the scope."
+    question: "How long until I see a measurable ROI?",
+    answer: "Our 'Time-to-Value' is engineered for speed. Individual nodes are deployed in 7-10 days. Most clients see significant recaptured revenue (often covering the setup cost) within the first 14-21 days of full system deployment."
   },
   {
-    question: "What if the AI gives the wrong information to a customer?",
-    answer: "Our AI systems are constrained by strict guardrails and specific knowledge bases provided by you. We use 'Agentic' workflows that check for accuracy before responding. We also include a human-in-the-loop fallback for complex queries."
+    question: "Is my proprietary data secure?",
+    answer: "Security is built into our core architecture. We use enterprise-grade AES-256 encryption for data at rest and in transit. Your AI is trained on a siloed, private instance. We are fully compliant with HIPAA, GDPR, and PCI-DSS protocols where required."
   },
   {
-    question: "How do you charge for your services?",
-    answer: "We use a transparent 'Build + Management' model. You pay a one-time setup fee for the engineering and a monthly management fee for maintenance, optimization, and support. Infrastructure costs (API usage) are billed at cost."
+    question: "How are you different from a standard AI agency?",
+    answer: "Agencies sell hours and deliverables. We sell Infrastructure and Outcomes. Most agencies use standard templates; we write custom logic and deploy redundant systems with live telemetry monitoring. We are engineers, not marketers with GPT subscriptions."
+  },
+  {
+    question: "Do you handle my specific industry?",
+    answer: "We focus on high-intent sectors where leads have high lifetime value. This includes Real Estate, Insurance, Healthcare, Finance, and E-commerce. If your revenue depends on qualifying and converting human intent, our system will work for you."
+  },
+  {
+    question: "How do you charge for your systems?",
+    answer: "We operate on a 'Build + Management' model. A one-time engineering fee covers the design and deployment of your custom infrastructure. A monthly management fee covers 24/7 monitoring, security updates, and performance optimization. You pay API costs at cost."
   }
 ];
 

@@ -21,6 +21,7 @@ interface SystemPageProps {
   features: { title: string; desc: string }[];
   faqs: { q: string; a: string }[];
   icon: any;
+  children?: React.ReactNode;
 }
 
 export function SystemLayout({ 
@@ -31,7 +32,8 @@ export function SystemLayout({
   techStack, 
   features, 
   faqs, 
-  icon: Icon 
+  icon: Icon,
+  children
 }: SystemPageProps) {
   return (
     <div className="pt-40 pb-20 relative overflow-hidden bg-black">
@@ -96,6 +98,9 @@ export function SystemLayout({
             </div>
           </div>
         </div>
+
+        {/* Custom Content Injection */}
+        {children}
 
         {/* FAQ Section */}
         <div className="max-w-4xl mx-auto mb-60">

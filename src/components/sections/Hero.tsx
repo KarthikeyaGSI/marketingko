@@ -297,17 +297,29 @@ export function Hero() {
           
           {/* CONTENT — Left weighted */}
           <div className="lg:col-span-7 space-y-8 md:space-y-12">
-            {/* Status badge */}
+            {/* Status badge & Social Proof */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center space-x-4 md:space-x-6 px-5 md:px-8 py-3 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-xl group"
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
             >
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_15px_oklch(var(--primary))]" />
-              <span className="text-[9px] md:text-[10px] font-black tracking-[0.8em] md:tracking-[1em] text-foreground uppercase">
-                SYSTEMS ONLINE v2.0
-              </span>
+              <div className="inline-flex items-center space-x-4 px-6 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-xl group">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_15px_oklch(var(--primary))]" />
+                <span className="text-[9px] font-black tracking-[0.8em] text-foreground uppercase">
+                  SYSTEMS ONLINE v2.0
+                </span>
+              </div>
+              <div className="flex items-center -space-x-2">
+                {[1,2,3,4].map((i) => (
+                  <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-foreground/[0.05] overflow-hidden">
+                    <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`} alt="user" className="w-full h-full object-cover" />
+                  </div>
+                ))}
+                <span className="pl-4 text-[9px] font-black tracking-widest text-muted-foreground uppercase">
+                  Trusted by 50+ High-Growth Teams
+                </span>
+              </div>
             </motion.div>
 
             {/* HEADLINE — Cinematic typography */}
@@ -317,28 +329,28 @@ export function Hero() {
                   initial="hidden"
                   animate="visible"
                   variants={stagger}
-                  className="text-[2.2rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.06em] text-foreground leading-[0.9] uppercase relative z-10"
+                  className="text-[2.2rem] sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter text-foreground leading-[0.8] uppercase relative z-10"
                 >
-                  <div className="flex flex-wrap items-baseline gap-x-2 md:gap-x-5">
+                  <div className="flex flex-wrap items-baseline gap-x-3 md:gap-x-6">
                     <motion.span variants={wordReveal} className="inline-block">
                       GROWTH
                     </motion.span>
-                    <div className="relative h-[1.1em] w-[140px] sm:w-[300px] md:w-[400px] lg:w-[450px] overflow-hidden inline-block align-baseline">
+                    <div className="relative h-[1.1em] w-[140px] sm:w-[300px] md:w-[450px] lg:w-[550px] overflow-hidden inline-block align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={dynamicWords[wordIndex]}
-                          initial={{ y: 50, opacity: 0, rotateX: -40 }}
+                          initial={{ y: 80, opacity: 0, rotateX: -40 }}
                           animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                          exit={{ y: -50, opacity: 0, rotateX: 40 }}
-                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          className="absolute left-0 text-primary"
+                          exit={{ y: -80, opacity: 0, rotateX: 40 }}
+                          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                          className="absolute left-0 text-primary italic font-medium"
                         >
                           {dynamicWords[wordIndex]}
                         </motion.span>
                       </AnimatePresence>
                     </div>
                   </div>
-                  <div className="flex items-baseline flex-wrap mt-2 md:mt-2 gap-x-2 md:gap-x-5">
+                  <div className="flex items-baseline flex-wrap mt-2 md:mt-4 gap-x-3 md:gap-x-6">
                     <motion.span
                       variants={{
                         hidden: { opacity: 0, scale: 0.8, x: -40, filter: "blur(15px)" },
@@ -347,9 +359,9 @@ export function Hero() {
                           transition: { duration: 1.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] } 
                         }
                       }}
-                      className="text-primary italic font-medium text-[1.8rem] sm:text-4xl md:text-5xl lg:text-6xl relative"
+                      className="text-foreground italic font-medium text-[1.8rem] sm:text-4xl md:text-6xl lg:text-8xl relative"
                     >
-                      LEAKING
+                      SEALING
                       {/* Animated Leak Drip */}
                       <motion.div 
                         animate={{ y: [0, 20, 40], opacity: [0, 1, 0], scale: [1, 1.2, 0.8] }}
@@ -357,14 +369,14 @@ export function Hero() {
                         className="absolute bottom-0 left-1/2 w-1 h-4 bg-primary/40 blur-sm rounded-full"
                       />
                     </motion.span>
-                    <div className="relative h-[1.1em] min-w-[130px] sm:min-w-[250px] md:min-w-[300px] lg:min-w-[400px] overflow-hidden inline-block align-baseline">
+                    <div className="relative h-[1.1em] min-w-[130px] sm:min-w-[250px] md:min-w-[350px] lg:min-w-[450px] overflow-hidden inline-block align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={resourceWords[wordIndex]}
-                          initial={{ y: 50, opacity: 0 }}
+                          initial={{ y: 80, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: -50, opacity: 0 }}
-                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          exit={{ y: -80, opacity: 0 }}
+                          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                           className="absolute left-0"
                         >
                           {resourceWords[wordIndex]}
@@ -380,34 +392,45 @@ export function Hero() {
                 initial={{ opacity: 0, filter: "blur(15px)", y: 40 }}
                 animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                 transition={{ duration: 1.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-3xl font-medium tracking-tight leading-[1.3] italic"
+                className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-4xl font-medium tracking-tightest leading-tight italic"
               >
-                AI automations, voice agents, and web systems — <span className="text-primary not-italic font-black uppercase">engineered</span> around your outcomes, not our deliverables.
+                "We don't sell hours. We deploy <span className="text-primary not-italic font-black uppercase">Revenue Infrastructure</span> that identifies, qualifies, and converts targets autonomously."
               </motion.p>
             </div>
 
             {/* CTA ROW */}
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.5, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:gap-8 pt-2 md:pt-4"
-            >
-              <Link href="/contact">
-                <MagneticButton>
-                  <Button size="lg" className="rounded-2xl px-8 md:px-12 h-14 md:h-16 text-sm md:text-base bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black uppercase tracking-[0.15em] shadow-[0_20px_60px_-10px_oklch(var(--primary)/0.5)] transition-all duration-700 group border-none relative overflow-hidden">
-                    <span className="relative z-10">Book Free Audit</span>
-                    <ArrowRight className="ml-3 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-2 transition-transform duration-500 relative z-10" />
-                    <div className="absolute inset-0 bg-foreground/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                  </Button>
-                </MagneticButton>
-              </Link>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10 pt-4">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.5, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Link href="/contact">
+                  <MagneticButton>
+                    <Button size="lg" className="rounded-2xl px-12 md:px-16 h-16 md:h-20 text-base md:text-lg bg-primary text-black hover:scale-105 font-black uppercase tracking-widest shadow-[0_30px_90px_-20px_oklch(var(--primary)/0.6)] transition-all duration-700 group border-none relative overflow-hidden">
+                      <span className="relative z-10">Initiate Strategy Call</span>
+                      <ArrowRight className="ml-4 h-5 w-5 md:h-6 md:w-6 group-hover:translate-x-3 transition-transform duration-500 relative z-10" />
+                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                    </Button>
+                  </MagneticButton>
+                </Link>
+              </motion.div>
               
-              <div className="flex flex-col space-y-1 border-l-2 border-foreground/10 pl-6">
-                <span className="text-[9px] font-black tracking-[0.5em] text-foreground uppercase">ROI-DRIVEN</span>
-                <span className="text-base md:text-lg font-bold italic tracking-tight text-foreground leading-none">Systems that pay for themselves.</span>
-              </div>
-            </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5, delay: 2.8, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col space-y-2"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" />
+                  <span className="text-[10px] font-black tracking-widest text-foreground uppercase">Live Signals Detected</span>
+                </div>
+                <span className="text-2xl md:text-3xl font-black italic tracking-tighter text-foreground leading-none">
+                  $1.2M+ <span className="text-muted-foreground/30 not-italic text-sm">Revenue Recaptured</span>
+                </span>
+              </motion.div>
+            </div>
           </div>
 
           {/* 3D NETWORK VISUALIZATION — Right */}

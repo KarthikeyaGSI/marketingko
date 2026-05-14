@@ -39,9 +39,15 @@
   --animate-mesh: mesh 20s ease infinite;
   --animate-spin-slow: spin 30s linear infinite;
   --animate-spin-reverse: spin-reverse 25s linear infinite;
+  --animate-draw: draw 2s ease-out forwards;
 }
 
 /* ═══ CINEMATIC KEYFRAMES ═══ */
+
+@keyframes draw {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
 
 @keyframes mesh {
   0%, 100% { background-position: 0% 50%; }
@@ -175,8 +181,15 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-black leading-[0.95];
-    letter-spacing: -0.08em;
+    @apply font-black leading-[0.9] tracking-[-0.08em];
+    text-wrap: balance;
+  }
+  
+  .text-cinematic {
+    @apply font-black tracking-[-0.08em] leading-[0.8] uppercase italic;
+    background: linear-gradient(to bottom, var(--foreground) 30%, color-mix(in oklab, var(--foreground), transparent 60%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
@@ -326,5 +339,37 @@
     height: 120px;
     background: radial-gradient(ellipse at center, color-mix(in oklab, var(--primary), transparent 90%), transparent 70%);
     pointer-events: none;
+  }
+  /* Glass Premium */
+  .glass-premium {
+    @apply backdrop-blur-3xl border border-white/10 bg-white/[0.01] shadow-2xl;
+  }
+
+  /* Grain Texture */
+  .grain-bg {
+    position: relative;
+  }
+  .grain-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Mask Shimmer */
+  .mask-shimmer {
+    mask-image: linear-gradient(
+      -45deg,
+      rgba(0,0,0,1) 40%,
+      rgba(0,0,0,0.5) 50%,
+      rgba(0,0,0,1) 60%
+    );
+    mask-size: 300%;
+    animation: shimmer 4s infinite linear;
   }
 }
