@@ -113,6 +113,29 @@
 }
 
 @layer base {
+  html {
+    font-size: 50%;
+  }
+  @media (min-width: 640px) {
+    html {
+      font-size: 65%;
+    }
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 80%;
+    }
+  }
+  @media (min-width: 1024px) {
+    html {
+      font-size: 90%;
+    }
+  }
+  @media (min-width: 1280px) {
+    html {
+      font-size: 100%;
+    }
+  }
   * {
     @apply border-border selection:bg-primary selection:text-primary-foreground;
   }
