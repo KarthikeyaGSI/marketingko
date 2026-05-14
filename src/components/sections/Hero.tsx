@@ -97,12 +97,12 @@ function HeroNetwork() {
             r="0.5"
             fill="oklch(var(--destructive))"
             initial={{ opacity: 0 }}
-            animate={{
+            animate={nodes[leakIndex] ? {
               cx: [nodes[leakIndex].x, nodes[leakIndex].x - 10, nodes[leakIndex].x],
               cy: [nodes[leakIndex].y, nodes[leakIndex].y + 15, nodes[leakIndex].y + 30],
               opacity: [0, 1, 0],
               r: [0.5, 0.8, 0.2]
-            }}
+            } : { opacity: 0 }}
             transition={{
               duration: 2,
               delay: i * 0.4,
@@ -141,8 +141,14 @@ function HeroNetwork() {
           className="absolute group"
           style={{ left: `${node.x}%`, top: `${node.y}%`, transform: 'translate(-50%, -50%)' }}
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1.5 + node.delay, ease: [0.16, 1, 0.3, 1] }}
+          animate={{ 
+            opacity: 1, 
+            scale: (i === leakIndex) ? [1, 1.1, 1] : 1,
+          }}
+          transition={{ 
+            opacity: { duration: 0.8, delay: 1.5 + node.delay },
+            scale: (i === leakIndex) ? { duration: 1, repeat: Infinity } : { duration: 0.8, delay: 1.5 + node.delay }
+          }}
         >
           {/* Glow ring */}
           <motion.div 
@@ -152,8 +158,16 @@ function HeroNetwork() {
             style={{ margin: '-8px' }}
           />
           
-          <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full border ${(node.type === 'critical' || i === leakIndex) ? 'border-destructive/40' : 'border-primary/30'} bg-background/80 backdrop-blur-xl flex items-center justify-center shadow-[0_0_30px_oklch(var(--primary)/0.2)] group-hover:border-primary/60 group-hover:shadow-[0_0_50px_oklch(var(--primary)/0.4)] transition-all duration-700`}>
-            <span className={`text-[6px] md:text-[8px] font-black tracking-[0.15em] ${(node.type === 'critical' || i === leakIndex) ? 'text-destructive' : 'text-foreground'} group-hover:text-primary transition-colors duration-500 text-center leading-tight uppercase`}>{node.label}</span>
+          <div className={`w-10 h-10 md:w-16 md:h-16 rounded-full border ${(node.type === 'critical' || i === leakIndex) ? 'border-destructive/60 bg-destructive/5' : 'border-primary/30 bg-background/80'} backdrop-blur-xl flex items-center justify-center shadow-[0_0_30px_oklch(var(--primary)/0.2)] group-hover:border-primary/60 group-hover:shadow-[0_0_50px_oklch(var(--primary)/0.4)] transition-all duration-700 relative overflow-hidden`}>
+            {i === leakIndex && isFixing && (
+              <motion.div 
+                initial={{ y: "100%" }}
+                animate={{ y: "-100%" }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"
+              />
+            )}
+            <span className={`text-[5px] md:text-[8px] font-black tracking-[0.15em] ${(node.type === 'critical' || i === leakIndex) ? 'text-destructive' : 'text-foreground'} group-hover:text-primary transition-colors duration-500 text-center leading-tight uppercase relative z-10 px-1`}>{node.label}</span>
           </div>
 
           {/* Leakage Badge for this specific node */}
@@ -161,12 +175,12 @@ function HeroNetwork() {
             <motion.div
               initial={{ opacity: 0, scale: 0.5, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              className="absolute -top-12 left-1/2 -translate-x-1/2 z-20"
+              className="absolute -top-14 left-1/2 -translate-x-1/2 z-20"
             >
-              <div className={`flex items-center space-x-2 px-3 py-1.5 rounded-full border ${isFixing ? 'border-primary/40 bg-primary/10 text-primary' : 'border-destructive/40 bg-destructive/10 text-destructive'} backdrop-blur-md shadow-xl whitespace-nowrap`}>
-                {isFixing ? <ShieldCheck className="w-3 h-3 animate-bounce" /> : <Activity className="w-3 h-3 animate-pulse" />}
-                <span className="text-[8px] font-black uppercase tracking-widest">
-                  {isFixing ? 'Resolving Leak...' : 'Leakage Detected'}
+              <div className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isFixing ? 'border-primary/60 bg-primary/20 text-primary' : 'border-destructive/60 bg-destructive/20 text-destructive'} backdrop-blur-md shadow-2xl whitespace-nowrap animate-in fade-in zoom-in duration-500`}>
+                {isFixing ? <ShieldCheck className="w-4 h-4 animate-bounce" /> : <Activity className="w-4 h-4 animate-pulse" />}
+                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">
+                  {isFixing ? 'Fixing Leakage...' : 'Leakage Detected'}
                 </span>
               </div>
             </motion.div>
@@ -186,10 +200,10 @@ function HeroNetwork() {
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           className="absolute -inset-4 rounded-full border border-dashed border-primary/20"
         />
-        <div className="w-16 h-16 md:w-24 md:h-24 rounded-full border-2 border-primary bg-background shadow-[0_0_60px_oklch(var(--primary)/0.4)] flex items-center justify-center">
+        <div className="w-14 h-14 md:w-24 md:h-24 rounded-full border-2 border-primary bg-background shadow-[0_0_60px_oklch(var(--primary)/0.4)] flex items-center justify-center">
           <div className="text-center">
-            <span className="text-[6px] md:text-[7px] font-black tracking-[0.3em] text-primary uppercase block">GROWTH</span>
-            <span className="text-[8px] md:text-[9px] font-black tracking-tight text-foreground">OS</span>
+            <span className="text-[5px] md:text-[7px] font-black tracking-[0.3em] text-primary uppercase block">GROWTH</span>
+            <span className="text-[7px] md:text-[9px] font-black tracking-tight text-foreground uppercase">OS</span>
           </div>
         </div>
       </motion.div>
@@ -272,8 +286,8 @@ export function Hero() {
       
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
-        style={{ y: y2, opacity: 0.025 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/50 dark:text-foreground/30"
+        style={{ y: y2 }}
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.04] dark:text-foreground/[0.06] hidden md:block"
       >
         GROWTH ARCHITECTURE • SYSTEMS • REVENUE •
       </motion.div>
@@ -303,13 +317,13 @@ export function Hero() {
                   initial="hidden"
                   animate="visible"
                   variants={stagger}
-                  className="text-[2.8rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.06em] text-foreground leading-[0.9] uppercase relative z-10"
+                  className="text-[2.2rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.06em] text-foreground leading-[0.9] uppercase relative z-10"
                 >
-                  <div className="flex flex-wrap items-baseline gap-x-3 md:gap-x-5">
+                  <div className="flex flex-wrap items-baseline gap-x-2 md:gap-x-5">
                     <motion.span variants={wordReveal} className="inline-block">
                       GROWTH
                     </motion.span>
-                    <div className="relative h-[1em] w-[180px] sm:w-[300px] md:w-[400px] lg:w-[450px] overflow-hidden inline-block align-baseline">
+                    <div className="relative h-[1.1em] w-[140px] sm:w-[300px] md:w-[400px] lg:w-[450px] overflow-hidden inline-block align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={dynamicWords[wordIndex]}
@@ -324,7 +338,7 @@ export function Hero() {
                       </AnimatePresence>
                     </div>
                   </div>
-                  <div className="flex items-baseline flex-wrap mt-1 md:mt-2 gap-x-3 md:gap-x-5">
+                  <div className="flex items-baseline flex-wrap mt-2 md:mt-2 gap-x-2 md:gap-x-5">
                     <motion.span
                       variants={{
                         hidden: { opacity: 0, scale: 0.8, x: -40, filter: "blur(15px)" },
@@ -333,7 +347,7 @@ export function Hero() {
                           transition: { duration: 1.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] } 
                         }
                       }}
-                      className="text-primary italic font-medium text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl relative"
+                      className="text-primary italic font-medium text-[1.8rem] sm:text-4xl md:text-5xl lg:text-6xl relative"
                     >
                       LEAKING
                       {/* Animated Leak Drip */}
@@ -343,7 +357,7 @@ export function Hero() {
                         className="absolute bottom-0 left-1/2 w-1 h-4 bg-primary/40 blur-sm rounded-full"
                       />
                     </motion.span>
-                    <div className="relative h-[1em] min-w-[150px] sm:min-w-[250px] md:min-w-[300px] lg:min-w-[400px] overflow-hidden inline-block align-baseline">
+                    <div className="relative h-[1.1em] min-w-[130px] sm:min-w-[250px] md:min-w-[300px] lg:min-w-[400px] overflow-hidden inline-block align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={resourceWords[wordIndex]}

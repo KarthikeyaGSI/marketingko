@@ -22,7 +22,7 @@ export function SystemVisualization() {
     <section ref={containerRef} className="py-80 bg-background relative overflow-hidden">
       <motion.div 
         style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.06]"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.06] hidden md:block"
       >
         GROWTH ARCHITECTURE • SYSTEMS • REVENUE •
       </motion.div>

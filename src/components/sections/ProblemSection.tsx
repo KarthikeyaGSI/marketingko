@@ -54,7 +54,7 @@ export function ProblemSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[10px] md:text-[11px] font-black tracking-[0.8em] md:tracking-[1em] text-primary uppercase italic mb-6 md:mb-8"
+                className="text-[10px] md:text-[11px] font-black tracking-[0.8em] md:tracking-[1em] text-primary dark:text-primary uppercase italic mb-6 md:mb-8"
               >
                 Current State Analysis
               </motion.div>
@@ -65,7 +65,7 @@ export function ProblemSection() {
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.05em] text-foreground leading-[0.9] uppercase relative"
               >
                 DOING EVERYTHING. <br />
-                <span className="text-muted-foreground/30 dark:text-muted-foreground/40 italic font-medium">BUT STILL LOSING.</span>
+                <span className="text-muted-foreground/60 dark:text-muted-foreground/50 italic font-medium">BUT STILL LOSING.</span>
                 
                 {/* Asymmetrical spinning detail */}
                 <motion.div 
@@ -110,7 +110,7 @@ export function ProblemSection() {
                             <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tight italic uppercase">{pain.title}</h3>
                             <div className="px-3 py-1 rounded-lg bg-primary/20 text-primary text-[9px] md:text-[10px] font-black uppercase tracking-wider">{pain.stats}</div>
                           </div>
-                          <p className="text-sm md:text-base text-muted-foreground/80 dark:text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl">
+                          <p className="text-sm md:text-base text-muted-foreground dark:text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl">
                             {pain.description}
                           </p>
                        </div>
