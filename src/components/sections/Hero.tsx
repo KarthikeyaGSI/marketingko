@@ -211,28 +211,28 @@ function HeroNetwork() {
             style={{ margin: '-8px' }}
           />
           
-          <div className={`w-10 h-10 md:w-16 md:h-16 rounded-full border ${(node.type === 'critical' || i === leakIndex) ? 'border-destructive/60 bg-destructive/5' : 'border-primary/30 bg-background/80'} backdrop-blur-xl flex items-center justify-center shadow-[0_0_30px_oklch(var(--primary)/0.2)] group-hover:border-primary/60 group-hover:shadow-[0_0_50px_oklch(var(--primary)/0.4)] transition-all duration-700 relative overflow-hidden`}>
-            {i === leakIndex && isFixing && (
-              <motion.div 
-                initial={{ y: "100%" }}
-                animate={{ y: "-100%" }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"
-              />
-            )}
-            <span className={`text-[5px] md:text-[8px] font-black tracking-[0.15em] ${(node.type === 'critical' || i === leakIndex) ? 'text-destructive' : 'text-foreground'} group-hover:text-primary transition-colors duration-500 text-center leading-tight uppercase relative z-10 px-1`}>{node.label}</span>
-          </div>
+            <div className={`flex w-16 h-16 md:w-20 md:h-20 rounded-full border ${(node.type === 'critical' || i === leakIndex) ? 'border-destructive/60 bg-destructive/5' : 'border-primary/30 bg-background/80'} backdrop-blur-xl items-center justify-center shadow-[0_0_30px_oklch(var(--primary)/0.2)] group-hover:border-primary/60 group-hover:shadow-[0_0_50px_oklch(var(--primary)/0.4)] transition-all duration-700 relative overflow-hidden`}>
+              {i === leakIndex && isFixing && (
+                <motion.div 
+                  initial={{ y: "100%" }}
+                  animate={{ y: "-100%" }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"
+                />
+              )}
+              <span className={`text-[9px] md:text-[10px] font-black tracking-tight md:tracking-[0.15em] ${(node.type === 'critical' || i === leakIndex) ? 'text-destructive' : 'text-foreground'} group-hover:text-primary transition-colors duration-500 text-center leading-tight uppercase relative z-10 px-1`}>{node.label}</span>
+            </div>
 
           {/* Leakage Badge for this specific node */}
           {i === leakIndex && (
             <motion.div
               initial={{ opacity: 0, scale: 0.5, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              className="absolute -top-14 left-1/2 -translate-x-1/2 z-20"
+              className="absolute -top-14 left-1/2 -translate-x-1/2 z-20 hidden md:block"
             >
               <div className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isFixing ? 'border-primary/60 bg-primary/20 text-primary' : 'border-destructive/60 bg-destructive/20 text-destructive'} backdrop-blur-md shadow-2xl whitespace-nowrap animate-in fade-in zoom-in duration-500`}>
                 {isFixing ? <ShieldCheck className="w-4 h-4 animate-bounce" /> : <Activity className="w-4 h-4 animate-pulse" />}
-                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">
+                <span className="text-[10px] font-black uppercase tracking-widest">
                   {isFixing ? 'Fixing Leakage...' : 'Leakage Detected'}
                 </span>
               </div>
@@ -253,10 +253,10 @@ function HeroNetwork() {
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           className="absolute -inset-4 rounded-full border border-dashed border-primary/20"
         />
-        <div className="w-14 h-14 md:w-24 md:h-24 rounded-full border-2 border-primary bg-background shadow-[0_0_60px_oklch(var(--primary)/0.4)] flex items-center justify-center">
+        <div className="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-primary bg-background shadow-[0_0_60px_oklch(var(--primary)/0.4)] flex items-center justify-center">
           <div className="text-center">
-            <span className="text-[5px] md:text-[7px] font-black tracking-[0.3em] text-primary uppercase block">GROWTH</span>
-            <span className="text-[7px] md:text-[9px] font-black tracking-tight text-foreground uppercase">OS</span>
+            <span className="text-[7px] md:text-[8px] font-black tracking-[0.3em] text-primary uppercase block">GROWTH</span>
+            <span className="text-[9px] md:text-[11px] font-black tracking-tight text-foreground uppercase">OS</span>
           </div>
         </div>
       </motion.div>
@@ -296,7 +296,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-background pt-32 md:pt-40 pb-0">
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-background pt-32 md:pt-48 pb-0">
       {/* ATMOSPHERIC LAYERS */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 grid-infrastructure opacity-5" />
@@ -342,7 +342,7 @@ export function Hero() {
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
         style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.03] dark:text-foreground/[0.05] hidden md:block uppercase tracking-tightest"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[12rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.03] dark:text-foreground/[0.05] hidden md:block uppercase tracking-tightest"
       >
         REVENUE INFRASTRUCTURE • GROWTH OS • AUTONOMOUS SCALING •
       </motion.div>

@@ -16,9 +16,9 @@ export function About() {
             >
               Operational Philosophy
             </motion.div>
-            <h2 className="text-6xl md:text-8xl font-bold text-foreground tracking-tighter leading-[0.85] text-mask-premium uppercase">
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold text-foreground tracking-tightest leading-[1] sm:leading-[0.85] text-mask-premium uppercase">
               SYSTEMS OVER <br />
-              <span className="text-muted-foreground/30 dark:text-muted-foreground/40 italic">SERVICES.</span>
+              <span className="text-muted-foreground/10 italic font-medium">SERVICES.</span>
             </h2>
             <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-2xl italic">
               Marketing Ko is an AI infrastructure studio. We don't focus on creative vanity or generic campaigns. 

@@ -1,56 +1,25 @@
-"use client";
+import { Metadata } from "next";
+import { AboutContent } from "./AboutContent";
 
-import { motion } from "framer-motion";
-import { Philosophy } from "@/components/sections/Philosophy";
-import { WhyMarketingKo } from "@/components/sections/WhyMarketingKo";
-import { Founder } from "@/components/sections/Founder";
-import { ShieldCheck, Cpu, Zap, Activity } from "lucide-react";
-import { CTA } from "@/components/sections/CTA";
+export const metadata: Metadata = {
+  title: "About",
+  description: "Learn about Marketing Ko's mission to build sovereignty through autonomous revenue infrastructure and systems engineering.",
+  openGraph: {
+    title: "About Marketing Ko | Systems Over Services",
+    description: "We engineer the underlying operational architectures that allow companies to automate acquisition at enterprise scale.",
+    url: "https://marketingko.vercel.app/about",
+    images: ["/og-about.png"],
+  },
+  twitter: {
+    title: "About Marketing Ko | Systems Over Services",
+    description: "Engineering sovereignty through autonomous systems.",
+    images: ["/og-about.png"],
+  },
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 export default function AboutPage() {
-  return (
-    <main className="pt-40 bg-background min-h-screen">
-      <section className="py-40 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(var(--primary)/0.08)_0%,transparent_70%)]" />
-        <div className="absolute inset-0 z-0 dot-grid opacity-5" />
-        <div className="glow-orb w-[800px] h-[800px] bg-primary/10 top-[-20%] right-[-10%] blur-[120px]" />
-        <div className="glow-orb w-[600px] h-[600px] bg-primary/5 bottom-[-15%] left-[-10%] blur-[100px]" style={{ animationDelay: "3s" }} />
-        
-        <div className="container mx-auto px-6 relative z-10 text-center space-y-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center space-x-4 px-6 py-2 rounded-full border border-primary/20 bg-primary/5"
-            >
-              <ShieldCheck className="h-4 w-4 text-primary" />
-              <span className="text-[10px] font-black tracking-[0.8em] text-foreground uppercase">Operational Philosophy</span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase italic"
-            >
-              WE BUILD<br />
-              <span className="text-muted-foreground/60 not-italic">SOVEREIGNTY.</span>
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-2xl md:text-4xl text-muted-foreground max-w-4xl mx-auto font-medium tracking-tighter leading-tight italic"
-            >
-              "Marketing Ko was founded on a single premise: Most businesses aren't growing because they have a 'marketing' problem. They aren't growing because they have a 'system' problem."
-            </motion.p>
-        </div>
-      </section>
-
-      <Founder />
-      <Philosophy />
-      <WhyMarketingKo />
-      <CTA />
-    </main>
-  );
+  return <AboutContent />;
 }

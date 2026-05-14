@@ -45,19 +45,20 @@ export function Navbar() {
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <span className="text-3xl font-black tracking-tightest text-foreground uppercase italic leading-none transition-all duration-700 group-hover:text-primary">
+          <Link href="/" className="flex items-center space-x-2 group shrink-0 min-w-[200px] md:min-w-[320px]" aria-label="Marketing Ko Home">
+            <span className="text-2xl md:text-3xl font-black tracking-tightest text-foreground uppercase italic leading-none transition-all duration-700 group-hover:text-primary">
               MARKETING <span className="text-primary italic">KO.</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-16">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-12">
             {navLinks.map((link) => (
               <Magnetic key={link.name} strength={0.2}>
                 <Link
                   href={link.href}
-                  className="relative text-[10px] font-black tracking-[0.7em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-6 py-2"
+                  className="relative text-[9px] xl:text-[10px] font-black tracking-[0.6em] xl:tracking-[0.8em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-4 xl:px-6 py-2"
+                  aria-label={`Navigate to ${link.name}`}
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-4 w-0 h-0.5 bg-primary group-hover:w-[calc(100%-32px)] transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)]" />
@@ -66,10 +67,10 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center space-x-10">
+          <div className="hidden lg:flex items-center space-x-8 xl:space-x-10">
              <ThemeToggle />
              <Link href="/contact">
-                <Button className="rounded-2xl px-12 h-16 bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black text-[11px] uppercase tracking-[0.4em] transition-all duration-1000 shadow-[0_20px_40px_-10px_oklch(var(--primary)/0.3)] border-none">
+                <Button className="rounded-2xl px-10 xl:px-12 h-14 xl:h-16 bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black text-[10px] xl:text-[11px] uppercase tracking-[0.4em] transition-all duration-1000 shadow-[0_20px_40px_-10px_oklch(var(--primary)/0.3)] border-none" aria-label="Book Free Audit">
                   Book Free Audit
                 </Button>
              </Link>
@@ -81,6 +82,7 @@ export function Navbar() {
             <button
               className="w-16 h-16 rounded-2xl bg-foreground/[0.03] flex items-center justify-center text-foreground border border-border/50 transition-all duration-700 hover:bg-primary hover:text-primary-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>

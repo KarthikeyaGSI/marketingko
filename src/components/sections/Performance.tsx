@@ -40,9 +40,9 @@ export function Performance() {
           >
             Operational Telemetry
           </motion.div>
-          <h2 className="text-8xl md:text-[14rem] font-bold text-foreground tracking-tightest leading-[0.75] text-mask-premium">
+          <h2 className="text-foreground tracking-tightest leading-[0.75] text-mask-premium">
             MEASURABLE <br />
-            <span className="text-muted-foreground/30 dark:text-muted-foreground/40 italic font-medium">OUTCOMES.</span>
+            <span className="text-muted-foreground/10 italic font-medium">OUTCOMES.</span>
           </h2>
           <p className="text-2xl md:text-5xl text-muted-foreground font-medium tracking-tightest leading-tight max-w-5xl italic">
             "We don't sell hours. We sell infrastructure that hits specific KPIs. Every system we deploy is monitored by live telemetry."

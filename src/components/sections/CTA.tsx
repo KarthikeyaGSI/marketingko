@@ -67,7 +67,7 @@ export function CTA() {
             transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full pt-4"
           >
-            <Link href="/contact" className="w-full sm:w-auto">
+            <Link href="/contact" className="w-full sm:w-auto" aria-label="Book a free revenue audit">
               <MagneticButton>
                 <Button className="w-full sm:w-auto rounded-2xl px-8 md:px-12 h-14 md:h-16 text-sm md:text-base bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black uppercase tracking-[0.15em] shadow-[0_20px_60px_-10px_oklch(var(--primary)/0.4)] transition-all duration-700 flex items-center justify-center group border-none relative overflow-hidden">
                   <span className="relative z-10">Book Free Audit</span>
@@ -77,7 +77,7 @@ export function CTA() {
               </MagneticButton>
             </Link>
             
-            <Link href="/solutions" className="w-full sm:w-auto">
+            <Link href="/solutions" className="w-full sm:w-auto" aria-label="View our autonomous growth systems">
               <Button variant="outline" className="w-full sm:w-auto rounded-2xl px-8 md:px-12 h-14 md:h-16 text-sm md:text-base border-border bg-transparent text-foreground hover:bg-foreground/[0.05] font-black uppercase tracking-[0.15em] transition-all duration-700 flex items-center justify-center group">
                 <span>View Systems</span>
                 <ArrowRight className="ml-3 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-2 transition-transform duration-500" />

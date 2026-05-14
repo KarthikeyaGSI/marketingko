@@ -199,12 +199,12 @@ export function SolutionsGrid() {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap gap-4 mb-24">
+        <div className="flex flex-wrap gap-2 md:gap-4 mb-24 max-w-full overflow-visible">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-10 py-5 rounded-full text-[10px] md:text-xs font-black uppercase tracking-[0.3em] transition-all duration-700 border ${
+              className={`px-6 md:px-10 py-3 md:py-5 rounded-full text-[9px] md:text-xs font-black uppercase tracking-[0.2em] md:tracking-[0.3em] transition-all duration-700 border ${
                 activeCategory === cat 
                 ? "bg-primary border-primary text-primary-foreground shadow-[0_20px_40px_-10px_oklch(var(--primary)/0.3)]" 
                 : "bg-foreground/[0.02] border-border text-foreground/40 hover:border-primary/40"

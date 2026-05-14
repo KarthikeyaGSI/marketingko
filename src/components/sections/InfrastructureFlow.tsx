@@ -73,8 +73,8 @@ export function InfrastructureFlow() {
 
                 {/* Content */}
                 <div className={`flex-1 text-center ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'} space-y-4`}>
-                  <h3 className="text-4xl font-bold text-foreground tracking-tight uppercase italic">{node.label}</h3>
-                  <p className="text-xl text-muted-foreground font-medium tracking-tightest uppercase leading-none opacity-60 italic">
+                  <span className={`text-[24px] sm:text-4xl font-bold tracking-tight sm:tracking-tightest text-foreground uppercase italic`}>{node.label}</span>
+                  <p className="text-lg sm:text-xl text-muted-foreground font-medium tracking-tightest uppercase leading-none opacity-60 italic">
                     {node.desc}
                   </p>
                 </div>
