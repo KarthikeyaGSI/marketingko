@@ -58,7 +58,7 @@ export function RevenueSystems() {
             </motion.div>
             <h2 className="text-6xl md:text-8xl font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase">
               CORE <br />
-              <span className="text-muted-foreground/10 italic font-medium">SYSTEMS.</span>
+              <span className="text-muted-foreground/40 italic font-medium">SYSTEMS.</span>
             </h2>
             <p className="text-2xl md:text-4xl text-muted-foreground max-w-5xl font-medium tracking-tightest leading-tight italic border-l-4 border-primary/20 pl-16">
               "Three foundational growth engines. Engineered for the modern AI economy."
@@ -121,10 +121,10 @@ export function RevenueSystems() {
                     </div>
 
                     <div className="space-y-10 py-16 border-y border-border/50">
-                      <p className="text-[12px] font-black text-foreground/20 uppercase tracking-[0.6em] italic">System Architecture</p>
+                      <p className="text-[12px] font-black text-foreground/40 uppercase tracking-[0.6em] italic">System Architecture</p>
                       <ul className="space-y-6">
                         {system.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center space-x-6 text-xl font-bold tracking-tight text-foreground/60 group-hover:text-foreground transition-colors">
+                          <li key={idx} className="flex items-center space-x-6 text-xl font-bold tracking-tight text-foreground/80 group-hover:text-foreground transition-colors">
                             <CheckCircle2 className="w-6 h-6 text-primary opacity-60" />
                             <span>{feature}</span>
                           </li>
@@ -136,7 +136,7 @@ export function RevenueSystems() {
                        <div className="mb-16">
                          <div className="flex items-baseline space-x-6">
                            <p className="text-6xl md:text-7xl font-black text-foreground tracking-tightest italic leading-none">Quote</p>
-                           <span className="text-sm font-black text-foreground/20 uppercase italic">On_Request</span>
+                           <span className="text-sm font-black text-foreground/40 uppercase italic">On_Request</span>
                          </div>
                          <p className="text-[13px] font-black text-primary mt-8 uppercase tracking-[0.4em] italic opacity-80">{system.mgmt}</p>
                        </div>

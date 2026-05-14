@@ -27,7 +27,7 @@ export default function RevenueSystemsPage() {
               className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium uppercase"
             >
               REVENUE<br />
-              <span className="text-muted-foreground/10 italic">SYSTEMS.</span>
+              <span className="text-muted-foreground/40 italic">SYSTEMS.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

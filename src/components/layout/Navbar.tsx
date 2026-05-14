@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 const navLinks = [
   { name: "Revenue Systems", href: "/revenue-systems" },
   { name: "Solutions", href: "/solutions" },
+  { name: "Results", href: "/case-studies" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -25,12 +26,6 @@ export function Navbar() {
   const lastScrollY = useRef(0);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const direction = latest > lastScrollY.current ? "down" : "up";
-    if (latest > 100 && direction === "down") {
-      setIsVisible(false);
-    } else {
-      setIsVisible(true);
-    }
     setIsScrolled(latest > 50);
     lastScrollY.current = latest;
   });

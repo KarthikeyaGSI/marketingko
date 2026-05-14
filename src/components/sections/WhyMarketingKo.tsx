@@ -43,7 +43,7 @@ export function WhyMarketingKo() {
             </motion.div>
             <h2 className="text-6xl md:text-8xl font-bold tracking-tightest text-foreground leading-[1.1] text-mask-premium uppercase">
               OPERATIONAL <br />
-              <span className="text-muted-foreground/10 italic font-medium">EDGE.</span>
+              <span className="text-muted-foreground/40 italic font-medium">EDGE.</span>
             </h2>
           </div>
           <div className="pb-12">
@@ -69,7 +69,7 @@ export function WhyMarketingKo() {
               
               <div className="relative z-10 space-y-12">
                 <div className="w-20 h-20 rounded-3xl bg-primary/5 flex items-center justify-center group-hover:bg-primary group-hover:rotate-[360deg] transition-all duration-1000">
-                  <div className="group-hover:text-white transition-colors duration-1000">
+                  <div className="group-hover:text-primary-foreground transition-colors duration-1000">
                     {reason.icon}
                   </div>
                 </div>

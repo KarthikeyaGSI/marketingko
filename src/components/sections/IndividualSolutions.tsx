@@ -60,7 +60,7 @@ export function IndividualSolutions() {
             </motion.div>
             <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium uppercase">
               MODULAR <br />
-              <span className="text-muted-foreground/10 italic font-medium">SOLUTIONS.</span>
+              <span className="text-muted-foreground/40 italic font-medium">SOLUTIONS.</span>
             </h2>
             <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight italic">
               Start with what hurts most. We've modularized 19+ specific operational workflows into high-performance assets.
@@ -80,7 +80,7 @@ export function IndividualSolutions() {
             >
               <div className="relative z-10 space-y-10">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.4em]">{solution.category}</span>
+                  <span className="text-[10px] font-black text-foreground/60 uppercase tracking-[0.4em]">{solution.category}</span>
                   <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary transition-all duration-700">
                     <div className="group-hover:text-primary-foreground transition-colors">
                       {solution.icon}
@@ -132,7 +132,7 @@ export function IndividualSolutions() {
         <div className="mt-20 flex justify-center">
            <div className="px-8 py-3 rounded-full border border-border bg-foreground/[0.02] flex items-center space-x-4">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <p className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.3em]">
+              <p className="text-[10px] font-black text-foreground/50 uppercase tracking-[0.3em]">
                 Enterprise-Grade Performance | Custom Scoping Available
               </p>
            </div>

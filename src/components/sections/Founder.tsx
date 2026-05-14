@@ -68,7 +68,7 @@ export function Founder() {
               
               <h2 className="text-6xl md:text-8xl font-black tracking-tightest text-foreground leading-[0.85] text-mask-premium uppercase italic">
                 THE <br />
-                <span className="text-muted-foreground/10 not-italic font-medium">BUILDER.</span>
+                <span className="text-muted-foreground/40 not-italic font-medium">BUILDER.</span>
               </h2>
             </div>
 
@@ -88,10 +88,10 @@ export function Founder() {
                    { label: "Human Psychology", icon: <User /> }
                  ].map((item, i) => (
                    <div key={i} className="flex items-center space-x-6 group">
-                      <div className="w-16 h-16 rounded-2xl bg-foreground/[0.03] border border-border flex items-center justify-center text-primary/40 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-1000">
+                      <div className="w-16 h-16 rounded-2xl bg-foreground/[0.05] border border-border flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-1000">
                          {item.icon}
                       </div>
-                      <span className="text-xl md:text-2xl font-bold text-foreground/40 group-hover:text-foreground transition-all duration-1000">{item.label}</span>
+                      <span className="text-xl md:text-2xl font-bold text-foreground/60 group-hover:text-foreground transition-all duration-1000">{item.label}</span>
                    </div>
                  ))}
               </div>
@@ -100,8 +100,8 @@ export function Founder() {
             <div className="pt-20 border-t border-border/50">
                <div className="flex flex-col md:flex-row md:items-center justify-between gap-12">
                   <div className="space-y-4">
-                     <p className="text-[12px] font-black text-foreground/20 uppercase tracking-[0.6em] italic">Current Focus</p>
-                     <p className="text-4xl font-bold italic tracking-tighter text-foreground/60 leading-none">Engineering Autonomous Growth OS.</p>
+                     <p className="text-[12px] font-black text-foreground/40 uppercase tracking-[0.6em] italic">Current Focus</p>
+                     <p className="text-4xl font-bold italic tracking-tighter text-foreground/80 leading-none">Engineering Autonomous Growth OS.</p>
                   </div>
                   <Link href="/contact">
                     <Button className="rounded-3xl px-16 h-24 bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-black uppercase tracking-widest transition-all duration-1000 shadow-2xl border-none">

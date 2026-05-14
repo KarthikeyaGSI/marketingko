@@ -47,7 +47,7 @@ export function Process() {
             </motion.div>
             <h2 className="text-7xl md:text-[11rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
               THE 2-WEEK <br />
-              <span className="text-muted-foreground/10 italic">PROTOCOL.</span>
+              <span className="text-muted-foreground/40 italic">PROTOCOL.</span>
             </h2>
             <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight">
               We've engineered a precision-timed protocol to take your business from manual drag to automated scale in exactly 14 days.
@@ -80,7 +80,7 @@ export function Process() {
                   <div className="flex items-center justify-between">
                     <span className="text-8xl font-black text-foreground/[0.03] tracking-tighter italic leading-none group-hover:text-primary/5 transition-colors duration-1000">{step.id}</span>
                     <div className="p-6 rounded-3xl bg-foreground/[0.02] border border-border group-hover:bg-primary group-hover:border-primary transition-all duration-1000">
-                       <div className="group-hover:text-white transition-colors duration-1000">
+                       <div className="group-hover:text-primary-foreground transition-colors duration-1000">
                         {step.icon}
                        </div>
                     </div>
@@ -102,7 +102,7 @@ export function Process() {
               <div className="relative px-12 py-6 bg-background rounded-full border border-primary/20 flex items-center space-x-6">
                  <div className="text-3xl font-bold tracking-tighter italic">Day 14: <span className="text-primary uppercase">Active Ops.</span></div>
                  <div className="w-[1px] h-8 bg-border" />
-                 <div className="text-[10px] font-black text-foreground/40 uppercase tracking-widest">Protocol Fully Deployed</div>
+                 <div className="text-[10px] font-black text-foreground/60 uppercase tracking-widest">Protocol Fully Deployed</div>
               </div>
            </div>
         </div>

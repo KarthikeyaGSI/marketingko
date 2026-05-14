@@ -31,7 +31,7 @@ export default function AboutPage() {
               className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tighter leading-[0.8] text-mask-premium uppercase"
             >
               WE BUILD<br />
-              <span className="text-muted-foreground/10 italic">SOVEREIGNTY.</span>
+              <span className="text-muted-foreground/40 italic">SOVEREIGNTY.</span>
             </motion.h1>
             
             <motion.p

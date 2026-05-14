@@ -24,7 +24,7 @@ export function Philosophy() {
             </motion.div>
             <h2 className="text-7xl md:text-[12rem] font-bold text-foreground tracking-tightest leading-[1.1] text-mask-premium uppercase">
               THE <br />
-              <span className="text-muted-foreground/20 italic">PHILOSOPHY.</span>
+              <span className="text-muted-foreground/40 italic">PHILOSOPHY.</span>
             </h2>
             <p className="text-2xl md:text-4xl text-muted-foreground font-medium tracking-tighter leading-tight max-w-2xl">
               Scaling a modern brand is no longer a marketing challenge. 
@@ -54,7 +54,7 @@ export function Philosophy() {
             <div className="relative aspect-[4/5] rounded-[5rem] border border-border bg-foreground/[0.01] backdrop-blur-3xl overflow-hidden p-16 flex flex-col justify-between group-hover:border-primary/20 transition-all duration-1000">
                <div className="flex justify-between items-start">
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-black tracking-[0.5em] text-foreground/20 uppercase">Operator ID</span>
+                    <span className="text-[10px] font-black tracking-[0.5em] text-foreground/40 uppercase">Operator ID</span>
                     <span className="text-xl font-bold text-foreground tracking-tighter">MK-FOUNDER.25</span>
                   </div>
                   <Fingerprint className="text-primary w-12 h-12" />
@@ -68,7 +68,7 @@ export function Philosophy() {
                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-foreground/40 opacity-20" />
                      <div className="space-y-1">
                         <p className="text-2xl font-bold text-foreground tracking-tighter">Karthikeya</p>
-                        <p className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.4em]">Systems Architect & Founder</p>
+                        <p className="text-[10px] font-black text-foreground/50 uppercase tracking-[0.4em]">Systems Architect & Founder</p>
                      </div>
                   </div>
                </div>
