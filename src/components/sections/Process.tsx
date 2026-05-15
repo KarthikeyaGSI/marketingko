@@ -45,11 +45,11 @@ export function Process() {
             >
               Deployment Lifecycle
             </motion.div>
-            <h2 className="text-7xl md:text-[11rem] font-bold tracking-tightest text-foreground leading-[0.8] text-mask-premium uppercase italic">
+            <h2 className="text-emotional leading-[0.8] mb-12">
               THE 2-WEEK <br />
-              <span className="text-muted-foreground/60 not-italic">PROTOCOL.</span>
+              <span className="text-gold not-italic font-medium">PROTOCOL.</span>
             </h2>
-            <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tighter leading-tight">
+            <p className="text-xl text-muted-foreground max-w-2xl font-medium tracking-tight leading-tight">
               We've engineered a precision-timed protocol to take your business from manual drag to automated scale in exactly 14 days.
             </p>
           </div>
@@ -79,7 +79,7 @@ export function Process() {
                 <div className="space-y-8 relative z-10">
                   <div className="flex items-center justify-between">
                     <span className="text-8xl font-black text-foreground/[0.03] tracking-tighter italic leading-none group-hover:text-primary/5 transition-colors duration-1000">{step.id}</span>
-                    <div className="p-6 rounded-3xl bg-foreground/[0.02] border border-border group-hover:bg-primary group-hover:border-primary transition-all duration-1000">
+                    <div className="p-6 md:p-8 rounded-3xl border border-border bg-foreground/[0.02] flex flex-col justify-between h-full group hover:border-primary/50 transition-all duration-700 shadow-xl relative z-10">
                        <div className="group-hover:text-primary-foreground transition-colors duration-1000">
                         {step.icon}
                        </div>
@@ -87,8 +87,8 @@ export function Process() {
                   </div>
                   
                   <div className="space-y-6 pt-10">
-                    <h3 className="text-4xl font-bold text-foreground tracking-tighter italic leading-none group-hover:translate-x-4 transition-transform duration-700">{step.title}</h3>
-                    <p className="text-xl text-muted-foreground leading-relaxed font-medium tracking-tight">{step.description}</p>
+                    <h3 className="text-2xl font-bold text-foreground tracking-tighter italic leading-none group-hover:translate-x-4 transition-transform duration-700">{step.title}</h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed font-medium tracking-tight">{step.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -98,11 +98,11 @@ export function Process() {
 
         <div className="mt-32 flex justify-center">
            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-500 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-500 rounded-full opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
               <div className="relative px-12 py-6 bg-background rounded-full border border-primary/20 flex items-center space-x-6">
-                 <div className="text-3xl font-bold tracking-tighter italic">Day 14: <span className="text-primary uppercase">Active Ops.</span></div>
+                 <div className="text-2xl font-bold tracking-tighter italic">Day 14: <span className="text-primary uppercase">Active Ops.</span></div>
                  <div className="w-[1px] h-8 bg-border" />
-                 <div className="text-[10px] font-black text-foreground/60 uppercase tracking-widest">Protocol Fully Deployed</div>
+                 <div className="text-[10px] font-black text-gold uppercase tracking-widest">Protocol Fully Deployed</div>
               </div>
            </div>
         </div>

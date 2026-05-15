@@ -66,7 +66,7 @@ export function ProblemSection() {
                 className="text-emotional leading-[0.8] mb-12"
               >
                 DOING <br /> EVERYTHING. <br />
-                <span className="text-muted-foreground/10 not-italic font-medium">BUT STILL LOSING.</span>
+                <span className="text-gold not-italic font-medium">BUT STILL LOSING.</span>
               </motion.h2>
           </div>
 
@@ -92,7 +92,7 @@ export function ProblemSection() {
                       className="p-6 md:p-10 rounded-2xl md:rounded-3xl cinematic-card group relative overflow-hidden"
                     >
                       <div className="absolute top-0 right-0 p-4 md:p-6">
-                        <span className="text-4xl md:text-6xl font-black text-foreground/[0.08] dark:text-foreground/[0.1] italic">{pain.id}</span>
+                        <span className="text-4xl md:text-6xl font-black text-gold italic">{pain.id}</span>
                       </div>
                       
                       <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 relative z-10">
@@ -101,10 +101,10 @@ export function ProblemSection() {
                         </div>
                         <div className="space-y-2 flex-1">
                             <div className="flex flex-wrap items-center gap-3">
-                              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tight italic uppercase">{pain.title}</h3>
+                              <h3 className="text-lg sm:text-xl md:text-2xl font-black text-foreground tracking-tight italic uppercase">{pain.title}</h3>
                               <div className="px-3 py-1 rounded-lg bg-primary/20 text-primary text-[9px] md:text-[10px] font-black uppercase tracking-wider">{pain.stats}</div>
                             </div>
-                            <p className="text-sm md:text-base text-muted-foreground dark:text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl">
+                            <p className="text-xs md:text-sm text-muted-foreground dark:text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl">
                               {pain.description}
                             </p>
                         </div>
@@ -124,7 +124,7 @@ export function ProblemSection() {
                 >
                    <div className="absolute inset-0 grid-infrastructure opacity-15" />
                    <div className="relative z-10 space-y-4 text-center">
-                      <div className="w-20 h-20 rounded-full bg-primary/20 blur-[50px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
+                      <div className="w-20 h-20 rounded-full bg-primary/20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
                       <Activity className="w-16 h-16 md:w-20 md:h-20 text-primary mx-auto relative z-10" />
                       <p className="text-[10px] font-black tracking-[0.6em] text-primary uppercase italic relative z-10">Diagnostic Active</p>
                    </div>

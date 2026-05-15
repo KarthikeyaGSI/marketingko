@@ -26,13 +26,13 @@ export function CTA() {
               Initialize Strategy
             </motion.div>
             <motion.h2
-              initial={{ opacity: 0, scale: 0.95, filter: "blur(15px)" }}
-              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
               className="text-emotional leading-[0.8] mb-12"
             >
               Your revenue leak <br />
-              <span className="text-muted-foreground/10 not-italic font-medium">HAS A FIX.</span>
+              <span className="text-gold not-italic font-medium">HAS A FIX.</span>
             </motion.h2>
           </div>
           
@@ -42,7 +42,7 @@ export function CTA() {
             transition={{ delay: 0.15, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-4 md:space-y-6 max-w-3xl"
           >
-            <p className="text-lg sm:text-xl md:text-3xl text-muted-foreground dark:text-muted-foreground/80 font-medium tracking-tight leading-[1.2] italic">
+            <p className="text-xl md:text-2xl text-muted-foreground dark:text-muted-foreground/80 font-medium tracking-tight leading-[1.2] italic">
               &ldquo;We don&apos;t ask for trust. We earn it through execution. We&apos;ll identify your revenue leaks in 30 minutes, or we won&apos;t take the project.&rdquo;
             </p>
             <div className="flex items-center justify-center gap-8 pt-4">

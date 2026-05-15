@@ -166,18 +166,18 @@
   --input: oklch(0.15 0.01 95);
   --ring: var(--primary);
 
-  /* Elite Sensory Tokens */
-  --glow-primary: color-mix(in oklab, var(--primary), transparent 80%);
-  --glow-secondary: color-mix(in oklab, var(--secondary), transparent 90%);
-  --surface-glass: rgba(255, 255, 255, 0.01);
-  --border-glass: rgba(255, 255, 255, 0.05);
+  /* Elite Sensory Tokens - No Blur */
+  --glow-primary: oklch(0.85 0.15 90 / 0.1);
+  --glow-secondary: oklch(0.85 0.15 90 / 0.05);
+  --surface-glass: rgba(255, 255, 255, 0.03);
+  --border-glass: rgba(255, 255, 255, 0.1);
 }
 
 /* ═══ PREMIUM ATMOSPHERICS ═══ */
 
 @keyframes breathing {
-  0%, 100% { transform: scale(1); opacity: 0.1; filter: blur(80px); }
-  50% { transform: scale(1.1); opacity: 0.15; filter: blur(100px); }
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.1); opacity: 0.15; }
 }
 
 @keyframes cinematicFloat {
@@ -520,28 +520,30 @@
     animation: scan-line 3s linear infinite;
   }
 
-  /* Cinematic atmospheric bleed */
+  /* Cinematic atmospheric bleed - Sharp */
   .glow-bleed {
     @apply absolute pointer-events-none z-0;
-    background: radial-gradient(circle at center, var(--glow-primary) 0%, transparent 70%);
-    filter: blur(120px);
+    background: radial-gradient(circle at center, oklch(0.85 0.15 90 / 0.2) 0%, transparent 70%);
     mix-blend-mode: plus-lighter;
   }
 
   .mesh-premium {
     background: 
-      radial-gradient(at 0% 0%, oklch(var(--primary)/0.05) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, oklch(var(--primary)/0.03) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, oklch(var(--primary)/0.05) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, oklch(var(--primary)/0.03) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, oklch(0.85 0.15 90 / 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, oklch(0.85 0.15 90 / 0.03) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, oklch(0.85 0.15 90 / 0.05) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, oklch(0.85 0.15 90 / 0.03) 0px, transparent 50%);
     background-attachment: fixed;
   }
 
-  /* High-end typography emotion */
+  /* High-end typography emotion - Reduced Size & No Shadow */
   .text-emotional {
     @apply font-black leading-[0.8] tracking-[-0.05em] uppercase italic;
-    font-size: clamp(4rem, 15vw, 22rem);
-    text-shadow: 0 0 80px oklch(var(--primary)/0.1);
+    font-size: clamp(3rem, 10vw, 15rem);
+  }
+
+  .text-gold {
+    @apply text-[oklch(0.85_0.15_90)] font-bold;
   }
 
   /* Elite Grain Overlay */

@@ -50,8 +50,8 @@ export function CustomCursor() {
       
       gsap.to(follower, {
         scale: isMagnetic ? 4 : 2.5,
-        backgroundColor: "oklch(var(--primary)/0.15)",
-        borderColor: "oklch(var(--primary)/0.5)",
+        backgroundColor: "oklch(0.85 0.15 90 / 0.15)",
+        borderColor: "oklch(0.85 0.15 90 / 0.8)",
         duration: 0.4,
         ease: "power3.out"
       });
@@ -68,7 +68,7 @@ export function CustomCursor() {
       gsap.to(follower, {
         scale: 1,
         backgroundColor: "transparent",
-        borderColor: "oklch(var(--primary)/0.2)",
+        borderColor: "oklch(0.85 0.15 90 / 0.4)",
         duration: 0.4,
         ease: "power3.out"
       });
@@ -101,22 +101,22 @@ export function CustomCursor() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] hidden lg:block">
-      {/* Follower / Ring */}
+      {/* Follower / Ring - Sharp Gold */}
       <div 
         ref={followerRef}
-        className="fixed top-0 left-0 w-12 h-12 -ml-6 -mt-6 rounded-full border border-primary/20 backdrop-blur-[2px] transition-colors duration-500 will-change-transform"
+        className="fixed top-0 left-0 w-12 h-12 -ml-6 -mt-6 rounded-full border border-[oklch(0.85_0.15_90/0.4)] transition-colors duration-500 will-change-transform"
       />
       
-      {/* Main Core */}
+      {/* Main Core - Gold */}
       <div 
         ref={cursorRef}
-        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 rounded-full bg-primary shadow-[0_0_15px_oklch(var(--primary))] will-change-transform"
+        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 rounded-full bg-[oklch(0.85_0.15_90)] shadow-[0_0_20px_oklch(0.85_0.15_90/0.6)] will-change-transform"
       />
 
       {/* Label */}
       <div 
         ref={labelRef}
-        className="fixed top-0 left-0 mt-8 ml-8 text-[10px] font-black uppercase tracking-[0.3em] text-primary opacity-0 transition-opacity duration-300 pointer-events-none"
+        className="fixed top-0 left-0 mt-8 ml-8 text-[10px] font-black uppercase tracking-[0.3em] text-[oklch(0.85_0.15_90)] opacity-0 transition-opacity duration-300 pointer-events-none"
       />
     </div>
   );
