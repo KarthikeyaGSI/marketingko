@@ -102,12 +102,12 @@ export function ResultsGallery() {
           {/* SYSTEM VISUALIZATION — Right side */}
           <motion.div 
             style={{ rotate }}
-            className="w-full lg:w-1/2 group"
+            className="w-full lg:w-1/2 group relative z-20 lg:-ml-24"
           >
-             <div className="relative p-2 rounded-[3.5rem] border border-border bg-foreground/[0.02] shadow-2xl overflow-hidden">
+             <div className="relative p-2 rounded-[4rem] glass-system shadow-3xl overflow-hidden">
                 <div className="absolute inset-0 grid-infrastructure opacity-20" />
                 
-                <div className="relative p-6 md:p-10 space-y-10">
+                <div className="relative p-8 md:p-12 space-y-12">
                    <div className="flex justify-between items-center">
                      <div className="flex items-center space-x-4">
                         <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
