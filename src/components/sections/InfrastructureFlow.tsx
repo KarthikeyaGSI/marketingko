@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Cpu, Database, MessageSquare, Zap, Activity, TrendingUp } from "lucide-react";
+import { BlindsText } from "@/components/ui/BlindsText";
 
 const nodes = [
   { icon: TrendingUp, label: "Traffic Source", desc: "Omnichannel Data Ingestion", color: "from-blue-500 to-cyan-400" },
@@ -34,10 +35,12 @@ export function InfrastructureFlow() {
           >
             System Architecture
           </motion.div>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[10rem] font-bold text-foreground tracking-tightest leading-[0.85] text-mask-premium uppercase italic">
-            THE REVENUE <br />
-            <span className="text-muted-foreground/60 dark:text-muted-foreground/40 italic font-medium">OPERATING SYSTEM.</span>
-          </h2>
+          <div className="flex flex-col items-center">
+            <BlindsText 
+              text="THE REVENUE\nOPERATING SYSTEM."
+              className="text-emotional leading-[0.85] text-foreground font-black text-center"
+            />
+          </div>
         </div>
 
         <div className="relative max-w-6xl mx-auto">
@@ -57,7 +60,7 @@ export function InfrastructureFlow() {
                 <div className="flex-1 flex justify-center">
                   <div className={`relative group w-48 h-48`}>
                     <div className={`absolute inset-0 bg-gradient-to-br ${node.color} opacity-10 group-hover:opacity-20 transition-opacity duration-700`} />
-                    <div className="relative w-full h-full border border-border bg-foreground/[0.01] rounded-3xl flex items-center justify-center group-hover:border-primary/40 transition-all duration-700">
+                    <div className="relative w-full h-full glass-system rounded-3xl flex items-center justify-center group-hover:border-primary/40 transition-all duration-700">
                       <node.icon className="w-16 h-16 text-foreground group-hover:scale-110 transition-transform duration-700 group-hover:text-primary" />
                       
                       {/* Pulse Effect */}
