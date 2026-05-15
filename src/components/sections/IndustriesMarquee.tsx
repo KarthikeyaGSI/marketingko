@@ -18,7 +18,7 @@ const industries = [
 
 export function IndustriesMarquee() {
   return (
-    <section className="py-10 md:py-14 bg-background relative overflow-hidden border-y border-border/30 -mt-16 md:-mt-24 z-20">
+    <section className="py-6 bg-background relative overflow-hidden border-t border-border/10 z-20">
       <div className="container mx-auto px-4 md:px-6 mb-6">
          <motion.div 
            initial={{ opacity: 0, y: 10 }}
@@ -26,7 +26,7 @@ export function IndustriesMarquee() {
            className="text-[10px] md:text-[11px] font-black tracking-[1.2em] md:tracking-[1.5em] text-primary uppercase text-center flex items-center justify-center space-x-4"
          >
             <div className="h-px w-8 md:w-12 bg-primary/20" />
-            <span>Deployment Verticals</span>
+            <span>INDUSTRIES WE SERVE</span>
             <div className="h-px w-8 md:w-12 bg-primary/20" />
          </motion.div>
       </div>

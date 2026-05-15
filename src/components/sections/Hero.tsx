@@ -7,6 +7,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SystemsMarquee } from "./SystemsMarquee";
+import { IndustriesMarquee } from "./IndustriesMarquee";
 
 // Cinematic stagger config
 const stagger = {
@@ -144,7 +145,7 @@ function HeroNetwork() {
         ))}
         
         {/* Animated leakage particles from LIMITS connection */}
-        {[...Array(5)].map((_, i) => (
+        {[...Array(3)].map((_, i) => (
           <motion.circle
             key={`leak-${i}`}
             r="0.5"
@@ -166,7 +167,7 @@ function HeroNetwork() {
         ))}
 
         {/* Animated data pulse traveling along paths */}
-        {[0, 1, 2, 3, 4, 5].map((i) => (
+        {[0, 2, 4].map((i) => (
           <motion.circle
             key={`pulse-${i}`}
             r="1"
@@ -342,7 +343,7 @@ export function Hero() {
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
         style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[12rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.03] dark:text-foreground/[0.05] hidden md:block uppercase tracking-tightest"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[12rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.02] dark:text-foreground/[0.03] hidden md:block uppercase tracking-tighter"
       >
         REVENUE INFRASTRUCTURE • GROWTH OS • AUTONOMOUS SCALING •
       </motion.div>
@@ -369,7 +370,7 @@ export function Hero() {
               </div>
               <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-4 px-5 py-3 rounded-2xl border border-border bg-black/80 backdrop-blur-md shadow-2xl">
-                   <img src="/asian.webp" alt="Asian Institute of Allergy" className="h-6 w-auto object-contain brightness-0 invert opacity-80" />
+                   <img src="/asian.webp" alt="Asian Institute of Allergy" width={120} height={32} className="h-6 w-auto object-contain brightness-0 invert opacity-80" loading="eager" />
                    <div className="w-px h-4 bg-border" />
                    <span className="text-[10px] font-black tracking-widest text-foreground uppercase">Trusted Partner</span>
                 </div>
@@ -493,7 +494,7 @@ export function Hero() {
           {/* 3D NETWORK VISUALIZATION — Right */}
           <motion.div 
             style={{ y: springY1, opacity }}
-            className="lg:col-span-5 relative h-[350px] md:h-[450px] lg:h-[550px] lg:pl-24"
+            className="lg:col-span-5 relative h-[350px] md:h-[450px] lg:h-[550px] lg:pl-32 lg:translate-x-12"
           >
             <HeroNetwork />
           </motion.div>
@@ -501,11 +502,16 @@ export function Hero() {
       </div>
       
       {/* SYSTEMS MARQUEE — High impact above fold */}
-      <div className="w-full relative z-20 mt-12 md:mt-24">
+      <div className="w-full relative z-20 mt-12 md:mt-16">
         <div className="container mx-auto px-6 mb-2">
-          <span className="text-[8px] font-black tracking-[1em] text-primary uppercase opacity-40">Core Infrastructure Nodes</span>
+          <span className="text-[8px] font-black tracking-[1em] text-primary uppercase opacity-40">System Architecture</span>
         </div>
         <SystemsMarquee />
+      </div>
+
+      {/* INDUSTRIES MARQUEE — Also above fold */}
+      <div className="w-full relative z-20">
+        <IndustriesMarquee />
       </div>
 
       {/* SCROLL INDICATOR */}

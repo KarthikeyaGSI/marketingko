@@ -503,4 +503,11 @@
   .react-international-phone-country-selector-dropdown__list-item {
     @apply hover:!bg-primary/20 !text-foreground;
   }
+
+  /* Specific mobile touch background fix */
+  .react-international-phone-country-selector-button:active,
+  .react-international-phone-country-selector-button:focus,
+  .react-international-phone-country-selector-button--open {
+    @apply !bg-black !text-foreground;
+  }
 }
