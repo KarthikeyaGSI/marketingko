@@ -49,8 +49,9 @@ export function SystemPulse() {
       {/* Terminal Body */}
       <div 
         ref={logContainerRef}
-        className="flex-grow p-6 font-mono text-[10px] space-y-3 overflow-y-auto scrollbar-hide"
+        className="flex-grow p-6 font-mono text-[10px] space-y-3 overflow-y-auto scrollbar-hide relative"
       >
+        <div className="scanning-line opacity-10 pointer-events-none" />
         <AnimatePresence initial={false}>
           {logs.map((log) => (
             <motion.div

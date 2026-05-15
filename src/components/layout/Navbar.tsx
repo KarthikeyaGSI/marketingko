@@ -40,24 +40,24 @@ export function Navbar() {
         <nav
           className={`relative flex items-center justify-between px-6 md:px-12 py-6 rounded-[2.5rem] md:rounded-[3rem] border transition-all duration-1000 ${
             isScrolled
-              ? "bg-background border-border/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)]"
+              ? "bg-background/95 border-border shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)]"
               : "bg-transparent border-transparent"
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group shrink-0 min-w-[200px] md:min-w-[320px]" aria-label="Marketing Ko Home">
+          <Link href="/" className="flex items-center space-x-2 group shrink-0 min-w-[150px] md:min-w-[280px]" aria-label="Marketing Ko Home">
             <span className="text-2xl md:text-3xl font-black tracking-tightest text-foreground uppercase italic leading-none transition-all duration-700 group-hover:text-primary">
               MARKETING <span className="text-primary italic">KO.</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-12">
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-10">
             {navLinks.map((link) => (
               <Magnetic key={link.name} strength={0.2}>
                 <Link
                   href={link.href}
-                  className="relative text-[8px] xl:text-[9px] font-black tracking-[0.4em] xl:tracking-[0.5em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-3 xl:px-5 py-2"
+                  className="relative text-[8px] xl:text-[9px] font-black tracking-[0.4em] xl:tracking-[0.5em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-3 xl:px-5 py-2 whitespace-nowrap"
                   aria-label={`Navigate to ${link.name}`}
                 >
                   {link.name}

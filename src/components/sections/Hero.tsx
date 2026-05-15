@@ -36,7 +36,7 @@ const wordReveal: Variants = {
 function HeroNetwork() {
   return (
     <div className="absolute inset-0 z-0">
-      <svg className="w-full h-full opacity-30" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <svg className="w-full h-full opacity-60" viewBox="0 0 100 100" preserveAspectRatio="none">
         {/* Connection paths */}
         <motion.path
           d="M10,20 L50,50 L90,20"
