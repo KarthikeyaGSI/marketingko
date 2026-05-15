@@ -1,148 +1,123 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
-  const labelRef = useRef<HTMLSpanElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  
-  // Velocity tracking
-  const pos = useRef({ x: 0, y: 0 });
-  const vel = useRef({ x: 0, y: 0 });
+  const labelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const cursor = cursorRef.current;
     const follower = followerRef.current;
-    const label = labelRef.current;
     if (!cursor || !follower) return;
 
-    // Set initial state
-    gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-    gsap.set(follower, { xPercent: -50, yPercent: -50 });
-
-    const xTo = gsap.quickTo(cursor, "x", { duration: 0.1, ease: "power3" });
-    const yTo = gsap.quickTo(cursor, "y", { duration: 0.1, ease: "power3" });
-    
-    const followerXTo = gsap.quickTo(follower, "x", { duration: 0.5, ease: "expo.out" });
-    const followerYTo = gsap.quickTo(follower, "y", { duration: 0.5, ease: "expo.out" });
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isVisible) setIsVisible(true);
+    const onMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
       
-      // Velocity calculation
-      const dx = e.clientX - pos.current.x;
-      const dy = e.clientY - pos.current.y;
-      vel.current = { x: dx, y: dy };
-      pos.current = { x: e.clientX, y: e.clientY };
-
-      const speed = Math.min(Math.sqrt(dx * dx + dy * dy), 100);
-      const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-
-      xTo(e.clientX);
-      yTo(e.clientY);
-      followerXTo(e.clientX);
-      followerYTo(e.clientY);
-      
-      // Dynamic scaling based on velocity
-      gsap.to(follower, {
-        scaleX: 1 + speed * 0.005,
-        scaleY: 1 - speed * 0.002,
-        rotation: angle,
-        duration: 0.4,
+      // Main dot - instant
+      gsap.to(cursor, {
+        x: clientX,
+        y: clientY,
+        duration: 0.1,
         ease: "power2.out"
       });
 
-      document.documentElement.style.setProperty('--cursor-x', `${e.clientX}px`);
-      document.documentElement.style.setProperty('--cursor-y', `${e.clientY}px`);
+      // Follower - delayed & elastic
+      gsap.to(follower, {
+        x: clientX,
+        y: clientY,
+        duration: 0.6,
+        ease: "power3.out"
+      });
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const isInteractive = target.closest("button, a, .interactive, input, textarea, .magnetic");
+    const onMouseDown = () => {
+      gsap.to(follower, { scale: 0.8, duration: 0.3 });
+      gsap.to(cursor, { scale: 2, duration: 0.3 });
+    };
+
+    const onMouseUp = () => {
+      gsap.to(follower, { scale: 1, duration: 0.3 });
+      gsap.to(cursor, { scale: 1, duration: 0.3 });
+    };
+
+    // Hover states
+    const onMouseEnterLink = (e: any) => {
+      const target = e.currentTarget;
+      const isMagnetic = target.hasAttribute('data-magnetic');
       
-      if (isInteractive) {
-        gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.3 });
-        gsap.to(follower, { 
-          width: 80,
-          height: 80,
-          borderRadius: "1rem",
-          borderColor: "oklch(var(--primary))",
-          backgroundColor: "oklch(var(--primary) / 0.05)",
-          borderWidth: "1px",
-          opacity: 1,
-          duration: 0.5,
-          ease: "expo.out"
-        });
-        if (label) gsap.to(label, { opacity: 1, y: -20, duration: 0.4, ease: "power2.out" });
-      } else {
-        gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.3 });
-        gsap.to(follower, { 
-          width: 32,
-          height: 32,
-          borderRadius: "50%",
-          borderColor: "oklch(var(--foreground) / 0.2)",
-          backgroundColor: "transparent",
-          borderWidth: "1px",
-          opacity: 0.3,
-          duration: 0.5,
-          ease: "expo.out"
-        });
-        if (label) gsap.to(label, { opacity: 0, y: 0, duration: 0.3 });
+      gsap.to(follower, {
+        scale: isMagnetic ? 4 : 2.5,
+        backgroundColor: "oklch(var(--primary)/0.15)",
+        borderColor: "oklch(var(--primary)/0.5)",
+        duration: 0.4,
+        ease: "power3.out"
+      });
+      
+      if (target.getAttribute('data-cursor-label')) {
+        if (labelRef.current) {
+          labelRef.current.innerText = target.getAttribute('data-cursor-label');
+          gsap.to(labelRef.current, { opacity: 1, y: 0, duration: 0.3 });
+        }
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseover", handleMouseOver);
-    window.addEventListener("mouseenter", () => setIsVisible(true));
-    window.addEventListener("mouseleave", () => setIsVisible(false));
+    const onMouseLeaveLink = () => {
+      gsap.to(follower, {
+        scale: 1,
+        backgroundColor: "transparent",
+        borderColor: "oklch(var(--primary)/0.2)",
+        duration: 0.4,
+        ease: "power3.out"
+      });
+      
+      if (labelRef.current) {
+        gsap.to(labelRef.current, { opacity: 0, y: 10, duration: 0.3 });
+      }
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mouseup", onMouseUp);
+
+    const links = document.querySelectorAll('a, button, [data-cursor]');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', onMouseEnterLink);
+      link.addEventListener('mouseleave', onMouseLeaveLink);
+    });
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mouseup", onMouseUp);
+      links.forEach(link => {
+        link.removeEventListener('mouseenter', onMouseEnterLink);
+        link.removeEventListener('mouseleave', onMouseLeaveLink);
+      });
     };
-  }, [isVisible]);
+  }, []);
 
   return (
-    <div className={`fixed inset-0 pointer-events-none z-[9999] hidden lg:block transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-      {/* Precision Core */}
+    <div className="fixed inset-0 pointer-events-none z-[9999] hidden lg:block">
+      {/* Follower / Ring */}
       <div 
-        ref={cursorRef} 
-        className="fixed top-0 left-0 w-2 h-2 bg-primary rounded-full blur-[1px]" 
+        ref={followerRef}
+        className="fixed top-0 left-0 w-12 h-12 -ml-6 -mt-6 rounded-full border border-primary/20 backdrop-blur-[2px] transition-colors duration-500 will-change-transform"
       />
       
-      {/* Infrastructure Frame */}
+      {/* Main Core */}
       <div 
-        ref={followerRef} 
-        className="fixed top-0 left-0 w-8 h-8 border border-foreground/20 rounded-full flex items-center justify-center mix-blend-difference"
-      >
-        {/* Corner Brackets */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary/40" />
-          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-primary/40" />
-          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-primary/40" />
-          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary/40" />
-        </div>
-        
-        {/* Scan Line */}
-        <div className="absolute inset-x-0 h-[1px] bg-primary/20 animate-scan-line pointer-events-none" />
-        
-        {/* Context Label */}
-        <span ref={labelRef} className="absolute whitespace-nowrap text-[8px] font-black tracking-[0.3em] uppercase text-primary opacity-0 pointer-events-none translate-y-10">
-          SYSTEM ACCESS
-        </span>
-      </div>
+        ref={cursorRef}
+        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 rounded-full bg-primary shadow-[0_0_15px_oklch(var(--primary))] will-change-transform"
+      />
 
-      {/* Trailing Atmospheric Light */}
+      {/* Label */}
       <div 
-        className="fixed inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle 400px at var(--cursor-x) var(--cursor-y), oklch(var(--primary) / 0.03), transparent 80%)`
-        }}
+        ref={labelRef}
+        className="fixed top-0 left-0 mt-8 ml-8 text-[10px] font-black uppercase tracking-[0.3em] text-primary opacity-0 transition-opacity duration-300 pointer-events-none"
       />
     </div>
   );
 }
-

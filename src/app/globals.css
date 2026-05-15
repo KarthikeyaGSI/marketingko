@@ -165,6 +165,40 @@
   --border: oklch(0.15 0.01 95);
   --input: oklch(0.15 0.01 95);
   --ring: var(--primary);
+
+  /* Elite Sensory Tokens */
+  --glow-primary: color-mix(in oklab, var(--primary), transparent 80%);
+  --glow-secondary: color-mix(in oklab, var(--secondary), transparent 90%);
+  --surface-glass: rgba(255, 255, 255, 0.01);
+  --border-glass: rgba(255, 255, 255, 0.05);
+}
+
+/* ═══ PREMIUM ATMOSPHERICS ═══ */
+
+@keyframes breathing {
+  0%, 100% { transform: scale(1); opacity: 0.1; filter: blur(80px); }
+  50% { transform: scale(1.1); opacity: 0.15; filter: blur(100px); }
+}
+
+@keyframes cinematicFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(0.5deg); }
+  66% { transform: translateY(5px) rotate(-0.5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes scanline-elite {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  30% { transform: translate(3%, -15%); }
+  50% { transform: translate(12%, 9%); }
+  70% { transform: translate(-9%, 4%); }
+  90% { transform: translate(2%, 12%); }
 }
 
 /* ═══ BASE LAYER ═══ */
@@ -484,6 +518,39 @@
 
   .animate-scan-line {
     animation: scan-line 3s linear infinite;
+  }
+
+  /* Cinematic atmospheric bleed */
+  .glow-bleed {
+    @apply absolute pointer-events-none z-0;
+    background: radial-gradient(circle at center, var(--glow-primary) 0%, transparent 70%);
+    filter: blur(120px);
+    mix-blend-mode: plus-lighter;
+  }
+
+  .mesh-premium {
+    background: 
+      radial-gradient(at 0% 0%, oklch(var(--primary)/0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, oklch(var(--primary)/0.03) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, oklch(var(--primary)/0.05) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, oklch(var(--primary)/0.03) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* High-end typography emotion */
+  .text-emotional {
+    @apply font-black leading-[0.8] tracking-tightest uppercase italic;
+    font-size: clamp(4rem, 15vw, 22rem);
+    text-shadow: 0 0 80px oklch(var(--primary)/0.1);
+  }
+
+  /* Elite Grain Overlay */
+  .grain-elite::after {
+    content: "";
+    @apply fixed inset-[-200%] w-[400%] h-[400%] pointer-events-none z-[9999];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    animation: grain 8s steps(10) infinite;
   }
 
   /* Global Select/Dropdown styles to avoid overlap */

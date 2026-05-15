@@ -12,6 +12,7 @@ import {
   Target
 } from "lucide-react";
 import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
+import { Magnetic } from "@/components/ui/Magnetic";
 
 const leakages = [
   { 
@@ -63,7 +64,7 @@ const solutions = [
 
 export function RevenueEngine() {
   return (
-    <section className="py-40 md:py-80 bg-background relative overflow-hidden grain-bg">
+    <section className="py-40 md:py-80 bg-background relative overflow-hidden mesh-premium grain-elite">
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="absolute inset-0 grid-infrastructure" />
       </div>
@@ -77,9 +78,9 @@ export function RevenueEngine() {
           >
             Infrastructure Integrity
           </motion.div>
-          <h2 className="text-6xl md:text-9xl font-bold text-foreground tracking-tighter leading-[0.8] mb-16 text-mask-premium uppercase">
+          <h2 className="text-emotional leading-[0.8] mb-16">
             SEALING THE <br />
-            <span className="text-muted-foreground/40 italic">LEAKAGE.</span>
+            <span className="text-muted-foreground/10 not-italic font-medium">LEAKAGE.</span>
           </h2>
           <p className="text-2xl md:text-4xl text-muted-foreground dark:text-muted-foreground/80 font-medium tracking-tighter leading-tight italic">
             "Your business doesn't need more leads. It needs a sealed environment where no revenue can escape."
@@ -96,36 +97,37 @@ export function RevenueEngine() {
             </div>
             
             {leakages.map((leak, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="group p-10 rounded-[2.5rem] border border-destructive/10 bg-destructive/5 backdrop-blur-xl relative overflow-hidden"
-              >
-                <div className="flex justify-between items-start mb-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/20">
-                      <leak.icon className="h-5 w-5 text-destructive" />
-                    </div>
-                    <h4 className="text-xl font-bold text-foreground tracking-tight">{leak.title}</h4>
-                  </div>
-                  <div className="text-right">
-                    <span className="block text-3xl font-black text-destructive tracking-tighter">-{leak.loss}</span>
-                    <span className="text-[10px] font-black text-destructive/40 uppercase tracking-widest italic">{leak.impact} Risk</span>
-                  </div>
-                </div>
-                <p className="text-muted-foreground font-medium text-sm leading-relaxed max-w-md">
-                  {leak.description}
-                </p>
-                <motion.div 
-                  animate={{ y: [0, 10, 0], opacity: [0.1, 0.3, 0.1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute bottom-0 right-0 p-8 text-destructive opacity-10"
+              <Magnetic key={i} strength={0.03}>
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group p-10 rounded-[2.5rem] border border-destructive/10 bg-destructive/5 backdrop-blur-xl relative overflow-hidden"
                 >
-                  <Droplet size={80} />
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/20">
+                        <leak.icon className="h-5 w-5 text-destructive" />
+                      </div>
+                      <h4 className="text-xl font-bold text-foreground tracking-tight">{leak.title}</h4>
+                    </div>
+                    <div className="text-right">
+                      <span className="block text-3xl font-black text-destructive tracking-tighter">-{leak.loss}</span>
+                      <span className="text-[10px] font-black text-destructive/40 uppercase tracking-widest italic">{leak.impact} Risk</span>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground font-medium text-sm leading-relaxed max-w-md">
+                    {leak.description}
+                  </p>
+                  <motion.div 
+                    animate={{ y: [0, 10, 0], opacity: [0.1, 0.3, 0.1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute bottom-0 right-0 p-8 text-destructive opacity-10"
+                  >
+                    <Droplet size={80} />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+              </Magnetic>
             ))}
           </div>
 
@@ -137,36 +139,37 @@ export function RevenueEngine() {
             </div>
             
             {solutions.map((sol, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="group p-10 rounded-[2.5rem] border border-primary/20 bg-primary/5 backdrop-blur-xl relative overflow-hidden"
-              >
-                <div className="flex justify-between items-start mb-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary transition-colors duration-500">
-                      <sol.icon className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                    </div>
-                    <h4 className="text-xl font-bold text-foreground tracking-tight">{sol.title}</h4>
-                  </div>
-                  <div className="text-right">
-                    <span className="block text-3xl font-black text-primary tracking-tighter">+{sol.gain}</span>
-                    <span className="text-[10px] font-black text-primary/40 uppercase tracking-widest italic">{sol.outcome} Gain</span>
-                  </div>
-                </div>
-                <p className="text-muted-foreground font-medium text-sm leading-relaxed max-w-md">
-                  {sol.description}
-                </p>
-                <motion.div 
-                  animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute bottom-0 right-0 p-8 text-primary opacity-10"
+              <Magnetic key={i} strength={0.03}>
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group p-10 rounded-[2.5rem] border border-primary/20 bg-primary/5 backdrop-blur-xl relative overflow-hidden"
                 >
-                  <ShieldCheck size={80} />
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary transition-colors duration-500">
+                        <sol.icon className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                      </div>
+                      <h4 className="text-xl font-bold text-foreground tracking-tight">{sol.title}</h4>
+                    </div>
+                    <div className="text-right">
+                      <span className="block text-3xl font-black text-primary tracking-tighter">+{sol.gain}</span>
+                      <span className="text-[10px] font-black text-primary/40 uppercase tracking-widest italic">{sol.outcome} Gain</span>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground font-medium text-sm leading-relaxed max-w-md">
+                    {sol.description}
+                  </p>
+                  <motion.div 
+                    animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="absolute bottom-0 right-0 p-8 text-primary opacity-10"
+                  >
+                    <ShieldCheck size={80} />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+              </Magnetic>
             ))}
           </div>
 
@@ -188,9 +191,11 @@ export function RevenueEngine() {
                 Stop chasing leads and start building systems. Our Growth OS maps your entire revenue journey and seals every point of friction.
               </p>
               
-              <button className="px-12 py-6 rounded-2xl bg-primary text-primary-foreground font-black uppercase tracking-widest hover:scale-105 transition-all duration-500 shadow-[0_30px_60px_-15px_oklch(var(--primary)/0.5)] flex items-center mx-auto">
-                Initiate Sealing Protocol <ArrowRight className="ml-4 h-5 w-5" />
-              </button>
+              <Magnetic strength={0.02}>
+                <button className="px-12 py-6 rounded-2xl bg-primary text-primary-foreground font-black uppercase tracking-widest hover:scale-105 transition-all duration-500 shadow-[0_30px_60px_-15px_oklch(var(--primary)/0.5)] flex items-center mx-auto">
+                  Initiate Sealing Protocol <ArrowRight className="ml-4 h-5 w-5" />
+                </button>
+              </Magnetic>
             </div>
           </PerspectiveCard>
         </div>

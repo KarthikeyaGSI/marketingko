@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Magnetic } from "@/components/ui/Magnetic";
 import Link from "next/link";
 
 export function CTA() {
   return (
-    <section className="py-24 md:py-40 bg-background relative overflow-hidden mesh-animate">
+    <section className="py-24 md:py-40 bg-background relative overflow-hidden mesh-premium grain-elite">
       <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
       <div className="ambient-glow opacity-30" />
       <div className="glow-orb w-[800px] h-[800px] bg-primary/15 bottom-[-20%] left-[-15%] blur-[120px]" />
@@ -29,10 +29,10 @@ export function CTA() {
               initial={{ opacity: 0, scale: 0.95, filter: "blur(15px)" }}
               whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-[-0.05em] leading-[0.85] italic uppercase"
+              className="text-emotional leading-[0.8] mb-12"
             >
               Your revenue leak <br />
-              <span className="text-muted-foreground/60 not-italic">HAS A FIX.</span>
+              <span className="text-muted-foreground/10 not-italic font-medium">HAS A FIX.</span>
             </motion.h2>
           </div>
           
@@ -68,20 +68,22 @@ export function CTA() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full pt-4"
           >
             <Link href="/contact" className="w-full sm:w-auto" aria-label="Book a free revenue audit">
-              <MagneticButton>
-                <Button className="w-full sm:w-auto rounded-2xl px-8 md:px-12 h-14 md:h-16 text-sm md:text-base bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black uppercase tracking-[0.15em] shadow-[0_20px_60px_-10px_oklch(var(--primary)/0.4)] transition-all duration-700 flex items-center justify-center group border-none relative overflow-hidden">
+              <Magnetic strength={0.02}>
+                <Button className="w-full sm:w-auto rounded-2xl px-12 md:px-16 h-16 md:h-20 text-sm md:text-base bg-primary text-black hover:bg-foreground hover:text-background font-black uppercase tracking-[0.2em] shadow-[0_30px_100px_-15px_oklch(var(--primary)/0.6)] transition-all duration-700 flex items-center justify-center group border-none relative overflow-hidden">
                   <span className="relative z-10">Book Free Audit</span>
-                  <ArrowRight className="ml-3 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-2 transition-transform duration-500 relative z-10" />
-                  <div className="absolute inset-0 bg-foreground/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  <ArrowRight className="ml-3 h-5 w-5 md:h-6 md:w-6 group-hover:translate-x-3 transition-transform duration-500 relative z-10" />
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </Button>
-              </MagneticButton>
+              </Magnetic>
             </Link>
             
             <Link href="/solutions" className="w-full sm:w-auto" aria-label="View our autonomous growth systems">
-              <Button variant="outline" className="w-full sm:w-auto rounded-2xl px-8 md:px-12 h-14 md:h-16 text-sm md:text-base border-border bg-transparent text-foreground hover:bg-foreground/[0.05] font-black uppercase tracking-[0.15em] transition-all duration-700 flex items-center justify-center group">
-                <span>View Systems</span>
-                <ArrowRight className="ml-3 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-2 transition-transform duration-500" />
-              </Button>
+              <Magnetic strength={0.01}>
+                <Button variant="outline" className="w-full sm:w-auto rounded-2xl px-12 md:px-16 h-16 md:h-20 text-sm md:text-base border-border bg-transparent text-foreground hover:bg-foreground/[0.05] font-black uppercase tracking-[0.2em] transition-all duration-700 flex items-center justify-center group">
+                  <span>View Systems</span>
+                  <ArrowRight className="ml-3 h-5 w-5 md:h-6 md:w-6 group-hover:translate-x-3 transition-transform duration-500" />
+                </Button>
+              </Magnetic>
             </Link>
           </motion.div>
         </div>

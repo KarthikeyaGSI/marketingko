@@ -3,11 +3,12 @@
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck, Activity } from "lucide-react";
-import { MagneticButton } from "@/components/ui/MagneticButton";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SystemsMarquee } from "./SystemsMarquee";
 import { IndustriesMarquee } from "./IndustriesMarquee";
+import { Magnetic } from "@/components/ui/Magnetic";
+import gsap from "gsap";
 
 // Cinematic stagger config
 const stagger = {
@@ -262,6 +263,51 @@ function HeroNetwork() {
         </div>
       </motion.div>
     </div>
+function FloatingUI() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const cards = containerRef.current.querySelectorAll('.floating-node');
+    
+    cards.forEach((card, i) => {
+      gsap.to(card, {
+        y: "random(-20, 20)",
+        x: "random(-20, 20)",
+        rotation: "random(-2, 2)",
+        duration: "random(4, 8)",
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: i * 0.5
+      });
+    });
+  }, []);
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 pointer-events-none z-0 hidden xl:block">
+      {/* Analytics Card 1 */}
+      <div className="floating-node absolute top-[25%] left-[5%] p-6 glass-system rounded-3xl border-primary/20 space-y-4 backdrop-blur-2xl">
+        <div className="flex items-center space-x-3">
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-[9px] font-black tracking-widest text-foreground/40 uppercase">LIVE CONVERSION FLOW</span>
+        </div>
+        <div className="text-3xl font-black italic tracking-tighter text-foreground">$12.4k<span className="text-sm text-green-500 ml-2">+24%</span></div>
+      </div>
+
+      {/* Analytics Card 2 */}
+      <div className="floating-node absolute bottom-[35%] right-[5%] p-6 glass-system rounded-3xl border-primary/20 space-y-4 backdrop-blur-2xl">
+        <div className="flex items-center space-x-3">
+          <Activity className="w-3 h-3 text-primary" />
+          <span className="text-[9px] font-black tracking-widest text-foreground/40 uppercase">SYSTEM VELOCITY</span>
+        </div>
+        <div className="flex space-x-1 h-12 items-end">
+          {[40, 70, 45, 90, 60, 85].map((h, i) => (
+            <div key={i} className="w-1.5 bg-primary/20 rounded-full" style={{ height: `${h}%` }} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -343,10 +389,12 @@ export function Hero() {
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
         style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[12rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.02] dark:text-foreground/[0.03] hidden md:block uppercase tracking-tighter"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[28rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.02] dark:text-foreground/[0.03] hidden md:block uppercase tracking-tightest opacity-50"
       >
         REVENUE INFRASTRUCTURE • GROWTH OS • AUTONOMOUS SCALING •
       </motion.div>
+
+      <FloatingUI />
 
       <FloatingHUD />
 
@@ -457,20 +505,20 @@ export function Hero() {
             </div>
 
             {/* CTA ROW */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10 pt-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10 pt-4 relative z-20">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link href="/contact">
-                  <MagneticButton>
-                    <Button size="lg" className="rounded-2xl px-12 md:px-16 h-16 md:h-20 text-base md:text-lg bg-primary text-black hover:scale-105 font-black uppercase tracking-widest shadow-[0_30px_90px_-20px_oklch(var(--primary)/0.6)] transition-all duration-700 group border-none relative overflow-hidden">
+                  <Magnetic>
+                    <Button size="lg" className="rounded-[2rem] px-12 md:px-20 h-20 md:h-24 text-base md:text-xl bg-primary text-black hover:scale-105 font-black uppercase tracking-widest shadow-[0_30px_100px_-20px_oklch(var(--primary)/0.7)] transition-all duration-700 group border-none relative overflow-hidden">
                       <span className="relative z-10">Initiate Strategy Call</span>
-                      <ArrowRight className="ml-4 h-5 w-5 md:h-6 md:w-6 group-hover:translate-x-3 transition-transform duration-500 relative z-10" />
-                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                      <ArrowRight className="ml-4 h-6 w-6 md:h-8 md:w-8 group-hover:translate-x-3 transition-transform duration-500 relative z-10" />
+                      <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </Button>
-                  </MagneticButton>
+                  </Magnetic>
                 </Link>
               </motion.div>
               

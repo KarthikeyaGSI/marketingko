@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Activity, AlertTriangle, ShieldX, TrendingDown } from "lucide-react";
+import { Magnetic } from "@/components/ui/Magnetic";
 
 const pains = [
   {
@@ -62,17 +63,10 @@ export function ProblemSection() {
                 initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.05em] text-foreground leading-[0.9] uppercase relative"
+                className="text-emotional leading-[0.8] mb-12"
               >
-                DOING EVERYTHING. <br />
-                <span className="text-muted-foreground/80 dark:text-muted-foreground/70 italic font-medium">BUT STILL LOSING.</span>
-                
-                {/* Asymmetrical spinning detail */}
-                <motion.div 
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                  className="absolute -top-8 right-0 w-24 h-24 md:w-40 md:h-40 border border-foreground/5 rounded-full hidden md:block" 
-                />
+                DOING <br /> EVERYTHING. <br />
+                <span className="text-muted-foreground/10 not-italic font-medium">BUT STILL LOSING.</span>
               </motion.h2>
           </div>
 
@@ -88,35 +82,36 @@ export function ProblemSection() {
             </motion.p>
             
             <div className="pt-6 md:pt-10 grid grid-cols-1 gap-4 md:gap-6">
-               {pains.map((pain, i) => (
-                 <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.15, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    viewport={{ once: true }}
-                    className="p-6 md:p-10 rounded-2xl md:rounded-3xl cinematic-card group relative overflow-hidden"
-                 >
-                    <div className="absolute top-0 right-0 p-4 md:p-6">
-                       <span className="text-4xl md:text-6xl font-black text-foreground/[0.08] dark:text-foreground/[0.1] italic">{pain.id}</span>
-                    </div>
-                    
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 relative z-10">
-                       <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-foreground/[0.03] border border-border flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-700 group-hover:scale-105 shrink-0">
-                          {pain.icon}
-                       </div>
-                       <div className="space-y-2 flex-1">
-                          <div className="flex flex-wrap items-center gap-3">
-                            <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tight italic uppercase">{pain.title}</h3>
-                            <div className="px-3 py-1 rounded-lg bg-primary/20 text-primary text-[9px] md:text-[10px] font-black uppercase tracking-wider">{pain.stats}</div>
-                          </div>
-                          <p className="text-sm md:text-base text-muted-foreground dark:text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl">
-                            {pain.description}
-                          </p>
-                       </div>
-                    </div>
-                 </motion.div>
-               ))}
+                {pains.map((pain, i) => (
+                  <Magnetic key={i} strength={0.05}>
+                    <motion.div
+                      initial={{ opacity: 0, x: -40 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.15, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                      viewport={{ once: true }}
+                      className="p-6 md:p-10 rounded-2xl md:rounded-3xl cinematic-card group relative overflow-hidden"
+                    >
+                      <div className="absolute top-0 right-0 p-4 md:p-6">
+                        <span className="text-4xl md:text-6xl font-black text-foreground/[0.08] dark:text-foreground/[0.1] italic">{pain.id}</span>
+                      </div>
+                      
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 relative z-10">
+                        <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-foreground/[0.03] border border-border flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-700 group-hover:scale-105 shrink-0">
+                            {pain.icon}
+                        </div>
+                        <div className="space-y-2 flex-1">
+                            <div className="flex flex-wrap items-center gap-3">
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tight italic uppercase">{pain.title}</h3>
+                              <div className="px-3 py-1 rounded-lg bg-primary/20 text-primary text-[9px] md:text-[10px] font-black uppercase tracking-wider">{pain.stats}</div>
+                            </div>
+                            <p className="text-sm md:text-base text-muted-foreground dark:text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl">
+                              {pain.description}
+                            </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Magnetic>
+                ))}
             </div>
           </div>
 

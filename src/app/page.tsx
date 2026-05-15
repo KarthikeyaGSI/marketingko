@@ -10,8 +10,11 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <Hero />
+      <div className="glow-bleed w-[1200px] h-[600px] top-[20%] left-[-10%] opacity-20" />
       <WOWSection />
+      <div className="glow-bleed w-[1000px] h-[500px] top-[40%] right-[-10%] opacity-15" />
       <ProblemSection />
+      <div className="glow-bleed w-[1200px] h-[600px] top-[60%] left-[-10%] opacity-20" />
       <RevenueEngine />
       <FAQ />
       <CTA />

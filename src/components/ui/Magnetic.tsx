@@ -1,48 +1,52 @@
 "use client";
 
-import { useRef, useState, ReactNode, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-interface MagneticProps {
-  children: ReactNode;
-  strength?: number;
-}
-
-export function Magnetic({ children, strength = 0.5 }: MagneticProps) {
-  const ref = useRef<HTMLDivElement>(null);
+export function Magnetic({ children, strength = 0.5 }: { children: React.ReactNode, strength?: number }) {
+  const magneticRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
+    const el = magneticRef.current;
     if (!el) return;
 
-    const xTo = gsap.quickTo(el, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
-    const yTo = gsap.quickTo(el, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
-
-    const mouseMove = (e: MouseEvent) => {
+    const onMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
-      const { width, height, left, top } = el.getBoundingClientRect();
-      const x = clientX - (left + width / 2);
-      const y = clientY - (top + height / 2);
-      xTo(x * strength);
-      yTo(y * strength);
+      const { left, top, width, height } = el.getBoundingClientRect();
+      const centerX = left + width / 2;
+      const centerY = top + height / 2;
+      
+      const distanceX = clientX - centerX;
+      const distanceY = clientY - centerY;
+      
+      gsap.to(el, {
+        x: distanceX * strength,
+        y: distanceY * strength,
+        duration: 1,
+        ease: "power3.out"
+      });
     };
 
-    const mouseLeave = () => {
-      xTo(0);
-      yTo(0);
+    const onMouseLeave = () => {
+      gsap.to(el, {
+        x: 0,
+        y: 0,
+        duration: 1,
+        ease: "elastic.out(1, 0.3)"
+      });
     };
 
-    el.addEventListener("mousemove", mouseMove);
-    el.addEventListener("mouseleave", mouseLeave);
+    el.addEventListener("mousemove", onMouseMove);
+    el.addEventListener("mouseleave", onMouseLeave);
 
     return () => {
-      el.removeEventListener("mousemove", mouseMove);
-      el.removeEventListener("mouseleave", mouseLeave);
+      el.removeEventListener("mousemove", onMouseMove);
+      el.removeEventListener("mouseleave", onMouseLeave);
     };
   }, [strength]);
 
   return (
-    <div ref={ref} className="inline-block">
+    <div ref={magneticRef} className="inline-block" data-magnetic>
       {children}
     </div>
   );
