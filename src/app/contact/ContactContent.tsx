@@ -1,6 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { useEffect, useState, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, Mail, Zap, ArrowRight, CheckCircle2, Loader2, Sparkles, Phone, User, Building2, MessageSquare, Briefcase } from "lucide-react";
@@ -60,36 +61,35 @@ function ContactForm() {
     setStatus("submitting");
     
     try {
-      // Reform Headless Integration
-      // Using the provided ID as the form ID for headless submission
-      const formId = "aea77d87-81c5-4e0f-b122-e4944574b17e";
-      const response = await fetch(`https://api.reform.app/v1/forms/${formId}/submissions`, {
+      // Web3Forms Integration
+      const accessKey = "aea77d87-81c5-4e0f-b122-e4944574b17e";
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
         body: JSON.stringify({
-          answers: {
-            "full_name": formData.fullName,
-            "business_name": formData.businessName,
-            "email": formData.email,
-            "phone": formData.phone,
-            "business_type": formData.businessType,
-            "business_size": formData.businessSize,
-            "challenge": formData.challenge
-          }
+          access_key: accessKey,
+          from_name: "Marketing Ko Lead Terminal",
+          subject: `New Lead: ${formData.fullName} - ${formData.businessName}`,
+          name: formData.fullName,
+          business: formData.businessName,
+          email: formData.email,
+          phone: formData.phone,
+          type: formData.businessType,
+          size: formData.businessSize,
+          message: formData.challenge
         })
       });
 
-      if (!response.ok) throw new Error("Transmission failed");
+      const result = await response.json();
+      if (!result.success) throw new Error("Transmission failed");
       
       setStatus("success");
     } catch (error) {
       console.error("Submission Error:", error);
       setStatus("error");
-      // Fallback success for demo/dev if API fails due to CORS or wrong ID
-      // setStatus("success"); 
     }
   };
 
@@ -199,10 +199,8 @@ function ContactForm() {
               value={formData.phone}
               onChange={(phone) => setFormData(prev => ({ ...prev, phone }))}
               inputClassName="!h-16 md:!h-20 !w-full !px-8 !rounded-2xl !bg-background !border-border focus:!border-primary focus:!ring-primary !text-lg !font-bold !tracking-tight !shadow-inner !transition-all !duration-500 !text-foreground"
-              containerClassName="!w-full"
               countrySelectorStyleProps={{
                 buttonClassName: "!h-16 md:!h-20 !rounded-2xl !bg-background !border-border !px-4 hover:!bg-primary/5 transition-all !mr-2",
-                dropdownClassName: "!bg-background !border-border !rounded-2xl !shadow-2xl !z-50",
               }}
             />
           </div>
