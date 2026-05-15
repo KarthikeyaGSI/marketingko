@@ -11,8 +11,8 @@ export function CTA() {
     <section className="py-24 md:py-40 bg-background relative overflow-hidden mesh-premium grain-elite">
       <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
       <div className="ambient-glow opacity-30" />
-      <div className="glow-orb w-[800px] h-[800px] bg-primary/15 bottom-[-20%] left-[-15%] blur-[120px]" />
-      <div className="glow-orb w-[400px] h-[400px] bg-primary/10 top-[15%] right-[-10%] blur-[80px]" style={{ animationDelay: "3s" }} />
+      <div className="glow-orb w-[800px] h-[800px] bg-primary/15 bottom-[-20%] left-[-15%]" />
+      <div className="glow-orb w-[400px] h-[400px] bg-primary/10 top-[15%] right-[-10%]" style={{ animationDelay: "3s" }} />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center text-center space-y-8 md:space-y-12 max-w-5xl mx-auto">
@@ -20,7 +20,7 @@ export function CTA() {
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+               transition={{ duration: 1, ease: "easeOut" }}
               className="text-[10px] md:text-[11px] font-black tracking-[1em] md:tracking-[1.2em] text-primary uppercase"
             >
               Initialize Strategy
@@ -28,7 +28,7 @@ export function CTA() {
             <motion.h2
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+               transition={{ duration: 1, ease: "circOut" }}
               className="text-emotional leading-[0.8] mb-12"
             >
               Your revenue leak <br />
@@ -39,7 +39,7 @@ export function CTA() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+             transition={{ delay: 0.15, duration: 1, ease: "easeOut" }}
             className="space-y-4 md:space-y-6 max-w-3xl"
           >
             <p className="text-xl md:text-2xl text-muted-foreground dark:text-muted-foreground/80 font-medium tracking-tight leading-[1.2] italic">

@@ -54,15 +54,15 @@ export function ProblemSection() {
              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1, ease: "easeOut" }}
                 className="text-[10px] md:text-[11px] font-black tracking-[0.8em] md:tracking-[1em] text-primary dark:text-primary uppercase italic mb-6 md:mb-8"
               >
                 Current State Analysis
               </motion.div>
-              <motion.h2
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "circOut", delay: 0.2 }}
                 className="text-emotional leading-[0.8] mb-12"
               >
                 DOING <br /> EVERYTHING. <br />

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, AnimatePresence, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck, Activity } from "lucide-react";
 import Link from "next/link";
@@ -11,25 +11,25 @@ import { Magnetic } from "@/components/ui/Magnetic";
 import gsap from "gsap";
 
 // Cinematic stagger config
-const stagger = {
+const stagger: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { 
     opacity: 1, 
     y: 0, 
     transition: { 
-      duration: 1.2, 
-      ease: [0.16, 1, 0.3, 1],
-      staggerChildren: 0.2
+      duration: 1, 
+      ease: "easeOut",
+      staggerChildren: 0.1
     } 
   }
 };
 
-const wordReveal = {
-  hidden: { opacity: 0, y: 100 },
+const wordReveal: Variants = {
+  hidden: { opacity: 0, y: 50 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
+    transition: { duration: 0.8, ease: "easeOut" } 
   }
 };
 
