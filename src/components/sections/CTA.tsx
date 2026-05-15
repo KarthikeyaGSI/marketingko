@@ -2,109 +2,88 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Zap, Shield, Globe } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import Link from "next/link";
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 
 export function CTA() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    gsap.from(".reveal-item", {
-      y: 60,
-      opacity: 0,
-      filter: "blur(20px)",
-      duration: 1.5,
-      stagger: 0.2,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-      }
-    });
-
-    // Ambient glow pulse
-    gsap.to(".cta-glow", {
-      scale: 1.2,
-      opacity: 0.4,
-      duration: 5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
-  }, { scope: containerRef });
-
   return (
-    <section ref={containerRef} className="py-40 md:py-80 bg-background relative overflow-hidden grain-system">
-      {/* Cinematic Atmosphere */}
+    <section className="py-24 md:py-40 bg-background relative overflow-hidden mesh-animate">
       <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
-      <div className="cta-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/10 blur-[150px] rounded-full pointer-events-none opacity-20" />
+      <div className="ambient-glow opacity-30" />
+      <div className="glow-orb w-[800px] h-[800px] bg-primary/15 bottom-[-20%] left-[-15%] blur-[120px]" />
+      <div className="glow-orb w-[400px] h-[400px] bg-primary/10 top-[15%] right-[-10%] blur-[80px]" style={{ animationDelay: "3s" }} />
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center space-y-16 md:space-y-24 max-w-6xl mx-auto">
-          
-          <div className="space-y-8">
-            <div className="reveal-item inline-flex items-center space-x-4 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-3xl">
-              <Zap className="w-3 h-3 text-primary" />
-              <span className="text-[10px] font-black tracking-[1em] text-primary uppercase italic">Initialize Acquisition</span>
-            </div>
-            
-            <h2 className="text-6xl md:text-9xl lg:text-[11rem] font-bold text-foreground tracking-tightest leading-[0.85] text-mask-premium uppercase italic reveal-item">
-              YOUR REVENUE LEAK <br />
-              <span className="text-primary not-italic font-medium">HAS A FIX.</span>
-            </h2>
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="flex flex-col items-center text-center space-y-8 md:space-y-12 max-w-5xl mx-auto">
+          <div className="space-y-4 md:space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[10px] md:text-[11px] font-black tracking-[1em] md:tracking-[1.2em] text-primary uppercase"
+            >
+              Initialize Strategy
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.95, filter: "blur(15px)" }}
+              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-[-0.05em] leading-[0.85] italic uppercase"
+            >
+              Your revenue leak <br />
+              <span className="text-muted-foreground/60 not-italic">HAS A FIX.</span>
+            </motion.h2>
           </div>
           
-          <div className="space-y-12 max-w-4xl reveal-item">
-            <p className="text-xl md:text-4xl text-muted-foreground font-medium tracking-tightest leading-tight italic border-l-4 border-primary/20 pl-8 mx-auto text-left">
-              "We don't ask for trust. We earn it through execution. We'll identify your revenue leaks in 30 minutes, or we won't take the project."
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-4 md:space-y-6 max-w-3xl"
+          >
+            <p className="text-lg sm:text-xl md:text-3xl text-muted-foreground dark:text-muted-foreground/80 font-medium tracking-tight leading-[1.2] italic">
+              &ldquo;We don&apos;t ask for trust. We earn it through execution. We&apos;ll identify your revenue leaks in 30 minutes, or we won&apos;t take the project.&rdquo;
             </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-20 py-10">
-               <div className="flex flex-col items-center group cursor-none">
-                  <span className="text-5xl md:text-7xl font-black text-primary tracking-tightest italic group-hover:scale-110 transition-transform">14 DAYS</span>
-                  <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.4em] italic">To Initial ROI</span>
+            <div className="flex items-center justify-center gap-8 pt-4">
+               <div className="flex flex-col items-center">
+                  <span className="text-4xl font-black text-primary tracking-tighter">14 DAYS</span>
+                  <span className="text-[10px] font-black text-foreground/50 uppercase tracking-[0.4em]">To Initial ROI</span>
                </div>
-               <div className="hidden sm:block w-px h-16 bg-border/40" />
-               <div className="flex flex-col items-center group cursor-none">
-                  <span className="text-5xl md:text-7xl font-black text-foreground tracking-tightest italic group-hover:scale-110 transition-transform group-hover:text-primary">ZERO</span>
-                  <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.4em] italic">Setup Jitter</span>
+               <div className="w-px h-12 bg-border/40" />
+               <div className="flex flex-col items-center">
+                  <span className="text-4xl font-black text-primary tracking-tighter">ZERO</span>
+                  <span className="text-[10px] font-black text-foreground/50 uppercase tracking-[0.4em]">Setup Jitter</span>
                </div>
             </div>
-            
-            <div className="pt-10 flex flex-col items-center space-y-4">
-              <p className="text-[10px] md:text-[12px] font-black text-foreground/40 uppercase tracking-[0.8em] italic">
-                Guaranteed outcomes. No retained risk. Just engineering.
-              </p>
-              <div className="flex items-center space-x-4">
-                 <Shield className="w-3 h-3 text-primary/40" />
-                 <Globe className="w-3 h-3 text-primary/40" />
-                 <Zap className="w-3 h-3 text-primary/40" />
-              </div>
-            </div>
-          </div>
+            <p className="text-[10px] md:text-[11px] font-black text-foreground/80 uppercase tracking-[0.6em] italic pt-8">
+              Guaranteed outcomes. No retained risk. Just engineering.
+            </p>
+          </motion.div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full reveal-item">
-            <Link href="/contact" className="w-full sm:w-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full pt-4"
+          >
+            <Link href="/contact" className="w-full sm:w-auto" aria-label="Book a free revenue audit">
               <MagneticButton>
-                <Button className="w-full sm:w-auto h-20 md:h-24 rounded-2xl md:rounded-3xl px-16 md:px-20 text-lg md:text-xl bg-primary text-black font-black uppercase tracking-widest shadow-[0_40px_80px_-20px_oklch(var(--primary)/0.6)] transition-all duration-1000 border-none relative overflow-hidden group">
-                  <span className="relative z-10">Initialize Audit</span>
-                  <ArrowRight className="ml-6 h-6 w-6 md:h-8 md:w-8 group-hover:translate-x-4 transition-transform duration-700 relative z-10" />
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                <Button className="w-full sm:w-auto rounded-2xl px-8 md:px-12 h-14 md:h-16 text-sm md:text-base bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black uppercase tracking-[0.15em] shadow-[0_20px_60px_-10px_oklch(var(--primary)/0.4)] transition-all duration-700 flex items-center justify-center group border-none relative overflow-hidden">
+                  <span className="relative z-10">Book Free Audit</span>
+                  <ArrowRight className="ml-3 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-2 transition-transform duration-500 relative z-10" />
+                  <div className="absolute inset-0 bg-foreground/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </Button>
               </MagneticButton>
             </Link>
             
-            <Link href="/solutions" className="w-full sm:w-auto">
-              <Button variant="outline" className="w-full sm:w-auto h-20 md:h-24 rounded-2xl md:rounded-3xl px-16 md:px-20 text-lg md:text-xl border-border bg-transparent text-foreground hover:bg-foreground/[0.05] font-black uppercase tracking-widest transition-all duration-1000 flex items-center justify-center group">
+            <Link href="/solutions" className="w-full sm:w-auto" aria-label="View our autonomous growth systems">
+              <Button variant="outline" className="w-full sm:w-auto rounded-2xl px-8 md:px-12 h-14 md:h-16 text-sm md:text-base border-border bg-transparent text-foreground hover:bg-foreground/[0.05] font-black uppercase tracking-[0.15em] transition-all duration-700 flex items-center justify-center group">
                 <span>View Systems</span>
-                <ArrowRight className="ml-6 h-6 w-6 md:h-8 md:w-8 group-hover:translate-x-4 transition-transform duration-700" />
+                <ArrowRight className="ml-3 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-2 transition-transform duration-500" />
               </Button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

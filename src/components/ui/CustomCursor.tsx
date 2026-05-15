@@ -131,7 +131,7 @@ export function CustomCursor() {
         
         {/* Context Label */}
         <span ref={labelRef} className="absolute whitespace-nowrap text-[8px] font-black tracking-[0.3em] uppercase text-primary opacity-0 pointer-events-none translate-y-10">
-          SYSTEM_ACCESS
+          SYSTEM ACCESS
         </span>
       </div>
 

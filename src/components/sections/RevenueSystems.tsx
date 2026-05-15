@@ -136,7 +136,7 @@ export function RevenueSystems() {
                        <div className="mb-16">
                          <div className="flex items-baseline space-x-6">
                            <p className="text-6xl md:text-7xl font-black text-foreground tracking-tightest italic leading-none">Quote</p>
-                           <span className="text-sm font-black text-foreground/40 uppercase italic">On_Request</span>
+                           <span className="text-sm font-black text-foreground/40 uppercase italic">On Request</span>
                          </div>
                          <p className="text-[13px] font-black text-primary mt-8 uppercase tracking-[0.4em] italic opacity-100">{system.mgmt}</p>
                        </div>

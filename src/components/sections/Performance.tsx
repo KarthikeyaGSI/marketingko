@@ -101,7 +101,7 @@ export function Performance() {
             <div className="flex items-center justify-between border-b border-border/50 pb-16">
               <div className="flex items-center space-x-10">
                 <div className="px-8 py-3 rounded-2xl bg-primary/10 border border-primary/20">
-                  <span className="text-[12px] font-black text-primary uppercase tracking-[0.5em]">SYSTEM_CORE_V2.5</span>
+                  <span className="text-[12px] font-black text-primary uppercase tracking-[0.5em]">SYSTEM CORE V2.5</span>
                 </div>
                 <div className="flex items-center space-x-4">
                    <div className="w-3 h-3 rounded-full bg-primary animate-pulse shadow-[0_0_15px_oklch(var(--primary))]" />

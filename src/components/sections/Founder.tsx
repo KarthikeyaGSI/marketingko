@@ -43,7 +43,7 @@ export function Founder() {
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
               <div className="absolute bottom-12 left-12 right-12 p-10 glass-system rounded-[3rem] space-y-4 translate-y-20 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-1000">
                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic">Operator_ID: KT-GS-01</span>
+                    <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic">Operator ID: KT-GS-01</span>
                     <Fingerprint className="w-8 h-8 text-primary" />
                  </div>
                  <h3 className="text-3xl font-black italic tracking-tighter text-foreground">Karthikeya Thallapally</h3>

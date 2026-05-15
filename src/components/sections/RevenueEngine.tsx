@@ -8,14 +8,10 @@ import {
   TrendingUp, 
   Zap, 
   BarChart3,
-  Target,
-  Shield,
-  Activity
+  Users,
+  Target
 } from "lucide-react";
 import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 
 const leakages = [
   { 
@@ -66,158 +62,135 @@ const solutions = [
 ];
 
 export function RevenueEngine() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    gsap.from(".reveal-item", {
-      y: 60,
-      opacity: 0,
-      filter: "blur(20px)",
-      duration: 1.5,
-      stagger: 0.15,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-      }
-    });
-
-    // Animate the bridge line
-    gsap.from(".bridge-line", {
-      scaleX: 0,
-      duration: 2,
-      ease: "power4.inOut",
-      scrollTrigger: {
-        trigger: ".bridge-container",
-        start: "top 70%",
-      }
-    });
-  }, { scope: sectionRef });
-
   return (
-    <section ref={sectionRef} className="py-40 md:py-80 bg-background relative overflow-hidden grain-system">
-      <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(var(--primary)/0.03)_0%,transparent_70%)] pointer-events-none" />
-      
+    <section className="py-40 md:py-80 bg-background relative overflow-hidden grain-bg">
+      <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute inset-0 grid-infrastructure" />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto text-center mb-40 md:mb-60 space-y-12">
-          <div className="reveal-item inline-flex items-center space-x-4 px-6 py-2 rounded-full border border-primary/20 bg-primary/5">
-            <Shield className="w-3 h-3 text-primary" />
-            <span className="text-[10px] font-black tracking-[1em] text-primary uppercase italic">Infrastructure Integrity</span>
-          </div>
-          
-          <div className="space-y-8">
-            <h2 className="text-6xl md:text-9xl lg:text-[10rem] font-bold text-foreground tracking-tightest leading-[0.85] text-mask-premium uppercase reveal-item">
-              SEALING THE <br />
-              <span className="text-primary italic font-medium">LEAKAGE.</span>
-            </h2>
-            <p className="text-xl md:text-4xl text-muted-foreground font-medium tracking-tightest leading-tight italic max-w-4xl mx-auto reveal-item">
-              "Your business doesn't need more leads. It needs a sealed environment where no revenue can escape."
-            </p>
-          </div>
+        <div className="max-w-4xl mx-auto text-center mb-40">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-[10px] font-black tracking-[0.8em] text-primary mb-12 uppercase"
+          >
+            Infrastructure Integrity
+          </motion.div>
+          <h2 className="text-6xl md:text-9xl font-bold text-foreground tracking-tighter leading-[0.8] mb-16 text-mask-premium uppercase">
+            SEALING THE <br />
+            <span className="text-muted-foreground/40 italic">LEAKAGE.</span>
+          </h2>
+          <p className="text-2xl md:text-4xl text-muted-foreground dark:text-muted-foreground/80 font-medium tracking-tighter leading-tight italic">
+            "Your business doesn't need more leads. It needs a sealed environment where no revenue can escape."
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start relative bridge-container">
-          
-          {/* Vertical Divider for Desktop */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent -translate-x-1/2" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           
           {/* THE LEAKAGE (Before) */}
-          <div className="space-y-16">
-            <div className="reveal-item flex items-center justify-between mb-8 px-6">
-              <span className="text-[12px] font-black tracking-[0.6em] text-red-500 uppercase italic">The Revenue Leak</span>
-              <div className="h-px flex-grow mx-8 bg-red-500/20" />
-              <Activity className="w-6 h-6 text-red-500 animate-pulse" />
+          <div className="space-y-12">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-px w-12 bg-destructive/30" />
+              <span className="text-xs font-black tracking-widest text-destructive uppercase">The Revenue Leak</span>
             </div>
             
             {leakages.map((leak, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="reveal-item group p-10 rounded-[3rem] border border-red-500/10 bg-red-500/[0.02] backdrop-blur-3xl relative overflow-hidden transition-all duration-1000 hover:border-red-500/30 shadow-2xl"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="group p-10 rounded-[2.5rem] border border-destructive/10 bg-destructive/5 backdrop-blur-xl relative overflow-hidden"
               >
-                <div className="flex justify-between items-start mb-8">
-                  <div className="flex items-center gap-6">
-                    <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20">
-                      <leak.icon className="h-6 w-6 text-red-500" />
+                <div className="flex justify-between items-start mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/20">
+                      <leak.icon className="h-5 w-5 text-destructive" />
                     </div>
-                    <h4 className="text-2xl font-black text-foreground tracking-tightest italic uppercase">{leak.title}</h4>
+                    <h4 className="text-xl font-bold text-foreground tracking-tight">{leak.title}</h4>
                   </div>
                   <div className="text-right">
-                    <span className="block text-4xl font-black text-red-500 tracking-tightest italic">-{leak.loss}</span>
-                    <span className="text-[10px] font-black text-red-500/40 uppercase tracking-widest italic">{leak.impact} Risk</span>
+                    <span className="block text-3xl font-black text-destructive tracking-tighter">-{leak.loss}</span>
+                    <span className="text-[10px] font-black text-destructive/40 uppercase tracking-widest italic">{leak.impact} Risk</span>
                   </div>
                 </div>
-                <p className="text-lg md:text-xl text-muted-foreground font-medium italic tracking-tightest leading-relaxed max-w-md">
+                <p className="text-muted-foreground font-medium text-sm leading-relaxed max-w-md">
                   {leak.description}
                 </p>
-                <div className="absolute -bottom-10 -right-10 p-10 text-red-500 opacity-5 group-hover:opacity-10 transition-opacity">
-                  <Droplet size={120} />
-                </div>
-              </div>
+                <motion.div 
+                  animate={{ y: [0, 10, 0], opacity: [0.1, 0.3, 0.1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute bottom-0 right-0 p-8 text-destructive opacity-10"
+                >
+                  <Droplet size={80} />
+                </motion.div>
+              </motion.div>
             ))}
           </div>
 
           {/* THE SEAL (After) */}
-          <div className="space-y-16">
-            <div className="reveal-item flex items-center justify-between mb-8 px-6">
-              <Zap className="w-6 h-6 text-primary animate-shimmer" />
-              <div className="h-px flex-grow mx-8 bg-primary/20" />
-              <span className="text-[12px] font-black tracking-[0.6em] text-primary uppercase italic">The Autonomous Solution</span>
+          <div className="space-y-12">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-px w-12 bg-primary/30" />
+              <span className="text-xs font-black tracking-widest text-primary uppercase">The Autonomous Solution</span>
             </div>
             
             {solutions.map((sol, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="reveal-item group p-10 rounded-[3rem] border border-primary/10 bg-primary/[0.02] backdrop-blur-3xl relative overflow-hidden transition-all duration-1000 hover:border-primary/40 shadow-2xl"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="group p-10 rounded-[2.5rem] border border-primary/20 bg-primary/5 backdrop-blur-xl relative overflow-hidden"
               >
-                <div className="flex justify-between items-start mb-8">
-                  <div className="flex items-center gap-6">
-                    <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 group-hover:bg-primary group-hover:text-black transition-all duration-700">
-                      <sol.icon className="h-6 w-6 text-primary group-hover:text-black transition-colors" />
+                <div className="flex justify-between items-start mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary transition-colors duration-500">
+                      <sol.icon className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
                     </div>
-                    <h4 className="text-2xl font-black text-foreground tracking-tightest italic uppercase">{sol.title}</h4>
+                    <h4 className="text-xl font-bold text-foreground tracking-tight">{sol.title}</h4>
                   </div>
                   <div className="text-right">
-                    <span className="block text-4xl font-black text-primary tracking-tightest italic">+{sol.gain}</span>
+                    <span className="block text-3xl font-black text-primary tracking-tighter">+{sol.gain}</span>
                     <span className="text-[10px] font-black text-primary/40 uppercase tracking-widest italic">{sol.outcome} Gain</span>
                   </div>
                 </div>
-                <p className="text-lg md:text-xl text-muted-foreground font-medium italic tracking-tightest leading-relaxed max-w-md">
+                <p className="text-muted-foreground font-medium text-sm leading-relaxed max-w-md">
                   {sol.description}
                 </p>
-                <div className="absolute -bottom-10 -right-10 p-10 text-primary opacity-5 group-hover:opacity-10 transition-opacity">
-                  <ShieldCheck size={120} />
-                </div>
-              </div>
+                <motion.div 
+                  animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="absolute bottom-0 right-0 p-8 text-primary opacity-10"
+                >
+                  <ShieldCheck size={80} />
+                </motion.div>
+              </motion.div>
             ))}
           </div>
 
         </div>
 
         {/* Conversion Bridge */}
-        <div className="mt-40 md:mt-80 text-center reveal-item">
-          <PerspectiveCard className="max-w-6xl mx-auto">
-            <div className="p-20 md:p-32 rounded-[4rem] border border-border/50 bg-foreground/[0.01] backdrop-blur-3xl relative overflow-hidden group shadow-2xl">
-              <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(var(--primary)/0.1)_0%,transparent_70%)] -z-10" />
-              <div className="bridge-line absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+        <div className="mt-40 text-center">
+          <PerspectiveCard className="max-w-5xl mx-auto">
+            <div className="p-20 rounded-[4rem] border border-white/5 bg-white/[0.02] backdrop-blur-3xl relative overflow-hidden group">
+              <div className="absolute inset-0 bg-primary/5 blur-[120px] -z-10" />
+              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
               
-              <div className="space-y-12">
-                <h3 className="text-5xl md:text-8xl font-black text-foreground tracking-tightest leading-[0.9] uppercase italic">
-                  TRANSFORM YOUR <br />
-                  <span className="text-primary not-italic">INFRASTRUCTURE.</span>
-                </h3>
-                
-                <p className="text-xl md:text-3xl text-muted-foreground font-medium tracking-tightest leading-tight italic max-w-3xl mx-auto mb-16">
-                  Stop chasing leads and start building systems. Our Growth OS maps your entire revenue journey and seals every point of friction.
-                </p>
-                
-                <button className="px-16 h-20 md:h-24 rounded-2xl md:rounded-3xl bg-primary text-black font-black uppercase tracking-widest hover:scale-105 transition-all duration-1000 shadow-[0_40px_80px_-20px_oklch(var(--primary)/0.6)] flex items-center mx-auto group border-none relative overflow-hidden">
-                  <span className="relative z-10">Initialize Sealing Protocol</span>
-                  <ArrowRight className="ml-6 h-8 w-8 group-hover:translate-x-4 transition-transform duration-700 relative z-10" />
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                </button>
-              </div>
+              <h3 className="text-4xl md:text-6xl font-bold text-foreground tracking-tighter mb-10">
+                TRANSFORM YOUR <br />
+                <span className="text-muted-foreground/40 italic">INFRASTRUCTURE.</span>
+              </h3>
+              
+              <p className="text-xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-2xl mx-auto mb-16">
+                Stop chasing leads and start building systems. Our Growth OS maps your entire revenue journey and seals every point of friction.
+              </p>
+              
+              <button className="px-12 py-6 rounded-2xl bg-primary text-primary-foreground font-black uppercase tracking-widest hover:scale-105 transition-all duration-500 shadow-[0_30px_60px_-15px_oklch(var(--primary)/0.5)] flex items-center mx-auto">
+                Initiate Sealing Protocol <ArrowRight className="ml-4 h-5 w-5" />
+              </button>
             </div>
           </PerspectiveCard>
         </div>
