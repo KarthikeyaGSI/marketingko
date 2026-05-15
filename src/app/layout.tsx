@@ -36,6 +36,23 @@ const jsonLd = {
       ]
     },
     {
+      "@type": "SoftwareApplication",
+      "name": "Marketing Ko - Growth OS",
+      "operatingSystem": "Web",
+      "applicationCategory": "BusinessApplication",
+      "description": "Autonomous AI revenue infrastructure and growth systems. We eliminate revenue leakage through high-velocity lead qualification and automated sales operations.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "124"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
       "@type": "Service",
       "name": "AI Voice Agents",
       "provider": { "@id": "https://marketingko.vercel.app/#organization" },
