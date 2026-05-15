@@ -60,7 +60,7 @@ export default function PrivacyContent() {
             </h1>
             
             <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tightest leading-tight italic border-l-2 border-primary pl-8">
-              &ldquo;We engineer for privacy. Your business intelligence is the core of your competitive advantage, and our systems are built to protect that sovereignty.&rdquo;
+              We engineer for privacy. Your business intelligence is the core of your competitive advantage, and our systems are built to protect that sovereignty.
             </p>
           </div>
 

@@ -59,7 +59,7 @@ export function About() {
                
                <div className="space-y-16">
                  <h3 className="text-5xl md:text-6xl font-bold text-foreground tracking-tighter leading-[0.9] italic">
-                   "Scale should be <span className="text-primary not-italic">engineered</span>, not just managed."
+                   Scale should be <span className="text-primary not-italic">engineered</span>, not just managed.
                  </h3>
                  <div className="space-y-4">
                     <p className="text-2xl text-foreground font-bold tracking-tighter italic">Karthikeya</p>

@@ -87,7 +87,7 @@ export function FAQ() {
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-[1.3] max-w-3xl italic"
             >
-              &ldquo;We strip away the complexity. We focus on the engineering. Here is exactly how we work.&rdquo;
+              We strip away the complexity. We focus on the engineering. Here is exactly how we work.
             </motion.p>
           </div>
         </div>

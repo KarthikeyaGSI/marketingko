@@ -68,7 +68,7 @@ export default function TermsContent() {
             </h1>
             
             <p className="text-2xl text-muted-foreground max-w-2xl font-medium tracking-tightest leading-tight italic border-l-2 border-primary pl-8">
-              &ldquo;Transparency is our primary protocol. These terms define our commitment to engineering excellence and the client's role in a successful deployment.&rdquo;
+              Transparency is our primary protocol. These terms define our commitment to engineering excellence and the client&apos;s role in a successful deployment.
             </p>
           </div>
 

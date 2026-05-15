@@ -200,7 +200,7 @@ function ContactForm() {
               onChange={(phone) => setFormData(prev => ({ ...prev, phone }))}
               inputClassName="!h-16 md:!h-20 !w-full !px-8 !rounded-2xl !bg-background !border-border focus:!border-primary focus:!ring-primary !text-lg !font-bold !tracking-tight !shadow-inner !transition-all !duration-500 !text-foreground"
               countrySelectorStyleProps={{
-                buttonClassName: "!h-16 md:!h-20 !rounded-2xl !bg-background !border-border !px-4 hover:!bg-primary/5 transition-all !mr-2",
+                buttonClassName: "!h-16 md:!h-20 !rounded-2xl !bg-black !border-border !px-4 hover:!bg-primary/5 transition-all !mr-2",
               }}
             />
           </div>
@@ -217,7 +217,7 @@ function ContactForm() {
               required
               value={formData.businessType}
               onChange={(e) => setFormData(prev => ({ ...prev, businessType: e.target.value }))}
-              className="w-full h-16 md:h-20 px-8 rounded-2xl bg-background border border-border focus:border-primary focus:outline-none text-lg font-bold tracking-tight shadow-inner appearance-none cursor-pointer pr-16 transition-all duration-500"
+              className="w-full h-16 md:h-20 px-8 rounded-2xl bg-black border border-border focus:border-primary focus:outline-none text-lg font-bold tracking-tight shadow-inner appearance-none cursor-pointer pr-16 transition-all duration-500 text-foreground"
             >
               <option value="" disabled>Select Type</option>
               {businessTypes.map(t => <option key={t} value={t}>{t}</option>)}
@@ -236,7 +236,7 @@ function ContactForm() {
               required
               value={formData.businessSize}
               onChange={(e) => setFormData(prev => ({ ...prev, businessSize: e.target.value }))}
-              className="w-full h-16 md:h-20 px-8 rounded-2xl bg-background border border-border focus:border-primary focus:outline-none text-lg font-bold tracking-tight shadow-inner appearance-none cursor-pointer pr-16 transition-all duration-500"
+              className="w-full h-16 md:h-20 px-8 rounded-2xl bg-black border border-border focus:border-primary focus:outline-none text-lg font-bold tracking-tight shadow-inner appearance-none cursor-pointer pr-16 transition-all duration-500 text-foreground"
             >
               <option value="" disabled>Select Size</option>
               {businessSizes.map(s => <option key={s} value={s}>{s}</option>)}

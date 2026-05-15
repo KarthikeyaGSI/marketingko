@@ -367,14 +367,14 @@ export function Hero() {
                   SYSTEMS ONLINE v2.0
                 </span>
               </div>
-              <div className="flex items-center -space-x-2">
-                {[1,2,3,4].map((i) => (
-                  <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-foreground/[0.05] overflow-hidden">
-                    <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`} alt="user" className="w-full h-full object-cover" />
-                  </div>
-                ))}
-                <span className="pl-4 text-[9px] font-black tracking-widest text-muted-foreground dark:text-muted-foreground/60 uppercase">
-                  Trusted by 50+ High-Growth Teams
+              <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-4 px-5 py-3 rounded-2xl border border-border bg-black/80 backdrop-blur-md shadow-2xl">
+                   <img src="/asian.webp" alt="Asian Institute of Allergy" className="h-6 w-auto object-contain brightness-0 invert opacity-80" />
+                   <div className="w-px h-4 bg-border" />
+                   <span className="text-[10px] font-black tracking-widest text-foreground uppercase">Trusted Partner</span>
+                </div>
+                <span className="text-[9px] font-black tracking-widest text-muted-foreground dark:text-muted-foreground/60 uppercase">
+                  & much more...
                 </span>
               </div>
             </motion.div>
@@ -451,7 +451,7 @@ export function Hero() {
                 transition={{ duration: 1.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
                 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-muted-foreground dark:text-muted-foreground/90 max-w-4xl font-medium tracking-tightest leading-tight italic"
               >
-                "We don't sell hours. We deploy <span className="text-primary not-italic font-black uppercase">Revenue Infrastructure</span> that identifies, qualifies, and converts targets autonomously."
+                We don&apos;t sell hours. We deploy <span className="text-primary not-italic font-black uppercase">Revenue Infrastructure</span> that identifies, qualifies, and converts targets autonomously.
               </motion.p>
             </div>
 
@@ -493,15 +493,15 @@ export function Hero() {
           {/* 3D NETWORK VISUALIZATION — Right */}
           <motion.div 
             style={{ y: springY1, opacity }}
-            className="lg:col-span-5 relative h-[350px] md:h-[450px] lg:h-[550px]"
+            className="lg:col-span-5 relative h-[350px] md:h-[450px] lg:h-[550px] lg:pl-24"
           >
             <HeroNetwork />
           </motion.div>
         </div>
       </div>
       
-      {/* SYSTEMS MARQUEE — Above the fold */}
-      <div className="w-full mt-auto relative z-20">
+      {/* SYSTEMS MARQUEE — High impact above fold */}
+      <div className="w-full relative z-20 mt-12 md:mt-24">
         <div className="container mx-auto px-6 mb-2">
           <span className="text-[8px] font-black tracking-[1em] text-primary uppercase opacity-40">Core Infrastructure Nodes</span>
         </div>
@@ -511,7 +511,7 @@ export function Hero() {
       {/* SCROLL INDICATOR */}
       <motion.div 
         style={{ opacity }}
-        className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 pointer-events-none"
+        className="relative mt-12 mb-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 pointer-events-none"
       >
         <span className="text-[8px] md:text-[9px] font-black tracking-[1em] text-foreground uppercase">Scroll</span>
         <div className="w-px h-8 md:h-12 bg-gradient-to-b from-primary to-transparent" />

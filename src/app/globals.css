@@ -485,4 +485,22 @@
   .animate-scan-line {
     animation: scan-line 3s linear infinite;
   }
+
+  /* Global Select/Dropdown styles to avoid overlap */
+  select {
+    @apply bg-black text-foreground;
+  }
+  
+  option {
+    @apply bg-black text-foreground;
+  }
+
+  /* React International Phone Overrides */
+  .react-international-phone-country-selector-dropdown {
+    @apply !bg-black !border-border !shadow-2xl !z-[6000] !backdrop-blur-3xl;
+  }
+
+  .react-international-phone-country-selector-dropdown__list-item {
+    @apply hover:!bg-primary/20 !text-foreground;
+  }
 }

@@ -18,7 +18,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-sm font-medium tracking-tight italic">
-              &ldquo;AI automations, voice agents, and web systems — engineered around your outcomes, not our deliverables.&rdquo;
+              AI automations, voice agents, and web systems — engineered around your outcomes, not our deliverables.
             </p>
             <div className="text-[10px] font-black text-foreground/25 space-y-2 uppercase tracking-[0.4em] italic">
               <p>MARKETINGKO.COM</p>
