@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { BlindsText } from "@/components/ui/BlindsText";
 
 const faqs = [
   {
@@ -71,15 +72,12 @@ export function FAQ() {
             >
               How We Exactly Work
             </motion.div>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tightest sm:tracking-[-0.08em] text-foreground leading-[1] sm:leading-[0.9] uppercase italic"
-            >
-              CLEAR ANSWERS. <br />
-              <span className="text-muted-foreground/10 italic font-medium">NO JARGON.</span>
-            </motion.h2>
+            <div className="flex flex-col items-start">
+              <BlindsText 
+                text="CLEAR ANSWERS.\nNO JARGON."
+                className="text-emotional leading-[0.8] text-foreground text-left"
+              />
+            </div>
             <motion.p 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -99,10 +97,10 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.08, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
-              className={`rounded-2xl md:rounded-3xl border transition-all duration-700 relative overflow-hidden group ${
+              className={`rounded-2xl md:rounded-3xl transition-all duration-700 relative overflow-hidden group ${
                 openIndex === i 
-                ? 'border-primary/40 bg-primary/5 shadow-[0_20px_50px_-10px_oklch(var(--primary)/0.15)]' 
-                : 'border-border/50 bg-foreground/[0.01] hover:border-primary/20'
+                ? 'glass-system border-primary/40 shadow-[0_20px_50px_-10px_oklch(var(--primary)/0.15)]' 
+                : 'glass-system border-border/50 hover:border-primary/20'
               }`}
             >
               {/* Scanning line */}
