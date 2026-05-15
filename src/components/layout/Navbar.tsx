@@ -40,7 +40,7 @@ export function Navbar() {
         <nav
           className={`relative flex items-center justify-between px-6 md:px-12 py-6 rounded-[2.5rem] md:rounded-[3rem] border transition-all duration-1000 ${
             isScrolled
-              ? "bg-background/40 md:bg-background/80 backdrop-blur-3xl border-border/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
+              ? "bg-background border-border/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)]"
               : "bg-transparent border-transparent"
           }`}
         >
@@ -94,15 +94,15 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[4999] bg-background/98 backdrop-blur-3xl pt-60 px-12 lg:hidden flex flex-col overflow-y-auto"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 1, ease: "circOut" }}
+            className="fixed inset-0 z-[4999] bg-background pt-60 px-12 lg:hidden flex flex-col overflow-y-auto"
           >
              {/* Background Atmosphere for Mobile Menu */}
             <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
-            <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-50" />
+            <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full opacity-50" />
 
             <div className="flex flex-col space-y-16 relative z-10">
               {navLinks.map((link, i) => (
@@ -110,7 +110,7 @@ export function Navbar() {
                   key={link.name}
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ delay: i * 0.1, duration: 1, ease: "easeOut" }}
                 >
                   <Link
                     href={link.href}
@@ -125,7 +125,7 @@ export function Navbar() {
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
                 className="pt-20"
               >
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
@@ -145,4 +145,3 @@ export function Navbar() {
     </header>
   );
 }
-

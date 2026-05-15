@@ -1,137 +1,154 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
+import { useRef } from "react";
 import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
 import { BarChart3, Activity, Zap, Layers, Network, Terminal } from "lucide-react";
 import { SystemPulse } from "@/components/ui/SystemPulse";
 
 const systemBenchmarks = [
   {
-    title: "Autonomous Pathfinding",
-    desc: "A self-healing acquisition architecture that identifies and qualifies signals with sub-millisecond precision.",
-    icon: Network,
-    benchmark: "Protocol: MK-QUAL-v4",
-    color: "from-primary to-foreground/40"
-  },
-  {
-    title: "Operational Logic",
-    desc: "Real-time decision engine orchestrating high-density workflows across decoupled CRM layers.",
-    icon: Terminal,
-    benchmark: "ID: LOGIC-LAYER-08",
-    color: "from-foreground/20 to-primary"
-  },
-  {
     title: "Response Latency",
-    desc: "Infrastructure protocols engineered to reduce lead-to-outreach jitter across global edge nodes.",
-    icon: Zap,
-    benchmark: "Jitter: <10ms",
-    color: "from-primary to-foreground"
+    value: "< 12s",
+    label: "Lead-to-Contact Velocity",
+    icon: <Zap className="w-6 h-6" />,
+    color: "text-gold"
+  },
+  {
+    title: "Qualification Depth",
+    value: "94%",
+    label: "Autonomous Target Selection",
+    icon: <Layers className="w-6 h-6" />,
+    color: "text-primary"
+  },
+  {
+    title: "Conversion Lift",
+    value: "2.4x",
+    label: "Avg. Pipeline Efficiency",
+    icon: <BarChart3 className="w-6 h-6" />,
+    color: "text-gold"
   }
 ];
 
 export function ResultsGallery() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const rotate = useTransform(scrollYProgress, [0, 1], [2, -2]);
+
   return (
-    <section className="py-32 md:py-80 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,oklch(0.85_0.15_90/0.05)_0%,transparent_50%)]" />
+    <section ref={containerRef} className="py-24 md:py-60 bg-background relative overflow-hidden grain-elite">
+      {/* Background Infrastructure - Sharp */}
+      <div className="absolute inset-0 grid-infrastructure opacity-10 pointer-events-none" />
+      <div className="glow-bleed w-[800px] h-[800px] bottom-[-20%] right-[-10%]" />
       
-      <div className="container mx-auto px-6 relative">
-        <div className="mb-24 md:mb-48 space-y-12 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="text-[10px] font-black tracking-[1em] text-primary uppercase"
-          >
-            Operational Benchmarks
-          </motion.div>
-          <h2 className="text-emotional leading-[0.8] mb-12">
-            MEASURABLE <br />
-            <span className="text-gold not-italic font-medium">AUTHORITY.</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight leading-tight max-w-3xl italic">
-            We replace generic testimonials with technical artifacts and operational benchmarks. 
-            These represent the baseline performance of our deployed AI infrastructure.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/50 border border-border overflow-hidden rounded-[4rem]">
-          {systemBenchmarks.map((item, i) => (
-            <PerspectiveCard key={i}>
-              <div className="group h-full p-16 md:p-24 bg-background hover:bg-foreground/[0.02] transition-all duration-1000 flex flex-col justify-between relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                
-                <div className="space-y-16 relative z-10">
-                  <div className="flex justify-between items-start">
-                    <div className="relative w-20 h-20 rounded-3xl border border-border bg-foreground/[0.02] flex items-center justify-center group-hover:bg-primary transition-all duration-1000">
-                      <item.icon className="w-10 h-10 text-foreground group-hover:text-primary-foreground group-hover:rotate-12 transition-all duration-700" />
-                    </div>
-                    <div className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10">
-                       <span className="text-[8px] font-black text-primary uppercase tracking-widest italic">{item.benchmark}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-6">
-                    <h3 className="text-2xl font-bold text-foreground tracking-tighter italic leading-none group-hover:text-primary transition-colors duration-700">{item.title}</h3>
-                    <p className="text-lg text-muted-foreground font-medium tracking-tight leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-16 pt-12 border-t border-border/50 relative z-10">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.4em]">Audit Baseline</span>
-                    <div className="flex items-center space-x-2">
-                       <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                       <span className="text-[10px] font-black text-primary uppercase tracking-widest italic">Validated</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </PerspectiveCard>
-          ))}
-        </div>
-
-        {/* Technical Artifact - Large Display */}
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="mt-48 rounded-[4rem] border border-border bg-foreground/[0.01] overflow-hidden p-16 md:p-24 relative group hover:border-primary/20 transition-all duration-1000"
-        >
-          <div className="absolute inset-0 grid-infrastructure opacity-10 pointer-events-none" />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <div className="space-y-16">
-               <div className="flex items-center space-x-6">
-                 <span className="text-[10px] font-black tracking-[0.5em] text-gold uppercase">Architecture Pattern</span>
-                 <div className="h-px flex-1 bg-border/50" />
-               </div>
-               <h3 className="text-3xl md:text-5xl font-bold text-foreground tracking-tightest leading-none italic uppercase">MK-SYS-CORE-QUAL.04</h3>
-               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-medium tracking-tight max-w-xl italic">
-                 An automated qualification engine pattern. Orchestrating thousands of 
-                 behavioral signals into deterministic routing decisions with 
-                 zero human intervention.
-               </p>
-               
-               <div className="flex flex-wrap items-center gap-12 pt-8">
-                 <div className="flex flex-col">
-                   <span className="text-4xl font-bold text-foreground tracking-tighter uppercase italic">Redundant</span>
-                   <span className="text-[10px] font-black text-foreground/30 uppercase tracking-widest">Node Topology</span>
-                 </div>
-                 <div className="flex flex-col">
-                   <span className="text-4xl font-bold text-primary tracking-tighter uppercase italic">Optimized</span>
-                   <span className="text-[10px] font-black text-foreground/30 uppercase tracking-widest">Decision Path</span>
-                 </div>
-               </div>
+          {/* CONTENT — Left side */}
+          <div className="w-full lg:w-1/2 space-y-16">
+            <div className="space-y-8">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="text-[10px] md:text-[11px] font-black tracking-[1em] text-primary uppercase italic"
+              >
+                System Proof
+              </motion.div>
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "circOut", delay: 0.2 }}
+                className="text-emotional leading-[0.8] text-foreground"
+              >
+                INFRASTRUCTURE <br />
+                <span className="text-gold not-italic font-medium">THAT SCALES.</span>
+              </motion.h2>
+              <p className="text-lg md:text-2xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-xl italic">
+                Our benchmarks aren&apos;t metrics. They are operational standards. We engineer for maximum revenue throughput and zero-friction execution.
+              </p>
             </div>
 
-            <div className="relative aspect-[4/3] lg:aspect-video rounded-[3rem] border border-border bg-black overflow-hidden shadow-2xl group-hover:scale-[1.02] transition-transform duration-1000">
-               <SystemPulse />
+            <div className="grid grid-cols-1 gap-6 md:gap-8">
+               {systemBenchmarks.map((bench, i) => (
+                 <motion.div
+                   key={i}
+                   initial={{ opacity: 0, x: -30 }}
+                   whileInView={{ opacity: 1, x: 0 }}
+                   transition={{ delay: i * 0.1, duration: 1, ease: "easeOut" }}
+                   className="p-8 md:p-10 rounded-[2.5rem] border border-border bg-foreground/[0.01] hover:bg-foreground/[0.03] transition-all duration-700 flex items-center justify-between group"
+                 >
+                    <div className="flex items-center space-x-6 md:space-x-8">
+                      <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-foreground/[0.03] flex items-center justify-center transition-all duration-700 group-hover:bg-primary group-hover:text-black ${bench.color}`}>
+                        {bench.icon}
+                      </div>
+                      <div>
+                        <h4 className="text-[10px] md:text-[11px] font-black tracking-[0.4em] text-foreground/40 uppercase mb-1">{bench.title}</h4>
+                        <p className="text-xs md:text-sm text-muted-foreground font-bold italic">{bench.label}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                       <span className={`text-4xl md:text-6xl font-black italic tracking-tightest ${bench.color}`}>{bench.value}</span>
+                    </div>
+                 </motion.div>
+               ))}
             </div>
           </div>
-        </motion.div>
+
+          {/* SYSTEM VISUALIZATION — Right side */}
+          <motion.div 
+            style={{ rotate }}
+            className="w-full lg:w-1/2 group"
+          >
+             <div className="relative p-2 rounded-[3.5rem] border border-border bg-foreground/[0.02] shadow-2xl overflow-hidden">
+                <div className="absolute inset-0 grid-infrastructure opacity-20" />
+                
+                <div className="relative p-6 md:p-10 space-y-10">
+                   <div className="flex justify-between items-center">
+                     <div className="flex items-center space-x-4">
+                        <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
+                        <span className="text-[10px] font-black tracking-[0.4em] text-primary uppercase italic">Autonomous Core</span>
+                     </div>
+                     <div className="flex flex-col text-right">
+                       <span className="text-2xl md:text-4xl font-bold text-foreground tracking-tighter uppercase italic">Qualified</span>
+                       <span className="text-[10px] font-black text-foreground/30 uppercase tracking-widest">Signal Processing</span>
+                     </div>
+                   </div>
+
+                   <div className="relative aspect-[4/3] lg:aspect-video rounded-[3rem] border border-border bg-black overflow-hidden shadow-2xl group-hover:scale-[1.02] transition-transform duration-1000">
+                      <SystemPulse />
+                   </div>
+                   
+                   <div className="pt-6 border-t border-border/50 flex justify-between items-end">
+                      <div className="space-y-2">
+                        <span className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.5em]">Network Integrity</span>
+                        <div className="flex space-x-1 h-8 items-end">
+                          {[30, 80, 45, 90, 60, 100, 75, 85].map((h, i) => (
+                            <motion.div 
+                              key={i}
+                              initial={{ height: 0 }}
+                              whileInView={{ height: `${h}%` }}
+                              transition={{ duration: 1, delay: i * 0.1 }}
+                              className="w-1.5 md:w-2 bg-primary/20 rounded-full" 
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="text-right space-y-2">
+                        <p className="text-xs md:text-sm font-black text-gold italic">MK_SYSTEM_RECOVERY_ALPHA</p>
+                        <p className="text-[9px] font-black text-foreground/20 uppercase tracking-widest">Uptime: 99.99%</p>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
 }
-

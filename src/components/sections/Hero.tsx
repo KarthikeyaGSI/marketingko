@@ -18,7 +18,7 @@ const stagger: Variants = {
     y: 0, 
     transition: { 
       duration: 1, 
-      ease: "easeOut",
+      ease: "circOut",
       staggerChildren: 0.1
     } 
   }
@@ -69,51 +69,6 @@ function HeroNetwork() {
             <circle cx={node.x} cy={node.y} r="0.5" fill="oklch(var(--primary))" />
             <text x={node.x + 1} y={node.y} fontSize="1" fill="oklch(var(--primary)/0.5)" className="font-mono">{node.label}</text>
           </g>
-        ))}
-
-        {/* Animated leakage particles from LIMITS connection */}
-        {[...Array(3)].map((_, i) => (
-          <motion.circle
-            key={`leak-${i}`}
-            r="0.5"
-            fill="oklch(var(--destructive)/0.4)"
-            initial={{ cx: 10, cy: 50, opacity: 0 }}
-            animate={{ 
-              cx: [10, 50], 
-              cy: [50, 50],
-              opacity: [0, 1, 0]
-            }}
-            transition={{ 
-              duration: 2, 
-              delay: i * 0.6, 
-              repeat: Infinity, 
-              ease: "linear" 
-            }}
-          />
-        ))}
-
-        {/* Animated data pulse traveling along paths */}
-        {[0, 2, 4].map((i) => (
-          <motion.circle
-            key={`pulse-${i}`}
-            r="1"
-            fill="oklch(var(--primary))"
-            initial={{ offsetDistance: "0%", opacity: 0 }}
-            animate={{ 
-              offsetDistance: "100%", 
-              opacity: [0, 1, 0] 
-            }}
-            transition={{ 
-              duration: 3, 
-              delay: i * 0.5, 
-              repeat: Infinity, 
-              ease: "linear" 
-            }}
-            style={{ 
-              offsetPath: "path('M10,20 L50,50 L90,80')",
-              offsetRotate: "0deg"
-            }}
-          />
         ))}
       </svg>
 
@@ -195,11 +150,11 @@ function FloatingHUD() {
   return (
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
       {/* HUD Elements */}
-      <div className="absolute top-1/4 right-[10%] p-4 rounded-xl border border-white/5 bg-white/[0.02] flex items-center space-x-4 animate-[cinematicFloat_10s_ease-in-out_infinite]">
+      <div className="absolute top-1/4 right-[10%] p-4 rounded-xl border border-border bg-foreground/[0.02] flex items-center space-x-4">
         <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
         <span className="text-[8px] font-black tracking-[0.4em] text-foreground/40 uppercase">CORE_LOAD: 94%</span>
       </div>
-      <div className="absolute bottom-1/4 left-[10%] p-4 rounded-xl border border-white/5 bg-white/[0.02] flex items-center space-x-4 animate-[cinematicFloat_12s_ease-in-out_infinite_2s]">
+      <div className="absolute bottom-1/4 left-[10%] p-4 rounded-xl border border-border bg-foreground/[0.02] flex items-center space-x-4">
         <ShieldCheck className="w-3 h-3 text-primary" />
         <span className="text-[8px] font-black tracking-[0.4em] text-foreground/40 uppercase">SECURE_TUNNEL_ACTIVE</span>
       </div>
@@ -228,11 +183,11 @@ export function Hero() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-background pt-32 pb-16">
+    <section ref={containerRef} className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-background pt-32 pb-16 grain-elite">
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
         style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[12rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.02] dark:text-foreground/[0.03] hidden md:block uppercase tracking-tighter opacity-50"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[12rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.02] dark:text-foreground/[0.03] hidden md:block uppercase tracking-tighter opacity-30"
       >
         REVENUE INFRASTRUCTURE • GROWTH OS • AUTONOMOUS SCALING •
       </motion.div>
@@ -249,8 +204,8 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center space-x-6"
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="flex flex-wrap items-center gap-6"
             >
               <div className="px-4 py-2 rounded-full border border-primary/20 bg-primary/5 flex items-center space-x-3">
                 <span className="relative flex h-2 w-2">
@@ -261,12 +216,10 @@ export function Hero() {
                   V2.0_DEPLOYED
                 </span>
               </div>
-              <div className="flex items-center space-x-6">
-                <div className="flex items-center space-x-4 px-5 py-3 rounded-2xl border border-border bg-black/80 shadow-2xl">
-                   <img src="/asian.webp" alt="Asian Institute of Allergy" width={120} height={32} className="h-6 w-auto object-contain brightness-0 invert opacity-80" loading="eager" />
-                   <div className="w-px h-4 bg-border" />
-                   <span className="text-[10px] font-black tracking-widest text-foreground uppercase">Trusted Partner</span>
-                </div>
+              <div className="flex items-center space-x-4 px-5 py-3 rounded-2xl border border-border bg-black/90 dark:bg-black/80 shadow-2xl">
+                 <img src="/asian.webp" alt="Asian Institute of Allergy" width={120} height={32} className="h-6 w-auto object-contain brightness-0 invert opacity-100" loading="eager" />
+                 <div className="w-px h-4 bg-white/20" />
+                 <span className="text-[10px] font-black tracking-widest text-white uppercase">Trusted Partner</span>
               </div>
             </motion.div>
 
@@ -277,7 +230,7 @@ export function Hero() {
                   variants={stagger}
                   initial="hidden"
                   animate="visible"
-                  className="text-emotional leading-[0.8]"
+                  className="text-emotional leading-[0.8] text-foreground"
                 >
                   <div className="flex flex-wrap items-baseline gap-x-3 md:gap-x-6">
                     <motion.span variants={wordReveal} className="inline-block">
@@ -290,7 +243,7 @@ export function Hero() {
                           initial={{ y: "100%", opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           exit={{ y: "-100%", opacity: 0 }}
-                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          transition={{ duration: 0.8, ease: "circOut" }}
                           className="text-gold italic font-medium leading-none whitespace-nowrap block"
                         >
                           {dynamicWords[wordIndex]}
@@ -301,21 +254,15 @@ export function Hero() {
                   <div className="flex items-baseline flex-wrap mt-2 md:mt-4 gap-x-3 md:gap-x-6">
                     <motion.span
                       variants={{
-                        hidden: { opacity: 0, scale: 0.8, x: -40 },
+                        hidden: { opacity: 0, x: -40 },
                         visible: { 
-                          opacity: 1, scale: 1, x: 0,
-                          transition: { duration: 1.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] } 
+                          opacity: 1, x: 0,
+                          transition: { duration: 1, ease: "easeOut" } 
                         }
                       }}
                       className="text-foreground italic font-medium text-[1.8rem] sm:text-4xl md:text-6xl lg:text-8xl relative"
                     >
                       SEALING
-                      {/* Animated Leak Drip - No Blur */}
-                      <motion.div 
-                        animate={{ y: [0, 20, 40], opacity: [0, 1, 0], scale: [1, 1.2, 0.8] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeIn" }}
-                        className="absolute bottom-0 left-1/2 w-1 h-4 bg-primary/40 rounded-full"
-                      />
                     </motion.span>
                     <div className="relative h-[1.1em] min-w-[3ch] overflow-hidden inline-flex align-baseline">
                       <AnimatePresence mode="wait">
@@ -324,7 +271,7 @@ export function Hero() {
                           initial={{ y: "100%", opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           exit={{ y: "-100%", opacity: 0 }}
-                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          transition={{ duration: 0.8, ease: "circOut" }}
                           className="text-gold leading-none whitespace-nowrap block"
                         >
                           {resourceWords[wordIndex]}
@@ -337,9 +284,9 @@ export function Hero() {
               
               {/* Subheadline */}
               <motion.p
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground dark:text-muted-foreground/90 max-w-4xl font-medium tracking-tight leading-tight italic"
               >
                 We don&apos;t sell hours. We deploy <span className="text-primary not-italic font-black uppercase">Revenue Infrastructure</span> that identifies, qualifies, and converts targets autonomously.
@@ -349,9 +296,9 @@ export function Hero() {
             {/* CTA ROW */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10 pt-4 relative z-20">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
               >
                 <Link href="/contact">
                   <Magnetic>
@@ -367,7 +314,7 @@ export function Hero() {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.2, delay: 2.8 }}
+                transition={{ duration: 1, delay: 1 }}
                 className="flex flex-col space-y-2"
               >
                  <div className="flex -space-x-4">
@@ -386,7 +333,7 @@ export function Hero() {
           {/* 3D NETWORK VISUALIZATION — Right */}
           <motion.div 
             style={{ y: springY1, opacity }}
-            className="lg:col-span-5 relative h-[350px] md:h-[450px] lg:h-[550px] lg:pl-32 lg:translate-x-12"
+            className="lg:col-span-5 relative h-[350px] md:h-[450px] lg:h-[550px] lg:pl-32 lg:translate-x-24"
           >
             <HeroNetwork />
           </motion.div>
