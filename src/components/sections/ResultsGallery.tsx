@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
 import { BarChart3, Activity, Zap, Layers, Network, Terminal } from "lucide-react";
 import { SystemPulse } from "@/components/ui/SystemPulse";
+import { BlindsText } from "@/components/ui/BlindsText";
 
 const systemBenchmarks = [
   {
@@ -59,15 +60,10 @@ export function ResultsGallery() {
               >
                 System Proof
               </motion.div>
-              <motion.h2 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "circOut", delay: 0.2 }}
-                className="text-emotional leading-[0.8] text-foreground"
-              >
-                INFRASTRUCTURE <br />
-                <span className="text-gold not-italic font-medium">THAT SCALES.</span>
-              </motion.h2>
+              <BlindsText 
+                text="INFRASTRUCTURE\nTHAT SCALES."
+                className="text-emotional leading-[0.8] text-foreground font-black"
+              />
               <p className="text-lg md:text-2xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-xl italic">
                 Our benchmarks aren&apos;t metrics. They are operational standards. We engineer for maximum revenue throughput and zero-friction execution.
               </p>
