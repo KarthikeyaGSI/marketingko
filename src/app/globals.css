@@ -42,6 +42,9 @@
   --animate-draw: draw 2s ease-out forwards;
   --animate-glitch: glitch 5s infinite;
   --animate-reveal: cinematicReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  --tracking-tightest: -0.075em;
+  --tracking-tighter: -0.05em;
 }
 
 /* ═══ CINEMATIC KEYFRAMES ═══ */
@@ -346,6 +349,6 @@
   .react-international-phone-country-selector-button--open,
   .react-international-phone-country-selector-button:active,
   .react-international-phone-country-selector-button:focus {
-    @apply bg-background text-foreground !important;
+    @apply !bg-background !text-foreground;
   }
 }

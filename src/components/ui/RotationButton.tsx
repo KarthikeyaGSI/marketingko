@@ -51,7 +51,7 @@ export function RotationButton({ text, className = "", onClick }: RotationButton
       {/* Shadow Lift Effect */}
       <motion.div 
         variants={{
-          hover: { opacity: 0.4, scale: 1.1, blur: "20px" }
+          hover: { opacity: 0.4, scale: 1.1, filter: "blur(20px)" }
         }}
         className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-4 bg-primary/20 blur-xl rounded-full opacity-0 pointer-events-none"
       />
