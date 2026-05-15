@@ -57,7 +57,7 @@ export function Navbar() {
               <Magnetic key={link.name} strength={0.2}>
                 <Link
                   href={link.href}
-                  className="relative text-[9px] xl:text-[10px] font-black tracking-[0.6em] xl:tracking-[0.8em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-4 xl:px-6 py-2"
+                  className="relative text-[8px] xl:text-[9px] font-black tracking-[0.4em] xl:tracking-[0.5em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-3 xl:px-5 py-2"
                   aria-label={`Navigate to ${link.name}`}
                 >
                   {link.name}

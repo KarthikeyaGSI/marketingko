@@ -75,7 +75,7 @@ export function ProblemSection() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-muted-foreground font-medium tracking-tight leading-tight italic max-w-3xl border-l-3 border-primary/20 pl-8"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground dark:text-muted-foreground/90 font-medium tracking-tight leading-tight italic max-w-3xl border-l-3 border-primary/20 pl-8"
             >
               &ldquo;Most businesses aren&apos;t failing at marketing. They are failing at <span className="text-foreground not-italic font-black uppercase">infrastructure</span>. Your growth is being choked by operational drag.&rdquo;
             </motion.p>
@@ -91,7 +91,7 @@ export function ProblemSection() {
                       className="p-8 md:p-12 rounded-[3rem] cinematic-card group relative bg-foreground/[0.01] border-border/50"
                     >
                       <div className="absolute top-0 right-0 p-8">
-                        <span className="text-4xl md:text-7xl font-black text-gold italic opacity-20 group-hover:opacity-100 transition-opacity duration-700">{pain.id}</span>
+                        <span className="text-3xl md:text-5xl font-black text-gold italic opacity-20 group-hover:opacity-100 transition-opacity duration-700">{pain.id}</span>
                       </div>
                       
                       <div className="flex flex-col md:flex-row md:items-center gap-8 relative z-10">
@@ -100,10 +100,10 @@ export function ProblemSection() {
                         </div>
                         <div className="space-y-4 flex-1">
                             <div className="flex flex-wrap items-center gap-4">
-                              <h3 className="text-xl md:text-3xl font-black text-foreground tracking-tight italic uppercase">{pain.title}</h3>
-                              <div className="px-4 py-1 rounded-lg bg-destructive/10 text-destructive text-[10px] font-black uppercase tracking-wider italic">{pain.stats}</div>
+                              <h3 className="text-lg md:text-2xl font-black text-foreground tracking-tight italic uppercase">{pain.title}</h3>
+                              <div className="px-3 py-1 rounded-lg bg-destructive/10 text-destructive text-[9px] font-black uppercase tracking-wider italic">{pain.stats}</div>
                             </div>
-                            <p className="text-sm md:text-base text-muted-foreground dark:text-muted-foreground/80 leading-relaxed font-medium tracking-tight max-w-xl">
+                            <p className="text-xs md:text-sm text-muted-foreground dark:text-muted-foreground/80 leading-relaxed font-medium tracking-tight max-w-xl">
                               {pain.description}
                             </p>
                         </div>

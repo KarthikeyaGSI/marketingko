@@ -124,7 +124,7 @@ function FloatingUI() {
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           <span className="text-[9px] font-black tracking-widest text-foreground/40 uppercase">LIVE CONVERSION FLOW</span>
         </div>
-        <div className="text-3xl font-black italic tracking-tighter text-foreground">$12.4k<span className="text-sm text-green-500 ml-2">+24%</span></div>
+        <div className="text-2xl font-black italic tracking-tighter text-foreground">$12.4k<span className="text-xs text-green-500 ml-2">+24%</span></div>
       </div>
 
       {/* Analytics Card 2 */}
@@ -260,7 +260,7 @@ export function Hero() {
                           transition: { duration: 1, ease: "easeOut" } 
                         }
                       }}
-                      className="text-foreground italic font-medium text-[1.8rem] sm:text-4xl md:text-6xl lg:text-8xl relative"
+                      className="text-foreground italic font-medium text-[1.5rem] sm:text-3xl md:text-5xl lg:text-7xl relative"
                     >
                       SEALING
                     </motion.span>
@@ -287,7 +287,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground dark:text-muted-foreground/90 max-w-4xl font-medium tracking-tight leading-tight italic"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground dark:text-muted-foreground/90 max-w-4xl font-medium tracking-tight leading-tight italic"
               >
                 We don&apos;t sell hours. We deploy <span className="text-primary not-italic font-black uppercase">Revenue Infrastructure</span> that identifies, qualifies, and converts targets autonomously.
               </motion.p>

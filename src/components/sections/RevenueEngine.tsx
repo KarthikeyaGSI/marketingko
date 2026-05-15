@@ -127,10 +127,10 @@ export function RevenueEngine() {
                       <div className="p-4 rounded-2xl bg-destructive/10 border border-destructive/20 group-hover:bg-destructive group-hover:text-white transition-all duration-700">
                         <leak.icon className="h-6 w-6 text-destructive group-hover:text-white" />
                       </div>
-                      <h4 className="text-xl md:text-2xl font-black text-foreground tracking-tight italic uppercase">{leak.title}</h4>
+                      <h4 className="text-lg md:text-xl font-black text-foreground tracking-tight italic uppercase">{leak.title}</h4>
                     </div>
                     <div className="text-right">
-                      <span className="block text-3xl md:text-5xl font-black text-destructive tracking-tighter italic">-{leak.loss}</span>
+                      <span className="block text-2xl md:text-4xl font-black text-destructive tracking-tighter italic">-{leak.loss}</span>
                       <span className="text-[10px] font-black text-destructive/40 uppercase tracking-widest italic">{leak.impact} Risk</span>
                     </div>
                   </div>
@@ -162,10 +162,10 @@ export function RevenueEngine() {
                       <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 group-hover:bg-primary group-hover:text-black transition-all duration-700">
                         <sol.icon className="h-6 w-6 text-primary group-hover:text-black" />
                       </div>
-                      <h4 className="text-xl md:text-2xl font-black text-foreground tracking-tight italic uppercase">{sol.title}</h4>
+                      <h4 className="text-lg md:text-xl font-black text-foreground tracking-tight italic uppercase">{sol.title}</h4>
                     </div>
                     <div className="text-right">
-                      <span className="block text-3xl md:text-5xl font-black text-primary tracking-tighter italic">+{sol.gain}</span>
+                      <span className="block text-2xl md:text-4xl font-black text-primary tracking-tighter italic">+{sol.gain}</span>
                       <span className="text-[10px] font-black text-primary/40 uppercase tracking-widest italic">{sol.outcome} Gain</span>
                     </div>
                   </div>
@@ -186,7 +186,7 @@ export function RevenueEngine() {
               <div className="absolute inset-0 grid-infrastructure opacity-10" />
               <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
               
-              <h3 className="text-3xl md:text-6xl font-black text-foreground tracking-tighter mb-16 italic uppercase leading-tight">
+              <h3 className="text-2xl md:text-5xl font-black text-foreground tracking-tighter mb-16 italic uppercase leading-tight">
                 Turn your leakage into <br />
                 <span className="text-gold">Autonomous Velocity.</span>
               </h3>
