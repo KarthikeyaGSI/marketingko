@@ -263,6 +263,9 @@ function HeroNetwork() {
         </div>
       </motion.div>
     </div>
+  );
+}
+
 function FloatingUI() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -389,7 +392,7 @@ export function Hero() {
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
         style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[28rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.02] dark:text-foreground/[0.03] hidden md:block uppercase tracking-tightest opacity-50"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[15rem] md:text-[28rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.02] dark:text-foreground/[0.03] hidden md:block uppercase tracking-tighter opacity-50"
       >
         REVENUE INFRASTRUCTURE • GROWTH OS • AUTONOMOUS SCALING •
       </motion.div>
