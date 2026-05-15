@@ -23,6 +23,13 @@ const jsonLd = {
         "url": "https://marketingko.vercel.app/logo.png"
       },
       "description": "Growth systems engineered for modern brands. We build AI-powered operational infrastructure, voice agents, and high-converting digital architectures.",
+      "founder": {
+        "@type": "Person",
+        "name": "Karthikeya Thallapally",
+        "jobTitle": "Growth Architect & Systems Engineer",
+        "url": "https://marketingko.vercel.app/about"
+      },
+      "knowsAbout": ["AI Automation", "Revenue Engineering", "Growth OS", "Autonomous Systems"],
       "sameAs": [
         "https://linkedin.com/company/marketingko",
         "https://x.com/marketingko"
