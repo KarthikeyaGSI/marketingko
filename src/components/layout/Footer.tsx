@@ -64,10 +64,16 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[10px] font-black text-foreground/15 uppercase tracking-[0.5em] italic">
-            © 2026 MARKETING KO.
-          </p>
+        <div className="pt-8 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12">
+            <p className="text-[10px] font-black text-foreground/15 uppercase tracking-[0.5em] italic">
+              © 2026 MARKETING KO.
+            </p>
+            <div className="flex items-center space-x-8">
+              <Link href="/privacy" className="text-[9px] font-black text-foreground/20 hover:text-primary uppercase tracking-[0.3em] italic transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="text-[9px] font-black text-foreground/20 hover:text-primary uppercase tracking-[0.3em] italic transition-colors">Terms of Service</Link>
+            </div>
+          </div>
           <div className="flex items-center space-x-4">
              <span className="text-[9px] font-black text-foreground/20 uppercase tracking-[0.3em] italic">Growth Architecture</span>
              <div className="w-1 h-1 rounded-full bg-primary/20" />

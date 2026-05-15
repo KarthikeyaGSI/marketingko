@@ -295,7 +295,8 @@ function ContactForm() {
         </Button>
       </MagneticButton>
 
-      <p className="text-[9px] text-center text-muted-foreground/30 uppercase tracking-[0.3em] italic">
+      <p className="text-[9px] text-center text-muted-foreground/30 uppercase tracking-[0.3em] italic leading-relaxed">
+        By initializing an audit, you agree to our <Link href="/terms" className="text-primary/60 hover:text-primary transition-colors underline underline-offset-4">Terms of Service</Link> and <Link href="/privacy" className="text-primary/60 hover:text-primary transition-colors underline underline-offset-4">Privacy Protocol</Link>. 
         Response efficiency guaranteed within 24 hours.
       </p>
     </motion.form>
