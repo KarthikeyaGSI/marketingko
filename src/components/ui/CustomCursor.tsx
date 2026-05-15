@@ -1,122 +1,106 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const followerRef = useRef<HTMLDivElement>(null);
-  const labelRef = useRef<HTMLDivElement>(null);
+  const cursorInnerRef = useRef<HTMLDivElement>(null);
+  
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  
+  const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
+  const springX = useSpring(mouseX, springConfig);
+  const springY = useSpring(mouseY, springConfig);
+  
+  const [isHovering, setIsHovering] = useState(false);
+  const [hoverType, setHoverType] = useState<string | null>(null);
 
   useEffect(() => {
-    const cursor = cursorRef.current;
-    const follower = followerRef.current;
-    if (!cursor || !follower) return;
-
-    const onMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      
-      // Main dot - instant
-      gsap.to(cursor, {
-        x: clientX,
-        y: clientY,
-        duration: 0.1,
-        ease: "power2.out"
-      });
-
-      // Follower - delayed & elastic
-      gsap.to(follower, {
-        x: clientX,
-        y: clientY,
-        duration: 0.6,
-        ease: "power3.out"
-      });
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
     };
 
-    const onMouseDown = () => {
-      gsap.to(follower, { scale: 0.8, duration: 0.3 });
-      gsap.to(cursor, { scale: 2, duration: 0.3 });
-    };
-
-    const onMouseUp = () => {
-      gsap.to(follower, { scale: 1, duration: 0.3 });
-      gsap.to(cursor, { scale: 1, duration: 0.3 });
-    };
-
-    // Hover states
-    const onMouseEnterLink = (e: any) => {
-      const target = e.currentTarget;
-      const isMagnetic = target.hasAttribute('data-magnetic');
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const isClickable = target.closest('a, button, [role="button"], .magnetic-target');
       
-      gsap.to(follower, {
-        scale: isMagnetic ? 4 : 2.5,
-        backgroundColor: "oklch(0.85 0.15 90 / 0.15)",
-        borderColor: "oklch(0.85 0.15 90 / 0.8)",
-        duration: 0.4,
-        ease: "power3.out"
-      });
-      
-      if (target.getAttribute('data-cursor-label')) {
-        if (labelRef.current) {
-          labelRef.current.innerText = target.getAttribute('data-cursor-label');
-          gsap.to(labelRef.current, { opacity: 1, y: 0, duration: 0.3 });
-        }
+      if (isClickable) {
+        setIsHovering(true);
+        if (target.closest('.cta-target')) setHoverType('cta');
+        else if (target.closest('a')) setHoverType('link');
+        else setHoverType('default');
+      } else {
+        setIsHovering(false);
+        setHoverType(null);
       }
     };
 
-    const onMouseLeaveLink = () => {
-      gsap.to(follower, {
-        scale: 1,
-        backgroundColor: "transparent",
-        borderColor: "oklch(0.85 0.15 90 / 0.4)",
-        duration: 0.4,
-        ease: "power3.out"
-      });
-      
-      if (labelRef.current) {
-        gsap.to(labelRef.current, { opacity: 0, y: 10, duration: 0.3 });
-      }
-    };
-
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mousedown", onMouseDown);
-    window.addEventListener("mouseup", onMouseUp);
-
-    const links = document.querySelectorAll('a, button, [data-cursor]');
-    links.forEach(link => {
-      link.addEventListener('mouseenter', onMouseEnterLink);
-      link.addEventListener('mouseleave', onMouseLeaveLink);
-    });
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mousedown", onMouseDown);
-      window.removeEventListener("mouseup", onMouseUp);
-      links.forEach(link => {
-        link.removeEventListener('mouseenter', onMouseEnterLink);
-        link.removeEventListener('mouseleave', onMouseLeaveLink);
-      });
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, []);
+  }, [mouseX, mouseY]);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] hidden lg:block">
-      {/* Follower / Ring - Sharp Gold */}
-      <div 
-        ref={followerRef}
-        className="fixed top-0 left-0 w-12 h-12 -ml-6 -mt-6 rounded-full border border-[oklch(0.85_0.15_90/0.4)] transition-colors duration-500 will-change-transform"
-      />
-      
-      {/* Main Core - Gold */}
-      <div 
+      {/* Outer Ring - High Inertia */}
+      <motion.div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 rounded-full bg-[oklch(0.85_0.15_90)] shadow-[0_0_20px_oklch(0.85_0.15_90/0.6)] will-change-transform"
+        style={{
+          x: springX,
+          y: springY,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        className="absolute w-12 h-12 border border-primary/30 rounded-full flex items-center justify-center transition-transform duration-500 ease-out"
+        animate={{
+          scale: isHovering ? 1.5 : 1,
+          opacity: 1,
+        }}
+      >
+        {/* Glow Core */}
+        <motion.div 
+          animate={{
+            scale: isHovering ? 0.5 : 1,
+            backgroundColor: isHovering ? "oklch(var(--primary))" : "transparent"
+          }}
+          className="w-1 h-1 rounded-full bg-primary shadow-[0_0_15px_oklch(var(--primary))]" 
+        />
+      </motion.div>
+
+      {/* Inner Dot - Low Inertia (Direct) */}
+      <motion.div
+        style={{
+          x: mouseX,
+          y: mouseY,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        className="absolute w-2 h-2 bg-primary rounded-full z-10"
+        animate={{
+          scale: isHovering ? 0 : 1,
+        }}
       />
 
-      {/* Label */}
-      <div 
-        ref={labelRef}
-        className="fixed top-0 left-0 mt-8 ml-8 text-[10px] font-black uppercase tracking-[0.3em] text-[oklch(0.85_0.15_90)] opacity-0 transition-opacity duration-300 pointer-events-none"
+      {/* Atmospheric Glow */}
+      <motion.div
+        style={{
+          x: springX,
+          y: springY,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        className="absolute w-64 h-64 bg-primary/5 rounded-full pointer-events-none -z-10"
+        animate={{
+          scale: isHovering ? 1.2 : 1,
+        }}
       />
     </div>
   );

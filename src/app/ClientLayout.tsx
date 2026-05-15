@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CommandMenu } from "@/components/ui/CommandMenu";
 import { FloatingCTA } from "@/components/ui/FloatingCTA";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { AtmosphericBackground } from "@/components/ui/AtmosphericBackground";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
@@ -18,20 +19,20 @@ if (typeof window !== "undefined") {
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const elements = document.querySelectorAll("[data-choreograph]");
-    elements.forEach((el) => {
-      gsap.fromTo(el, 
-        { opacity: 0, y: 100, scale: 0.9 },
+    // Cinematic Section Transitions
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => {
+      gsap.fromTo(section, 
+        { opacity: 0, y: 50 },
         { 
           opacity: 1, 
           y: 0, 
-          scale: 1,
-          duration: 2,
+          duration: 1.5,
           ease: "expo.out",
           scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            toggleActions: "play none none none"
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
           }
         }
       );
@@ -41,6 +42,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
     <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothWheel: true }}>
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <AtmosphericBackground />
         <CustomCursor />
         <CinematicWrapper>
           <div className="noise-overlay" />

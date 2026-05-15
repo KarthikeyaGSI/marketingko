@@ -102,12 +102,23 @@ function FloatingUI() {
     if (!containerRef.current) return;
     const cards = containerRef.current.querySelectorAll('.floating-node');
     
+    gsap.set(cards, { opacity: 0, y: 50 });
+    
+    gsap.to(cards, {
+      opacity: 1,
+      y: 0,
+      duration: 1.5,
+      stagger: 0.2,
+      ease: "expo.out",
+      delay: 1.5
+    });
+
     cards.forEach((card, i) => {
       gsap.to(card, {
-        y: "random(-20, 20)",
+        y: "random(-30, 30)",
         x: "random(-20, 20)",
-        rotation: "random(-2, 2)",
-        duration: "random(4, 8)",
+        rotation: "random(-3, 3)",
+        duration: "random(5, 10)",
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
@@ -117,25 +128,25 @@ function FloatingUI() {
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 pointer-events-none z-0 hidden xl:block">
+    <div ref={containerRef} className="absolute inset-0 pointer-events-none z-10 hidden xl:block overflow-hidden">
       {/* Analytics Card 1 */}
-      <div className="floating-node absolute top-[25%] left-[5%] p-6 glass-system rounded-3xl border-primary/20 space-y-4">
+      <div className="floating-node absolute top-[20%] left-[10%] p-8 glass-system rounded-[2rem] border-primary/20 space-y-4 shadow-2xl">
         <div className="flex items-center space-x-3">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          <span className="text-[9px] font-black tracking-widest text-foreground/40 uppercase">LIVE CONVERSION FLOW</span>
+          <span className="text-[10px] font-black tracking-widest text-foreground/40 uppercase">LIVE_TRAFFIC_FEED</span>
         </div>
-        <div className="text-2xl font-black italic tracking-tighter text-foreground">$12.4k<span className="text-xs text-green-500 ml-2">+24%</span></div>
+        <div className="text-3xl font-black italic tracking-tighter text-foreground">$12.4k<span className="text-sm text-green-500 ml-2 font-bold">+24%</span></div>
       </div>
 
       {/* Analytics Card 2 */}
-      <div className="floating-node absolute bottom-[35%] right-[5%] p-6 glass-system rounded-3xl border-primary/20 space-y-4">
+      <div className="floating-node absolute bottom-[30%] right-[10%] p-8 glass-system rounded-[2rem] border-primary/20 space-y-4 shadow-2xl">
         <div className="flex items-center space-x-3">
-          <Activity className="w-3 h-3 text-primary" />
-          <span className="text-[9px] font-black tracking-widest text-foreground/40 uppercase">SYSTEM VELOCITY</span>
+          <Activity className="w-4 h-4 text-primary" />
+          <span className="text-[10px] font-black tracking-widest text-foreground/40 uppercase">ENGINE_VELOCITY</span>
         </div>
-        <div className="flex space-x-1 h-12 items-end">
-          {[40, 70, 45, 90, 60, 85].map((h, i) => (
-            <div key={i} className="w-1.5 bg-primary/20 rounded-full" style={{ height: `${h}%` }} />
+        <div className="flex space-x-1.5 h-16 items-end">
+          {[40, 70, 45, 90, 60, 85, 50, 95].map((h, i) => (
+            <div key={i} className="w-2 bg-primary/30 rounded-full" style={{ height: `${h}%` }} />
           ))}
         </div>
       </div>
@@ -149,14 +160,18 @@ const resourceWords = ["LEAKAGE", "FRICTION", "DRAG", "LOSS"];
 function FloatingHUD() {
   return (
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      {/* Ambient Lighting Glows */}
+      <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[100px] animate-pulse-slow" />
+      <div className="absolute bottom-[10%] right-[20%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: "3s" }} />
+
       {/* HUD Elements */}
-      <div className="absolute top-1/4 right-[10%] p-4 rounded-xl border border-border bg-foreground/[0.02] flex items-center space-x-4">
+      <div className="absolute top-1/4 right-[5%] md:right-[15%] p-5 glass-system rounded-2xl border-border bg-foreground/[0.02] flex items-center space-x-4 shadow-xl">
         <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-        <span className="text-[8px] font-black tracking-[0.4em] text-foreground/40 uppercase">CORE_LOAD: 94%</span>
+        <span className="text-[9px] font-black tracking-[0.5em] text-foreground/50 uppercase">OPS_LOAD: 94%</span>
       </div>
-      <div className="absolute bottom-1/4 left-[10%] p-4 rounded-xl border border-border bg-foreground/[0.02] flex items-center space-x-4">
-        <ShieldCheck className="w-3 h-3 text-primary" />
-        <span className="text-[8px] font-black tracking-[0.4em] text-foreground/40 uppercase">SECURE_TUNNEL_ACTIVE</span>
+      <div className="absolute bottom-1/4 left-[5%] md:left-[15%] p-5 glass-system rounded-2xl border-border bg-foreground/[0.02] flex items-center space-x-4 shadow-xl">
+        <ShieldCheck className="w-4 h-4 text-primary" />
+        <span className="text-[9px] font-black tracking-[0.5em] text-foreground/50 uppercase">SECURE_TUNNEL_ESTABLISHED</span>
       </div>
     </div>
   );
@@ -300,11 +315,11 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
               >
-                <Link href="/contact">
-                  <Magnetic>
-                    <Button size="lg" className="rounded-[2rem] px-12 md:px-20 h-20 md:h-24 text-base md:text-xl bg-primary text-black hover:scale-105 font-black uppercase tracking-widest shadow-[0_30px_100px_-20px_oklch(var(--primary)/0.7)] transition-all duration-700 group border-none relative overflow-hidden">
-                      <span className="relative z-10">Initiate Strategy Call</span>
-                      <ArrowRight className="ml-4 h-6 w-6 md:h-8 md:w-8 group-hover:translate-x-3 transition-transform duration-500 relative z-10" />
+                <Link href="/contact" className="w-full sm:w-auto cta-target" aria-label="Book a free revenue audit">
+                  <Magnetic strength={0.02}>
+                    <Button className="w-full sm:w-auto rounded-[3rem] px-16 md:px-24 h-24 md:h-32 text-xl md:text-2xl bg-primary text-black hover:scale-105 transition-all duration-700 font-black uppercase tracking-widest shadow-[0_40px_120px_-20px_oklch(var(--primary)/0.6)] border-none relative overflow-hidden group">
+                      <span className="relative z-10">Book Free Audit</span>
+                      <ArrowRight className="ml-4 h-8 w-8 group-hover:translate-x-4 transition-transform duration-500 relative z-10" />
                       <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </Button>
                   </Magnetic>

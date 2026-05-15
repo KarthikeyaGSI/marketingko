@@ -72,9 +72,9 @@ export function CTA() {
             transition={{ delay: 0.3, duration: 1, ease: "circOut" }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full pt-8"
           >
-            <Link href="/contact" className="w-full sm:w-auto" aria-label="Book a free revenue audit">
+            <Link href="/contact" className="w-full sm:w-auto cta-target" aria-label="Book a free revenue audit">
               <Magnetic strength={0.02}>
-                <Button className="w-full sm:w-auto rounded-[2.5rem] px-16 md:px-24 h-24 md:h-32 text-xl md:text-2xl bg-primary text-black hover:scale-105 transition-all duration-700 font-black uppercase tracking-widest shadow-[0_40px_120px_-20px_oklch(var(--primary)/0.6)] border-none relative overflow-hidden group">
+                <Button className="w-full sm:w-auto rounded-[3rem] px-16 md:px-24 h-24 md:h-32 text-xl md:text-2xl bg-primary text-black hover:scale-105 transition-all duration-700 font-black uppercase tracking-widest shadow-[0_40px_120px_-20px_oklch(var(--primary)/0.6)] border-none relative overflow-hidden group">
                   <span className="relative z-10">Book Free Audit</span>
                   <ArrowRight className="ml-4 h-8 w-8 group-hover:translate-x-4 transition-transform duration-500 relative z-10" />
                   <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />

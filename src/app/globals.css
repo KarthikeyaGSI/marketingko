@@ -137,10 +137,12 @@
   --border: oklch(0.9 0 0);
   --input: oklch(0.9 0 0);
   --ring: var(--primary);
-  --radius: 2rem;
+  --radius: 1rem;
 
   /* Premium High-Visibility Highlights */
-  --text-gold: oklch(0.75 0.15 90);
+  --text-gold: oklch(0.7 0.12 85);
+  --glass-bg: oklch(1 0 0 / 0.7);
+  --glass-border: oklch(0 0 0 / 0.1);
 }
 
 .dark {
@@ -166,6 +168,8 @@
 
   /* Premium High-Visibility Highlights - Dark */
   --text-gold: oklch(0.85 0.15 90);
+  --glass-bg: oklch(0.08 0.01 95 / 0.8);
+  --glass-border: oklch(1 1 1 / 0.1);
 }
 
 /* ═══ PREMIUM ATMOSPHERICS ═══ */
@@ -235,27 +239,28 @@
     display: none;
   }
 
-  /* Zero-Blur Card Systems */
+  /* Zero-Blur Card Systems - Re-hardened with Premium Depth */
   .glass-system {
-    @apply border transition-all duration-1000;
-    background: color-mix(in oklab, var(--foreground), transparent 99%);
-    border-color: color-mix(in oklab, var(--foreground), transparent 92%);
+    @apply border transition-all duration-1000 backdrop-blur-2xl;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
     box-shadow: 0 32px 64px -16px rgba(0,0,0,0.1);
   }
   .glass-system:hover {
     border-color: var(--primary);
     box-shadow: 0 40px 80px -20px rgba(0,0,0,0.15), 0 0 30px oklch(0.85 0.15 90 / 0.1);
+    transform: translateY(-2px);
   }
 
   .cinematic-card {
-    @apply border transition-all duration-700 relative overflow-hidden;
+    @apply border transition-all duration-700 relative overflow-hidden backdrop-blur-xl;
     background: color-mix(in oklab, var(--foreground), transparent 98.5%);
     border-color: color-mix(in oklab, var(--foreground), transparent 90%);
   }
   .cinematic-card:hover {
     border-color: var(--primary);
     box-shadow: 0 40px 80px -20px rgba(0,0,0,0.15);
-    transform: translateY(-4px);
+    transform: scale(1.01);
   }
 
   .text-mask-premium {
@@ -305,20 +310,23 @@
     animation: grain 8s steps(10) infinite;
   }
 
-  /* Fix Select/Dropdown overlaps */
-  select, option { @apply bg-black text-white dark:bg-black dark:text-white border-border; }
+  /* Fix Select/Dropdown visibility across themes */
+  select, option { 
+    @apply bg-background text-foreground border-border;
+  }
 
   .react-international-phone-country-selector-dropdown {
-    @apply !bg-black !border-border !shadow-2xl !z-[6000] !backdrop-blur-none;
+    @apply bg-background border-border shadow-2xl z-[6000];
   }
-
   .react-international-phone-country-selector-dropdown__list-item {
-    @apply hover:!bg-primary/20 !text-white;
+    @apply hover:bg-primary/10 text-foreground;
   }
-
+  .react-international-phone-country-selector-button {
+    @apply bg-background border-border text-foreground hover:bg-primary/5 transition-all !mr-2;
+  }
+  .react-international-phone-country-selector-button--open,
   .react-international-phone-country-selector-button:active,
-  .react-international-phone-country-selector-button:focus,
-  .react-international-phone-country-selector-button--open {
-    @apply !bg-black !text-white;
+  .react-international-phone-country-selector-button:focus {
+    @apply bg-background text-foreground !important;
   }
 }
