@@ -2,7 +2,10 @@
 
 import { motion } from "framer-motion";
 import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
-import { Zap, Shield, Cpu, Activity, Database, Search } from "lucide-react";
+import { Zap, Shield, Cpu, Activity, Database, Search, ArrowRight } from "lucide-react";
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const nodes = [
   { id: 1, label: "Data Ingestion", icon: Database, x: "10%", y: "20%" },
@@ -14,79 +17,136 @@ const nodes = [
 ];
 
 export function WOWSection() {
-  return (
-    <section className="py-60 relative overflow-hidden bg-background">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-          <div className="space-y-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="inline-block px-6 py-2 rounded-full border border-foreground/10 bg-foreground/[0.03] backdrop-blur-3xl"
-            >
-              <span className="text-[10px] font-black tracking-[0.6em] text-primary uppercase">The Architecture</span>
-            </motion.div>
-            
-            <h2 className="text-6xl md:text-[10rem] font-bold tracking-tighter text-foreground leading-[0.8] text-mask-premium">
-              THE OPERATING <br />
-              <span className="text-muted-foreground/40 italic">SYSTEM.</span>
-            </h2>
-            
-            <p className="text-2xl text-muted-foreground leading-tight max-w-2xl font-medium tracking-tighter">
-              We don't provide "services". We deploy a full-stack growth infrastructure 
-              that identifies, qualifies, and converts revenue at the speed of autonomous logic.
-            </p>
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-            <div className="grid grid-cols-2 gap-12 pt-12 border-t border-foreground/5">
-              <div className="space-y-6">
-                <span className="text-5xl font-bold text-foreground tracking-tighter">99.99%</span>
-                <p className="text-xs uppercase tracking-[0.3em] text-primary font-black">Runtime Stability</p>
+  useGSAP(() => {
+    gsap.from(".reveal-item", {
+      y: 60,
+      opacity: 0,
+      filter: "blur(20px)",
+      duration: 1.5,
+      stagger: 0.2,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+      }
+    });
+
+    // Animate nodes with floating effect
+    gsap.to(".node-float", {
+      y: -20,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      stagger: {
+        each: 0.2,
+        from: "random"
+      },
+      ease: "sine.inOut"
+    });
+  }, { scope: sectionRef });
+
+  return (
+    <section ref={sectionRef} className="py-40 md:py-80 bg-background relative overflow-hidden grain-system">
+      <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(var(--primary)/0.03)_0%,transparent_70%)] pointer-events-none" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32 items-center">
+          
+          {/* CONTENT SIDE */}
+          <div className="lg:col-span-7 space-y-16">
+            <div className="reveal-item inline-flex items-center space-x-4 px-6 py-2 rounded-full border border-primary/20 bg-primary/5">
+              <Cpu className="w-3 h-3 text-primary" />
+              <span className="text-[10px] font-black tracking-[1em] text-primary uppercase italic">The Operating System</span>
+            </div>
+            
+            <div className="space-y-8">
+              <h2 className="text-6xl md:text-9xl font-bold text-foreground tracking-tightest leading-[0.85] text-mask-premium uppercase reveal-item">
+                THE GROWTH <br />
+                <span className="text-primary italic font-medium">ARCHITECT.</span>
+              </h2>
+              
+              <p className="text-xl md:text-3xl text-muted-foreground font-medium tracking-tightest leading-tight max-w-3xl italic border-l-4 border-primary/20 pl-8 reveal-item">
+                "We don't provide services. We deploy a full-stack growth infrastructure 
+                that identifies, qualifies, and converts revenue at the speed of autonomous logic."
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-12 pt-12 border-t border-border/50 reveal-item">
+              <div className="space-y-4 group">
+                <span className="text-6xl md:text-8xl font-black text-foreground tracking-tightest italic leading-none group-hover:text-primary transition-colors">99.9%</span>
+                <p className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground font-black italic">Runtime Stability</p>
               </div>
-              <div className="space-y-6">
-                <span className="text-5xl font-bold text-foreground tracking-tighter">&lt;1ms</span>
-                <p className="text-xs uppercase tracking-[0.3em] text-primary font-black">Execution Jitter</p>
+              <div className="space-y-4 group">
+                <span className="text-6xl md:text-8xl font-black text-foreground tracking-tightest italic leading-none group-hover:text-primary transition-colors">&lt;1ms</span>
+                <p className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground font-black italic">Execution Latency</p>
               </div>
+            </div>
+            
+            <div className="reveal-item pt-10">
+               <button className="flex items-center space-x-4 text-[10px] font-black tracking-[0.5em] text-primary uppercase italic group hover:tracking-[0.6em] transition-all duration-700">
+                  <span>View Core Protocols</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-4 transition-transform" />
+               </button>
             </div>
           </div>
 
-          <div className="relative h-[700px] perspective-elite">
+          {/* VISUAL SIDE */}
+          <div className="lg:col-span-5 relative h-[600px] md:h-[800px] reveal-item">
             <PerspectiveCard className="w-full h-full">
-              <div className="w-full h-full rounded-[4rem] border border-foreground/5 bg-foreground/[0.01] backdrop-blur-3xl overflow-hidden relative p-12">
+              <div className="w-full h-full rounded-[4rem] border border-border/50 bg-foreground/[0.01] backdrop-blur-3xl overflow-hidden relative p-12 shadow-2xl">
+                <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
+                
                 {/* Connection Lines (SVG) */}
-                <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 100 100">
+                <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 100 100">
                   <motion.path 
                     d="M 10 20 L 40 15 L 75 25 L 85 60 L 55 75 L 20 65 Z" 
                     fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="0.2"
+                    stroke="oklch(var(--primary))" 
+                    strokeWidth="0.1"
                     strokeDasharray="1,1"
-                    className="text-foreground"
                     initial={{ pathLength: 0 }}
                     whileInView={{ pathLength: 1 }}
-                    transition={{ duration: 3, ease: "easeInOut" }}
+                    transition={{ duration: 4, ease: "easeInOut" }}
                   />
+                  {/* Glowing pulses on path */}
+                  {[...Array(6)].map((_, i) => (
+                    <circle key={i} r="0.5" fill="oklch(var(--primary))">
+                      <animateMotion
+                        dur={`${3 + i}s`}
+                        repeatCount="indefinite"
+                        path="M 10 20 L 40 15 L 75 25 L 85 60 L 55 75 L 20 65 Z"
+                      />
+                      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+                    </circle>
+                  ))}
                 </svg>
 
                 {/* Nodes */}
                 {nodes.map((node) => (
-                  <motion.div
+                  <div
                     key={node.id}
-                    className="absolute p-6 rounded-2xl border border-foreground/10 bg-background/60 backdrop-blur-3xl flex items-center space-x-4 group hover:border-primary/50 transition-all duration-700 shadow-2xl"
+                    className="absolute p-4 md:p-8 rounded-2xl md:rounded-3xl border border-border/50 bg-background/80 backdrop-blur-3xl flex items-center space-x-6 group hover:border-primary/50 transition-all duration-700 shadow-2xl node-float"
                     style={{ left: node.x, top: node.y }}
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: node.id * 0.1 }}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors duration-700">
-                      <node.icon className="h-5 w-5 text-foreground group-hover:text-primary-foreground group-hover:scale-110 transition-transform" />
+                    <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-foreground/[0.03] border border-border/50 flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-all duration-700 shadow-sm">
+                      <node.icon className="h-5 w-5 md:h-8 md:w-8 group-hover:scale-110 transition-transform" />
                     </div>
-                    <span className="text-xs font-black text-foreground tracking-[0.2em] uppercase hidden md:block">{node.label}</span>
-                  </motion.div>
+                    <div className="hidden md:block space-y-1">
+                      <span className="text-[10px] font-black text-muted-foreground tracking-widest uppercase italic group-hover:text-primary transition-colors">Node_0{node.id}</span>
+                      <p className="text-sm font-bold text-foreground uppercase tracking-tightest leading-none">{node.label}</p>
+                    </div>
+                  </div>
                 ))}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-                <div className="absolute bottom-12 left-12 right-12 text-center">
-                  <p className="text-[10px] font-black tracking-[0.8em] text-foreground/30 uppercase">Infrastructure Layer v4.0</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-full text-center">
+                  <div className="inline-flex items-center space-x-3 px-6 py-2 rounded-full glass-premium border-primary/20">
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    <span className="text-[10px] font-black tracking-[1em] text-foreground/40 uppercase italic">Infrastructure Layer v4.0</span>
+                  </div>
                 </div>
               </div>
             </PerspectiveCard>
@@ -96,4 +156,3 @@ export function WOWSection() {
     </section>
   );
 }
-

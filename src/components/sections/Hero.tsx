@@ -1,29 +1,14 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShieldCheck, Activity } from "lucide-react";
+import { ArrowRight, ShieldCheck, Activity, Globe, Database, Cpu, Zap } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SystemsMarquee } from "./SystemsMarquee";
-
-// Cinematic stagger config
-const stagger = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.3 }
-  }
-};
-
-const wordReveal = {
-  hidden: { opacity: 0, y: 80, rotateX: 40, filter: "blur(12px)" },
-  visible: { 
-    opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)",
-    transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] as const }
-  }
-};
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const nodes = [
   { label: "LEADS", x: 50, y: 8, delay: 0 },
@@ -41,63 +26,73 @@ const connections = [
   [6,0],
 ];
 
-// Floating HUD Component for that "startup-elite" feel
 function FloatingHUD() {
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden hidden xl:block">
-      {/* HUD Top Left */}
-      <motion.div 
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 2, delay: 1 }}
-        className="absolute top-10 left-10 p-6 glass-system rounded-2xl border-primary/20 space-y-3"
-      >
-        <div className="flex items-center space-x-3">
-          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-[9px] font-black tracking-widest text-primary uppercase">Acquisition_Node: Active</span>
-        </div>
-        <div className="space-y-1">
-          <div className="w-32 h-1 bg-foreground/5 rounded-full overflow-hidden">
-            <motion.div 
-              animate={{ width: ["0%", "80%", "30%", "100%", "0%"] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              className="h-full bg-primary/40"
-            />
-          </div>
-          <p className="text-[8px] font-mono text-foreground/40">LATENCY: 12ms</p>
-        </div>
-      </motion.div>
+  const containerRef = useRef<HTMLDivElement>(null);
 
-      {/* HUD Bottom Right */}
-      <motion.div 
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 2, delay: 1.5 }}
-        className="absolute bottom-40 right-10 p-6 glass-system rounded-2xl border-primary/20 flex flex-col items-end space-y-2"
-      >
+  useGSAP(() => {
+    gsap.from(".hud-item", {
+      x: (i) => (i === 0 ? -100 : 100),
+      opacity: 0,
+      duration: 2,
+      delay: 1,
+      stagger: 0.5,
+      ease: "power4.out"
+    });
+  }, { scope: containerRef });
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 pointer-events-none overflow-hidden hidden xl:block z-20">
+      <div className="hud-item absolute top-20 left-10 p-8 glass-premium rounded-[2rem] border-primary/20 space-y-4 min-w-[280px]">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_oklch(var(--primary))]" />
+            <span className="text-[10px] font-black tracking-widest text-primary uppercase">Engine_Status</span>
+          </div>
+          <span className="text-[10px] font-mono text-primary/60">v4.0.1</span>
+        </div>
+        <div className="space-y-3">
+          <div className="flex justify-between items-end">
+            <p className="text-[9px] font-mono text-foreground/40 uppercase">Processing_Load</p>
+            <p className="text-[11px] font-mono text-primary">84.2%</p>
+          </div>
+          <div className="w-full h-1 bg-foreground/5 rounded-full overflow-hidden">
+            <div className="h-full bg-primary/40 w-[84%] animate-shimmer" />
+          </div>
+          <div className="flex space-x-1 h-12 items-end">
+             {[...Array(20)].map((_, i) => (
+               <div key={i} className="flex-1 bg-primary/10 rounded-full" style={{ height: `${Math.random() * 100}%` }} />
+             ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="hud-item absolute bottom-40 right-10 p-8 glass-premium rounded-[2rem] border-primary/20 space-y-6 min-w-[320px]">
         <div className="flex items-center space-x-3">
-          <span className="text-[9px] font-black tracking-widest text-primary uppercase">Logic_Stream: Synchronized</span>
-          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <Globe className="w-4 h-4 text-primary" />
+          <span className="text-[10px] font-black tracking-widest text-primary uppercase italic">Global_Signal_Map</span>
         </div>
-        <div className="flex space-x-1 items-end h-8">
-          {[...Array(8)].map((_, i) => (
-            <motion.div 
-              key={i}
-              animate={{ height: [10, 30, 15, 25, 10] }}
-              transition={{ duration: 1 + Math.random(), repeat: Infinity, delay: i * 0.1 }}
-              className="w-1 bg-primary/20 rounded-full"
-            />
-          ))}
+        <div className="grid grid-cols-2 gap-4">
+           {[
+             { label: "LATENCY", val: "12ms" },
+             { label: "THROUGHPUT", val: "1.2GB/s" },
+             { label: "NODES", val: "142" },
+             { label: "UPTIME", val: "99.9%" }
+           ].map((item, i) => (
+             <div key={i} className="p-3 bg-foreground/[0.03] border border-border/50 rounded-xl space-y-1">
+               <p className="text-[8px] font-black text-muted-foreground uppercase">{item.label}</p>
+               <p className="text-sm font-bold text-foreground">{item.val}</p>
+             </div>
+           ))}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
 
-// Animated 3D Network Visualization — inline for hero
 function HeroNetwork() {
   const [leakIndex, setLeakIndex] = useState(6);
   const [isFixing, setIsFixing] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -110,412 +105,260 @@ function HeroNetwork() {
     return () => clearInterval(interval);
   }, []);
 
+  useGSAP(() => {
+    gsap.to(".network-path", {
+      strokeDashoffset: 0,
+      opacity: 0.3,
+      duration: 3,
+      stagger: 0.1,
+      ease: "power2.inOut"
+    });
+  }, { scope: containerRef });
+
   return (
-    <div className="relative w-full h-full min-h-[350px]">
-      {/* Ambient glow core */}
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary rounded-full blur-[100px]"
-      />
-
-      {/* SVG connections */}
+    <div ref={containerRef} className="relative w-full h-full min-h-[400px] lg:min-h-[600px] perspective-1000">
+      <div className="absolute inset-0 bg-radial-gradient from-primary/10 to-transparent blur-[120px] animate-pulse-slow" />
+      
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-        {connections.map(([a, b], i) => (
-          <motion.line
-            key={i}
-            x1={nodes[a].x} y1={nodes[a].y}
-            x2={nodes[b].x} y2={nodes[b].y}
-            stroke={nodes[a].type === 'critical' ? "oklch(var(--destructive))" : "oklch(var(--primary))"}
-            strokeWidth="0.3"
-            strokeDasharray={nodes[a].type === 'critical' ? "1 1" : "2 3"}
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ 
-              pathLength: 1, 
-              opacity: nodes[a].type === 'critical' ? [0.1, 0.4, 0.1] : 0.2 
-            }}
-            transition={{ 
-              duration: 2, 
-              delay: 0.5 + i * 0.1, 
-              ease: "easeOut",
-              opacity: nodes[a].type === 'critical' ? { duration: 1, repeat: Infinity } : {}
-            }}
-          />
-        ))}
+        <defs>
+          <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="oklch(var(--primary)/0.2)" />
+            <stop offset="50%" stopColor="oklch(var(--primary))" />
+            <stop offset="100%" stopColor="oklch(var(--primary)/0.2)" />
+          </linearGradient>
+        </defs>
         
-        {/* Animated leakage particles from LIMITS connection */}
-        {[...Array(5)].map((_, i) => (
-          <motion.circle
-            key={`leak-${i}`}
-            r="0.5"
-            fill="oklch(var(--destructive))"
-            initial={{ opacity: 0 }}
-            animate={nodes[leakIndex] ? {
-              cx: [nodes[leakIndex].x, nodes[leakIndex].x - 10, nodes[leakIndex].x],
-              cy: [nodes[leakIndex].y, nodes[leakIndex].y + 15, nodes[leakIndex].y + 30],
-              opacity: [0, 1, 0],
-              r: [0.5, 0.8, 0.2]
-            } : { opacity: 0 }}
-            transition={{
-              duration: 2,
-              delay: i * 0.4,
-              repeat: Infinity,
-              ease: "easeIn"
-            }}
+        {connections.map(([a, b], i) => (
+          <path
+            key={i}
+            d={`M ${nodes[a].x} ${nodes[a].y} L ${nodes[b].x} ${nodes[b].y}`}
+            className="network-path fill-none stroke-[0.2]"
+            stroke={nodes[a].type === 'critical' ? "oklch(var(--destructive))" : "url(#pathGradient)"}
+            strokeDasharray="100 100"
+            strokeDashoffset="100"
+            opacity="0"
           />
         ))}
 
-        {/* Animated data pulse traveling along paths */}
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <motion.circle
-            key={`pulse-${i}`}
-            r="1"
-            fill="oklch(var(--primary))"
-            initial={{ opacity: 0 }}
-            animate={{
-              cx: [nodes[i].x, nodes[(i+1)%6].x],
-              cy: [nodes[i].y, nodes[(i+1)%6].y],
-              opacity: [0, 0.8, 0],
-            }}
-            transition={{
-              duration: 3,
-              delay: i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
+        {/* Data pulse particles */}
+        {[...Array(8)].map((_, i) => (
+          <circle key={i} r="0.8" fill="oklch(var(--primary))">
+            <animateMotion
+              dur={`${2 + Math.random() * 3}s`}
+              repeatCount="indefinite"
+              path={`M ${nodes[i % 6].x} ${nodes[i % 6].y} L ${nodes[(i + 1) % 6].x} ${nodes[(i + 1) % 6].y}`}
+            />
+            <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+          </circle>
         ))}
       </svg>
 
-      {/* Nodes */}
       {nodes.map((node, i) => (
-        <motion.div
+        <div
           key={i}
-          className="absolute group"
-          style={{ left: `${node.x}%`, top: `${node.y}%`, transform: 'translate(-50%, -50%)' }}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ 
-            opacity: 1, 
-            scale: (i === leakIndex) ? [1, 1.1, 1] : 1,
-          }}
-          transition={{ 
-            opacity: { duration: 0.8, delay: 1.5 + node.delay },
-            scale: (i === leakIndex) ? { duration: 1, repeat: Infinity } : { duration: 0.8, delay: 1.5 + node.delay }
-          }}
+          className="absolute transform -translate-x-1/2 -translate-y-1/2 group z-10"
+          style={{ left: `${node.x}%`, top: `${node.y}%` }}
         >
-          {/* Glow ring */}
-          <motion.div 
-            animate={{ scale: [1, 1.3, 1], opacity: (node.type === 'critical' || i === leakIndex) ? [0.4, 0, 0.4] : [0.3, 0, 0.3] }}
-            transition={{ duration: (node.type === 'critical' || i === leakIndex) ? 1.5 : 3, repeat: Infinity, delay: i * 0.4 }}
-            className={`absolute inset-0 rounded-full border ${(node.type === 'critical' || i === leakIndex) ? 'border-destructive/50' : 'border-primary/30'}`}
-            style={{ margin: '-8px' }}
-          />
-          
-            <div className={`flex w-16 h-16 md:w-20 md:h-20 rounded-full border ${(node.type === 'critical' || i === leakIndex) ? 'border-destructive/60 bg-destructive/5' : 'border-primary/30 bg-background/80'} backdrop-blur-xl items-center justify-center shadow-[0_0_30px_oklch(var(--primary)/0.2)] group-hover:border-primary/60 group-hover:shadow-[0_0_50px_oklch(var(--primary)/0.4)] transition-all duration-700 relative overflow-hidden`}>
-              {i === leakIndex && isFixing && (
-                <motion.div 
-                  initial={{ y: "100%" }}
-                  animate={{ y: "-100%" }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"
-                />
-              )}
-              <span className={`text-[9px] md:text-[10px] font-black tracking-tight md:tracking-[0.15em] ${(node.type === 'critical' || i === leakIndex) ? 'text-destructive' : 'text-foreground'} group-hover:text-primary transition-colors duration-500 text-center leading-tight uppercase relative z-10 px-1`}>{node.label}</span>
-            </div>
-
-          {/* Leakage Badge for this specific node */}
+          <div className={`w-12 h-12 md:w-20 md:h-20 rounded-full border border-border/50 bg-background/80 backdrop-blur-2xl flex items-center justify-center transition-all duration-700 group-hover:border-primary group-hover:scale-110 group-hover:shadow-[0_0_40px_oklch(var(--primary)/0.3)] ${node.type === 'critical' ? 'border-destructive/40 shadow-[0_0_20px_oklch(var(--destructive)/0.2)]' : ''}`}>
+             <div className="text-center">
+               <span className={`text-[8px] md:text-[10px] font-black uppercase tracking-tighter ${node.type === 'critical' ? 'text-destructive' : 'text-foreground'}`}>{node.label}</span>
+             </div>
+          </div>
           {i === leakIndex && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              className="absolute -top-14 left-1/2 -translate-x-1/2 z-20 hidden md:block"
-            >
-              <div className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isFixing ? 'border-primary/60 bg-primary/20 text-primary' : 'border-destructive/60 bg-destructive/20 text-destructive'} backdrop-blur-md shadow-2xl whitespace-nowrap animate-in fade-in zoom-in duration-500`}>
-                {isFixing ? <ShieldCheck className="w-4 h-4 animate-bounce" /> : <Activity className="w-4 h-4 animate-pulse" />}
-                <span className="text-[10px] font-black uppercase tracking-widest">
-                  {isFixing ? 'Fixing Leakage...' : 'Leakage Detected'}
-                </span>
-              </div>
-            </motion.div>
+             <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full glass-premium border-primary/40 whitespace-nowrap animate-bounce">
+               <span className="text-[8px] font-black text-primary uppercase tracking-widest">{isFixing ? 'REPAIRING...' : 'LEAK_DETECTED'}</span>
+             </div>
           )}
-        </motion.div>
+        </div>
       ))}
 
-      {/* Center hub (GROWTH OS) */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, delay: 1, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <motion.div 
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute -inset-4 rounded-full border border-dashed border-primary/20"
-        />
-        <div className="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-primary bg-background shadow-[0_0_60px_oklch(var(--primary)/0.4)] flex items-center justify-center">
-          <div className="text-center">
-            <span className="text-[7px] md:text-[8px] font-black tracking-[0.3em] text-primary uppercase block">GROWTH</span>
-            <span className="text-[9px] md:text-[11px] font-black tracking-tight text-foreground uppercase">OS</span>
-          </div>
-        </div>
-      </motion.div>
+      {/* Center OS Core */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+         <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-primary/20 bg-background/50 backdrop-blur-3xl flex items-center justify-center relative group">
+            <div className="absolute inset-0 rounded-full border border-dashed border-primary/40 animate-spin-slow" />
+            <div className="absolute -inset-4 rounded-full border border-primary/10 animate-spin-reverse" />
+            <div className="text-center">
+              <span className="text-[10px] font-black tracking-[0.5em] text-primary block mb-1">GROWTH</span>
+              <span className="text-4xl font-black italic tracking-tightest">OS v4</span>
+            </div>
+            {/* Visual Tension Particles around core */}
+            <div className="absolute inset-0 pointer-events-none">
+               {[...Array(12)].map((_, i) => (
+                 <div 
+                   key={i} 
+                   className="absolute w-1 h-1 bg-primary/40 rounded-full" 
+                   style={{ 
+                     top: '50%', left: '50%', 
+                     transform: `rotate(${i * 30}deg) translateY(-80px)`,
+                     opacity: Math.random()
+                   }} 
+                 />
+               ))}
+            </div>
+         </div>
+      </div>
     </div>
   );
 }
 
-const dynamicWords = ["OS", "SYSTEMS", "INFRASTRUCTURE", "ENGINE"];
-const resourceWords = ["REVENUE.", "LEADS.", "MARGINS.", "OPPORTUNITY."];
+const dynamicTitles = ["Growth Engines", "Revenue Infrastructures", "Conversion Systems", "Autonomous Pipelines"];
 
 export function Hero() {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 1000], [0, 300]);
-  const y2 = useTransform(scrollY, [0, 1000], [0, -200]);
-  const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
-  const opacity = useTransform(scrollY, [0, 800], [1, 0]);
-  
-  const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
-
-  const [wordIndex, setWordIndex] = useState(0);
-  const [particles, setParticles] = useState<any[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [titleIndex, setTitleIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % dynamicWords.length);
+      setTitleIndex((prev) => (prev + 1) % dynamicTitles.length);
     }, 3000);
-    
-    // Generate particles only on client to avoid hydration mismatch
-    setParticles([...Array(12)].map(() => ({
-      x: Math.random() * 100,
-      duration: Math.random() * 5 + 5,
-      delay: Math.random() * 10,
-      drift: (Math.random() - 0.5) * 20
-    })));
-
     return () => clearInterval(interval);
   }, []);
 
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    
+    tl.from(".reveal-up", {
+      y: 100,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 1.5,
+      ease: "power4.out",
+      filter: "blur(20px)"
+    });
+
+    tl.from(".hero-visual", {
+      scale: 0.8,
+      opacity: 0,
+      duration: 2,
+      ease: "expo.out",
+      filter: "blur(30px)"
+    }, "-=1");
+
+    // Scroll parallax
+    gsap.to(".parallax-bg", {
+      y: (i, target) => -target.offsetHeight * 0.2,
+      ease: "none",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+  }, { scope: containerRef });
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-background pt-32 md:pt-48 pb-0">
-      {/* ATMOSPHERIC LAYERS */}
-      <div className="absolute inset-0 z-0">
+    <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center bg-background pt-32 overflow-hidden grain-system">
+      {/* ATMOSPHERIC DEPTH */}
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 grid-infrastructure opacity-5" />
         <div className="absolute inset-0 dot-grid opacity-10" />
-        
-        {/* Premium Cinematic Lighting */}
-        <div className="glow-orb w-[1000px] h-[1000px] bg-primary/15 top-[-20%] right-[-10%] blur-[150px]" />
-        <div className="glow-orb w-[800px] h-[800px] bg-primary/10 bottom-[-20%] left-[-10%] blur-[120px]" style={{ animationDelay: "3s" }} />
-        
-        {/* LEAKAGE PARTICLES (Environmental) */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {particles.map((p, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-primary/40 rounded-full"
-              initial={{ 
-                x: `${p.x}%`, 
-                y: -20, 
-                opacity: 0 
-              }}
-              animate={{ 
-                y: "110vh",
-                opacity: [0, 0.4, 0],
-                x: [`${p.x}%`, `${p.x + p.drift}%`]
-              }}
-              transition={{ 
-                duration: p.duration, 
-                repeat: Infinity, 
-                delay: p.delay,
-                ease: "linear"
-              }}
-            />
-          ))}
-        </div>
-
-        <motion.div 
-          animate={{ opacity: [0.03, 0.06, 0.03] }}
-          transition={{ duration: 8, repeat: Infinity }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,oklch(var(--primary)/0.15)_0%,transparent_50%)]" 
-        />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 blur-[150px] rounded-full translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full -translate-x-1/4 translate-y-1/4" />
+        <div className="parallax-bg absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,oklch(var(--primary)/0.03)_0%,transparent_70%)]" />
       </div>
-      
-      {/* KINETIC TYPOGRAPHY (Background) */}
-      <motion.div 
-        style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[12rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.03] dark:text-foreground/[0.05] hidden md:block uppercase tracking-tightest"
-      >
-        REVENUE INFRASTRUCTURE • GROWTH OS • AUTONOMOUS SCALING •
-      </motion.div>
 
       <FloatingHUD />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10 flex-grow flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
-          {/* CONTENT — Left weighted */}
-          <div className="lg:col-span-7 space-y-8 md:space-y-12">
-            {/* Status badge & Social Proof */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
-            >
-              <div className="inline-flex items-center space-x-4 px-6 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-xl group">
+          {/* CONTENT - ASYMMETRICAL COMPOSITION */}
+          <div className="lg:col-span-7 space-y-12 text-left">
+            <div className="space-y-6">
+              <div className="reveal-up inline-flex items-center space-x-4 px-6 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-3xl group">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_15px_oklch(var(--primary))]" />
-                <span className="text-[9px] font-black tracking-[0.8em] text-foreground uppercase">
-                  SYSTEMS ONLINE v2.0
-                </span>
+                <span className="text-[10px] font-black tracking-[0.8em] text-foreground uppercase italic">System_Init: 100%_Functional</span>
               </div>
-              <div className="flex items-center -space-x-2">
-                {[1,2,3,4].map((i) => (
-                  <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-foreground/[0.05] overflow-hidden">
-                    <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`} alt="user" className="w-full h-full object-cover" />
-                  </div>
-                ))}
-                <span className="pl-4 text-[9px] font-black tracking-widest text-muted-foreground dark:text-muted-foreground/60 uppercase">
-                  Trusted by 50+ High-Growth Teams
-                </span>
-              </div>
-            </motion.div>
 
-            {/* HEADLINE — Cinematic typography */}
-            <div className="space-y-4 md:space-y-8">
-              <div className="overflow-visible relative">
-                <motion.h1
-                  initial="hidden"
-                  animate="visible"
-                  variants={stagger}
-                  className="text-[2.2rem] sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tightest text-foreground leading-[1.1] sm:leading-[0.9] uppercase relative z-10"
-                >
-                  <div className="flex flex-wrap items-baseline gap-x-3 md:gap-x-6">
-                    <motion.span variants={wordReveal} className="inline-block">
-                      GROWTH
-                    </motion.span>
-                    <div className="relative h-[1.1em] min-w-[2ch] overflow-hidden inline-flex align-baseline">
-                      <AnimatePresence mode="wait">
-                        <motion.span
-                          key={dynamicWords[wordIndex]}
-                          initial={{ y: "100%", opacity: 0, rotateX: -40 }}
-                          animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                          exit={{ y: "-100%", opacity: 0, rotateX: 40 }}
-                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          className="text-primary italic font-medium leading-none whitespace-nowrap block"
-                        >
-                          {dynamicWords[wordIndex]}
-                        </motion.span>
-                      </AnimatePresence>
-                    </div>
-                  </div>
-                  <div className="flex items-baseline flex-wrap mt-2 md:mt-4 gap-x-3 md:gap-x-6">
-                    <motion.span
-                      variants={{
-                        hidden: { opacity: 0, scale: 0.8, x: -40, filter: "blur(15px)" },
-                        visible: { 
-                          opacity: 1, scale: 1, x: 0, filter: "blur(0px)", 
-                          transition: { duration: 1.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] } 
-                        }
-                      }}
-                      className="text-foreground italic font-medium text-[1.8rem] sm:text-4xl md:text-6xl lg:text-8xl relative"
-                    >
-                      SEALING
-                      {/* Animated Leak Drip */}
-                      <motion.div 
-                        animate={{ y: [0, 20, 40], opacity: [0, 1, 0], scale: [1, 1.2, 0.8] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeIn" }}
-                        className="absolute bottom-0 left-1/2 w-1 h-4 bg-primary/40 blur-sm rounded-full"
-                      />
-                    </motion.span>
-                    <div className="relative h-[1.1em] min-w-[3ch] overflow-hidden inline-flex align-baseline">
-                      <AnimatePresence mode="wait">
-                        <motion.span
-                          key={resourceWords[wordIndex]}
-                          initial={{ y: "100%", opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: "-100%", opacity: 0 }}
-                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          className="leading-none whitespace-nowrap block"
-                        >
-                          {resourceWords[wordIndex]}
-                        </motion.span>
-                      </AnimatePresence>
-                    </div>
-                  </div>
-                </motion.h1>
+              <div className="space-y-4">
+                <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tightest leading-[0.85] uppercase reveal-up text-mask-premium">
+                  WE BUILD<br />
+                  <span className="text-primary italic font-medium">REVENUE</span><br />
+                  MACHINES.
+                </h1>
+                
+                <div className="h-12 overflow-hidden reveal-up">
+                   <div 
+                     className="transition-transform duration-1000 ease-[0.16,1,0.3,1]"
+                     style={{ transform: `translateY(-${titleIndex * 100}%)` }}
+                   >
+                     {dynamicTitles.map((title, i) => (
+                       <p key={i} className="text-2xl md:text-4xl font-bold italic text-muted-foreground/60 h-12 flex items-center">
+                         {title}
+                       </p>
+                     ))}
+                   </div>
+                </div>
               </div>
-              
-              {/* Subheadline */}
-              <motion.p
-                initial={{ opacity: 0, filter: "blur(15px)", y: 40 }}
-                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                transition={{ duration: 1.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-muted-foreground dark:text-muted-foreground/90 max-w-4xl font-medium tracking-tightest leading-tight italic"
-              >
-                "We don't sell hours. We deploy <span className="text-primary not-italic font-black uppercase">Revenue Infrastructure</span> that identifies, qualifies, and converts targets autonomously."
-              </motion.p>
+
+              <p className="text-xl md:text-3xl text-muted-foreground/80 max-w-2xl font-medium tracking-tightest italic leading-tight reveal-up border-l-4 border-primary/20 pl-8">
+                "We don't sell hours. We deploy <span className="text-foreground not-italic font-black">Autonomous Infrastructure</span> that identifies, qualifies, and converts targets while you sleep."
+              </p>
             </div>
 
-            {/* CTA ROW */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10 pt-4">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <Link href="/contact">
-                  <MagneticButton>
-                    <Button size="lg" className="rounded-2xl px-12 md:px-16 h-16 md:h-20 text-base md:text-lg bg-primary text-black hover:scale-105 font-black uppercase tracking-widest shadow-[0_30px_90px_-20px_oklch(var(--primary)/0.6)] transition-all duration-700 group border-none relative overflow-hidden">
-                      <span className="relative z-10">Initiate Strategy Call</span>
-                      <ArrowRight className="ml-4 h-5 w-5 md:h-6 md:w-6 group-hover:translate-x-3 transition-transform duration-500 relative z-10" />
-                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                    </Button>
-                  </MagneticButton>
-                </Link>
-              </motion.div>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10 reveal-up pt-6">
+              <Link href="/contact">
+                <MagneticButton>
+                  <Button size="lg" className="rounded-2xl px-16 h-20 text-lg bg-primary text-black hover:scale-105 font-black uppercase tracking-widest shadow-[0_30px_90px_-20px_oklch(var(--primary)/0.6)] transition-all duration-700 group border-none relative overflow-hidden">
+                    <span className="relative z-10">Initialize Audit</span>
+                    <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-3 transition-transform duration-500 relative z-10" />
+                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  </Button>
+                </MagneticButton>
+              </Link>
               
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.5, delay: 2.8, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col space-y-2"
-              >
-                <div className="flex items-center gap-2">
+              <div className="flex flex-col space-y-2">
+                <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" />
-                  <span className="text-[10px] font-black tracking-widest text-foreground uppercase">Live Signals Detected</span>
+                  <span className="text-[10px] font-black tracking-widest text-foreground/40 uppercase">Global Acquisition Active</span>
                 </div>
-                <span className="text-2xl md:text-3xl font-black italic tracking-tighter text-foreground leading-none">
-                  $1.2M+ <span className="text-muted-foreground/60 not-italic text-sm">Revenue Recaptured</span>
-                </span>
-              </motion.div>
+                <p className="text-2xl font-black italic tracking-tightest">
+                  $1.2M+ <span className="text-muted-foreground/40 not-italic text-sm">Revenue Recovered</span>
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* 3D NETWORK VISUALIZATION — Right */}
-          <motion.div 
-            style={{ y: springY1, opacity }}
-            className="lg:col-span-5 relative h-[350px] md:h-[450px] lg:h-[550px]"
-          >
+          {/* VISUAL - 3D ANALYTICS / DASHBOARD FEEL */}
+          <div className="lg:col-span-5 relative hero-visual">
             <HeroNetwork />
-          </motion.div>
+            
+            {/* Layered Floating Elements for Depth */}
+            <div className="absolute -top-10 -right-10 p-6 glass-premium rounded-2xl border-primary/10 space-y-2 animate-float hidden xl:block">
+               <p className="text-[8px] font-black text-primary uppercase">Conversion_Rate</p>
+               <p className="text-2xl font-bold italic tracking-tighter text-foreground">+240%</p>
+               <div className="w-32 h-1 bg-primary/20 rounded-full" />
+            </div>
+            
+            <div className="absolute -bottom-10 -left-10 p-6 glass-premium rounded-2xl border-primary/10 flex items-center space-x-4 animate-float delay-1000 hidden xl:block">
+               <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+                  <Activity className="w-5 h-5 text-primary" />
+               </div>
+               <div>
+                  <p className="text-[8px] font-black text-muted-foreground uppercase">Realtime_Flow</p>
+                  <p className="text-sm font-bold text-foreground">Optimizing...</p>
+               </div>
+            </div>
+          </div>
         </div>
       </div>
-      
-      {/* SYSTEMS MARQUEE — Above the fold */}
-      <div className="w-full mt-auto relative z-20">
-        <div className="container mx-auto px-6 mb-2">
-          <span className="text-[8px] font-black tracking-[1em] text-primary uppercase opacity-40">Core Infrastructure Nodes</span>
+
+      {/* FOOTER MARQUEE */}
+      <div className="w-full mt-auto relative z-20 border-t border-border/50 bg-background/50 backdrop-blur-xl">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+           <span className="text-[9px] font-black tracking-[1em] text-primary uppercase">Operational_Core</span>
+           <span className="text-[9px] font-black tracking-[1em] text-foreground/20 uppercase">A.I. Systems</span>
         </div>
         <SystemsMarquee />
       </div>
 
-      {/* SCROLL INDICATOR */}
-      <motion.div 
-        style={{ opacity }}
-        className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 pointer-events-none"
-      >
-        <span className="text-[8px] md:text-[9px] font-black tracking-[1em] text-foreground uppercase">Scroll</span>
-        <div className="w-px h-8 md:h-12 bg-gradient-to-b from-primary to-transparent" />
-      </motion.div>
+      {/* CINEMATIC SCROLL INDICATOR */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 opacity-20 hover:opacity-100 transition-opacity duration-1000">
+         <span className="text-[8px] font-black tracking-[1em] text-foreground uppercase vertical-text">Scroll</span>
+         <div className="w-[1px] h-20 bg-gradient-to-b from-primary to-transparent animate-pulse" />
+      </div>
     </section>
   );
 }

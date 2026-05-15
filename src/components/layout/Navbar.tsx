@@ -1,120 +1,133 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu, X, ArrowRight, Cpu, Shield } from "lucide-react";
+import { Menu, X, ArrowRight, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const navLinks = [
-  { name: "Revenue Systems", href: "/revenue-systems" },
-  { name: "Solutions", href: "/solutions" },
-  { name: "Results", href: "/case-studies" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-];
-
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
+const navLinks = [
+  { name: "Protocols", href: "/revenue-systems" },
+  { name: "Solutions", href: "/solutions" },
+  { name: "Results", href: "/case-studies" },
+  { name: "About", href: "/about" },
+];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  const lastScrollY = useRef(0);
+  const headerRef = useRef<HTMLElement>(null);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
-    lastScrollY.current = latest;
   });
+
+  useGSAP(() => {
+    gsap.from(".nav-reveal", {
+      y: -20,
+      opacity: 0,
+      duration: 1.5,
+      stagger: 0.1,
+      ease: "power4.out"
+    });
+  }, { scope: headerRef });
 
   return (
     <header
+      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-[5000] transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      } ${isScrolled ? "py-4 md:py-6" : "py-6 md:py-12"}`}
+        isScrolled ? "py-4 md:py-6" : "py-8 md:py-16"
+      }`}
     >
       <div className="container mx-auto px-6">
         <nav
-          className={`relative flex items-center justify-between px-6 md:px-12 py-6 rounded-[2.5rem] md:rounded-[3rem] border transition-all duration-1000 ${
+          className={`relative flex items-center justify-between px-6 md:px-12 py-6 rounded-full border transition-all duration-1000 ${
             isScrolled
-              ? "bg-background/40 md:bg-background/80 backdrop-blur-3xl border-border/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
+              ? "bg-background/40 backdrop-blur-3xl border-border/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)]"
               : "bg-transparent border-transparent"
           }`}
         >
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group shrink-0 min-w-[200px] md:min-w-[320px]" aria-label="Marketing Ko Home">
-            <span className="text-2xl md:text-3xl font-black tracking-tightest text-foreground uppercase italic leading-none transition-all duration-700 group-hover:text-primary">
-              MARKETING <span className="text-primary italic">KO.</span>
+          {/* Logo - Cinematic Branding */}
+          <Link href="/" className="nav-reveal flex items-center space-x-3 group shrink-0" aria-label="Marketing Ko Home">
+            <div className="w-10 h-10 rounded-xl bg-primary/20 border border-primary/40 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_20px_oklch(var(--primary)/0.4)] transition-all duration-700">
+              <Zap className="w-6 h-6 text-primary" />
+            </div>
+            <span className="text-xl md:text-2xl font-black tracking-tightest text-foreground uppercase italic leading-none transition-all duration-700 group-hover:text-primary">
+              MARKETING <span className="text-primary not-italic">KO.</span>
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-12">
+          {/* Desktop Nav - High-End Tracking */}
+          <div className="hidden lg:flex items-center space-x-12 xl:space-x-16">
             {navLinks.map((link) => (
               <Magnetic key={link.name} strength={0.2}>
                 <Link
                   href={link.href}
-                  className="relative text-[9px] xl:text-[10px] font-black tracking-[0.6em] xl:tracking-[0.8em] text-foreground/60 hover:text-foreground uppercase transition-all duration-700 group px-4 xl:px-6 py-2"
-                  aria-label={`Navigate to ${link.name}`}
+                  className="nav-reveal relative text-[10px] font-black tracking-[0.6em] text-foreground/40 hover:text-foreground uppercase transition-all duration-700 group px-4 py-2"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-4 w-0 h-0.5 bg-primary group-hover:w-[calc(100%-32px)] transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)]" />
+                  <span className="absolute -bottom-1 left-4 w-0 h-[1px] bg-primary group-hover:w-[calc(100%-32px)] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]" />
                 </Link>
               </Magnetic>
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center space-x-8 xl:space-x-10">
+          <div className="hidden lg:flex items-center space-x-8 xl:space-x-10 nav-reveal">
              <ThemeToggle />
              <Link href="/contact">
-                <Button className="rounded-2xl px-10 xl:px-12 h-14 xl:h-16 bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black text-[10px] xl:text-[11px] uppercase tracking-[0.4em] transition-all duration-1000 shadow-[0_20px_40px_-10px_oklch(var(--primary)/0.3)] border-none" aria-label="Book Free Audit">
-                  Book Free Audit
-                </Button>
+                <MagneticButton>
+                  <Button className="rounded-2xl px-12 h-14 bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black text-[10px] uppercase tracking-[0.4em] transition-all duration-1000 shadow-[0_20px_40px_-10px_oklch(var(--primary)/0.3)] border-none relative overflow-hidden group">
+                    <span className="relative z-10">Initialize Audit</span>
+                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  </Button>
+                </MagneticButton>
              </Link>
           </div>
 
           {/* Mobile Toggle */}
-          <div className="lg:hidden flex items-center space-x-6">
+          <div className="lg:hidden flex items-center space-x-6 nav-reveal">
             <ThemeToggle />
             <button
-              className="w-16 h-16 rounded-2xl bg-foreground/[0.03] flex items-center justify-center text-foreground border border-border/50 transition-all duration-700 hover:bg-primary hover:text-primary-foreground"
+              className="w-14 h-14 rounded-2xl bg-foreground/[0.03] flex items-center justify-center text-foreground border border-border/50 transition-all duration-700 hover:bg-primary hover:text-primary-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </nav>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Cinematic Fullscreen */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[4999] bg-background/98 backdrop-blur-3xl pt-60 px-12 lg:hidden flex flex-col overflow-y-auto"
+            initial={{ opacity: 0, y: -20, filter: "blur(20px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -20, filter: "blur(20px)" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[4999] bg-background/95 backdrop-blur-3xl pt-48 px-12 lg:hidden flex flex-col"
           >
-             {/* Background Atmosphere for Mobile Menu */}
-            <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
-            <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-50" />
+            <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
+            <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="flex flex-col space-y-16 relative z-10">
+            <div className="flex flex-col space-y-12 relative z-10">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, x: 50 }}
+                  initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ delay: i * 0.1 }}
                 >
                   <Link
                     href={link.href}
-                    className="text-6xl sm:text-7xl md:text-9xl font-black text-foreground tracking-tightest italic uppercase leading-none"
+                    className="text-5xl font-black text-foreground tracking-tightest italic uppercase leading-none hover:text-primary transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -122,22 +135,17 @@ export function Navbar() {
                 </motion.div>
               ))}
               
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="pt-20"
-              >
+              <div className="pt-12">
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full h-24 sm:h-32 text-2xl sm:text-4xl bg-primary text-primary-foreground rounded-[2rem] sm:rounded-[3rem] font-black uppercase tracking-widest shadow-[0_40px_80px_-20px_oklch(var(--primary)/0.4)] border-none">
-                    Start Project
+                  <Button className="w-full h-20 text-lg bg-primary text-primary-foreground rounded-3xl font-black uppercase tracking-widest shadow-[0_30px_60px_-10px_oklch(var(--primary)/0.4)]">
+                    Book Free Audit
                   </Button>
                 </Link>
-              </motion.div>
+              </div>
             </div>
             
-            <div className="mt-auto pb-32 relative z-10">
-              <p className="text-[12px] font-black tracking-[1.5em] text-foreground/20 uppercase text-center">SYSTEM OVERGROWTH v1.0</p>
+            <div className="mt-auto pb-20 text-center relative z-10">
+              <p className="text-[10px] font-black tracking-[1em] text-foreground/20 uppercase italic">Growth_OS v4.0</p>
             </div>
           </motion.div>
         )}
@@ -145,4 +153,3 @@ export function Navbar() {
     </header>
   );
 }
-
