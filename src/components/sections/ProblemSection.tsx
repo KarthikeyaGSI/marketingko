@@ -148,7 +148,7 @@ export function ProblemSection() {
                         <motion.div 
                           initial={{ width: 0 }}
                           whileInView={{ width: "92%" }}
-                          transition={{ duration: 2.5, ease: "expo.out" }}
+                          transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
                           className="h-full bg-red-500 shadow-[0_0_20px_#ef4444]" 
                         />
                       </div>

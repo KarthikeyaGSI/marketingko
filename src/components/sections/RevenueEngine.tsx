@@ -9,7 +9,8 @@ import {
   Zap, 
   BarChart3,
   Target,
-  Shield
+  Shield,
+  Activity
 } from "lucide-react";
 import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
 import { useRef } from "react";
