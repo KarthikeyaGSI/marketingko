@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { useRef } from "react";
 import { Activity, AlertTriangle, ShieldX, TrendingDown } from "lucide-react";
 import { Magnetic } from "@/components/ui/Magnetic";
+import { BlindsText } from "@/components/ui/BlindsText";
 
 const pains = [
   {
@@ -58,15 +59,10 @@ export function ProblemSection() {
               >
                 Current State Analysis
               </motion.div>
-              <motion.h2 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "circOut", delay: 0.2 }}
-                className="text-emotional leading-[0.8] mb-12 text-foreground"
-              >
-                DOING <br /> EVERYTHING. <br />
-                <span className="text-gold not-italic font-medium">BUT STILL LOSING.</span>
-              </motion.h2>
+              <BlindsText 
+                text="YOUR REVENUE LEAK\nHAS A FIX."
+                className="text-emotional leading-[0.8] text-foreground font-black"
+              />
           </div>
 
           {/* Pain cards */}

@@ -8,6 +8,10 @@ import { useEffect, useRef, useState } from "react";
 import { SystemsMarquee } from "./SystemsMarquee";
 import { IndustriesMarquee } from "./IndustriesMarquee";
 import { Magnetic } from "@/components/ui/Magnetic";
+import { LightRays } from "@/components/ui/LightRays";
+import { IsometricGrid } from "@/components/ui/IsometricGrid";
+import { RotationButton } from "@/components/ui/RotationButton";
+import { LetterLift } from "@/components/ui/LetterLift";
 import gsap from "gsap";
 
 // Cinematic stagger config
