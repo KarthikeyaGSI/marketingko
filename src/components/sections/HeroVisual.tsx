@@ -12,7 +12,7 @@ export function HeroVisual() {
           opacity: [0.3, 0.6, 0.3]
         }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-64 h-64 bg-primary/20 rounded-full blur-[100px] z-0"
+        className="absolute w-64 h-64 bg-primary/20 rounded-full z-0"
       />
 
       <svg className="w-full h-full max-w-2xl opacity-60 relative z-10" viewBox="0 0 400 400">

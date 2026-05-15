@@ -76,7 +76,7 @@ export function SystemLayout({
           </div>
           
           <div className="lg:col-span-4 space-y-12">
-            <div className="p-12 rounded-[3rem] border border-primary/20 bg-primary/5 backdrop-blur-3xl">
+            <div className="p-12 rounded-[3rem] border border-primary/20 bg-primary/5">
               <h3 className="text-[10px] font-black tracking-[0.4em] text-foreground/40 mb-8 uppercase italic">Validated Tech Stack</h3>
               <div className="flex flex-wrap gap-3">
                 {techStack.map((tech, i) => (

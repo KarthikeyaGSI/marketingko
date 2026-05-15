@@ -96,9 +96,9 @@ function ContactForm() {
   if (status === "success") {
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
-        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-        className="p-12 md:p-24 rounded-[3rem] md:rounded-[4rem] border border-primary/20 bg-primary/5 backdrop-blur-3xl flex flex-col items-center text-center space-y-10 shadow-2xl relative overflow-hidden"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="p-12 md:p-24 rounded-[3rem] md:rounded-[4rem] border border-primary/20 bg-primary/5 flex flex-col items-center text-center space-y-10 shadow-2xl relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,oklch(var(--primary)/0.1),transparent)] pointer-events-none" />
         
@@ -141,10 +141,10 @@ function ContactForm() {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      initial={{ opacity: 0, scale: 0.98, filter: "blur(20px)" }}
-      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      initial={{ opacity: 0, scale: 0.98 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-      className="p-8 md:p-16 rounded-[3rem] md:rounded-[4rem] border border-border bg-foreground/[0.02] backdrop-blur-3xl space-y-10 shadow-2xl relative overflow-hidden group"
+      className="p-8 md:p-16 rounded-[3rem] md:rounded-[4rem] border border-border bg-foreground/[0.02] space-y-10 shadow-2xl relative overflow-hidden group"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
       

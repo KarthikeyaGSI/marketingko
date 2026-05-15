@@ -64,7 +64,7 @@ export default function ResultsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-60">
           {typicalImprovements.map((item, index) => (
             <PerspectiveCard key={index}>
-              <div className="p-12 rounded-[3rem] border border-border/50 bg-foreground/[0.01] backdrop-blur-3xl space-y-8 h-full flex flex-col justify-between hover:border-primary/20 transition-all duration-700">
+              <div className="p-12 rounded-[3rem] border border-border/50 bg-foreground/[0.01] space-y-8 h-full flex flex-col justify-between hover:border-primary/20 transition-all duration-700">
                 <div className="space-y-6">
                   <span className="text-6xl font-bold text-foreground tracking-tighter italic">{item.value}</span>
                   <div className="space-y-2">
@@ -105,8 +105,8 @@ export default function ResultsPage() {
                   ))}
                 </div>
              </div>
-             <div className="relative aspect-video rounded-[3rem] border border-border/50 bg-foreground/[0.01] backdrop-blur-3xl p-12 flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-primary/5 blur-[100px]" />
+             <div className="relative aspect-video rounded-[3rem] border border-border/50 bg-foreground/[0.01] p-12 flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 bg-primary/5" />
                 <Layers className="h-40 w-40 text-foreground/10 animate-orbit" />
                 <div className="absolute bottom-12 left-12 right-12 p-8 glass-premium rounded-2xl border-primary/20">
                    <div className="flex items-center justify-between">
@@ -135,7 +135,7 @@ export default function ResultsPage() {
 
         {/* Build Philosophy */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-60">
-           <div className="p-20 rounded-[4rem] border border-border/50 bg-foreground/[0.01] backdrop-blur-3xl space-y-12">
+           <div className="p-20 rounded-[4rem] border border-border/50 bg-foreground/[0.01] space-y-12">
               <h3 className="text-4xl font-bold text-foreground tracking-tighter">OUR <br /> PHILOSOPHY.</h3>
               <div className="space-y-6 text-xl text-muted-foreground font-medium tracking-tight">
                 <p>We eliminate vanity metrics. If it doesn't move the revenue needle or expand your operational margin, we don't build it.</p>

@@ -13,8 +13,8 @@ export function AboutContent() {
       <section className="py-40 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(var(--primary)/0.08)_0%,transparent_70%)]" />
         <div className="absolute inset-0 z-0 dot-grid opacity-5" />
-        <div className="glow-orb w-[800px] h-[800px] bg-primary/10 top-[-20%] right-[-10%] blur-[120px]" />
-        <div className="glow-orb w-[600px] h-[600px] bg-primary/5 bottom-[-15%] left-[-10%] blur-[100px]" style={{ animationDelay: "3s" }} />
+        <div className="glow-orb w-[800px] h-[800px] bg-primary/10 top-[-20%] right-[-10%]" />
+        <div className="glow-orb w-[600px] h-[600px] bg-primary/5 bottom-[-15%] left-[-10%]" style={{ animationDelay: "3s" }} />
         
         <div className="container mx-auto px-6 relative z-10 text-center space-y-12">
             <motion.div
