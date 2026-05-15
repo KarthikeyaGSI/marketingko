@@ -53,7 +53,7 @@ export function PerspectiveCard({
     >
       {/* Glow Layer */}
       <div 
-        className="absolute -inset-1 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-2xl z-0"
+        className="absolute -inset-1 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-0"
         style={{ backgroundColor: glowColor }}
       />
       
@@ -75,7 +75,7 @@ export function PerspectiveCard({
       </div>
       
       {/* Background Shadow Layer */}
-      <div className="absolute inset-4 bg-black/40 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
+      <div className="absolute inset-4 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
     </motion.div>
   );
 }

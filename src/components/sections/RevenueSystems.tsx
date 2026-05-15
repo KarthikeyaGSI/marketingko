@@ -94,7 +94,7 @@ export function RevenueSystems() {
                 <div className={`p-16 md:p-20 h-full flex flex-col justify-between space-y-20 relative overflow-hidden transition-all duration-1000 ${system.featured ? 'bg-primary/5 border-primary/30' : 'bg-foreground/[0.01]'}`}>
                   
                   {/* Interaction Detail: Glow Reaction */}
-                  <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                  <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
                   <div className="space-y-16 relative z-10">
                     <div className="flex items-center justify-between">

@@ -2,169 +2,74 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
 import { 
-  ArrowRight, 
+  Cpu, 
   MessageSquare, 
-  UserCheck, 
-  Calendar, 
-  Workflow, 
-  RefreshCcw, 
-  CreditCard, 
-  Layers, 
   Database, 
-  PhoneCall, 
-  PhoneForwarded, 
-  Mic, 
-  Globe, 
-  Layout, 
-  MonitorSmartphone, 
+  BarChart3, 
   Zap, 
-  ShoppingCart, 
-  Code2, 
-  Search, 
-  FileSearch,
-  Settings,
-  Phone
+  ShieldCheck, 
+  ArrowRight,
+  TrendingUp,
+  Activity,
+  Network,
+  Layers,
+  LineChart
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
 
-const categories = ["All", "AI & Automation", "AI Voice", "Web", "Audit & Strategy"];
+const categories = ["All", "Core Infra", "Growth AI", "Data Flow"];
 
 const solutions = [
   {
-    id: "whatsapp-automation",
-    category: "AI & Automation",
-    title: "WhatsApp Business Automation",
-    description: "End-to-end automated WhatsApp interactions. Customer support, lead capture, and notifications handled 24/7.",
-    icon: MessageSquare
+    id: "01",
+    title: "Autonomous Voice OS",
+    description: "Sub-second latency voice agents that handle outbound qualification and inbound triage with human-level nuance.",
+    category: "Growth AI",
+    icon: Cpu,
+    tags: ["Real-time", "Sub-12s Latency"]
   },
   {
-    id: "lead-qualification",
-    category: "AI & Automation",
-    title: "AI Lead Qualification",
-    description: "Automatic scoring and filtering for every lead. Focus your sales team only on high-intent prospects.",
-    icon: UserCheck
+    id: "02",
+    title: "Leakage Triage",
+    description: "Self-healing conversion paths that identify where leads are dropping and re-engages them automatically.",
+    category: "Core Infra",
+    icon: Activity,
+    tags: ["Anti-Churn", "Automation"]
   },
   {
-    id: "appointment-automation",
-    category: "AI & Automation",
-    title: "Appointment Booking Automation",
-    description: "Zero-touch scheduling and reminders. Syncs with your calendar to eliminate manual back-and-forth.",
-    icon: Calendar
+    id: "03",
+    title: "Neural CRM Sync",
+    description: "Deep-layer integration that turns your static database into a living, breathing qualified asset.",
+    category: "Data Flow",
+    icon: Database,
+    tags: ["Data Integrity", "API-First"]
   },
   {
-    id: "follow-up-automation",
-    category: "AI & Automation",
-    title: "Follow-up Sequence Automation",
-    description: "Multi-channel automated engagement sequences. Never let a lead go cold again.",
-    icon: Workflow
+    id: "04",
+    title: "Predictive Intent",
+    description: "ML-driven scoring that predicts lead intent before the first touch, prioritizing your high-value targets.",
+    category: "Growth AI",
+    icon: TrendingUp,
+    tags: ["ML Scoring", "Priority"]
   },
   {
-    id: "cart-recovery",
-    category: "AI & Automation",
-    title: "Cart Abandonment Recovery",
-    description: "Automated recovery sequences for lost sales. Capture revenue that would otherwise be gone.",
-    icon: RefreshCcw
+    id: "05",
+    title: "Sovereign Funnels",
+    description: "End-to-end customer journeys that operate entirely without human intervention until the final close.",
+    category: "Core Infra",
+    icon: Network,
+    tags: ["Hands-Free", "Scale"]
   },
   {
-    id: "payment-reminder",
-    category: "AI & Automation",
-    title: "Invoice & Payment Reminder",
-    description: "Hands-free payment collection systems. Automated follow-ups until the bill is cleared.",
-    icon: CreditCard
-  },
-  {
-    id: "internal-workflow",
-    category: "AI & Automation",
-    title: "Internal Workflow Automation",
-    description: "Seamless data bridging across your daily tools. No more manual data entry between platforms.",
-    icon: Layers
-  },
-  {
-    id: "custom-ai-automation",
-    category: "AI & Automation",
-    title: "Custom AI & Automation",
-    description: "Bespoke systems engineered perfectly for your specific operational bottleneck.",
-    icon: Database
-  },
-  {
-    id: "inbound-voice",
-    category: "AI Voice",
-    title: "Inbound AI Voice Agent",
-    description: "24/7 intelligent answering and lead routing. Never miss a potential customer call again.",
-    icon: PhoneCall
-  },
-  {
-    id: "outbound-voice",
-    category: "AI Voice",
-    title: "Outbound AI Voice Agent",
-    description: "Scalable proactive calling and engagement. Qualify leads and set appointments at scale.",
-    icon: PhoneForwarded
-  },
-  {
-    id: "custom-voice",
-    category: "AI Voice",
-    title: "Custom Voice Agent",
-    description: "Complex voice logic and deep system integrations for specialized business needs.",
-    icon: Mic
-  },
-  {
-    id: "business-website",
-    category: "Web",
-    title: "Business Website",
-    description: "Professional, conversion-focused online presence built for modern startups.",
-    icon: Globe
-  },
-  {
-    id: "landing-page",
-    category: "Web",
-    title: "Landing Page",
-    description: "High-velocity standalone pages for specific marketing campaigns and lead gen.",
-    icon: Layout
-  },
-  {
-    id: "website-redesign",
-    category: "Web",
-    title: "Website Redesign",
-    description: "Total overhaul of speed, structure, and conversion flow for existing platforms.",
-    icon: MonitorSmartphone
-  },
-  {
-    id: "website-lead-pipeline",
-    category: "Web",
-    title: "Website + Lead Pipeline",
-    description: "High-converting site fully wired into automated CRM follow-up systems.",
-    icon: Zap
-  },
-  {
-    id: "ecommerce-store",
-    category: "Web",
-    title: "E-commerce Store",
-    description: "Optimized storefront with integrated recovery systems and inventory sync.",
-    icon: ShoppingCart
-  },
-  {
-    id: "custom-web-solution",
-    category: "Web",
-    title: "Custom Web Solution",
-    description: "Tailored portals, dashboards, and complex booking platforms engineered from scratch.",
-    icon: Code2
-  },
-  {
-    id: "automation-audit",
-    category: "Audit & Strategy",
-    title: "Business Automation Audit",
-    description: "Comprehensive mapping of operational leaks and ROI-focused fix roadmap.",
-    icon: Search
-  },
-  {
-    id: "conversion-audit",
-    category: "Audit & Strategy",
-    title: "Conversion & Website Audit",
-    description: "Deep structural analysis of digital friction points and conversion leaks.",
-    icon: FileSearch
+    id: "06",
+    title: "Telemetry Dash",
+    description: "Real-time visibility into every signal in your revenue pipeline. Total transparency at the unit level.",
+    category: "Data Flow",
+    icon: LineChart,
+    tags: ["Live Data", "BI Sync"]
   }
 ];
 
@@ -176,25 +81,33 @@ export function SolutionsGrid() {
     : solutions.filter(s => s.category === activeCategory);
 
   return (
-    <section id="solutions" className="py-32 md:py-80 bg-background relative overflow-hidden mesh-animate">
-      <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
-      <div className="ambient-glow opacity-20" />
+    <section id="solutions" className="py-24 md:py-60 bg-background relative overflow-hidden grain-elite">
+      <div className="absolute inset-0 grid-infrastructure opacity-10 pointer-events-none" />
       
-      <div className="container mx-auto px-6 relative">
-        <div className="max-w-6xl mb-48 space-y-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="text-[10px] md:text-xs font-black tracking-[1em] text-primary uppercase"
-          >
-            System Infrastructure Catalogue
-          </motion.div>
-          <h2 className="text-6xl md:text-8xl font-bold text-foreground tracking-tightest leading-[0.8] text-mask-premium uppercase">
-            DROP-IN <br />
-            <span className="text-muted-foreground/10 italic font-medium">PROTOCOLS.</span>
-          </h2>
-          <p className="text-2xl md:text-4xl text-muted-foreground font-medium tracking-tightest leading-tight max-w-4xl italic">
-            19 standalone growth modules. Each one engineered to eliminate a specific operational bottleneck.
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 md:mb-32 gap-12">
+          <div className="space-y-6 md:space-y-10">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="text-[10px] md:text-[11px] font-black tracking-[1em] text-primary uppercase italic"
+            >
+              System Capabilities
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "circOut", delay: 0.2 }}
+              className="text-emotional leading-[0.8] text-foreground"
+            >
+              SELECT <br />
+              <span className="text-gold not-italic font-medium">INFRASTRUCTURE.</span>
+            </motion.h2>
+          </div>
+
+          <p className="text-lg md:text-2xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-xl italic border-l-2 border-primary/20 pl-8">
+            Each node we deploy is custom-engineered to solve a specific revenue bottleneck. No templates. No generic automation. Only precision infrastructure.
           </p>
         </div>
 
@@ -221,14 +134,14 @@ export function SolutionsGrid() {
               <motion.div
                 layout
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 1, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className="h-full group"
               >
                 <PerspectiveCard className="h-full rounded-[3rem] md:rounded-[4rem]">
-                  <div className="p-12 md:p-16 h-full flex flex-col justify-between space-y-16">
+                  <div className="p-12 md:p-16 h-full flex flex-col justify-between space-y-16 cinematic-card border-none bg-transparent">
                     <div className="space-y-12">
                       <div className="flex justify-between items-start">
                         <div className="w-16 h-16 md:w-20 md:h-20 rounded-[2rem] bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:bg-primary transition-all duration-1000">
@@ -252,9 +165,9 @@ export function SolutionsGrid() {
                         <span className="text-[10px] font-black text-foreground/20 uppercase tracking-widest mb-1">Pricing</span>
                         <span className="text-2xl md:text-3xl font-black text-foreground tracking-tightest italic">Custom Quote</span>
                       </div>
-                      <Link href={`/contact?solution=${item.id}`} className="w-16 h-16 rounded-full border border-primary/20 flex items-center justify-center group/link hover:bg-primary transition-all duration-700">
-                        <ArrowRight className="w-6 h-6 text-primary group-hover/link:text-primary-foreground transition-colors group-hover/link:translate-x-1" />
-                      </Link>
+                      <div className="w-12 h-12 rounded-2xl bg-foreground/[0.03] flex items-center justify-center text-foreground/20 group-hover:text-primary transition-colors duration-700">
+                        <ArrowRight className="w-6 h-6" />
+                      </div>
                     </div>
                   </div>
                 </PerspectiveCard>
@@ -263,23 +176,30 @@ export function SolutionsGrid() {
           </AnimatePresence>
         </div>
 
-        <div className="mt-32 p-16 md:p-24 rounded-[4rem] md:rounded-[6rem] glass-system relative overflow-hidden group shadow-2xl">
+        <div className="mt-40 w-full rounded-[4rem] md:rounded-[6rem] border border-border bg-foreground/[0.01] overflow-hidden p-10 md:p-24 relative group shadow-[0_64px_128px_-32px_rgba(0,0,0,0.2)]">
            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
               <div className="space-y-10">
                 <span className="text-[10px] font-black text-primary uppercase tracking-[1em]">Logistics Note</span>
-                <p className="text-2xl md:text-4xl text-muted-foreground font-medium tracking-tightest leading-tight italic">
-                  All fees cover industrial-grade build and 12-month management. Cloud infrastructure and third-party APIs are billed at cost with 100% transparency.
+                <h3 className="text-4xl md:text-6xl font-bold text-foreground tracking-tightest leading-[0.9] uppercase italic">
+                  Systems are <br /> <span className="text-gold">Tailor-Made.</span>
+                </h3>
+                <p className="text-lg md:text-2xl text-muted-foreground font-medium tracking-tight leading-relaxed max-w-xl italic">
+                  We don&apos;t force your business into our tools. We build the tools that fit your business. Every deployment starts with a deep architectural audit.
                 </p>
-              </div>
-              <div className="flex justify-end">
                 <Link href="/contact">
-                  <Button className="rounded-3xl px-16 h-24 text-xl bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-black uppercase tracking-widest transition-all duration-1000 shadow-2xl border-none">
-                    Request Full Catalogue
+                  <Button size="lg" className="rounded-2xl px-12 h-20 bg-primary text-black font-black uppercase tracking-widest hover:scale-105 transition-transform duration-700 border-none">
+                    Request Architectural Audit
                   </Button>
                 </Link>
               </div>
+              
+              <div className="relative aspect-video rounded-[3rem] border border-border bg-black overflow-hidden group-hover:scale-[1.02] transition-transform duration-1000">
+                 <div className="absolute inset-0 grid-infrastructure opacity-20" />
+                 <div className="absolute inset-0 flex items-center justify-center">
+                    <Layers className="w-48 h-48 text-primary/10 animate-pulse" />
+                 </div>
+              </div>
            </div>
-           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_0%,oklch(var(--primary)/0.05)_0%,transparent_70%)]" />
         </div>
       </div>
     </section>

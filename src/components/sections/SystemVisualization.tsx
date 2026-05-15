@@ -46,7 +46,7 @@ export function SystemVisualization() {
         </div>
 
         <div className="relative h-[800px] w-full perspective-elite">
-          <div className="absolute inset-0 bg-white/[0.01] rounded-[4rem] border border-white/5 backdrop-blur-3xl overflow-hidden p-20">
+          <div className="absolute inset-0 bg-white/[0.01] rounded-[4rem] border border-white/5 overflow-hidden p-20">
             {/* SVG Connection Map */}
             <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100">
               <motion.path
@@ -93,7 +93,7 @@ export function SystemVisualization() {
                   opacity: [0.1, 0.3, 0.1]
                 }}
                 transition={{ duration: 4, repeat: Infinity }}
-                className="w-96 h-96 bg-primary rounded-full blur-[150px]"
+                className="w-96 h-96 bg-primary rounded-full opacity-5"
               />
               <div className="relative z-10 space-y-4">
                 <span className="text-[10px] font-black tracking-[0.6em] text-foreground/40 uppercase">System Core</span>

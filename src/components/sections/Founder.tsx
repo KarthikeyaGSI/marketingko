@@ -51,7 +51,7 @@ export function Founder() {
             </motion.div>
             
             {/* Background Atmosphere */}
-            <div className="absolute -top-20 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px] animate-pulse-slow pointer-events-none" />
+            <div className="absolute -top-20 -left-20 w-80 h-80 bg-primary/10 rounded-full animate-pulse-slow pointer-events-none" />
           </div>
 
           {/* CONTENT SCENE: The Mindset (Right Weighted) */}

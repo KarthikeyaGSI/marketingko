@@ -380,7 +380,7 @@ export function IndustryVerticals() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.98 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-foreground/[0.01] border border-border/50 rounded-[3rem] p-12 lg:p-16 relative overflow-hidden backdrop-blur-3xl"
+                className="bg-foreground/[0.02] border border-border rounded-[3rem] p-12 lg:p-16 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-12 opacity-[0.03] text-primary">
                   <activeIndustry.icon size={200} />

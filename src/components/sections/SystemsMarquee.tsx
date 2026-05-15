@@ -25,7 +25,7 @@ const systems = [
 
 export function SystemsMarquee() {
   return (
-    <section className="py-4 md:py-6 bg-background/50 backdrop-blur-sm relative overflow-hidden border-y border-border/10 z-20">
+    <section className="py-4 md:py-6 bg-background/50 relative overflow-hidden border-y border-border/10 z-20">
       <div className="relative flex overflow-hidden">
         <motion.div
           animate={{ x: [0, -1800] }}

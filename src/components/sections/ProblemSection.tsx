@@ -90,8 +90,8 @@ export function ProblemSection() {
                       viewport={{ once: true }}
                       className="p-8 md:p-12 rounded-[3rem] cinematic-card group relative bg-foreground/[0.01] border-border/50"
                     >
-                      <div className="absolute top-0 right-0 p-8">
-                        <span className="text-3xl md:text-5xl font-black text-gold italic opacity-20 group-hover:opacity-100 transition-opacity duration-700">{pain.id}</span>
+                      <div className="absolute top-4 left-8 pointer-events-none">
+                        <span className="text-2xl md:text-3xl font-black text-gold italic opacity-10 group-hover:opacity-40 transition-opacity duration-700">{pain.id}</span>
                       </div>
                       
                       <div className="flex flex-col md:flex-row md:items-center gap-8 relative z-10">

@@ -55,7 +55,7 @@ export function Footer() {
                     </Button>
                   </MagneticButton>
                 </Link>
-                <div className="flex items-center space-x-4 px-5 py-3 rounded-xl border border-border/30 bg-foreground/[0.02] backdrop-blur-xl">
+                <div className="flex items-center space-x-4 px-5 py-3 rounded-xl border border-border/30 bg-foreground/[0.02]">
                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_oklch(var(--primary))]" />
                    <span className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.3em] italic">Systems Online v2.0</span>
                 </div>

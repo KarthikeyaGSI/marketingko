@@ -21,12 +21,11 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     const elements = document.querySelectorAll("[data-choreograph]");
     elements.forEach((el) => {
       gsap.fromTo(el, 
-        { opacity: 0, y: 100, scale: 0.9, filter: "blur(20px)" },
+        { opacity: 0, y: 100, scale: 0.9 },
         { 
           opacity: 1, 
           y: 0, 
           scale: 1,
-          filter: "blur(0px)",
           duration: 2,
           ease: "expo.out",
           scrollTrigger: {

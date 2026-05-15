@@ -47,7 +47,7 @@ export function IndustriesMarquee() {
           {[...industries, ...industries].map((industry, index) => (
             <div
               key={index}
-              className="px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl border border-border/30 bg-foreground/[0.02] backdrop-blur-md text-foreground/50 text-xs md:text-sm font-bold tracking-tight italic hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-all duration-500"
+              className="px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl border border-border/30 bg-foreground/[0.02] text-foreground/50 text-xs md:text-sm font-bold tracking-tight italic hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-all duration-500"
             >
               {industry}
             </div>

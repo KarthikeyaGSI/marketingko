@@ -12,7 +12,7 @@ const stats = [
 
 export function TrustBar() {
   return (
-    <section className="py-32 border-y border-white/5 bg-white/[0.01] backdrop-blur-3xl overflow-hidden relative">
+    <section className="py-32 border-y border-white/5 bg-white/[0.01] overflow-hidden relative">
       <div className="absolute inset-0 bg-white/[0.01]" />
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-20 text-center">
@@ -84,8 +84,9 @@ export function ValueProp() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group p-20 rounded-[4rem] border border-white/10 bg-white/[0.02] backdrop-blur-3xl transition-all duration-700 hover:border-primary/30 h-full"
+                className="group p-20 rounded-[4rem] border border-white/10 bg-white/[0.02] transition-all duration-700 hover:border-primary/30 h-full"
               >
+                <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 <div className="text-6xl mb-16 opacity-80 group-hover:scale-110 transition-transform duration-700">{card.icon}</div>
                 <h3 className="text-4xl font-bold text-white mb-8 tracking-tighter">{card.title}</h3>
                 <p className="text-xl text-muted-foreground font-medium leading-relaxed tracking-tight">

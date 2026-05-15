@@ -187,7 +187,7 @@ export function Hero() {
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
         style={{ y: y2 }}
-        className="absolute top-0 left-0 w-full whitespace-nowrap text-[12rem] md:text-[22rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.02] dark:text-foreground/[0.03] hidden md:block uppercase tracking-tighter opacity-30"
+        className="absolute top-0 left-0 w-full whitespace-nowrap text-[8rem] md:text-[15rem] font-black italic select-none pointer-events-none z-[1] text-foreground/[0.01] dark:text-foreground/[0.02] hidden md:block uppercase tracking-tighter"
       >
         REVENUE INFRASTRUCTURE • GROWTH OS • AUTONOMOUS SCALING •
       </motion.div>
@@ -205,7 +205,7 @@ export function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="flex flex-wrap items-center gap-6"
+              className="flex flex-wrap items-center gap-6 mb-12"
             >
               <div className="px-4 py-2 rounded-full border border-primary/20 bg-primary/5 flex items-center space-x-3">
                 <span className="relative flex h-2 w-2">

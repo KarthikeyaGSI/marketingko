@@ -18,7 +18,7 @@ export function FloatingCTA() {
     >
       <MagneticButton>
         <Link href="/contact">
-          <Button size="lg" className="h-12 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black shadow-[0_20px_50px_-10px_oklch(var(--primary)/0.4)] border-none group backdrop-blur-md transition-all duration-500 relative overflow-hidden">
+          <Button size="lg" className="h-12 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-black shadow-[0_20px_50px_-10px_oklch(var(--primary)/0.4)] border-none group transition-all duration-500 relative overflow-hidden">
             <span className="text-[10px] uppercase tracking-[0.2em] relative z-10">Book Audit</span>
             <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-500 relative z-10" />
             <div className="absolute inset-0 bg-foreground/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />

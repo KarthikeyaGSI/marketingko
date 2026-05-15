@@ -71,7 +71,7 @@ export default function PrivacyContent() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="p-10 rounded-[3rem] border border-border bg-foreground/[0.01] backdrop-blur-3xl space-y-8 group hover:border-primary/30 transition-all duration-700"
+                className="p-10 rounded-[3rem] border border-border bg-foreground/[0.01] space-y-8 group hover:border-primary/30 transition-all duration-700"
               >
                 <div className="w-16 h-16 rounded-[2rem] bg-foreground/[0.03] border border-border flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-700">
                   <policy.icon className="w-7 h-7" />

@@ -58,8 +58,7 @@ export function FAQ() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
-      <div className="ambient-glow opacity-20" />
-      <div className="glow-orb w-[350px] h-[350px] bg-primary/8 bottom-[10%] right-[-5%]" />
+      <div className="absolute inset-0 grid-infrastructure opacity-5 pointer-events-none" />
       
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 md:mb-24 gap-8">
@@ -73,8 +72,8 @@ export function FAQ() {
               How We Exactly Work
             </motion.div>
             <motion.h2
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tightest sm:tracking-[-0.08em] text-foreground leading-[1] sm:leading-[0.9] uppercase italic"
             >

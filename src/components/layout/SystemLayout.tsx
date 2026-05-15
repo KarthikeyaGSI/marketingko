@@ -121,7 +121,7 @@ export function SystemLayout({
 
         {/* Final CTA */}
         <div className="text-center py-40 bg-foreground text-background rounded-[4rem] border border-border relative overflow-hidden selection:bg-primary selection:text-background">
-          <div className="absolute inset-0 bg-primary/5 blur-[100px] -z-10" />
+          <div className="absolute inset-0 bg-primary/5 -z-10" />
           <h3 className="text-5xl md:text-8xl font-bold text-background tracking-tightest mb-12 uppercase italic">DEPLOY THIS <br /> <span className="text-primary not-italic">PROTOCOL.</span></h3>
           <MagneticButton>
             <Link href="/contact">

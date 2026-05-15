@@ -21,7 +21,7 @@ export function RevenueLeak() {
           inset: 0;
           border-radius: 50%;
           background: radial-gradient(circle, oklch(var(--primary) / 0.1) 0%, oklch(var(--primary) / 0.02) 40%, transparent 80%);
-          filter: blur(60px);
+          border: 1px solid oklch(var(--primary) / 0.05);
         }
 
         .orbit {
@@ -63,7 +63,7 @@ export function RevenueLeak() {
           letter-spacing: 4px;
           z-index: 10;
           box-shadow: 0 0 40px oklch(var(--primary) / 0.1), inset 0 0 20px oklch(var(--primary) / 0.05);
-          backdrop-blur: 20px;
+          background: oklch(var(--background));
         }
 
         .center-node strong {
@@ -90,7 +90,7 @@ export function RevenueLeak() {
           text-transform: uppercase;
           letter-spacing: 2px;
           z-index: 9;
-          backdrop-blur: 10px;
+          background: oklch(var(--foreground) / 0.01);
           transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 

@@ -22,7 +22,7 @@ export function WOWSection() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="inline-block px-6 py-2 rounded-full border border-foreground/10 bg-foreground/[0.03] backdrop-blur-3xl"
+              className="inline-block px-6 py-2 rounded-full border border-foreground/10 bg-foreground/[0.03]"
             >
               <span className="text-[10px] font-black tracking-[0.6em] text-primary uppercase">The Architecture</span>
             </motion.div>
@@ -51,7 +51,7 @@ export function WOWSection() {
 
           <div className="relative h-[700px] perspective-elite">
             <PerspectiveCard className="w-full h-full">
-              <div className="w-full h-full rounded-[4rem] border border-foreground/5 bg-foreground/[0.01] backdrop-blur-3xl overflow-hidden relative p-12">
+              <div className="w-full h-full rounded-[4rem] border border-foreground/5 bg-foreground/[0.01] overflow-hidden relative p-12">
                 {/* Connection Lines (SVG) */}
                 <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 100 100">
                   <motion.path 
@@ -71,7 +71,7 @@ export function WOWSection() {
                 {nodes.map((node) => (
                   <motion.div
                     key={node.id}
-                    className="absolute p-6 rounded-2xl border border-foreground/10 bg-background/60 backdrop-blur-3xl flex items-center space-x-4 group hover:border-primary/50 transition-all duration-700 shadow-2xl"
+                    className="absolute p-6 rounded-2xl border border-foreground/10 bg-background/60 flex items-center space-x-4 group hover:border-primary/50 transition-all duration-700 shadow-2xl"
                     style={{ left: node.x, top: node.y }}
                     initial={{ scale: 0.8, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}

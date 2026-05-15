@@ -16,7 +16,7 @@ export function BusinessNetworkAnimation() {
   return (
     <div className="relative w-full aspect-[4/5] sm:aspect-square md:aspect-auto md:h-[800px] overflow-hidden bg-transparent flex items-center justify-center rounded-[4rem]">
       {/* Background Glow */}
-      <div className="absolute w-[80%] h-[80%] rounded-full bg-primary/10 blur-[120px] animate-pulse" />
+      <div className="absolute w-[80%] h-[80%] rounded-full bg-primary/10 animate-pulse" />
 
       {/* Circular Rings */}
       <div className="absolute w-[85%] h-[85%] rounded-full border border-primary/10 animate-spin-slow" />
@@ -65,7 +65,7 @@ export function BusinessNetworkAnimation() {
         >
           <div className="absolute w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full border border-primary/20 animate-ping" />
 
-          <div className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border border-foreground/10 bg-background/80 backdrop-blur-xl shadow-[0_0_35px_rgba(var(--primary),0.3)] overflow-hidden group">
+          <div className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border border-foreground/10 bg-background/80 shadow-[0_0_35px_rgba(var(--primary),0.3)] overflow-hidden group">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/5 to-transparent group-hover:from-primary/20 transition-all duration-700" />
             <span className="text-foreground/80 text-[8px] sm:text-[10px] md:text-xs font-medium text-center px-2 z-10 transition-colors group-hover:text-foreground">
               {node.label}

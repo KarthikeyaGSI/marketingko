@@ -84,7 +84,7 @@ export function CaseStudies() {
                    </div>
                 </div>
 
-                <div className="lg:col-span-5 aspect-[4/3] rounded-[4rem] border border-border bg-foreground/[0.02] backdrop-blur-3xl p-12 overflow-hidden relative group-hover:border-primary/40 transition-all duration-1000">
+                <div className="lg:col-span-5 aspect-[4/3] rounded-[4rem] border border-border bg-foreground/[0.02] p-12 overflow-hidden relative group-hover:border-primary/40 transition-all duration-1000">
                    <div className={`absolute inset-0 bg-gradient-to-br ${study.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
                    
                    {/* Mock UI Artifact */}

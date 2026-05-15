@@ -23,7 +23,7 @@ export function InfrastructureFlow() {
   return (
     <section ref={containerRef} className="py-32 md:py-80 bg-background relative overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,oklch(var(--primary)/0.05)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 grid-infrastructure opacity-5 pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-48 space-y-8">
@@ -56,8 +56,8 @@ export function InfrastructureFlow() {
                 {/* Node Visual */}
                 <div className="flex-1 flex justify-center">
                   <div className={`relative group w-48 h-48`}>
-                    <div className={`absolute inset-0 bg-gradient-to-br ${node.color} opacity-20 blur-3xl group-hover:opacity-40 transition-opacity duration-700`} />
-                    <div className="relative w-full h-full border border-border bg-foreground/[0.01] backdrop-blur-3xl rounded-3xl flex items-center justify-center group-hover:border-primary/40 transition-all duration-700">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${node.color} opacity-10 group-hover:opacity-20 transition-opacity duration-700`} />
+                    <div className="relative w-full h-full border border-border bg-foreground/[0.01] rounded-3xl flex items-center justify-center group-hover:border-primary/40 transition-all duration-700">
                       <node.icon className="w-16 h-16 text-foreground group-hover:scale-110 transition-transform duration-700 group-hover:text-primary" />
                       
                       {/* Pulse Effect */}

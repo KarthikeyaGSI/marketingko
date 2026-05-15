@@ -82,7 +82,7 @@ export function Performance() {
                   {m.desc}
                 </p>
               </div>
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
             </motion.div>
           ))}
         </div>
@@ -92,7 +92,7 @@ export function Performance() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-40 w-full rounded-[4rem] md:rounded-[6rem] border border-border bg-foreground/[0.01] backdrop-blur-3xl overflow-hidden p-10 md:p-24 relative group shadow-[0_64px_128px_-32px_rgba(0,0,0,0.2)]"
+          className="mt-40 w-full rounded-[4rem] md:rounded-[6rem] border border-border bg-foreground/[0.01] overflow-hidden p-10 md:p-24 relative group shadow-[0_64px_128px_-32px_rgba(0,0,0,0.2)]"
         >
           <div className="absolute inset-0 grid-infrastructure opacity-10 pointer-events-none" />
           <div className="ambient-glow opacity-20" />
@@ -184,7 +184,7 @@ export function Performance() {
                     <span className="text-[10px] font-black uppercase tracking-[0.6em] opacity-50 italic">System Throughput</span>
                     <p className="text-8xl md:text-9xl font-black tracking-tightest italic leading-none">14,204 <span className="text-3xl opacity-40 not-italic">signals/sec</span></p>
                   </div>
-                  <div className="flex items-center space-x-8 px-10 py-6 rounded-3xl border border-primary-foreground/10 bg-primary-foreground/10 backdrop-blur-xl">
+                  <div className="flex items-center space-x-8 px-10 py-6 rounded-3xl border border-primary-foreground/10 bg-primary-foreground/10">
                      <Shield className="w-8 h-8 opacity-70 animate-pulse" />
                      <div className="flex flex-col">
                         <span className="text-[10px] font-black uppercase tracking-widest">Secure Handshake</span>

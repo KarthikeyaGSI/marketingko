@@ -55,7 +55,7 @@ export function AIAutomation() {
             </p>
           </div>
 
-          <div className="relative aspect-square rounded-[5rem] border border-white/5 bg-white/[0.01] backdrop-blur-3xl overflow-hidden p-16 group">
+          <div className="relative aspect-square rounded-[5rem] border border-white/5 bg-white/[0.01] overflow-hidden p-16 group">
              <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px]" />
              
              {/* Dynamic Diagram Mockup */}

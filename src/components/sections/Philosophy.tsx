@@ -50,8 +50,8 @@ export function Philosophy() {
           </div>
 
           <div className="relative group">
-            <div className="absolute -inset-20 bg-primary/5 blur-[150px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-            <div className="relative aspect-[4/5] rounded-[5rem] border border-border bg-foreground/[0.01] backdrop-blur-3xl overflow-hidden p-16 flex flex-col justify-between group-hover:border-primary/20 transition-all duration-1000">
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            <div className="relative aspect-[4/5] rounded-[5rem] border border-border bg-foreground/[0.01] overflow-hidden p-16 flex flex-col justify-between group-hover:border-primary/20 transition-all duration-1000">
                <div className="flex justify-between items-start">
                   <div className="flex flex-col">
                     <span className="text-[10px] font-black tracking-[0.5em] text-foreground/40 uppercase">Operator ID</span>

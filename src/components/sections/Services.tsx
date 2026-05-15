@@ -89,7 +89,7 @@ export function ServicesGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {systems.map((sys, i) => (
             <PerspectiveCard key={i}>
-              <div className="p-12 rounded-[3rem] border border-white/5 bg-white/[0.01] backdrop-blur-3xl h-full flex flex-col justify-between group hover:border-primary/30 transition-all duration-700">
+              <div className="p-12 rounded-[3rem] border border-white/5 bg-white/[0.01] h-full flex flex-col justify-between group hover:border-primary/30 transition-all duration-700">
                 <div className="space-y-10">
                   <div className="flex items-center justify-between">
                     <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-700">
@@ -150,8 +150,8 @@ export function Process() {
             </div>
             
             <div className="relative aspect-square">
-               <div className="absolute inset-0 bg-primary/5 blur-[200px] rounded-full animate-pulse-slow" />
-               <div className="relative h-full w-full border border-white/5 bg-white/[0.01] backdrop-blur-3xl rounded-[5rem] p-24 overflow-hidden flex items-center justify-center">
+               <div className="absolute inset-0 bg-primary/5 rounded-full animate-pulse-slow" />
+               <div className="relative h-full w-full border border-white/5 bg-white/[0.01] rounded-[5rem] p-24 overflow-hidden flex items-center justify-center">
                   <Cpu className="h-80 w-80 text-white/5 animate-orbit" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center space-y-6">

@@ -39,8 +39,9 @@ export function PainSection() {
       <div className="container mx-auto px-6 relative">
         <div className="max-w-5xl mb-48 space-y-12">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             className="text-[10px] font-black tracking-[1em] text-primary uppercase"
           >
             The Critical Gap
@@ -88,7 +89,7 @@ export function PainSection() {
         </div>
 
         <div className="mt-48 flex justify-center">
-           <div className="px-12 py-8 rounded-[2.5rem] border border-border bg-foreground/[0.02] backdrop-blur-2xl flex items-center space-x-8">
+           <div className="px-12 py-8 rounded-[2.5rem] border border-border bg-foreground/[0.02] flex items-center space-x-8">
               <Clock className="text-primary h-6 w-6 animate-pulse" />
               <p className="text-sm font-bold text-muted-foreground uppercase tracking-[0.2em] italic max-w-xl text-center md:text-left leading-relaxed">
                 Manual scaling is a terminal bottleneck. You need infrastructure, not more staff.
