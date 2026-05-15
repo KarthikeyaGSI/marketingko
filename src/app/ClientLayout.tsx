@@ -12,6 +12,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { CinematicWrapper } from "@/components/ui/CinematicWrapper";
+import { Preloader } from "@/components/ui/Preloader";
+import { PageTransition } from "@/components/ui/PageTransition";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -42,6 +44,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
     <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothWheel: true }}>
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <Preloader />
         <AtmosphericBackground />
         <CustomCursor />
         <CinematicWrapper>
@@ -49,7 +52,9 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
             <CommandMenu />
-            <main className="flex-1">{children}</main>
+            <PageTransition>
+              <main className="flex-1">{children}</main>
+            </PageTransition>
             <FloatingCTA />
             <Footer />
           </div>

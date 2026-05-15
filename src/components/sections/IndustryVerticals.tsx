@@ -18,6 +18,7 @@ import {
   PhoneCall
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BlindsText } from "@/components/ui/BlindsText";
 
 const industries = [
   {
@@ -329,14 +330,15 @@ export function IndustryVerticals() {
   const activeIndustry = industries.find(i => i.id === activeTab) || industries[0];
 
   return (
-    <section className="py-40 bg-background relative overflow-hidden">
+    <section className="py-60 bg-background relative overflow-hidden">
+      <div className="visual-silence" />
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,oklch(0.6_0.2_250_/_0.03)_0%,transparent_50%)]" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-20">
           
           {/* Sidebar Navigation */}
-          <div className="lg:w-1/3 space-y-4 relative z-20">
+          <div className="lg:w-1/3 space-y-4 relative z-20 negative-tension">
             <div className="mb-12">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -345,9 +347,10 @@ export function IndustryVerticals() {
               >
                 DEPLOYMENT VERTICALS
               </motion.div>
-              <h2 className="text-5xl font-bold text-foreground tracking-tighter">
-                INDUSTRY <br /> <span className="text-muted-foreground/40 italic">SOLUTIONS.</span>
-              </h2>
+              <BlindsText 
+                text="INDUSTRY\nSOLUTIONS."
+                className="text-emotional leading-[0.8] text-foreground"
+              />
             </div>
             
             <div className="flex flex-col space-y-2">

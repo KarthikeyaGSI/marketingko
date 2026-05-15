@@ -203,6 +203,11 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-background pt-32 pb-16 grain-elite">
+      <div className="visual-silence" />
+      {/* ATMOSPHERIC INFRASTRUCTURE */}
+      <IsometricGrid />
+      <LightRays />
+
       {/* KINETIC TYPOGRAPHY (Background) */}
       <motion.div 
         style={{ y: y2 }}
@@ -252,9 +257,9 @@ export function Hero() {
                   className="text-emotional leading-[0.8] text-foreground"
                 >
                   <div className="flex flex-wrap items-baseline gap-x-3 md:gap-x-6">
-                    <motion.span variants={wordReveal} className="inline-block">
-                      GROWTH
-                    </motion.span>
+                    <motion.div variants={wordReveal} className="inline-block">
+                      <LetterLift text="GROWTH" className="text-emotional" />
+                    </motion.div>
                     <div className="relative h-[1.1em] min-w-[2ch] overflow-hidden inline-flex align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
@@ -271,7 +276,7 @@ export function Hero() {
                     </div>
                   </div>
                   <div className="flex items-baseline flex-wrap mt-2 md:mt-4 gap-x-3 md:gap-x-6">
-                    <motion.span
+                    <motion.div
                       variants={{
                         hidden: { opacity: 0, x: -40 },
                         visible: { 
@@ -279,10 +284,10 @@ export function Hero() {
                           transition: { duration: 1, ease: "easeOut" } 
                         }
                       }}
-                      className="text-foreground italic font-medium text-[1.5rem] sm:text-3xl md:text-5xl lg:text-7xl relative"
+                      className="relative"
                     >
-                      SEALING
-                    </motion.span>
+                      <LetterLift text="SEALING" className="text-emotional italic font-medium" />
+                    </motion.div>
                     <div className="relative h-[1.1em] min-w-[3ch] overflow-hidden inline-flex align-baseline">
                       <AnimatePresence mode="wait">
                         <motion.span
@@ -319,14 +324,8 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
               >
-                <Link href="/contact" className="w-full sm:w-auto cta-target" aria-label="Book a free revenue audit">
-                  <Magnetic strength={0.02}>
-                    <Button className="w-full sm:w-auto rounded-[3rem] px-16 md:px-24 h-24 md:h-32 text-xl md:text-2xl bg-primary text-black hover:scale-105 transition-all duration-700 font-black uppercase tracking-widest shadow-[0_40px_120px_-20px_oklch(var(--primary)/0.6)] border-none relative overflow-hidden group">
-                      <span className="relative z-10">Book Free Audit</span>
-                      <ArrowRight className="ml-4 h-8 w-8 group-hover:translate-x-4 transition-transform duration-500 relative z-10" />
-                      <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                    </Button>
-                  </Magnetic>
+                <Link href="/contact" className="cta-target">
+                  <RotationButton text="Initiate Strategy Call" />
                 </Link>
               </motion.div>
               

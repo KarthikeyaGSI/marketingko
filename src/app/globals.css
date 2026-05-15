@@ -139,10 +139,14 @@
   --ring: var(--primary);
   --radius: 1rem;
 
-  /* Premium High-Visibility Highlights */
-  --text-gold: oklch(0.7 0.12 85);
-  --glass-bg: oklch(1 0 0 / 0.7);
-  --glass-border: oklch(0 0 0 / 0.1);
+  /* Editorial Typography Scaling - Aggressive contrast */
+  --font-editorial: clamp(4rem, 15vw, 15rem);
+  --font-h1: clamp(3rem, 10vw, 10rem);
+  --font-h2: clamp(2.5rem, 8vw, 8rem);
+  
+  /* Visual Silence & Tension */
+  --spacing-silence: 20rem;
+  --spacing-tension: -5vw;
 }
 
 .dark {
@@ -168,8 +172,9 @@
 
   /* Premium High-Visibility Highlights - Dark */
   --text-gold: oklch(0.85 0.15 90);
-  --glass-bg: oklch(0.08 0.01 95 / 0.8);
-  --glass-border: oklch(1 1 1 / 0.1);
+  --glass-bg: oklch(0.04 0.01 95 / 0.85); /* Richer Dark for Luxury Feel */
+  --glass-border: oklch(1 1 1 / 0.15);
+  --background: oklch(0.04 0.01 95); /* AAA Pitch Black Base */
 }
 
 /* ═══ PREMIUM ATMOSPHERICS ═══ */
@@ -261,6 +266,20 @@
     border-color: var(--primary);
     box-shadow: 0 40px 80px -20px rgba(0,0,0,0.15);
     transform: scale(1.01);
+  }
+
+  .text-emotional {
+    @apply font-black tracking-tightest uppercase italic select-none;
+    font-size: var(--font-editorial);
+    line-height: 0.8;
+  }
+
+  .visual-silence {
+    height: var(--spacing-silence);
+  }
+
+  .negative-tension {
+    margin-top: var(--spacing-tension);
   }
 
   .text-mask-premium {
